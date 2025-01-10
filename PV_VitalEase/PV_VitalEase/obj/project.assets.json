@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\joana\\source\\repos\\PV_VitalEase\\PV_VitalEase\\PV_VitalEase.csproj",
+      "projectUniqueName": "C:\\Users\\joana\\Source\\Repos\\VitalEase\\PV_VitalEase\\PV_VitalEase\\PV_VitalEase.csproj",
       "projectName": "PV_VitalEase",
-      "projectPath": "C:\\Users\\joana\\source\\repos\\PV_VitalEase\\PV_VitalEase\\PV_VitalEase.csproj",
+      "projectPath": "C:\\Users\\joana\\Source\\Repos\\VitalEase\\PV_VitalEase\\PV_VitalEase\\PV_VitalEase.csproj",
       "packagesPath": "C:\\Users\\joana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\joana\\source\\repos\\PV_VitalEase\\PV_VitalEase\\obj\\",
+      "outputPath": "C:\\Users\\joana\\Source\\Repos\\VitalEase\\PV_VitalEase\\PV_VitalEase\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PV_VitalEase")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c809836dc927fb9d3a67d7209057766a7b556b07")]
 [assembly: System.Reflection.AssemblyProductAttribute("PV_VitalEase")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PV_VitalEase")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

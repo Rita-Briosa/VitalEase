@@ -1,0 +1,6 @@
+@VitalEase.Server_HostAddress = http://localhost:5228
+
+GET {{VitalEase.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
