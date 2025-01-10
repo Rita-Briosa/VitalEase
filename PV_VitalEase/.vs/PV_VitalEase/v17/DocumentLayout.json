@@ -1,12 +1,70 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\joana\\source\\repos\\vitalease\\pv_vitalease\\vitalease.server\\models\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\models\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\joana\\source\\repos\\vitalease\\pv_vitalease\\vitalease.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\joana\\source\\repos\\vitalease\\pv_vitalease\\vitalease.server\\models\\enumerators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\models\\enumerators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\User.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\User.cs",
+              "RelativeToolTip": "VitalEase.Server\\Models\\User.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAMwCAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T22:07:03.308Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Enumerators.cs",
+              "DocumentMoniker": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\Enumerators.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Models\\Enumerators.cs",
+              "ToolTip": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\Enumerators.cs",
+              "RelativeToolTip": "VitalEase.Server\\Models\\Enumerators.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T22:10:20.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Models\\RegisterRequest.cs",
+              "ToolTip": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\RegisterRequest.cs",
+              "RelativeToolTip": "VitalEase.Server\\Models\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA6wBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T22:07:32.64Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

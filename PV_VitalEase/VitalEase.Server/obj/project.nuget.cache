@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n7QG7cSZ17o=",
+  "dgSpecHash": "Abv1xEFy+G0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\joana\\source\\repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
+  "projectFilePath": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joana\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.11\\microsoft.aspnetcore.spaproxy.8.0.11.nupkg.sha512",
     "C:\\Users\\joana\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
