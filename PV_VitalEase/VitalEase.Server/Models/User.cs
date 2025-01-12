@@ -1,35 +1,41 @@
-﻿using VitalEase.Server.Models;
-
-public class User
+﻿
+namespace VitalEase.Server.Models
 {
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public UserType Type { get; set; }
-
-    public bool Login(string email, string password)
+    public class User
     {
-        // Logic for login
-        return true;
-    }
+        public int Id { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public UserType Type { get; set; }
+        public Profile Profile { get; set; }
 
-    public bool Register(RegisterRequest data)
-    {
-        // Logic for registration
-        return true;
-    }
+        public bool Login(string email, string password)
+        {
+            // Implementation here
+            return true;
+        }
 
-    public void ResetPassword(string email)
-    {
-        // Logic for resetting password
-    }
+        public bool Register(RegisterRequest request)
+        {
+            // Implementation here
+            return true;
+        }
 
-    public void DeleteAccount()
-    {
-        // Logic for deleting account
-    }
+        public bool ResetPassword(string email)
+        {
+            // Implementation here
+            return true;
+        }
 
-    public bool IsAdmin()
-    {
-        return Type == UserType.Admin;
+        public bool DeleteAccount()
+        {
+            // Implementation here
+            return true;
+        }
+
+        public bool IsAdmin()
+        {
+            return Type == UserType.Admin;
+        }
     }
 }

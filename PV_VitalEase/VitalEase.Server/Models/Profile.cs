@@ -1,20 +1,22 @@
-﻿public class Profile
+﻿namespace VitalEase.Server.Models
 {
-    public string Username { get; set; }
-    public string Gender { get; set; }
-    public double Weight { get; set; }
-    public double Height { get; set; }
-    public DateTime Birthdate { get; set; }
-    public bool IsCardiac { get; set; }
-
-    public double CalculateBMI()
+    public class Profile
     {
-        return Weight / (Height * Height);
-    }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Gender { get; set; }
+        public double Weight { get; set; }
+        public double Height { get; set; }
+        public DateTime Birthdate { get; set; }
 
-    public string GetProfileSummary()
-    {
-        // Logic for profile summary
-        return "Profile Summary";
+        public double CalculateBMI()
+        {
+            return Weight / (Height * Height);
+        }
+
+        public string GetProfileSummary()
+        {
+            return $"Username: {Username}, Gender: {Gender}, BMI: {CalculateBMI():F2}";
+        }
     }
 }
