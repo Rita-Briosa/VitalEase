@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <img src="assets/logo.jpg" alt="Logo" class="logo" />
+      <h2>Log in</h2>
+      <form>
+        <div class="form-group">
+          <input type="email"
+                 name="email"
+                 ngModel
+                 placeholder="Email"
+                 class="form-control"
+                 required />
+        </div>
+        <div class="form-group">
+          <input type="password"
+                 name="password"
+                 ngModel
+                 placeholder="Password"
+                 class="form-control"
+                 required />
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" name="remember" ngModel /> Keep me logged in
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Log in
+        </button>
+      </form>
+      <p class="register-text">
+        Don't have an account?
+        <a href="/register">Register</a>
+      </p>
+      <footer>
+        <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
