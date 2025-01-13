@@ -6,42 +6,39 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f2f7f6;
-}
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  background-color: white;
 }
 
 .login-card {
-  background-color: #ffffff;
+  background-color: #f2f7f6;
   padding: 20px;
-  border-radius: 10px;
+  padding-top: 3%;
+  border-radius: 64px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 400px;
-  width: 100%;
+  height: 500px;
+  width: 350px;
+
 }
 
 .logo {
-  width: 80px;
-  margin-bottom: 20px;
+  width: 50%;
 }
 
 h2 {
   color: #333;
   margin-bottom: 20px;
+  margin-top: -15px;
 }
 
 .form-group {
   margin-bottom: 15px;
+
 }
 
 .form-control {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -55,9 +52,11 @@ h2 {
 
 .forgot-password {
   font-size: 12px;
-  color: #2ba8a6;
+  color: #6C9C94;
   float: right;
+  margin-top: 15px;
   text-decoration: none;
+  margin-right: 2%;
 }
 
   .forgot-password:hover {
@@ -69,6 +68,8 @@ h2 {
   justify-content: start;
   align-items: center;
   margin-bottom: 20px;
+  margin-left: 2%;
+
 }
 
   .checkbox-group input {
@@ -76,14 +77,14 @@ h2 {
   }
 
 .btn-primary {
-  background-color: #2ba8a6;
+  background-color: #6C9C94;
   color: white;
   border: none;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  width: 100%;
+  width: 95%;
 }
 
   .btn-primary:disabled {
@@ -92,7 +93,7 @@ h2 {
   }
 
   .btn-primary:hover:not(:disabled) {
-    background-color: #239c9b;
+    background-color: #2ba8a6;
   }
 
 .register-text {
@@ -101,22 +102,22 @@ h2 {
 }
 
   .register-text a {
-    color: #2ba8a6;
+    color: #6C9C94;
     text-decoration: none;
   }
 
-    .register-text a:hover {
+ .register-text a:hover {
       text-decoration: underline;
     }
 
 footer {
   margin-top: 20px;
   font-size: 12px;
-  color: #666;
+  color: #6C9C94;
 }
 
   footer a {
-    color: #2ba8a6;
+    color: #6C9C94;
     text-decoration: none;
   }
 
