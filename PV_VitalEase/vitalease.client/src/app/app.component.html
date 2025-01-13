@@ -1,24 +1,26 @@
-﻿<h1 id="tableLabel">Weather forecast</h1>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <img src="assets/logo.png" alt="Vital Ease Logo">
+        <h1>Vital Ease - Your app focused in wellness and exercise</h1>
+      </div>
+      <button>Login</button>
+    </div>
+    <div class="welcome">
+      <h2>Welcome to Vital Ease 👋</h2>
+      <p>Your ultimate fitness companion! Vital Ease is a web app designed to simplify your wellness journey. Discover a variety of training routines tailored to your goals, explore an interactive map to locate gyms and spas near you, and stay motivated on your path to a healthier, more active lifestyle.</p>
+      <p>Get started today and let Vital Ease guide you to a stronger, more balanced you!</p>
+    </div>
+    <div class="image-container">
+      <img src="assets/fitness-illustration.png" alt="Fitness Illustration">
+    </div>
+    <div class="buttons">
+      <button>Exercises</button>
+      <button>Training Routines</button>
+      <button>Map</button>
+      <button>About Us</button>
+    </div>
+  </div>
 
-<p>This component demonstrates fetching data from the server.</p>
-
-<p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
-
-<table *ngIf="forecasts">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.date }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
-        </tr>
-    </tbody>
-</table>
+</body>
