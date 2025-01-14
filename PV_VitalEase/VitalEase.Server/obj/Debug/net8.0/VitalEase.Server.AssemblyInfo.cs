@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VitalEase.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34a954b8d8262e4b5a26b266d6a187297f853b24")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8ddf50b381e1dd0c4863419476cfa50ee688c77")]
 [assembly: System.Reflection.AssemblyProductAttribute("VitalEase.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VitalEase.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
