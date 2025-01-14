@@ -60,7 +60,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.SpaProxy/8.0.11": {
+      "Microsoft.AspNetCore.SpaProxy/8.0.12": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.SpaProxy.dll": {}
@@ -1770,10 +1770,10 @@
         "logo.png"
       ]
     },
-    "Microsoft.AspNetCore.SpaProxy/8.0.11": {
-      "sha512": "jwE/cg81t/FTZF1DOKpd90ztzZz6NNNHdo+vLUL4I2IzqL3e8Coo+2eR0KeD4ShbJm+3LNPXH9a6gYv/oP+aQQ==",
+    "Microsoft.AspNetCore.SpaProxy/8.0.12": {
+      "sha512": "3FCqH7rdZVENLCSbBwiX9K034j5fUbqh8qk14Etj4pROGZGqH/nzlFZ+LdT/S2MtpWJSOUJLTT72Xk/Jf6+UVw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.spaproxy/8.0.11",
+      "path": "microsoft.aspnetcore.spaproxy/8.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1781,7 +1781,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "build/Microsoft.AspNetCore.SpaProxy.targets",
         "lib/net8.0/Microsoft.AspNetCore.SpaProxy.dll",
-        "microsoft.aspnetcore.spaproxy.8.0.11.nupkg.sha512",
+        "microsoft.aspnetcore.spaproxy.8.0.12.nupkg.sha512",
         "microsoft.aspnetcore.spaproxy.nuspec"
       ]
     },
@@ -5182,23 +5182,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\André\\.nuget\\packages\\": {},
+    "C:\\Users\\joana\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\André\\Source\\Repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
+      "projectUniqueName": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
       "projectName": "VitalEase.Server",
-      "projectPath": "C:\\Users\\André\\Source\\Repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
-      "packagesPath": "C:\\Users\\André\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\André\\Source\\Repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\obj\\",
+      "projectPath": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
+      "packagesPath": "C:\\Users\\joana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\André\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\joana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5207,6 +5207,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5223,9 +5224,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -5273,7 +5273,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

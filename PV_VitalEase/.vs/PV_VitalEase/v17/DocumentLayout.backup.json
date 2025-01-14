@@ -1,10 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Andr\u00E9\\source\\repos\\VitalEase\\PV_VitalEase\\",
+  "WorkspaceRootPath": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andr\u00E9\\source\\repos\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\register\\register.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\register\\register.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\register\\register.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\register\\register.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\login\\login.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\login\\login.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\login\\login.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\login\\login.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\login\\login.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\login\\login.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app-routing.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app-routing.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\register\\register.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\register\\register.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\register\\register.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\register\\register.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +62,175 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "app.component.html",
-              "DocumentMoniker": "C:\\Users\\Andr\u00E9\\source\\repos\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.html",
-              "ToolTip": "C:\\Users\\Andr\u00E9\\source\\repos\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
-              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAGAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "login.component.css",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\login\\login.component.css",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\login\\login.component.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-14T22:55:17.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "login.component.html",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\login\\login.component.html",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\login\\login.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-01-13T22:33:37.156Z",
+              "WhenOpened": "2025-01-14T22:55:17.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "login.component.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\login\\login.component.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\login\\login.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-14T22:54:17.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "register.component.spec.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.spec.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\register\\register.component.spec.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.spec.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\register\\register.component.spec.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-14T22:52:19.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "app.component.css",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.css",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-14T00:37:24.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "app.component.html",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.html",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-01-14T00:37:24.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "register.component.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\register\\register.component.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\register\\register.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-14T22:54:11.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "app.component.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-14T00:37:24.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "app.component.spec.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.spec.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.spec.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.spec.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.spec.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-14T22:47:50.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "app.module.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.module.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.module.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-14T00:37:24.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "app-routing.module.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app-routing.module.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app-routing.module.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-14T00:37:24.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "register.component.html",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\register\\register.component.html",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\register\\register.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-01-14T22:52:18.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "register.component.css",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\register\\register.component.css",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\register\\register.component.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-14T22:52:11.927Z",
               "EditorCaption": ""
             }
           ]
