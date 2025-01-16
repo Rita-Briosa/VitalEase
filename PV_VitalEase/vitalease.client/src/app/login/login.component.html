@@ -10,20 +10,12 @@
   <img src="assets/img/logo.png" alt="Logo" class="logo" />
   <h2>Log in</h2>
   <!-- Configurar o formulário para enviar dados ao controlador -->
-  <form method="post" asp-controller="Account" asp-action="Login">
+  <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <input type="email"
-             name="Email"
-             placeholder="Email"
-             class="form-control"
-             required />
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" class="form-control" required />
     </div>
     <div class="form-group">
-      <input type="password"
-             name="Password"
-             placeholder="Password"
-             class="form-control"
-             required />
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="form-control" required />
       <a href="#" class="forgot-password">Forgot Password?</a>
     </div>
     <div class="form-group checkbox-group">
@@ -31,9 +23,8 @@
         <input type="checkbox" name="Remember" /> Keep me logged in
       </label>
     </div>
-    <button type="submit" class="btn btn-primary">
-      Log in
-    </button>
+    <button type="submit" class="btn btn-primary">Log in</button>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   </form>
   <p class="register-text">
     Don't have an account?
