@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\login\\login.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\login\\login.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\services\\auth.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\services\\auth.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\homepage\\homepage.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\homepage\\homepage.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\homepage\\homepage.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\homepage\\homepage.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\homepage\\homepage.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\homepage\\homepage.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app-routing.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app-routing.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\login\\login.component.spec..ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\login\\login.component.spec..ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,92 +39,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "app.component.css",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.css",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.css",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.css",
-              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-16T16:22:29.163Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "app.module.ts",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.module.ts",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
-              "RelativeToolTip": "vitalease.client\\src\\app\\app.module.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-01-16T16:18:16.73Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "homePage.component.ts",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.ts",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\homePage\\homePage.component.ts",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.ts",
-              "RelativeToolTip": "vitalease.client\\src\\app\\homePage\\homePage.component.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-01-16T16:15:22.279Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "homePage.component.html",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.html",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\homePage\\homePage.component.html",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.html",
-              "RelativeToolTip": "vitalease.client\\src\\app\\homePage\\homePage.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-01-16T16:15:20.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "app-routing.module.ts",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app-routing.module.ts",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
-              "RelativeToolTip": "vitalease.client\\src\\app\\app-routing.module.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-01-16T16:13:18.682Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Program.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Program.cs",
+              "RelativeToolTip": "VitalEase.Server\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T17:13:02.051Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "homePage.component.css",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.css",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\homePage\\homePage.component.css",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.css",
-              "RelativeToolTip": "vitalease.client\\src\\app\\homePage\\homePage.component.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-16T16:12:10.797Z",
+              "Title": "login.component.spec..ts",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.spec..ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\login\\login.component.spec..ts",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.spec..ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\login\\login.component.spec..ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-16T19:29:49.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "app.component.html",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.html",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
-              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-01-16T16:08:10.069Z",
+              "Title": "app.module.ts",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.module.ts",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.module.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-16T18:59:02.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "login.component.ts",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\login\\login.component.ts",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\login\\login.component.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\login\\login.component.ts",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-16T18:48:50.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "auth.service.ts",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\auth.service.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\services\\auth.service.ts",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\auth.service.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\services\\auth.service.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-01-16T18:47:14.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T16:53:25.355Z",
               "EditorCaption": ""
             }
           ]
