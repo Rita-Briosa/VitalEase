@@ -1,39 +1,58 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #e6f2f5;
+* {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f8fbfd;
+  color: #333;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.container {
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Garante que a row ocupe toda a largura */
+}
+
+.left {
+  flex: 1;
+}
+
+.center {
   text-align: center;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: white;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
   .header img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
   }
 
-  .header h1 {
-    margin: 0;
-    font-size: 1.5em;
+  .header span {
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
   .header button {
@@ -41,49 +60,77 @@ body {
     border: none;
     border-radius: 5px;
     background-color: #fff;
+    font-size: 1rem;
     cursor: pointer;
-    font-size: 1em;
+    transition: background-color 0.3s;
   }
 
-.welcome {
-  margin: 20px 0;
+    .header button:hover {
+      background-color: #ddd;
+    }
+
+/* Main Content */
+.main-content {
+  display: flex; /* Cria um layout em linha (imagem e texto) */
+  align-items: flex-start; /* Alinha o texto e os botões ao topo da imagem */
+  gap: 20px; /* Espaço entre a imagem e o texto */
+  padding: 20px; /* Adiciona um espaçamento interno ao redor do conteúdo */
+  background-color: #ffffff; /* Fundo branco para separar do header */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Leve sombra para destacar */
+  height: 84vh; /* Altura total menos a altura do header (ajuste conforme necessário) */
+  overflow: auto; /* Permite rolagem caso o conteúdo ultrapasse a tela */
 }
 
-  .welcome h2 {
-    margin: 0;
-    font-size: 1.8em;
-  }
-
-  .welcome p {
-    color: #555;
-  }
-
 .image-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
+  flex: 1; /* A imagem ocupa uma parte proporcional da largura disponível */
 }
 
   .image-container img {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%; /* Garante que a imagem não ultrapasse os limites do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+  }
+
+.welcome {
+  flex: 2; /* O texto ocupa mais espaço que a imagem */
+  display: flex; /* Torna o conteúdo da welcome flexível */
+  flex-direction: column; /* Empilha o texto e os botões verticalmente */
+  gap: 15px; /* Espaçamento entre os elementos dentro do welcome */
+}
+
+  .welcome h2 {
+    margin-bottom: 10px; /* Espaçamento inferior do título */
+  }
+
+  .welcome p {
+    margin-bottom: 15px; /* Espaçamento inferior entre os parágrafos */
   }
 
 .buttons {
   display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  justify-content: center; /* Centraliza os grupos de botões horizontalmente */
+  gap: 60px; /* Espaço entre as colunas */
+  margin-top: 20px; /* Espaço entre os botões e outros elementos acima */
 }
 
-  .buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    font-size: 1em;
-  }
+.column, .column1 {
+  display: flex;
+  flex-direction: column; /* Organiza os botões verticalmente dentro de cada coluna */
+  gap: 40px; /* Aumenta o espaço entre os botões dentro de cada coluna */
+}
 
-    .buttons button:hover {
-      background-color: #ccc;
-    }
+.action-button {
+  padding: 20px 60px; /* Aumenta o tamanho dos botões */
+  border: none;
+  border-radius: 30px;
+  background-color: #e0e0e0; /* Cinza claro semelhante ao mockup */
+  color: #333; /* Texto escuro */
+  font-size: 1.6rem; /* Aumenta o tamanho do texto */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+  .action-button:hover {
+    background-color: #d6d6d6; /* Cor levemente mais escura ao passar o mouse */
+    transform: translateY(-5px);
+  }
