@@ -4,34 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset Password</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="reset-pass.component.css"> <!-- Certifique-se de incluir seu arquivo CSS aqui -->
 </head>
 <body>
-<div class="container">
-  <img src="assets/img/logo.png" alt="Logo" class="logo" />
-  <h1>Reset password</h1>
-  <form>
-    <div class="password-input">
-      <input type="password" placeholder="New password" id="new-password" required>
-      <span class="toggle-visibility" onclick="toggleVisibility('new-password')">👁️</span>
-    </div>
-    <div class="password-input">
-      <input type="password" placeholder="Repeat new password" id="repeat-password" required>
-      <span class="toggle-visibility" onclick="toggleVisibility('repeat-password')">👁️</span>
-    </div>
-    <div class="instructions">
-      <strong>Your password must contain:</strong>
-      <ul>
-        <li>At least 12 characters</li>
-        <li>1 Lower case letter (a-z)</li>
-        <li>1 Upper case letter (A-Z)</li>
-        <li>1 Special character (!@#$%...)</li>
-      </ul>
-    </div>
-    <button type="submit">Reset password</button>
-  </form>
-</div>
-<script src="script.js"></script>
+  <div class="reset-pass-card">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <h2>Reset Password</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="password" [(ngModel)]="newPassword" name="newPassword" placeholder="New Password" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Repeat New Password" class="form-control" required />
+      </div>
+
+      <div class="instructions">
+        <strong>Your password must contain:</strong>
+        <ul>
+          <li>At least 12 characters</li>
+          <li>1 Lower case letter (a-z)</li>
+          <li>1 Upper case letter (A-Z)</li>
+          <li>1 Special character (!&#64;#$%...)</li>
+        </ul>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+      <button type="submit" class="btn-primary">Reset Password</button>
+    </form>
+  </div>
 </body>
 </html>
-

@@ -12,7 +12,7 @@ using VitalEase.Server.Data;
 namespace VitalEase.Server.Migrations
 {
     [DbContext(typeof(VitalEaseServerContext))]
-    [Migration("20250112001920_InitialCreate")]
+    [Migration("20250117011103_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

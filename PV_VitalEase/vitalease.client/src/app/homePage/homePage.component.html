@@ -7,7 +7,13 @@
       <div class="row">
         <img src="assets/img/logo.png" alt="Vital Ease Logo">
         <h2>Vital Ease - Your app focused in wellness and exercise</h2>
-        <button routerLink="/login">Login</button>
+        <div class="auth-buttons">
+          <!-- Mostrar botão de Login se o usuário não estiver logado -->
+          <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+
+          <!-- Mostrar botão de Logout se o usuário estiver logado -->
+          <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+        </div>
       </div>
     </div>
     <div class="main-content">

@@ -1,0 +1,19 @@
+.log-dashboard {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+  table th, table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}

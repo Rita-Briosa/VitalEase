@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+}
+
+.forgot-card {
+  background-color: #f2f7f6;
+  padding: 20px;
+  padding-top: 3%;
+  border-radius: 64px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  height: 500px;
+  width: 350px;
+}
+
+.logo {
+  width: 50%;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: -15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+  .form-control:focus {
+    border-color: #2ba8a6;
+    outline: none;
+  }
+
+
+
+.btn-primary {
+  background-color: #6C9C94;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 95%;
+  margin-bottom: 20px;
+}
+
+  .btn-primary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: #2ba8a6;
+  }
+
+.back-to-login {
+  color: black; /* Define a cor do texto como preta */
+  text-decoration: none; /* Remove o sublinhado do link */
+  font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+  .back-to-login:hover {
+    text-decoration: underline; /* Adiciona o sublinhado quando o mouse passa sobre o link */
+  }
+
+footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #6C9C94;
+}
+
+  footer a {
+    color: #6C9C94;
+    text-decoration: none;
+  }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+
