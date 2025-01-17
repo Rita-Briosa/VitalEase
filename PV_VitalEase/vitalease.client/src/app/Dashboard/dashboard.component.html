@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <div class="log-dashboard">
+    <h1>Dashboard de Logs</h1>
+
+    <!-- Mensagem de erro caso falhe ao carregar os logs -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <!-- Tabela para exibir os logs -->
+    <table *ngIf="logs.length > 0">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Ação</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of logs">
+          <td>{{ log.timestamp | date: 'short' }}</td>
+          <td>{{ log.action }}</td>
+          <td>{{ log.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Caso não haja logs -->
+    <div *ngIf="logs.length === 0">
+      <p>Nenhum log encontrado.</p>
+    </div>
+  </div>
+</body>
+</html>
