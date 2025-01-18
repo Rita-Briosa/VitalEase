@@ -8,6 +8,9 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\vitalease.client\browser\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="src\app\services\auhtInterceptor.service.ts" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="src\app\homePage\" />
   </ItemGroup>
 </Project>

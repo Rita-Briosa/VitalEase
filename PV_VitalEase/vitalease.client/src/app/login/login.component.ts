@@ -12,7 +12,7 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
-  rememberMe: boolean = false;
+  rememberMe: boolean = false; // Checkbox "Remember Me"
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -21,34 +21,32 @@ export class LoginComponent {
       (response: any) => {
         console.log('Login successful', response);
 
-        // Armazenar as informações do usuário após o login
-        // Se "Remember Me" estiver selecionado, usamos o localStorage
-        if (this.rememberMe) {
-          // Armazenar no localStorage para sessão duradoura
-          localStorage.setItem('userInfo', JSON.stringify(response.user));
-        } else {
-          // Armazenar no sessionStorage para sessão temporária
-          sessionStorage.setItem('userInfo', JSON.stringify(response.user));
-        }
+        // Armazena as informações do usuário no AuthService
+        this.authService.storeUserInfo(response.user, this.rememberMe);
 
-        // Verificar o tipo de usuário e redirecionar para a página apropriada
-        if (response.user.type === 0) {
-          // Tipo de usuário 0: Redireciona para a home page
-          this.router.navigate(['/']);
-        } else if (response.user.type === 1) {
-          // Tipo de usuário 1: Redireciona para a dashboard
-          this.router.navigate(['/dashboard']);
-        } else {
-          // Redireciona para uma página padrão ou erro, caso o tipo de usuário não seja reconhecido
-          console.log('Unknown user type');
-          this.router.navigate(['/']);
-        }
+        // Redireciona com base no tipo de usuário
+        this.redirectBasedOnUserType(response.user.type);
       },
       (error) => {
-        this.errorMessage = 'Email or password is incorrect';
-        console.log('Login error', error);
+           this.errorMessage = error.error?.message || 'An unexpected error occurred';
+      console.log('Login error', error);
       }
     );
+  }
+
+  // Método para redirecionar com base no tipo de usuário
+  private redirectBasedOnUserType(userType: number): void {
+    if (userType === 0) {
+      // Tipo de usuário 0: Redireciona para a home page
+      this.router.navigate(['/']);
+    } else if (userType === 1) {
+      // Tipo de usuário 1: Redireciona para a dashboard
+      this.router.navigate(['/dashboard']);
+    } else {
+      // Redireciona para uma página padrão caso o tipo de usuário não seja reconhecido
+      console.log('Unknown user type');
+      this.router.navigate(['/']);
+    }
   }
 }
 
