@@ -3,6 +3,7 @@ html, body {
 }
 
 body {
+  font-family: sans-serif;
   min-height: 98vh;
   background-color: #F2F7F6;
   display: flex;
@@ -18,6 +19,7 @@ body {
   width: 234px;
   height: 311px;
   padding: 10px;
+  border-radius: 50px;
 }
 
 header img {
