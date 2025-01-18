@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\services\\auth.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\services\\auth.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
@@ -32,6 +33,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\resetpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\resetpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\about-us\\about-us.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\about-us\\about-us.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\about-us\\about-us.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\about-us\\about-us.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -41,10 +58,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 1,
               "Title": "app-routing.module.ts",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
@@ -54,10 +72,23 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-01-18T15:48:41.909Z",
+=======
+              "DocumentIndex": 3,
+              "Title": "about-us.component.html",
+              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-01-18T16:03:23.707Z",
+              "IsPinned": true,
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 0,
               "Title": "auth.service.ts",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\auth.service.ts",
@@ -93,20 +124,45 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-01-18T15:07:04.428Z",
+=======
+              "DocumentIndex": 2,
+              "Title": "about-us.component.css",
+              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-18T16:29:35.262Z",
+              "IsPinned": true,
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 3,
               "Title": "dbo.Users [Dados]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/VitalEaseServerContext_385ab724_83fc_4dc2_b68a_bfc02289bd6c/True/SqlTable/dbo.Users.sql",
               "ToolTip": "dbo.Users [Dados]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2025-01-18T15:20:24.984Z",
+=======
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T21:49:27.06Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 5,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
@@ -142,6 +198,17 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-17T06:11:51.738Z",
+=======
+              "DocumentIndex": 1,
+              "Title": "ResetPasswordController.cs",
+              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T21:49:19.885Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             }
           ]

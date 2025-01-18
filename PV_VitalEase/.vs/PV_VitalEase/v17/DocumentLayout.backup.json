@@ -62,6 +62,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 1,
               "Title": "app-routing.module.ts",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
@@ -71,6 +72,18 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-01-18T15:48:41.909Z",
+=======
+              "DocumentIndex": 0,
+              "Title": "about-us.component.css",
+              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\about-us\\about-us.component.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-18T16:29:35.262Z",
+              "IsPinned": true,
+>>>>>>> Stashed changes
               "EditorCaption": ""
             },
             {
