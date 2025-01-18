@@ -18,16 +18,16 @@ export class AuthService {
 
   // Armazenar informações do usuário no localStorage ou sessionStorage
   storeUserInfo(user: any, rememberMe: boolean): void {
+    const userData = JSON.stringify(user); // Stringificar os dados do usuário
     if (rememberMe) {
       // Armazenar no localStorage para uma sessão persistente
-      localStorage.setItem('userInfo', JSON.stringify(user));
+      localStorage.setItem('userInfo', userData);
     } else {
       // Armazenar no sessionStorage para uma sessão temporária
-      sessionStorage.setItem('userInfo', JSON.stringify(user));
+      sessionStorage.setItem('userInfo', userData);
     }
   }
 
-  // Obter informações do usuário do localStorage ou sessionStorage
   getUserInfo(): any {
     // Verificar o localStorage primeiro (caso o "Remember Me" tenha sido marcado)
     const userInfo = localStorage.getItem('userInfo') || sessionStorage.getItem('userInfo');

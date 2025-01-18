@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using VitalEase.Server.Data;
@@ -37,10 +40,9 @@ namespace VitalEase.Server.Controllers
             }
 
             var hashedPasswordFromInput = HashPassword(model.Password);
-            var hashedUserPassword = HashPassword(user.Password);
 
             // Verifica se o usuário existe e a senha está correta
-            if ( hashedUserPassword != hashedPasswordFromInput)
+            if ( user.Password != hashedPasswordFromInput)
             {
                 // Registrar log de erro (credenciais incorretas)
                 await LogAction("Login Attempt", "Failed - Password Incorrect", user);
@@ -51,9 +53,8 @@ namespace VitalEase.Server.Controllers
             // Registrar log de sucesso
             await LogAction("Login Attempt", "Success", user);
 
-            // Agora tratamos o comportamento do "Remember Me"
-            if (model.RememberMe)
-            {
+            var token = GenerateJwtToken(user, model.RememberMe);
+
                 // Armazenamos o usuário de forma persistente se "Remember Me" estiver selecionado
                 // Este será armazenado no localStorage do cliente
                 var userInfo = new
@@ -61,36 +62,16 @@ namespace VitalEase.Server.Controllers
                     userId = user.Id,
                     email = user.Email,
                     type = user.Type, // Tipo de usuário
-                    rememberMe = true
                 };
 
                 // Retorna os dados do usuário com "Remember Me" marcado
                 return Ok(new
                 {
                     message = "Login successful",
-                    user = userInfo,
-                    rememberMe = true // Informa ao frontend que a sessão será persistente
+                    token,
+                    user = userInfo
+                    
                 });
-            }
-            else
-            {
-                // Se "Remember Me" não estiver selecionado, a sessão será temporária
-                var userInfo = new
-                {
-                    userId = user.Id,
-                    email = user.Email,
-                    type = user.Type, // Tipo de usuário
-                    rememberMe = false
-                };
-
-                // Retorna os dados do usuário, mas informa que a sessão será temporária
-                return Ok(new
-                {
-                    message = "Login successful",
-                    user = userInfo,
-                    rememberMe = false // Informa ao frontend que a sessão é temporária
-                });
-            }
         }
 
         private string HashPassword(string password)
@@ -124,6 +105,29 @@ namespace VitalEase.Server.Controllers
             // Salvar o log no banco de dados
             _context.AuditLogs.Add(log);
             await _context.SaveChangesAsync();
+        }
+
+        private string GenerateJwtToken(User user, bool rememberMe)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes("Chave_secreta_pertencente_a_vital_ease");
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim("userType", user.Type.ToString())
+        }),
+                Expires = rememberMe
+                    ? DateTime.UtcNow.AddDays(30) // "Remember Me" session: 30 days
+                    : DateTime.UtcNow.AddMinutes(15), // Standard session: 15 minutes
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
     }
