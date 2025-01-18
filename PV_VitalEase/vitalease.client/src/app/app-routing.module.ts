@@ -8,7 +8,7 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
 //import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: '', component: HomePageComponent},
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'forgotPassword', component: ForgotPassComponent },

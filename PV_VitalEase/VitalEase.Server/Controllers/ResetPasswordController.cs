@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 using VitalEase.Server.Data;
 using VitalEase.Server.ViewModel;
+using System.Security.Cryptography;
 
 namespace VitalEase.Server.Controllers
 {
@@ -37,14 +39,15 @@ namespace VitalEase.Server.Controllers
                 return NotFound(new { message = "User not found." });
             }
 
+            var hashedPasswordFromInput = HashPassword(model.NewPassword);
             // Verificar se a nova senha é diferente da senha antiga
-            if (user.Password == model.NewPassword)
+            if (user.Password == hashedPasswordFromInput)
             {
                 return BadRequest(new { message = "New password cannot be the same as the old one." });
             }
 
             // Atualizar a senha do usuário
-            user.Password = model.NewPassword;
+            user.Password = hashedPasswordFromInput;
 
             try
             {
@@ -94,6 +97,23 @@ namespace VitalEase.Server.Controllers
             }
 
             return true;
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Converte a senha para um array de bytes e gera o hash
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                // Converte o hash para uma string hexadecimal
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }

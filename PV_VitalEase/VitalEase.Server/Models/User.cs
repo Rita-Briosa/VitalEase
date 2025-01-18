@@ -9,6 +9,7 @@ namespace VitalEase.Server.Models
         public UserType Type { get; set; }
         public Profile Profile { get; set; }
 
+
         public bool Login(string email, string password)
         {
             // Implementation here
