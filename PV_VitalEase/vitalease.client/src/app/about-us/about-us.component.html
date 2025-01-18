@@ -1,1 +1,46 @@
-<p>about-us works!</p>
+<router-outlet></router-outlet>
+
+<html>
+<body>
+  <header>
+    <a [routerLink]="['/']">
+      <img src="assets/img/logo.png" alt="VitalEase Logo">
+    </a>
+    <div class="headText">
+      <h2> Vital Ease - Your app focused in wellness and exercise </h2>
+    </div>
+    <div class="auth-buttons">
+      <!-- Mostrar botão de Login se o usuário não estiver logado -->
+      <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+
+      <!-- Mostrar botão de Logout se o usuário estiver logado -->
+      <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="infoText">
+      <h1>Our Team 👩🏻‍💻👨🏻‍💻</h1>
+      <p>
+        We are a team of final-year Computer Engineering students passionate about technology and innovation. Vital Ease is our project, born from the desire to create a simple and effective way to improve people's fitness and well-being.
+      </p>
+      <p>
+        Our mission is to empower users by providing personalized training routines and helping them discover local gyms and spas through an intuitive and interactive platform.
+      </p>
+      <p>
+        With Vital Ease, we aim to combine our technical expertise with our commitment to health and wellness, delivering a tool that makes fitness accessible to everyone.
+      </p>
+      <p>
+        Join us on this journey to a healthier lifestyle!
+      </p>
+    </div>
+    <div class="devs">
+      <img src="assets/img/dev1.jpeg" class="devImg">
+      <img src="assets/img/dev2.jpeg" class="devImg">
+      <img src="assets/img/dev3.jpeg" class="devImg">
+      <img src="assets/img/dev4.jpeg" class="devImg">
+    </div>
+  </section>
+  
+</body>
+</html>

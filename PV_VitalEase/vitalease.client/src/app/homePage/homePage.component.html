@@ -10,7 +10,6 @@
         <div class="auth-buttons">
           <!-- Mostrar botão de Login se o usuário não estiver logado -->
           <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-
           <!-- Mostrar botão de Logout se o usuário estiver logado -->
           <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
         </div>
@@ -31,7 +30,7 @@
           </div>
           <div class="column1">
             <button class="action-button">Map</button>
-            <button class="action-button">About Us</button>
+            <button class="action-button" routerLink="/aboutUs">About Us</button>
           </div>
           </div>
         </div>
