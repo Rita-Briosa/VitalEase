@@ -4,8 +4,7 @@ using System.Net.Mail;
 using System.Net;
 using VitalEase.Server.Data;
 using VitalEase.Server.ViewModel;
-using Microsoft.CodeAnalysis.Scripting;
-using System.Text.RegularExpressions;
+
 
 namespace VitalEase.Server.Controllers
 {
