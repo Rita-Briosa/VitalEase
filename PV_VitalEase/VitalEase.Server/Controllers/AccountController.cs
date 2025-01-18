@@ -23,7 +23,7 @@ namespace VitalEase.Server.Controllers
             if (!ModelState.IsValid)
             {
                 // Registrar log de erro (dados inválidos)
-                await LogAction("Login Attempt", "Failed - Invalid Data");
+                await LogAction("Login Attempt", "Failed - Invalid Data", null);
 
                 return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
             }
@@ -43,13 +43,13 @@ namespace VitalEase.Server.Controllers
             if ( hashedUserPassword != hashedPasswordFromInput)
             {
                 // Registrar log de erro (credenciais incorretas)
-                await LogAction("Login Attempt", "Failed - Password Incorrect");
+                await LogAction("Login Attempt", "Failed - Password Incorrect", user);
 
                 return Unauthorized(new { message = "Password is incorrect" }); // Retorna erro 401
             }
 
             // Registrar log de sucesso
-            await LogAction("Login Attempt", "Success");
+            await LogAction("Login Attempt", "Success", user);
 
             // Agora tratamos o comportamento do "Remember Me"
             if (model.RememberMe)
@@ -111,13 +111,14 @@ namespace VitalEase.Server.Controllers
         }
 
         // Método para registrar as ações no log de auditoria
-        private async Task LogAction(string action, string status)
+        private async Task LogAction(string action, string status, User UserId)
         {
             var log = new AuditLog
             {
                 Timestamp = DateTime.Now,
                 Action = action,
-                Status = status
+                Status = status,
+                User = UserId
             };
 
             // Salvar o log no banco de dados

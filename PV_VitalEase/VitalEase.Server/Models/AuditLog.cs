@@ -6,6 +6,7 @@
         public DateTime Timestamp { get; set; }
         public string Action { get; set; }
         public string Status { get; set; }
+        public User? User { get; set; }
 
         public void LogAction(string action, string status)
         {
