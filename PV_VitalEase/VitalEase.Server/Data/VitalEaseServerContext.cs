@@ -20,7 +20,7 @@ namespace VitalEase.Server.Data
         public DbSet<ScheduledRoutine> ScheduledRoutines { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
 
-
+        public DbSet<ResetPasswordTokens> ResetPasswordTokens { get; set; }
 
     }
 }

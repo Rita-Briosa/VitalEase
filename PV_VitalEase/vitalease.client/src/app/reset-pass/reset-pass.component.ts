@@ -15,6 +15,8 @@ export class ResetPassComponent implements OnInit {
   confirmPassword: string = ''; // Confirmação da senha
   errorMessage: string = ''; // Mensagem de erro
   successMessage: string = ''; // Mensagem de sucesso
+  showModal: boolean = false; // Controla a exibição do modal
+  modalMessage: string = ''; // Mensagem do modal
 
   passwordStrength: number = 0; // Valor numérico da força da senha
   passwordFeedback: string = '';
@@ -33,6 +35,8 @@ export class ResetPassComponent implements OnInit {
       if (!this.token) {
         this.errorMessage = 'Invalid token in URL.';
         this.router.navigate(['/']);
+      } else {
+        this.validateToken(this.token);
       }
     });
   }
@@ -97,9 +101,34 @@ export class ResetPassComponent implements OnInit {
 
   // Retorna feedback textual baseado na força
   private getStrengthFeedback(score: number): string {
-    if (score < 25) return 'Muito Fraca';
-    if (score < 50) return 'Fraca';
-    if (score < 75) return 'Boa';
-    return 'Forte';
+    if (score < 50) return 'Weak';
+    if (score < 75) return 'Moderate';
+   return 'Strong'
   }
+
+  validateToken(token: string): void {
+    this.ResetService.validateToken(token).subscribe(
+      (response) => {
+        console.log(response.message); // Token válido
+      },
+      (error) => {
+        if (error.error?.message === 'Token expired.') {
+          this.showErrorModal('O token expirou. Por favor, solicite um novo link para redefinição de senha.');
+        } else {
+          this.showErrorModal('Token inválido ou ocorreu um erro. Por favor, tente novamente.');
+        }
+      }
+    );
+  }
+
+  showErrorModal(message: string): void {
+    this.modalMessage = message;
+    this.showModal = true;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+    this.router.navigate(['/']);
+  }
+
 }

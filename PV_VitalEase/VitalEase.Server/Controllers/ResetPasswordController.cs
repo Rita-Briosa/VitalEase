@@ -32,7 +32,7 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Invalid parameters.Token and Password are required." });
             }
 
-            var (isValid, email, userId) = ValidateToken(model.Token);
+            var (isValid, email, userId, tokenId) = ValidateToken(model.Token);
 
             if (!isValid)
             {
@@ -67,6 +67,18 @@ namespace VitalEase.Server.Controllers
             // Atualizar a senha do usuário
             user.Password = hashedPasswordFromInput;
 
+            if(tokenId != null || tokenId != "")
+            {
+                var tokenRecord = _context.ResetPasswordTokens
+                 .FirstOrDefault(l => l.TokenId == tokenId);
+                
+                if (tokenRecord != null)
+                {
+                    tokenRecord.IsUsed = true;
+                }
+               
+            }
+
             try
             {
                 // Salvar a alteração no banco de dados
@@ -90,7 +102,7 @@ namespace VitalEase.Server.Controllers
         /// </summary>
         /// <param name="token">Token a ser validado.</param>
         /// <returns>Uma tupla com: se é válido, email e userId.</returns>
-        private (bool IsValid, string Email, int UserId) ValidateToken(string token)
+        private (bool IsValid, string Email, int UserId, string idToken) ValidateToken(string token)
         {
             var jwtKey = _configuration["Jwt:Key"];
             if (string.IsNullOrEmpty(jwtKey))
@@ -118,31 +130,48 @@ namespace VitalEase.Server.Controllers
                 var email = claimsPrincipal.FindFirst(ClaimTypes.Email)?.Value;
                 var userIdClaim = claimsPrincipal.FindFirst("userId");
                 var userId = userIdClaim != null ? int.Parse(userIdClaim.Value) : 0;
-
+                var tokenIdClaim = claimsPrincipal.FindFirst("tokenId");
+                var tokenId = tokenIdClaim != null ? tokenIdClaim.Value : "";
+                
                 // Validar se o email e userId são válidos
                 if (string.IsNullOrEmpty(email) || userId == 0)
                 {
-                    return (false, "", 0);
+                    return (false, "", 0,tokenId);
+                }
+                var tokenRecord = _context.ResetPasswordTokens
+              .FirstOrDefault(l => l.TokenId == tokenId);
+
+                if (tokenRecord == null)
+                {
+                    // Token não encontrado na base de dados
+                    return (false, email, userId,tokenId);
                 }
 
+                if (tokenRecord.IsUsed)
+                {
+                    // Se o token já foi usado, retorna falso
+                    return (false, email, userId,tokenId);
+                }
+
+                
                 // Se chegou até aqui, o token é válido
-                return (true, email, userId);
+                return (true, email, userId,tokenId);
             }
             catch (SecurityTokenExpiredException)
             {
                 // Token expirado
-                return (false, "", 0);
+                return (false, "", 0,"");
             }
             catch (SecurityTokenException)
             {
                 // Token inválido, mas não expirado
-                return (false, "", 0);
+                return (false, "", 0,"");
             }
             catch (Exception ex)
             {
                 // Outros erros ao validar
                 Console.WriteLine($"Error during token validation: {ex.Message}");
-                return (false, "", 0);
+                return (false, "", 0,"");
             }
         }
 
@@ -211,6 +240,24 @@ namespace VitalEase.Server.Controllers
             // Salvar o log no banco de dados
             _context.AuditLogs.Add(log);
             await _context.SaveChangesAsync();
+        }
+
+        [HttpGet("validateTokenAtAccess")]
+        public IActionResult ValidateTokenAtAccess([FromQuery] ResetPasswordViewModel model)
+        {
+            var (isValid, email, userId,tokenId) = ValidateToken(model.Token);
+
+            if (!isValid)
+            {
+
+                return BadRequest(new { message = "Token expired." });
+            }
+            else if (!isValid)
+            {
+                return BadRequest(new { message = "Invalid token." });
+            }
+
+            return Ok(new { message = "Token is valid.", email, userId });
         }
     }
 }

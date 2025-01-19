@@ -23,15 +23,15 @@
           <div class="strength-bar"
                [style.width]="passwordStrength + '%'"
                [ngClass]="{
-               'fraca' : passwordStrength < 25,
-        'medium': passwordStrength >= 25 && passwordStrength < 75,
-        'strong': passwordStrength >= 75
-      }"
+               'weak' : passwordStrength < 25,
+  'medium': passwordStrength >= 25 && passwordStrength < 80,
+  'strong': passwordStrength >= 80
+}"
     ></div>
         </div>
         <p class="strength-feedback">{{ passwordFeedback }}</p>
       </div>
-  
+
 
       <div class="instructions">
         <strong>Your password must contain:</strong>
@@ -49,5 +49,18 @@
       <button type="submit" class="btn-primary">Reset Password</button>
     </form>
   </div>
+
+  <div class="modal" [class.show]="showModal">
+    <div class="modal-content">
+      <div class="modal-header">Erro</div>
+      <div class="modal-body">
+        <p>{{ modalMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button (click)="closeModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
