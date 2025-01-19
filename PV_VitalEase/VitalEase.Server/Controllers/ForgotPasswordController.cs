@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using VitalEase.Server.Models;
 
 
 namespace VitalEase.Server.Controllers
@@ -117,26 +118,42 @@ namespace VitalEase.Server.Controllers
 
         public string GenerateToken(string email, int userId)
         {
+
             var jwtKey = _configuration["Jwt:Key"];
             if (string.IsNullOrEmpty(jwtKey))
             {
                 throw new ArgumentNullException("Jwt:Key", "A chave JWT não está configurada corretamente.");
             }
 
+            var tokenId = Guid.NewGuid().ToString();
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            var expiresAt = DateTime.Now.AddMinutes(30);
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: new[]
                 {
                     new Claim(ClaimTypes.Email, email),
-                    new Claim("userId", userId.ToString())
+                    new Claim("userId", userId.ToString()),
+                    new Claim("tokenId", tokenId)
                 },
-                expires: DateTime.Now.AddHours(1), // Define o tempo de expiração do token (1 hora, por exemplo)
+                expires: expiresAt, // Define o tempo de expiração do token (1 hora, por exemplo)
                 signingCredentials: creds
             );
+
+            var resetPasswordToken = new ResetPasswordTokens
+            {
+                TokenId = tokenId,         // Usando o tokenId gerado
+                CreatedAt = DateTime.Now,
+                ExpiresAt = expiresAt,
+                IsUsed = false
+            };
+
+            _context.ResetPasswordTokens.Add(resetPasswordToken);
+            _context.SaveChanges();
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }

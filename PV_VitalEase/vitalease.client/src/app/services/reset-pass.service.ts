@@ -10,6 +10,8 @@ export class ResetService {
 
   private apiUrlResetPassword = 'https://localhost:7180/resetPassword';
 
+  private apiUrlValidateToken = 'https://localhost:7180/validateTokenAtAccess';
+
   constructor(private http: HttpClient) { }
 
   resetPassword(token: string | null, newPassword: string): Observable<any> {
@@ -18,6 +20,11 @@ export class ResetService {
 
 
     return this.http.post<any>(this.apiUrlResetPassword, body);
+  }
+
+  validateToken(token: string): Observable<any> {
+    const url = `${this.apiUrlValidateToken}?token=${token}`; // Adiciona o token como query parameter
+    return this.http.get<any>(url); // Chamada para o endpoint com GET
   }
 
 }

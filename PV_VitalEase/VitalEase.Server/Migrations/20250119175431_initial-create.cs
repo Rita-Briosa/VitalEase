@@ -61,6 +61,22 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ResetPasswordTokens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TokenId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsUsed = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ResetPasswordTokens", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Routines",
                 columns: table => new
                 {
@@ -184,6 +200,9 @@ namespace VitalEase.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "Media");
+
+            migrationBuilder.DropTable(
+                name: "ResetPasswordTokens");
 
             migrationBuilder.DropTable(
                 name: "ScheduledRoutines");
