@@ -11,14 +11,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class DashboardComponent implements OnInit {
   logs: any[] = []; // Array para armazenar os logs
-  errorMessage: string = ''; // Mensagem de erro caso algo dê errado
+  errorMessage: string = '';
+  email = '';// Mensagem de erro caso algo dê errado
   userInfo: any = null;
-
+  isLoggedIn: boolean = false;
   constructor(private logsService: LogsService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     // Verifica se o usuário está logado e se o userType é 1
-    this.userInfo = this.authService.getUserInfo(); // Obtém as informações do usuário
+    this.isLoggedIn = this.authService.isLoggedIn();
+    if (this.isLoggedIn) {
+      this.userInfo = this.authService.getUserInfo();
+      this.email = this.userInfo.email// Obtém as informações do usuário
+    }
 
     if (!this.userInfo || this.userInfo.type !== 1) {
       // Se o usuário não estiver logado ou não for do tipo 1, redireciona para outra página
@@ -41,5 +46,11 @@ export class DashboardComponent implements OnInit {
         console.log('Erro ao carregar os logs:', error);
       }
     );
+  }
+
+  logout() {
+    this.authService.logout();
+    this.isLoggedIn = false;
+    this.router.navigate(['/']);
   }
 }

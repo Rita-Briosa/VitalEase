@@ -40,7 +40,7 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Email is incorrect" });
             }
 
-            var loginAttempts = _context.AuditLogs.Select(l => l).Where(l => l.UserId == user.Id && l.Status != "Failed - Account Blocked").ToList();
+            var loginAttempts = _context.AuditLogs.Select(l => l).Where(l => l.UserId == user.Id && l.Action == "Login Attempt" && l.Status != "Failed - Account Blocked").ToList();
             loginAttempts.Reverse();
             List<AuditLog> lastAttempts = new List<AuditLog>();
             if(loginAttempts != null)

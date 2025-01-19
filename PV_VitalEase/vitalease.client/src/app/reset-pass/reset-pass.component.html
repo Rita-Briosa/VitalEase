@@ -12,11 +12,26 @@
     <h2>Reset Password</h2>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <input type="password" [(ngModel)]="newPassword" name="newPassword" placeholder="New Password" class="form-control" required />
+        <input type="password" [(ngModel)]="newPassword" name="newPassword" placeholder="New Password" class="form-control" (input)="calculatePasswordStrength(newPassword)" required />
       </div>
       <div class="form-group">
         <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Repeat New Password" class="form-control" required />
       </div>
+
+      <div class="password-strength-container">
+        <div class="strength-indicator">
+          <div class="strength-bar"
+               [style.width]="passwordStrength + '%'"
+               [ngClass]="{
+               'fraca' : passwordStrength < 25,
+        'medium': passwordStrength >= 25 && passwordStrength < 75,
+        'strong': passwordStrength >= 75
+      }"
+    ></div>
+        </div>
+        <p class="strength-feedback">{{ passwordFeedback }}</p>
+      </div>
+  
 
       <div class="instructions">
         <strong>Your password must contain:</strong>
