@@ -12,7 +12,7 @@ using VitalEase.Server.Data;
 namespace VitalEase.Server.Migrations
 {
     [DbContext(typeof(VitalEaseServerContext))]
-    [Migration("20250118230822_initial-create")]
+    [Migration("20250118232644_initial-create")]
     partial class initialcreate
     {
         /// <inheritdoc />
@@ -44,12 +44,10 @@ namespace VitalEase.Server.Migrations
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("AuditLogs");
                 });
@@ -254,15 +252,6 @@ namespace VitalEase.Server.Migrations
                     b.HasIndex("ProfileId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("VitalEase.Server.Models.AuditLog", b =>
-                {
-                    b.HasOne("VitalEase.Server.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.Exercise", b =>

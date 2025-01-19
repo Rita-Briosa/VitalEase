@@ -21,6 +21,7 @@
           <th>Timestamp</th>
           <th>Ação</th>
           <th>Status</th>
+          <th>UserId</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,7 @@
           <td>{{ log.timestamp | date: 'short' }}</td>
           <td>{{ log.action }}</td>
           <td>{{ log.status }}</td>
+          <td>{{ log.userId }}</td>
         </tr>
       </tbody>
     </table>

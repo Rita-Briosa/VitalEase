@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using NuGet.Packaging;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -26,7 +27,7 @@ namespace VitalEase.Server.Controllers
             if (!ModelState.IsValid)
             {
                 // Registrar log de erro (dados inválidos)
-                await LogAction("Login Attempt", "Failed - Invalid Data", null);
+                await LogAction("Login Attempt", "Failed - Invalid Data", 0);
 
                 return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
             }
@@ -39,19 +40,45 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Email is incorrect" });
             }
 
+            var loginAttempts = _context.AuditLogs.Select(l => l).Where(l => l.UserId == user.Id && l.Status != "Failed - Account Blocked").ToList();
+            loginAttempts.Reverse();
+            List<AuditLog> lastAttempts = new List<AuditLog>();
+            if(loginAttempts != null)
+            {
+                if(loginAttempts.Count >= 3)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                            lastAttempts.Add(loginAttempts[i]);
+                    }
+                }
+
+                bool areAllLastFailed = lastAttempts.Select(a => a).Where(a => a.Status == "Failed - Password Incorrect").Count() == 3 ? true : false;
+
+
+                if (lastAttempts.Count >= 3 && lastAttempts[0].Timestamp >= DateTime.Now.AddMinutes(-15) && areAllLastFailed)
+                {
+
+                    await LogAction("Login Attempt", "Failed - Account Blocked", user.Id);
+
+                    return Unauthorized(new { message = "Account is Blocked. Wait 15 minutes and try again." });
+                }
+
+            }
+
             var hashedPasswordFromInput = HashPassword(model.Password);
 
             // Verifica se o usuário existe e a senha está correta
             if ( user.Password != hashedPasswordFromInput)
             {
                 // Registrar log de erro (credenciais incorretas)
-                await LogAction("Login Attempt", "Failed - Password Incorrect", user);
+                await LogAction("Login Attempt", "Failed - Password Incorrect", user.Id);
 
                 return Unauthorized(new { message = "Password is incorrect" }); // Retorna erro 401
             }
 
             // Registrar log de sucesso
-            await LogAction("Login Attempt", "Success", user);
+            await LogAction("Login Attempt", "Success", user.Id);
 
             var token = GenerateJwtToken(user, model.RememberMe);
 
@@ -92,14 +119,14 @@ namespace VitalEase.Server.Controllers
         }
 
         // Método para registrar as ações no log de auditoria
-        private async Task LogAction(string action, string status, User UserId)
+        private async Task LogAction(string action, string status, int UserId)
         {
             var log = new AuditLog
             {
                 Timestamp = DateTime.Now,
                 Action = action,
                 Status = status,
-                User = UserId
+                UserId = UserId
             };
 
             // Salvar o log no banco de dados
