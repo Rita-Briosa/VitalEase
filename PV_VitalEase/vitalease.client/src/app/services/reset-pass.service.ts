@@ -12,8 +12,11 @@ export class ResetService {
 
   constructor(private http: HttpClient) { }
 
-  resetPassword(email: string | null, newPassword: string): Observable<any> {
-    const body = { email, newPassword };
+  resetPassword(token: string | null, newPassword: string): Observable<any> {
+
+    const body = { token, newPassword };
+
+
     return this.http.post<any>(this.apiUrlResetPassword, body);
   }
 

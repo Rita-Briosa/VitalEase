@@ -10,25 +10,28 @@ import { ResetService } from '../services/reset-pass.service';
   styleUrls: ['./reset-pass.component.css'],
 })
 export class ResetPassComponent implements OnInit {
-  email: string | null = null; // Email do usuário
+  token: string | null = null; // Token JWT recebido
   newPassword: string = ''; // Nova senha
   confirmPassword: string = ''; // Confirmação da senha
   errorMessage: string = ''; // Mensagem de erro
   successMessage: string = ''; // Mensagem de sucesso
 
-  constructor(private route: ActivatedRoute, private router: Router, private ResetService: ResetService) { }
+  passwordStrength: number = 0; // Valor numérico da força da senha
+  passwordFeedback: string = '';
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private ResetService: ResetService
+  ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.token = params['token']; // Captura o token JWT enviado via URL
+      console.log('Captured token:', this.token); // Verifica o valor do token
 
-    this.route.queryParams.subscribe(params => {
-      this.email = params['email'].toString(); // Atribui o email
-
-      // Verifique o valor do email
-      console.log('Captured email:', this.email); // Verifica o valor do email
-
-      // Verifica se os parâmetros estão corretos
-      if (!this.email) {
-        this.errorMessage = 'Invalid parameters in URL.';
+      if (!this.token) {
+        this.errorMessage = 'Invalid token in URL.';
       }
     });
   }
@@ -40,27 +43,62 @@ export class ResetPassComponent implements OnInit {
 
     // Verifica se as senhas coincidem
     if (this.newPassword === this.confirmPassword) {
-      if (this.email) {
-        // Envia a requisição para o serviço de reset de senha
-        this.ResetService.resetPassword(this.email, this.newPassword).subscribe(
+      if (this.token) {
+        // Envia a requisição para o serviço de redefinição de senha
+        this.ResetService.resetPassword(this.token, this.newPassword).subscribe(
           (response) => {
             // Se a senha for redefinida com sucesso
             this.successMessage = response.message;
             console.log('Password reset successful', response);
             setTimeout(() => {
-              this.router.navigate(['/login']);  // Redireciona após 2 segundos
+              this.router.navigate(['/login']); // Redireciona após 2 segundos
             }, 2000);
           },
           (error) => {
             // Se ocorrer erro ao redefinir a senha
-            this.errorMessage = error.error.message || 'An error occurred. Please try again.';
+            // Aqui estamos tratando a mensagem de erro com base na resposta do servidor
+            if (error.status === 400 || error.status === 401) {
+              // Caso o servidor retorne uma mensagem de erro, usamos ela
+              const serverErrorMessage = error.error?.message || 'Token inválido ou expirado. Tente novamente.';
+              this.errorMessage = serverErrorMessage;
+            } else {
+              // Em caso de outro erro, utilizamos a mensagem de erro do servidor, se houver
+              this.errorMessage =
+                error.error?.message || 'An error occurred. Please try again.';
+            }
           }
         );
       } else {
-        this.errorMessage = 'Email is missing.';
+        this.errorMessage = 'Token is missing.';
       }
     } else {
       this.errorMessage = 'Passwords do not match.';
     }
+  }
+
+  calculatePasswordStrength(password: string): void {
+    this.passwordStrength = this.getStrengthScore(password);
+    this.passwordFeedback = this.getStrengthFeedback(this.passwordStrength);
+  }
+
+  private getStrengthScore(password: string): number {
+    let score = 0;
+
+    if (!password) return score;
+
+    if (password.length >= 12) score += 25; // Comprimento mínimo
+    if (/[a-z]/.test(password)) score += 25; // Letras minúsculas
+    if (/[A-Z]/.test(password)) score += 25; // Letras maiúsculas
+    if (/[@$!%*?&]/.test(password)) score += 25; // Caracteres especiais
+
+    return score;
+  }
+
+  // Retorna feedback textual baseado na força
+  private getStrengthFeedback(score: number): string {
+    if (score < 25) return 'Muito Fraca';
+    if (score < 50) return 'Fraca';
+    if (score < 75) return 'Boa';
+    return 'Forte';
   }
 }

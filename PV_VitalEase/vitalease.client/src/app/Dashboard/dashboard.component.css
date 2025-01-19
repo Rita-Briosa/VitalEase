@@ -1,19 +1,182 @@
-.log-dashboard {
-  padding: 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f8fbfd;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-  table th, table td {
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #ddd;
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Garante que a row ocupe toda a largura */
+}
+
+.left {
+  flex: 1;
+}
+
+.center {
+  text-align: center;
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+  .header img {
+    width: 100px;
+    height: 100px;
   }
 
-.error-message {
-  color: red;
-  font-weight: bold;
+  .header span {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .header button:hover {
+      background-color: #ddd;
+    }
+
+/* Estilo da tabela de logs */
+.logs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
 }
+
+  .logs-table thead {
+    background-color: #f8fbfd;
+  }
+
+  .logs-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .logs-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .logs-table tbody tr:hover {
+    background-color: #f1f9ff;
+    cursor: pointer;
+  }
+
+  .logs-table th:first-child,
+  .logs-table td:first-child {
+    padding-left: 20px;
+  }
+
+  .logs-table th:last-child,
+  .logs-table td:last-child {
+    padding-right: 20px;
+  }
+
+  /* Alternando cores de linhas */
+  .logs-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+
+  /* Status com cores visuais */
+  .logs-table td:nth-child(3) {
+    font-weight: bold;
+  }
+
+/* Estilo da tabela de logs */
+.logs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+  .logs-table thead {
+    background-color: #f8fbfd;
+  }
+
+  .logs-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+  }
+
+  .logs-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .logs-table tbody tr:hover {
+    background-color: #f1f9ff;
+    cursor: pointer;
+  }
+
+  .logs-table th:first-child,
+  .logs-table td:first-child {
+    padding-left: 20px;
+  }
+
+  .logs-table th:last-child,
+  .logs-table td:last-child {
+    padding-right: 20px;
+  }
+
+  /* Alternando cores de linhas */
+  .logs-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+
+  /* Status com cores visuais */
+  .logs-table td:nth-child(3) {
+    font-weight: bold;
+  }
+
+ 
+ 

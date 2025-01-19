@@ -1,43 +1,63 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+  <head>
     <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-  <div class="log-dashboard">
-    <h1>Dashboard de Logs</h1>
+    <title>Log Dashboard</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="row">
+          <img src="assets/img/logo.png" alt="Vital Ease Logo" />
+          <h2>Vital Ease - Your app focused in wellness and exercise</h2>
+          <div class="auth-buttons">
+            <!-- Botões de login/logout -->
+            <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+            <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+          </div>
+        </div>
+      </div>
 
-    <!-- Mensagem de erro caso falhe ao carregar os logs -->
-    <div *ngIf="errorMessage" class="error-message">
-      <p>{{ errorMessage }}</p>
+      <!-- Conteúdo Principal -->
+      <div class="main-content">
+        <div class="welcome">
+          <h1>Dashboard of Logs 👋</h1>
+          <p>
+           Hello Admin {{email}}! 
+          </p>
+
+          <!-- Mensagem de erro -->
+          <div *ngIf="errorMessage" class="error-message">
+            <p>{{ errorMessage }}</p>
+          </div>
+
+          <!-- Tabela de logs -->
+          <table *ngIf="logs.length > 0" class="logs-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Action</th>
+                <th>Status</th>
+                <th>UserId</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let log of logs">
+                <td>{{ log.timestamp | date: 'short' }}</td>
+                <td>{{ log.action }}</td>
+                <td>{{ log.status }}</td>
+                <td>{{ log.userId }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Mensagem para quando não houver logs -->
+          <div *ngIf="logs.length === 0" class="no-logs">
+            <p>No logs found.</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Tabela para exibir os logs -->
-    <table *ngIf="logs.length > 0">
-      <thead>
-        <tr>
-          <th>Timestamp</th>
-          <th>Ação</th>
-          <th>Status</th>
-          <th>UserId</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let log of logs">
-          <td>{{ log.timestamp | date: 'short' }}</td>
-          <td>{{ log.action }}</td>
-          <td>{{ log.status }}</td>
-          <td>{{ log.userId }}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Caso não haja logs -->
-    <div *ngIf="logs.length === 0">
-      <p>Nenhum log encontrado.</p>
-    </div>
-  </div>
-</body>
+  </body>
 </html>

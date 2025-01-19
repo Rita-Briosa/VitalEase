@@ -4,6 +4,10 @@ using System.Net.Mail;
 using System.Net;
 using VitalEase.Server.Data;
 using VitalEase.Server.ViewModel;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 
 namespace VitalEase.Server.Controllers
@@ -34,8 +38,10 @@ namespace VitalEase.Server.Controllers
                 return NotFound(new { message = "User not found." });
             }
 
+            var token = GenerateToken(user.Email, user.Id);
+
             // Gerar link de redefinição de senha direto, sem token
-            var resetLink = $"https://localhost:4200/resetPassword?id={user.Id}&email={Uri.EscapeDataString(user.Email)}";
+            var resetLink = $"https://localhost:4200/resetPassword?token={Uri.EscapeDataString(token)}";
 
             // Enviar o email de redefinição de senha
             var emailSent = await SendPasswordResetEmail(user.Email, resetLink);
@@ -108,5 +114,32 @@ namespace VitalEase.Server.Controllers
                 return false;
             }
         }
+
+        public string GenerateToken(string email, int userId)
+        {
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new ArgumentNullException("Jwt:Key", "A chave JWT não está configurada corretamente.");
+            }
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: new[]
+                {
+            new Claim(ClaimTypes.Email, email),
+            new Claim("userId", userId.ToString())
+                },
+                expires: DateTime.Now.AddHours(1), // Define o tempo de expiração do token (1 hora, por exemplo)
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
     }
  }
