@@ -32,6 +32,7 @@ export class ResetPassComponent implements OnInit {
 
       if (!this.token) {
         this.errorMessage = 'Invalid token in URL.';
+        this.router.navigate(['/']);
       }
     });
   }

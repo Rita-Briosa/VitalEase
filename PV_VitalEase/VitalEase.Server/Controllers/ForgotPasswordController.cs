@@ -131,8 +131,8 @@ namespace VitalEase.Server.Controllers
                 audience: _configuration["Jwt:Audience"],
                 claims: new[]
                 {
-            new Claim(ClaimTypes.Email, email),
-            new Claim("userId", userId.ToString())
+                    new Claim(ClaimTypes.Email, email),
+                    new Claim("userId", userId.ToString())
                 },
                 expires: DateTime.Now.AddHours(1), // Define o tempo de expiração do token (1 hora, por exemplo)
                 signingCredentials: creds
