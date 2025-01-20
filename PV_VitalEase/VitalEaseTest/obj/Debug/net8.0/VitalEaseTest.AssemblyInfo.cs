@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("VitalEase.Server")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("VitalEaseTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd0284f590266dd60f2e567f93a6bcc97f1c6ba3")]
-[assembly: System.Reflection.AssemblyProductAttribute("VitalEase.Server")]
-[assembly: System.Reflection.AssemblyTitleAttribute("VitalEase.Server")]
+[assembly: System.Reflection.AssemblyProductAttribute("VitalEaseTest")]
+[assembly: System.Reflection.AssemblyTitleAttribute("VitalEaseTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
