@@ -54,7 +54,7 @@ export class ResetPassComponent implements OnInit {
           (response) => {
             // Se a senha for redefinida com sucesso
             this.successMessage = response.message;
-            console.log('Password reset successful', response);
+            console.log('Your password has been reset successfully.', response);
             setTimeout(() => {
               this.router.navigate(['/login']); // Redireciona após 2 segundos
             }, 2000);
@@ -64,7 +64,7 @@ export class ResetPassComponent implements OnInit {
             // Aqui estamos tratando a mensagem de erro com base na resposta do servidor
             if (error.status === 400 || error.status === 401) {
               // Caso o servidor retorne uma mensagem de erro, usamos ela
-              const serverErrorMessage = error.error?.message || 'Token inválido ou expirado. Tente novamente.';
+              const serverErrorMessage = error.error?.message || 'Invalid or expired token. Try again.';
               this.errorMessage = serverErrorMessage;
             } else {
               // Em caso de outro erro, utilizamos a mensagem de erro do servidor, se houver
@@ -113,9 +113,9 @@ export class ResetPassComponent implements OnInit {
       },
       (error) => {
         if (error.error?.message === 'Token expired.') {
-          this.showErrorModal('O token expirou. Por favor, solicite um novo link para redefinição de senha.');
+          this.showErrorModal('Token has expired. Please, request new reset password link.');
         } else {
-          this.showErrorModal('Token inválido ou ocorreu um erro. Por favor, tente novamente.');
+          this.showErrorModal('Invalid token or an error happen. Please, try again.');
         }
       }
     );

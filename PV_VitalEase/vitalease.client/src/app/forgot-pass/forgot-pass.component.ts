@@ -29,7 +29,7 @@ export class ForgotPassComponent {
       error: (err) => {
         // Caso ocorra um erro, exiba a mensagem de erro
         console.log('Erro:', err); // Verifique o que vem do erro
-        this.errorMessage = err.error.message || 'Falha ao enviar o e-mail de redefinição de senha.';
+        this.errorMessage = err.error.message || 'E-mail of reset password failed.';
       }
     });
   }
