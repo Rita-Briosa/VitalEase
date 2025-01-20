@@ -8,6 +8,8 @@ using VitalEase.Server.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Net.Mail;
+using System.Net;
 
 namespace VitalEase.Server.Controllers
 {
@@ -79,10 +81,14 @@ namespace VitalEase.Server.Controllers
                
             }
 
+            await SendPasswordResetEmailWarning(user.Email);
+
             try
             {
                 // Salvar a alteração no banco de dados
                 _context.SaveChanges();
+
+                
             }
             catch (Exception ex)
             {
@@ -91,9 +97,9 @@ namespace VitalEase.Server.Controllers
                 return StatusCode(500, new { message = "An error occurred while updating the password.", details = ex.Message });
             }
 
-            await LogAction("Password change Attempt", "Success - Password reset successfully.", user.Id);
+            await LogAction("Password change Attempt", "Success - Password reset successfull.", user.Id);
             // Retornar uma resposta de sucesso
-            return Ok(new { message = "Password reset successfully." });
+            return Ok(new { message = "Your password has been reset successfully." });
         }
 
 
@@ -259,5 +265,79 @@ namespace VitalEase.Server.Controllers
 
             return Ok(new { message = "Token is valid.", email, userId });
         }
+
+        private async Task<bool> SendPasswordResetEmailWarning(string toEmail)
+        {
+            try
+            {
+                var fromEmail = _configuration["EmailSettings:FromEmail"];
+                var smtpServer = _configuration["EmailSettings:SmtpServer"];
+                var smtpPortString = _configuration["EmailSettings:SmtpPort"];
+                var smtpUsername = _configuration["EmailSettings:SmtpUsername"];
+                var smtpPassword = _configuration["EmailSettings:SmtpPassword"];
+
+                // Verificar se o fromEmail está configurado corretamente
+                if (string.IsNullOrEmpty(fromEmail) || !IsValidEmail(fromEmail))
+                {
+                    throw new Exception("From email is not valid or not configured.");
+                }
+
+                // Verificar se o smtpPort é um número válido
+                if (!int.TryParse(smtpPortString, out var smtpPort))
+                {
+                    throw new Exception("SMTP port is not a valid number.");
+                }
+
+                var message = new MailMessage
+                {
+                    From = new MailAddress(fromEmail), // Definindo o endereço de 'from' corretamente
+                    Subject = "Password Reset Confirmation",
+                    Body = @"
+                             <html>
+                                <body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+                                      <h2>Password Reset Confirmation</h2>
+                                       <p>Dear User,</p>
+                                       <p>Your password has been successfully updated. If it was you who made this change, no further action is required.</p>
+                                       <p>If you did not request this change, please contact our support team immediately to secure your account.</p>
+                                       <p>Thank you,<br>
+                                        The VitalEase Team</p>
+                                       </body>
+                             </html>",
+                    IsBodyHtml = true
+                };
+
+                message.To.Add(toEmail); // Adicionando o destinatário do e-mail
+
+                using (var client = new SmtpClient(smtpServer, smtpPort))
+                {
+                    client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                    client.EnableSsl = true; // Garantir que o envio seja seguro via SSL
+                    await client.SendMailAsync(message);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Para fins de depuração, vamos logar a mensagem de erro
+                Console.WriteLine($"Error occurred while sending email: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
     }
 }
