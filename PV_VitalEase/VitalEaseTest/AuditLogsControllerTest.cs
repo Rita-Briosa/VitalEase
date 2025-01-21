@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VitalEase.Server.Data;
+using VitalEase.Server.Models;
 
 namespace VitalEaseTest
 {
@@ -15,5 +18,6 @@ namespace VitalEaseTest
         {
             _context = fixture.VitalEaseTestContext;
         }
+
     }
 }
