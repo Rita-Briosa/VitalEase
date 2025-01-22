@@ -25,8 +25,8 @@ namespace VitalEaseTest
             {
                 var user = new User
                 {
-                    Email = "testuser@example.com",
-                    Password = "dfssdfsdf", // Use a senha "hasheada" aqui, pois o código de produção verifica o hash
+                    Email = "z.lucio@outlook.com",
+                    Password = "Password123!", // Use a senha "hasheada" aqui, pois o código de produção verifica o hash
                     Type = UserType.Standard // Altere conforme o tipo de usuário desejado
                 };
 
@@ -100,7 +100,6 @@ namespace VitalEaseTest
         [Fact]
         public async Task Login_AccountBlocked_ReturnsUnauthorized()
         {
-         
             // Arrange
             var controller = new AccountController(_context);
 
@@ -129,6 +128,9 @@ namespace VitalEaseTest
 
             Assert.NotNull(message);
             Assert.Equal("Account is Blocked. Wait 15 minutes and try again.", message);
+
+            _context.AuditLogs.RemoveRange(auditLogs);
+            await _context.SaveChangesAsync();
         }
 
         

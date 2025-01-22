@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using NuGet.Common;
 using VitalEase.Server.Data;
 using VitalEase.Server.Models;
 
@@ -26,6 +28,11 @@ namespace VitalEase.Server.Controllers
             {
                 // Fetch all logs from the database
                 var logs = await _context.AuditLogs.ToListAsync();
+
+
+                if (logs.IsNullOrEmpty()) {
+                    return BadRequest(new List<AuditLog>());
+                }
 
                 // Return the logs in JSON format
                 return Ok(logs);
