@@ -10,6 +10,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Net.Mail;
 using System.Net;
+using Microsoft.CodeAnalysis.Scripting;
+using Org.BouncyCastle.Crypto.Generators;
 
 namespace VitalEase.Server.Controllers
 {
@@ -23,83 +25,75 @@ namespace VitalEase.Server.Controllers
             _context = context;
             _configuration = configuration;
         }
-
         [HttpPost("resetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model)
         {
-            // Validar o modelo recebido
+            // Validate request model
             if (model == null || string.IsNullOrEmpty(model.Token) || string.IsNullOrEmpty(model.NewPassword))
             {
-                await LogAction("Password change Attempt", "Failed - Invalid Data", 0);
-                return BadRequest(new { message = "Invalid parameters.Token and Password are required." });
+                await LogAction("Password reset attempt", "Failed - Invalid data", 0);
+                return BadRequest(new { message = "Invalid parameters. Token and Password are required." });
             }
 
+            // Validate token
             var (isValid, email, userId, tokenId) = ValidateToken(model.Token);
-
             if (!isValid)
             {
-                await LogAction("Password change Attempt", "Failed - Invalid or expired token", 0);
+                await LogAction("Password reset attempt", "Failed - Invalid or expired token", 0);
                 return BadRequest(new { message = "Invalid or expired token." });
             }
 
-            // Procurar o usuário pelo email no banco de dados
-            var user = _context.Users.FirstOrDefault(u => u.Email == email);
-
+            // Find user by email
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
             {
                 return NotFound(new { message = "User not found." });
             }
 
-            // Verificar se a nova senha atende aos critérios de segurança
+            // Validate new password
             if (!IsPasswordValid(model.NewPassword))
             {
-                await LogAction("Password change Attempt", "Failed - Password does not meet request criteria", user.Id);
+                await LogAction("Password reset attempt", "Failed - Weak password", user.Id);
                 return BadRequest(new { message = "Password does not meet the required criteria." });
             }
 
+            // Hash the new password
+            var hashedNewPassword = HashPassword(model.NewPassword);
 
-            var hashedPasswordFromInput = HashPassword(model.NewPassword);
-            // Verificar se a nova senha é diferente da senha antiga
-            if (user.Password == hashedPasswordFromInput)
+            // Ensure new password is different
+            if (user.Password == hashedNewPassword)
             {
-                await LogAction("Password change Attempt", "Failed - New password cannot be the same as the old one.", user.Id);
+                await LogAction("Password reset attempt", "Failed - Same as old password", user.Id);
                 return BadRequest(new { message = "New password cannot be the same as the old one." });
             }
 
-            // Atualizar a senha do usuário
-            user.Password = hashedPasswordFromInput;
+            // Update password and invalidate session
+            user.Password = hashedNewPassword;
+            user.PasswordLastChanged = DateTime.UtcNow;
+            user.SessionToken = null; // Invalidate session token
 
-            if(tokenId != null || tokenId != "")
+            // Mark token as used
+            if (!string.IsNullOrEmpty(tokenId))
             {
-                var tokenRecord = _context.ResetPasswordTokens
-                 .FirstOrDefault(l => l.TokenId == tokenId);
-                
+                var tokenRecord = await _context.ResetPasswordTokens.FirstOrDefaultAsync(t => t.TokenId == tokenId);
                 if (tokenRecord != null)
                 {
                     tokenRecord.IsUsed = true;
                 }
-               
             }
 
-            await SendPasswordResetEmailWarning(user.Email);
-
+            // Save changes
             try
             {
-                // Salvar a alteração no banco de dados
-                _context.SaveChanges();
-
-                
+                await _context.SaveChangesAsync();
+                await LogAction("Password reset attempt", "Success", user.Id);
+                return Ok(new { message = "Password reset successfully. Please log in again." });
             }
             catch (Exception ex)
             {
-                await LogAction("Password change Attempt", "Failed - An error occurred while updating the password.", user.Id);
-                // Retornar um erro genérico se algo der errado ao salvar
+                await LogAction("Password reset attempt", "Failed - Database error", user.Id);
                 return StatusCode(500, new { message = "An error occurred while updating the password.", details = ex.Message });
             }
-
-            await LogAction("Password change Attempt", "Success - Password reset successfull.", user.Id);
-            // Retornar uma resposta de sucesso
-            return Ok(new { message = "Your password has been reset successfully." });
         }
 
 

@@ -12,8 +12,8 @@ using VitalEase.Server.Data;
 namespace VitalEase.Server.Migrations
 {
     [DbContext(typeof(VitalEaseServerContext))]
-    [Migration("20250119175431_initial-create")]
-    partial class initialcreate
+    [Migration("20250122185904_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -267,8 +267,17 @@ namespace VitalEase.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("PasswordLastChanged")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ProfileId")
                         .HasColumnType("int");
+
+                    b.Property<string>("SessionToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("SessionTokenCreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");

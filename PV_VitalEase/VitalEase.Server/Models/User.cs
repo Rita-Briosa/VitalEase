@@ -9,6 +9,16 @@ namespace VitalEase.Server.Models
         public UserType Type { get; set; }
         public Profile Profile { get; set; }
 
+        // Custom property to track session token
+        public string? SessionToken { get; set; }
+
+        // Property to track when the password was last changed
+        public DateTime? PasswordLastChanged { get; set; }
+
+        // Property to track when the session token was created (optional)
+        public DateTime? SessionTokenCreatedAt { get; set; }
+
+
 
         public bool Login(string email, string password)
         {

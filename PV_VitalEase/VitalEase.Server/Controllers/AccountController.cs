@@ -77,9 +77,14 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Password is incorrect" }); // Retorna erro 401
             }
 
+            var sessionToken = Guid.NewGuid().ToString();
+            user.SessionToken = sessionToken;
+            user.SessionTokenCreatedAt = DateTime.Now;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
             // Registrar log de sucesso
             await LogAction("Login Attempt", "Success", user.Id);
-
+ 
             var token = GenerateJwtToken(user, model.RememberMe);
 
                 // Armazenamos o usuário de forma persistente se "Remember Me" estiver selecionado

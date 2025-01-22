@@ -264,8 +264,17 @@ namespace VitalEase.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("PasswordLastChanged")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ProfileId")
                         .HasColumnType("int");
+
+                    b.Property<string>("SessionToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("SessionTokenCreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
