@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\resetpasswordcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\resetpasswordcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\resetpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\resetpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\vitaleasecontextfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\vitaleasecontextfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\auditlogscontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\auditlogscontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\forgotpasswordcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\forgotpasswordcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,36 +34,45 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AccountControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
-              "RelativeDocumentMoniker": "VitalEaseTest\\AccountControllerTest.cs",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
-              "RelativeToolTip": "VitalEaseTest\\AccountControllerTest.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAQwJ0AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ForgotPasswordController.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ForgotPasswordController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\ForgotPasswordController.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ForgotPasswordController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\ForgotPasswordController.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAAHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T02:39:33.163Z",
+              "WhenOpened": "2025-01-22T05:00:08.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VitalEaseContextFixture.cs",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\VitalEaseContextFixture.cs",
-              "RelativeDocumentMoniker": "VitalEaseTest\\VitalEaseContextFixture.cs",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\VitalEaseContextFixture.cs",
-              "RelativeToolTip": "VitalEaseTest\\VitalEaseContextFixture.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAAXAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ResetPasswordController.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\ResetPasswordController.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAAAGUAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T03:11:00.109Z",
+              "WhenOpened": "2025-01-22T04:59:25.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ResetPasswordControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\ResetPasswordControllerTest.cs",
+              "RelativeDocumentMoniker": "VitalEaseTest\\ResetPasswordControllerTest.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\ResetPasswordControllerTest.cs",
+              "RelativeToolTip": "VitalEaseTest\\ResetPasswordControllerTest.cs",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAAAAUBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T04:52:25.59Z",
               "EditorCaption": ""
             },
             {
@@ -66,22 +83,39 @@
               "RelativeDocumentMoniker": "VitalEaseTest\\AuditLogsControllerTest.cs",
               "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AuditLogsControllerTest.cs",
               "RelativeToolTip": "VitalEaseTest\\AuditLogsControllerTest.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwBsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T03:08:43.799Z",
+              "WhenOpened": "2025-01-22T04:35:35.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
+              "RelativeDocumentMoniker": "VitalEaseTest\\AccountControllerTest.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
+              "RelativeToolTip": "VitalEaseTest\\AccountControllerTest.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwCIAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T04:33:32.24Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "VitalEase.Server\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAABwAAAA6AAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "ForgotPasswordControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\ForgotPasswordControllerTest.cs",
+              "RelativeDocumentMoniker": "VitalEaseTest\\ForgotPasswordControllerTest.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\ForgotPasswordControllerTest.cs",
+              "RelativeToolTip": "VitalEaseTest\\ForgotPasswordControllerTest.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAYwGQAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T02:41:14.403Z",
+              "WhenOpened": "2025-01-22T02:28:03.732Z",
               "EditorCaption": ""
             }
           ]
