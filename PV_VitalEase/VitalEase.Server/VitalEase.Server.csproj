@@ -14,6 +14,7 @@
     <Compile Remove="Migrations\20250122193446_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20250123180753_InitialCreate.cs" />
     <Compile Remove="Migrations\20250123180753_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\VitalEaseServerContextModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
