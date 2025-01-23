@@ -1,81 +1,400 @@
+/* Configurações básicas */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #d3e4e4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  margin: 0;
+  padding: 0; /* Removido padding */
+  font-family: Arial, sans-serif;
+  background-color: #f5f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajustado para ocupar toda a altura */
 }
 
 .container {
-    background-color: #edf5f5;
-    width: 400px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  display: flex;
+  flex-direction: column; /* Coluna para centralizar "Create Account" no topo */
+  align-items: center; /* Alinhado ao centro horizontalmente */
+  justify-content: center; /* Alinhado ao centro verticalmente */
+  max-width: 1200px;
+  height: 600px;
+  width: 950px;
+  background-color: #f5f9f9;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
 
-.container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+/* Seção do título */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Alinhar formulário e seção de informações */
+.row {
+  display: flex;
+  width: 110%;
+  justify-content: space-between; /* Espaço uniforme entre form-wrapper e info-section */
+  align-items: flex-start; /* Centralizar em relação ao topo */
+  gap: 20px; /* Espaçamento entre os itens */
+}
+
+/* Seção do formulário */
+.form-wrapper {
+  flex: 1;
+  padding: 20px;
 }
 
 .form-group {
-    margin-bottom: 15px;
-    text-align: left;
+  margin-bottom: 15px;
 }
 
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
+  .form-group input {
+    width: 90%; /* Corrigido para ocupar todo o espaço */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
+    font-size: 1rem;
+    background: #fff;
+  }
+
+.form-row {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os inputs */
 }
 
-.form-group input[type="number"] {
-    max-width: 48%;
+.half-width {
+  width: 45.9%; /* Largura dinâmica */
 }
 
-.form-group input[type="checkbox"] {
-    width: auto;
+.password-field {
+  display: flex;
+  align-items: center;
+  position: relative; /* Para alinhar o olho no input */
 }
 
-.password-rules {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 12px;
-    margin-bottom: 15px;
-    text-align: left;
+  .password-field input {
+    width: 21.3rem;
+  }
+
+.submit-button {
+  width: 100%; /* Ajustado para ocupar toda a largura */
+  padding: 10px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007b5e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.submit-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.submit-btn:hover {
-    background-color: #45a049;
-}
+  .submit-button:hover {
+    background-color: #005740;
+  }
 
 .footer {
-    margin-top: 15px;
-    font-size: 12px;
-    color: #555;
+  text-align: center; /* Centralizado */
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+  .footer a {
+    color: #007b5e;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+/* Seção informativa */
+.info-section {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+ width: 250px;
+ height: 250px;
+  margin-bottom: 5px;
+}
+
+.password-info {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+  .password-info p {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .password-info ul {
+    list-style: disc;
+    text-align: left;
+    padding-left: 20px;
+  }
+
+.checkbox {
+  margin-bottom: 2%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+
+  /* Seção do título */
+  .title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Seção do formulário */
+  .form-wrapper {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+    .form-group input {
+      width: 80%; /* Corrigido para ocupar todo o espaço */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.7rem;
+      background: #fff;
+    }
+
+  .form-row {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os inputs */
+  }
+
+  .half-width {
+    width: 41.6%; /* Largura dinâmica */
+  }
+
+  .password-field {
+    display: flex;
+    align-items: center;
+    position: relative; /* Para alinhar o olho no input */
+  }
+
+    .password-field input {
+      width: 10.4rem;
+    }
+
+  .submit-button {
+    width: 90.5%; /* Ajustado para ocupar toda a largura */
+    padding: 10px;
+    font-size: 0.5rem;
+    color: #fff;
+    background-color: #007b5e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .submit-button:hover {
+      background-color: #005740;
+    }
+
+  .footer {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    margin-left: -12px;
+  }
+
+    .footer a {
+      color: #007b5e;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+  /* Seção informativa */
+  .info-section {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+  }
+
+  .password-info {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+  }
+
+    .password-info p {
+      font-weight: bold;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .password-info ul {
+      list-style: disc;
+      text-align: left;
+      font-size: 0.6rem;
+      padding-left: 20px;
+    }
+
+  .checkbox {
+    margin-bottom: 2%;
+    font-size: 0.7rem;
+  }
+
+    .checkbox input[type="checkbox"] {
+      width: 8px; /* Largura desejada */
+      height: 8px; /* Altura desejada */
+      margin-right: 5px; /* Espaço entre checkbox e o texto */
+    }
+}
+
+@media (max-width: 480px) {
+
+  /* Seção do título */
+  .title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Seção do formulário */
+  .form-wrapper {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+    .form-group input {
+      width: 60%; /* Corrigido para ocupar todo o espaço */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.6rem;
+      background: #fff;
+    }
+
+  .form-row {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os inputs */
+  }
+
+  .half-width {
+    width: 33.6%; /* Largura dinâmica */
+  }
+
+  .password-field {
+    display: flex;
+    align-items: center;
+    position: relative; /* Para alinhar o olho no input */
+  }
+
+    .password-field input {
+      width: 5.9rem;
+    }
+
+  .submit-button {
+    width: 60.5%; /* Ajustado para ocupar toda a largura */
+    padding: 10px;
+    font-size: 0.5rem;
+    color: #fff;
+    background-color: #007b5e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .submit-button:hover {
+      background-color: #005740;
+    }
+
+  .footer {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    margin-left: -12px;
+  }
+
+    .footer a {
+      color: #007b5e;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+  /* Seção informativa */
+  .info-section {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+  }
+
+  .password-info {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+  }
+
+    .password-info p {
+      font-weight: bold;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .password-info ul {
+      list-style: disc;
+      text-align: left;
+      font-size: 0.6rem;
+      padding-left: 20px;
+    }
+
+  .checkbox {
+    margin-bottom: 2%;
+    font-size: 0.6rem;
+  }
+
+    .checkbox input[type="checkbox"] {
+      width: 8px; /* Largura desejada */
+      height: 8px; /* Altura desejada */
+      margin-right: 5px; /* Espaço entre checkbox e o texto */
+    }
 }
