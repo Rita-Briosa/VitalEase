@@ -13,10 +13,12 @@ import { DashboardComponent } from './Dashboard/dashboard.component';
 import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent
+    AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,
