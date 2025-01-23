@@ -13,13 +13,36 @@ export class DashboardComponent implements OnInit {
   logs: any[] = []; // Array para armazenar os logs
   errorMessage: string = '';
   email = '';// Mensagem de erro caso algo dê errado
-  userInfo: any = null;
+  user: any = null;
   isLoggedIn: boolean = false;
   constructor(private logsService: LogsService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+
+    const token = this.authService.getSessionToken();
+ 
+    if (token) {
+      this.authService.validateSessionToken().subscribe(
+        (response: any) => {
+          this.isLoggedIn = true;
+          this.email = response.user.email;
+          this.getLogs();// Store user data
+        },
+        (error) => {
+          this.authService.logout();
+          this.router.navigate(['/login']);
+        }
+      );
+    } else {
+      // No token found, redirect to login
+      this.router.navigate(['/login']);
+    }
+
+  }
+
+  /*ngOnInit(): void {
     // Verifica se o usuário está logado e se o userType é 1
-    this.isLoggedIn = this.authService.isLoggedIn();
+    this.isLoggedIn = this.authService.isAuthenticated();
     if (this.isLoggedIn) {
       this.userInfo = this.authService.getUserInfo();
       this.email = this.userInfo.email// Obtém as informações do usuário
@@ -32,7 +55,7 @@ export class DashboardComponent implements OnInit {
       // Caso o usuário seja do tipo 1, carrega os logs
       this.getLogs();
     }
-  }
+  }*/
 
   // Função para obter os logs
   getLogs(): void {

@@ -11,6 +11,8 @@ using VitalEase.Server.ViewModel;
 
 namespace VitalEase.Server.Controllers
 {
+    [ApiController]
+    [Route("login")]
     public class AccountController : Controller
     {
         private readonly VitalEaseServerContext _context;
@@ -77,19 +79,19 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Password is incorrect" }); // Retorna erro 401
             }
 
-            var sessionToken = Guid.NewGuid().ToString();
-            user.SessionToken = sessionToken;
-            user.SessionTokenCreatedAt = DateTime.Now;
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            
             // Registrar log de sucesso
             await LogAction("Login Attempt", "Success", user.Id);
  
             var token = GenerateJwtToken(user, model.RememberMe);
+            user.SessionToken = token;
+            user.SessionTokenCreatedAt = DateTime.Now;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
 
-                // Armazenamos o usuário de forma persistente se "Remember Me" estiver selecionado
-                // Este será armazenado no localStorage do cliente
-                var userInfo = new
+            // Armazenamos o usuário de forma persistente se "Remember Me" estiver selecionado
+
+            var userInfo = new
                 {
                     userId = user.Id,
                     email = user.Email,
@@ -176,18 +178,18 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Unauthorized: No token provided." });
             }
 
-            // Validate token in the database
+            // Check if the token exists in the database
             var user = _context.Users.FirstOrDefault(u => u.SessionToken == token);
             if (user == null)
             {
                 return Unauthorized(new { message = "Unauthorized: Invalid token." });
             }
 
-            // Optionally, check if the token is expired or invalidated
-            if (user.PasswordLastChanged.HasValue && user.SessionTokenCreatedAt.HasValue &&
-                user.SessionTokenCreatedAt < user.PasswordLastChanged)
+            // Optionally check if the token is expired (if you implement expiration logic)
+            if (user.SessionTokenCreatedAt.HasValue &&
+                DateTime.UtcNow.Subtract(user.SessionTokenCreatedAt.Value).TotalMinutes > 15) // Example: 15-minute expiration
             {
-                return Unauthorized(new { message = "Unauthorized: Token expired due to password change." });
+                return Unauthorized(new { message = "Unauthorized: Token expired." });
             }
 
             return Ok(new
@@ -201,6 +203,7 @@ namespace VitalEase.Server.Controllers
                 }
             });
         }
+
 
 
     }

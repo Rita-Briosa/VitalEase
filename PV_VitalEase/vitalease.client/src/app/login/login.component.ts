@@ -17,14 +17,11 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
-    this.authService.login(this.email, this.password).subscribe(
+    this.authService.login(this.email, this.password, this.rememberMe).subscribe(
       (response: any) => {
         console.log('Login successful', response);
 
-        // Armazena as informações do usuário no AuthService
         this.authService.setSessionToken(response.token);
-
-        // Redireciona com base no tipo de usuário
         this.redirectBasedOnUserType(response.user.type);
       },
       (error) => {
