@@ -24,7 +24,7 @@ namespace VitalEase.Server.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost("forgotPassword")]
+        [HttpPost("api/forgotPassword")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordViewModel model)
         {
             // Verificar se o email enviado está no formato correto
@@ -42,7 +42,7 @@ namespace VitalEase.Server.Controllers
             var token = GenerateToken(user.Email, user.Id);
 
             // Gerar link de redefinição de senha direto, sem token
-            var resetLink = $"https://localhost:4200/resetPassword?token={Uri.EscapeDataString(token)}";
+            var resetLink = $"https://vitalease2025.3utilities.com/resetPassword?token={Uri.EscapeDataString(token)}";
 
             // Enviar o email de redefinição de senha
             var emailSent = await SendPasswordResetEmail(user.Email, resetLink);

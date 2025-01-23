@@ -21,7 +21,7 @@ namespace VitalEase.Server.Controllers
             _context = context;
         }
 
-        [HttpGet("getLogs")]
+        [HttpGet("api/getLogs")]
         public async Task<IActionResult> GetLogs()
         {
             try
