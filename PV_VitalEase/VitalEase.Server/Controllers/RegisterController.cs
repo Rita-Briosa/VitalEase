@@ -10,6 +10,7 @@ using System.Text;
 using VitalEase.Server.Data;
 using VitalEase.Server.Models;
 using VitalEase.Server.ViewModel;
+using Microsoft.AspNetCore.Http;
 
 namespace VitalEase.Server.Controllers
 {
@@ -37,10 +38,11 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
             }
 
+            DateTime dateTime = DateTime.Parse(model.BirthDate);
             var profile = new Profile
             {
                 Username = model.Username,
-                Birthdate = model.BirthDate, // Corrigido para combinar com o Angular
+                Birthdate = dateTime, // Corrigido para combinar com o Angular
                 Height = model.Height,
                 Weight = model.Weight,
                 Gender = model.Gender,

@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Migrations\\20250123191413_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VitalEase.Server\\Migrations\\20250123191413_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\viewmodel\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\viewmodel\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\register\\register.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -45,19 +49,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "20250123191413_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Migrations\\20250123191413_InitialCreate.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Migrations\\20250123191413_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Migrations\\20250123191413_InitialCreate.cs",
+              "RelativeToolTip": "VitalEase.Server\\Migrations\\20250123191413_InitialCreate.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T19:14:13.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Profile.cs",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\Profile.cs",
               "RelativeDocumentMoniker": "VitalEase.Server\\Models\\Profile.cs",
               "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\Profile.cs",
               "RelativeToolTip": "VitalEase.Server\\Models\\Profile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T18:56:56.7Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "dbo.Profiles.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/VitalEaseServerContext_385ab724_83fc_4dc2_b68a_bfc02289bd6c/True/SqlTable/dbo.Profiles.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/VitalEaseServerContext_385ab724_83fc_4dc2_b68a_bfc02289bd6c/True/SqlTable/dbo.Profiles.sql",
@@ -66,7 +83,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "register.component.html",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.html",
               "RelativeDocumentMoniker": "vitalease.client\\src\\app\\register\\register.component.html",
@@ -78,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "register.service.ts",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\register.service.ts",
               "RelativeDocumentMoniker": "vitalease.client\\src\\app\\services\\register.service.ts",
@@ -90,19 +107,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "RegisterController.cs",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\RegisterController.cs",
               "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\RegisterController.cs",
               "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\RegisterController.cs",
               "RelativeToolTip": "VitalEase.Server\\Controllers\\RegisterController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAwwB8AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAjwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T18:49:49.067Z"
+              "WhenOpened": "2025-01-23T18:49:49.067Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "dbo.Users.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/VitalEaseServerContext_385ab724_83fc_4dc2_b68a_bfc02289bd6c/True/SqlTable/dbo.Users.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/VitalEaseServerContext_385ab724_83fc_4dc2_b68a_bfc02289bd6c/True/SqlTable/dbo.Users.sql",
@@ -111,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "register.component.ts",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\register\\register.component.ts",
               "RelativeDocumentMoniker": "vitalease.client\\src\\app\\register\\register.component.ts",
@@ -123,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\ViewModel\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "VitalEase.Server\\ViewModel\\RegisterViewModel.cs",
@@ -131,7 +149,8 @@
               "RelativeToolTip": "VitalEase.Server\\ViewModel\\RegisterViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T18:10:03.007Z"
+              "WhenOpened": "2025-01-23T18:10:03.007Z",
+              "EditorCaption": ""
             }
           ]
         }
