@@ -21,10 +21,7 @@ export class LoginComponent {
       (response: any) => {
         console.log('Login successful', response);
 
-        // Armazena as informações do usuário no AuthService
-        this.authService.storeUserInfo(response.user, this.rememberMe);
-
-        // Redireciona com base no tipo de usuário
+        this.authService.setSessionToken(response.token);
         this.redirectBasedOnUserType(response.user.type);
       },
       (error) => {

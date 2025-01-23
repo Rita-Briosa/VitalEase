@@ -17,15 +17,39 @@ export class AboutUsComponent {
 
   ngOnInit() {
     // Check if user is logged in by fetching the user info
-    this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
-    if (this.isLoggedIn) {
-      this.userInfo = this.authService.getUserInfo();  // Se estiver logado, pega as informações do usuário
+    /* this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
+     if (this.isLoggedIn) {
+       this.userInfo = this.authService.getUserInfo();  // Se estiver logado, pega as informações do usuário
+     }
+   }*/
+
+
+    const token = this.authService.getSessionToken();
+
+    if (token) {
+      this.authService.validateSessionToken().subscribe(
+        (response: any) => {
+          this.isLoggedIn = true;
+          this.userInfo = response.user;
+        },
+        (error) => {
+          this.authService.logout();
+          this.router.navigate(['/login']);
+        }
+      );
+    } else {
+      // No token found, redirect to login
+      this.router.navigate(['/login']);
+    }
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+      return;
     }
   }
-
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
+  
 }

@@ -11,6 +11,8 @@ using VitalEase.Server.ViewModel;
 
 namespace VitalEase.Server.Controllers
 {
+    [ApiController]
+    [Route("login")]
     public class AccountController : Controller
     {
         private readonly VitalEaseServerContext _context;
@@ -84,19 +86,19 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Password is incorrect" }); // Retorna erro 401
             }
 
-            var sessionToken = Guid.NewGuid().ToString();
-            user.SessionToken = sessionToken;
-            user.SessionTokenCreatedAt = DateTime.Now;
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            
             // Registrar log de sucesso
             await LogAction("Login Attempt", "Success", user.Id);
  
             var token = GenerateJwtToken(user, model.RememberMe);
+            user.SessionToken = token;
+            user.SessionTokenCreatedAt = DateTime.Now;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
 
-                // Armazenamos o usuário de forma persistente se "Remember Me" estiver selecionado
-                // Este será armazenado no localStorage do cliente
-                var userInfo = new
+            // Armazenamos o usuário de forma persistente se "Remember Me" estiver selecionado
+
+            var userInfo = new
                 {
                     userId = user.Id,
                     email = user.Email,
@@ -157,7 +159,11 @@ namespace VitalEase.Server.Controllers
                 {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim("userType", user.Type.ToString())
+            new Claim("userType", user.Type.ToString()),
+            new Claim("PasswordLastChanged",
+            user.PasswordLastChanged.HasValue
+                ? user.PasswordLastChanged.Value.Ticks.ToString()
+                : "0")
         }),
                 Expires = rememberMe
                     ? DateTime.UtcNow.AddDays(30) // "Remember Me" session: 30 days
@@ -168,6 +174,70 @@ namespace VitalEase.Server.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
+        [HttpGet("validate-session")]
+        public IActionResult ValidateSession()
+        {
+            // Extract token from Authorization header
+            var token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(new { message = "Unauthorized: No token provided." });
+            }
+
+            // Validate token in the database
+            var user = _context.Users.FirstOrDefault(u => u.SessionToken == token);
+            if (user == null)
+            {
+                return Unauthorized(new { message = "Unauthorized: Invalid token." });
+            }
+
+            // Decode the token to check expiration
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes("Chave_secreta_pertencente_a_vital_ease");
+
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero // Disable clock skew
+                }, out SecurityToken validatedToken);
+
+                // If token is valid, return success response
+                return Ok(new
+                {
+                    message = "Session is valid.",
+                    user = new
+                    {
+                        user.Id,
+                        user.Email,
+                        user.Type
+                    }
+                });
+            }
+            catch (SecurityTokenExpiredException)
+            {
+                // Token has expired, update database
+                user.SessionToken = null; // Invalidate the session
+                user.SessionTokenCreatedAt = null; // Clear the creation timestamp
+                _context.Users.Update(user);
+                _context.SaveChanges();
+
+                return Unauthorized(new { message = "Unauthorized: Token expired." });
+            }
+            catch (Exception)
+            {
+                return Unauthorized(new { message = "Unauthorized: Invalid token." });
+            }
+
+        }
+
+
 
     }
 }
