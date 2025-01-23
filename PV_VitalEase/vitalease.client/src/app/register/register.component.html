@@ -1,43 +1,44 @@
+
 <body>
   <div class="container">
     <div class="column">
       <h1 class="title">Create account</h1>
       <div class="row">
         <div class="form-wrapper">
-          <form>
+          <form (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <input type="text" [(ngModel)]="username" placeholder="Username" required />
+              <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
             </div>
             <div class="form-group">
-              <input type="date" [(ngModel)]="birthDate" placeholder="Birthdate" required />
+              <input type="date" [(ngModel)]="birthDate" name="birthDate" placeholder="Birthdate" />
             </div>
             <div class="form-group">
-              <input type="email" [(ngModel)]="email" placeholder="Email" required />
+              <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
             </div>
             <div class="form-row">
               <div class="form-group half-width">
-                <input type="number" [(ngModel)]="height" min="90" max="300" placeholder="Height" required />
+                <input type="number" [(ngModel)]="height" name="height" min="90" max="300" placeholder="Height" required />
               </div>
               <div class="form-group half-width">
-                <input type="number" [(ngModel)]="weight" placeholder="Weight" min="30" max="300" required />
+                <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight" min="30" max="300" required />
               </div>
             </div>
             <div class="form-group">
-              <input type="text" [(ngModel)]="gender" placeholder="Gender" required />
+              <input type="text" [(ngModel)]="gender" name="gender" placeholder="Gender" required />
             </div>
             <div class="form-group password-field">
-              <input type="password" [(ngModel)]="password" placeholder="Password" required />
+              <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
             </div>
             <div class="form-group password-field">
-              <input type="password" placeholder="Confirm Password" required />
+              <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" [(ngModel)]="heartProblems"/>
+                <input type="checkbox" [(ngModel)]="heartProblems" name="heartProblems"/>
                 I have heart problems
               </label>
             </div>
-            <button type="submit" (click)="onSubmit()" class="submit-button">Submit</button>
+            <button type="submit" class="submit-button">Submit</button>
 
             <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
             <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
@@ -63,3 +64,4 @@
     </div>
   </div>
 </body>
+

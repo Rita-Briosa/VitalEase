@@ -10,7 +10,7 @@ using System.Text;
 using VitalEase.Server.Data;
 using VitalEase.Server.Models;
 using VitalEase.Server.ViewModel;
-using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace VitalEase.Server.Controllers
 {
@@ -27,7 +27,7 @@ namespace VitalEase.Server.Controllers
         }
 
         [HttpPost("api/register")]
-        public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
+        public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
         {
              // Verifica se os dados enviados são válidos
             if (!ModelState.IsValid)
@@ -38,11 +38,20 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
             }
 
-            DateTime dateTime = DateTime.Parse(model.BirthDate);
+            var existingUser = await _context.Users
+                                     .FirstOrDefaultAsync(u => u.Email == model.Email);
+
+            if (existingUser != null)
+            {
+                // Registrar log de erro (e-mail já existente)
+                await LogAction("Register Attempt", "Failed - Email already exists", 0);
+                return BadRequest(new { message = "Email already exists" }); // Retorna erro 400
+            }
+
             var profile = new Profile
             {
                 Username = model.Username,
-                Birthdate = dateTime, // Corrigido para combinar com o Angular
+                Birthdate = model.BirthDate, // Corrigido para combinar com o Angular
                 Height = model.Height,
                 Weight = model.Weight,
                 Gender = model.Gender,
@@ -65,7 +74,8 @@ namespace VitalEase.Server.Controllers
                 Email = model.Email,
                 Profile = profile,
                 Password = HashPassword(model.Password),
-                Type = UserType.Standard
+                Type = UserType.Standard,
+                IsEmailVerified = false
             };
 
             if (user == null)

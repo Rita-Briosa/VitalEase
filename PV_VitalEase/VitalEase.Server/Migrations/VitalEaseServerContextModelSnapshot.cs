@@ -157,6 +157,9 @@ namespace VitalEase.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool?>("HasHeartProblems")
+                        .HasColumnType("bit");
+
                     b.Property<double>("Height")
                         .HasColumnType("float");
 
@@ -259,6 +262,9 @@ namespace VitalEase.Server.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsEmailVerified")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Password")
                         .IsRequired()
