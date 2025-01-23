@@ -171,6 +171,7 @@ namespace VitalEase.Server.Controllers
         [HttpGet("validate-session")]
         public IActionResult ValidateSession()
         {
+            // Extract token from Authorization header
             var token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (string.IsNullOrEmpty(token))
@@ -178,30 +179,55 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Unauthorized: No token provided." });
             }
 
-            // Check if the token exists in the database
+            // Validate token in the database
             var user = _context.Users.FirstOrDefault(u => u.SessionToken == token);
             if (user == null)
             {
                 return Unauthorized(new { message = "Unauthorized: Invalid token." });
             }
 
-            // Optionally check if the token is expired (if you implement expiration logic)
-            if (user.SessionTokenCreatedAt.HasValue &&
-                DateTime.UtcNow.Subtract(user.SessionTokenCreatedAt.Value).TotalMinutes > 15) // Example: 15-minute expiration
+            // Decode the token to check expiration
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes("Chave_secreta_pertencente_a_vital_ease");
+
+            try
             {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero // Disable clock skew
+                }, out SecurityToken validatedToken);
+
+                // If token is valid, return success response
+                return Ok(new
+                {
+                    message = "Session is valid.",
+                    user = new
+                    {
+                        user.Id,
+                        user.Email,
+                        user.Type
+                    }
+                });
+            }
+            catch (SecurityTokenExpiredException)
+            {
+                // Token has expired, update database
+                user.SessionToken = null; // Invalidate the session
+                user.SessionTokenCreatedAt = null; // Clear the creation timestamp
+                _context.Users.Update(user);
+                _context.SaveChanges();
+
                 return Unauthorized(new { message = "Unauthorized: Token expired." });
             }
-
-            return Ok(new
+            catch (Exception)
             {
-                message = "Session is valid.",
-                user = new
-                {
-                    user.Id,
-                    user.Email,
-                    user.Type
-                }
-            });
+                return Unauthorized(new { message = "Unauthorized: Invalid token." });
+            }
+
         }
 
 
