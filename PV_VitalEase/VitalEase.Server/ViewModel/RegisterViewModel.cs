@@ -8,8 +8,7 @@ namespace VitalEase.Server.ViewModel
         public string Username { get; set; }
 
         [Required(ErrorMessage = "The birth date is required")]
-        [DataType(DataType.Date, ErrorMessage = "The Birthdate must be a valid date.")]
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessage = "The email is required")]
         [EmailAddress(ErrorMessage = "Email is invalid")]
@@ -27,7 +26,7 @@ namespace VitalEase.Server.ViewModel
         [Required(ErrorMessage = "The password is required")]
         public string Password { get; set; }
 
-        public bool? HeartProblems{ get; set; }
+        public bool HeartProblems{ get; set; }
 
 
     }

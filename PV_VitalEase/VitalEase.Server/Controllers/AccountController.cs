@@ -39,6 +39,13 @@ namespace VitalEase.Server.Controllers
             {
                 return Unauthorized(new { message = "Email is incorrect" });
             }
+            
+            if(user.IsEmailVerified == false)
+            {
+                await LogAction("Login Attempt", "Failed - Email is not verified", 0);
+
+                return BadRequest(new { message = "Please, verify your email." }); // Retorna erro 400
+            }
 
             var loginAttempts = _context.AuditLogs.Select(l => l).Where(l => l.UserId == user.Id && l.Action == "Login Attempt" && l.Status != "Failed - Account Blocked").ToList();
             loginAttempts.Reverse();

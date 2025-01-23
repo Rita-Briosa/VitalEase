@@ -16,6 +16,7 @@ export class RegisterComponent {
   weight: number = 30;
   gender: string = '';
   password: string = '';
+  confirmPassword: string = '';
   errorMessage: string = '';
   heartProblems: boolean = false;
   successMessage: string = ''; // Adicionado para exibir sucesso
@@ -26,13 +27,27 @@ export class RegisterComponent {
     this.errorMessage = ''; // Limpa mensagens antigas
     this.successMessage = '';
 
-    this.registerService.register(this.username,this.birthDate,this.email,this.height,this.weight,this.gender, this.password, this.heartProblems).subscribe(
+ 
+
+    // Passando os dados formatados para o serviço
+    this.registerService.register(
+      this.username,
+     this.birthDate,  // A data formatada
+      this.email,
+      this.height,
+      this.weight,
+      this.gender,
+      this.password,
+      this.heartProblems
+    ).subscribe(
       (response: any) => {
+        this.clearForm();
         console.log('Register successful', response);
         this.successMessage = response.message;
         setTimeout(() => {
-          this.router.navigate(['/login']); // Redireciona após sucesso
-        }, 3000);
+          this.router.navigate(['/login']); // Redireciona após 2 segundos
+        }, 2000);
+       
       },
       (error) => {
         this.errorMessage = error.error?.message || 'An unexpected error occurred';
@@ -40,4 +55,17 @@ export class RegisterComponent {
       }
     );
   }
+
+  clearForm() {
+    this.username = '';
+    this.birthDate = new Date();
+    this.email = '';
+    this.height = 90;
+    this.weight = 30;
+    this.gender = '';
+    this.password = '';
+    this.confirmPassword = '';
+    this.heartProblems = false;
+  }
+
 }

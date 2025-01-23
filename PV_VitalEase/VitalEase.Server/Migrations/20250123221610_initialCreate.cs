@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VitalEase.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,7 +53,8 @@ namespace VitalEase.Server.Migrations
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Weight = table.Column<double>(type: "float", nullable: false),
                     Height = table.Column<double>(type: "float", nullable: false),
-                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HasHeartProblems = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -117,6 +118,7 @@ namespace VitalEase.Server.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     ProfileId = table.Column<int>(type: "int", nullable: false),
+                    IsEmailVerified = table.Column<bool>(type: "bit", nullable: true),
                     SessionToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PasswordLastChanged = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SessionTokenCreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
