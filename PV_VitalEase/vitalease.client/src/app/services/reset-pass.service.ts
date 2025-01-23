@@ -8,14 +8,13 @@ import { Observable } from 'rxjs';
 
 export class ResetService {
 
-  private apiUrlResetPassword = 'https://localhost:7180/resetPassword';
+  private apiUrlResetPassword = 'https://vitalease2025.3utilities.com/api/resetPassword';
 
-  private apiUrlValidateToken = 'https://localhost:7180/validateTokenAtAccess';
+  private apiUrlValidateToken = 'https://vitalease2025.3utilities.com/api/validateTokenAtAccess';
 
   constructor(private http: HttpClient) { }
 
   resetPassword(token: string | null, newPassword: string): Observable<any> {
-
     const body = { token, newPassword };
 
 
@@ -23,6 +22,7 @@ export class ResetService {
   }
 
   validateToken(token: string): Observable<any> {
+
     const url = `${this.apiUrlValidateToken}?token=${token}`; // Adiciona o token como query parameter
     return this.http.get<any>(url); // Chamada para o endpoint com GET
   }

@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'https://localhost:7180/login'; // Endereço do seu backend
+  private apiUrl = 'https://vitalease2025.3utilities.com/api/login'; // Endereço do seu backend
 
   constructor(private http: HttpClient) { }
 
   // Método de login para autenticar o usuário
   login(email: string, password: string, rememberMe: boolean): Observable<any> {
+
     return this.http.post(this.apiUrl, { email, password, rememberMe });
   }
 

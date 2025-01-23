@@ -10,9 +10,10 @@ body {
   flex-direction: column; /* Allows child elements to stack vertically */
 }
 
-.devs{
-    max-width: 28%;
-    max-height: 28%;
+.devs {
+  flex: 1 1 40%; /* Ocupa 40% em telas maiores e encolhe em telas menores */
+  max-width: 28%;
+  max-height: 28%;
 }
 
 .devImg {
@@ -24,6 +25,7 @@ body {
 
 header img {
   margin-top: 20%;
+  flex-wrap: wrap;
   width: 100px;
   height: 100px;
 }
@@ -54,9 +56,10 @@ section{
     display: flex;
 }
 
-.infoText{
-    padding-left: 20px;
-    width: 60%;
+.infoText {
+  flex: 1 1 60%;
+  padding-left: 20px;
+  width: 60%;
 }
 
 .infoText h1{
@@ -70,4 +73,44 @@ section{
 .devs{
     padding-top: 3%;
     padding-left: 15%
+}
+
+@media (max-width: 768px) {
+  header h2 {
+    font-size: 1rem;
+  }
+
+  .infoText h1 {
+    font-size: 1.5rem;
+  }
+
+  .infoText p {
+    font-size: 0.9rem;
+  }
+
+  .devImg {
+    width: 125px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .auth-buttons {
+    justify-content: center;
+  }
+
+  section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .infoText {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .devs {
+    justify-content: normal;
+  }
 }

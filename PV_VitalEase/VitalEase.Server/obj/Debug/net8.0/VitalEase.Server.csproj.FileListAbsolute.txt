@@ -1047,3 +1047,4 @@ C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Serve
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\obj\Debug\net8.0\VitalEase.Server.genruntimeconfig.cache
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\obj\Debug\net8.0\ref\VitalEase.Server.dll
 C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\BouncyCastle.Crypto.dll

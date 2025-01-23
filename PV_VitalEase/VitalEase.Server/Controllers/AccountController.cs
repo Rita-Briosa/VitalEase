@@ -20,7 +20,7 @@ namespace VitalEase.Server.Controllers
             _context = context;
         }
 
-        [HttpPost("login")]
+        [HttpPost("api/login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
             // Verifica se os dados enviados são válidos

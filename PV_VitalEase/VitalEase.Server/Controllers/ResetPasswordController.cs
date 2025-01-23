@@ -25,7 +25,7 @@ namespace VitalEase.Server.Controllers
             _context = context;
             _configuration = configuration;
         }
-        [HttpPost("resetPassword")]
+        [HttpPost("api/resetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model)
         {
             // Validate request model
@@ -85,6 +85,7 @@ namespace VitalEase.Server.Controllers
             // Save changes
             try
             {
+                await SendPasswordResetEmailWarning(email);
                 await _context.SaveChangesAsync();
                 await LogAction("Password reset attempt", "Success", user.Id);
                 return Ok(new { message = "Password reset successfully. Please log in again." });
@@ -242,7 +243,7 @@ namespace VitalEase.Server.Controllers
             await _context.SaveChangesAsync();
         }
 
-        [HttpGet("validateTokenAtAccess")]
+        [HttpGet("api/validateTokenAtAccess")]
         public IActionResult ValidateTokenAtAccess([FromQuery] ResetPasswordViewModel model)
         {
             var (isValid, email, userId,tokenId) = ValidateToken(model.Token);
