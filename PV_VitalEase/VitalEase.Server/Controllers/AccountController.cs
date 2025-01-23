@@ -150,7 +150,11 @@ namespace VitalEase.Server.Controllers
                 {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim("userType", user.Type.ToString())
+            new Claim("userType", user.Type.ToString()),
+            new Claim("PasswordLastChanged",
+            user.PasswordLastChanged.HasValue
+                ? user.PasswordLastChanged.Value.Ticks.ToString()
+                : "0")
         }),
                 Expires = rememberMe
                     ? DateTime.UtcNow.AddDays(30) // "Remember Me" session: 30 days
@@ -161,6 +165,43 @@ namespace VitalEase.Server.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
+        [HttpGet("validate-session")]
+        public IActionResult ValidateSession()
+        {
+            var token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(new { message = "Unauthorized: No token provided." });
+            }
+
+            // Validate token in the database
+            var user = _context.Users.FirstOrDefault(u => u.SessionToken == token);
+            if (user == null)
+            {
+                return Unauthorized(new { message = "Unauthorized: Invalid token." });
+            }
+
+            // Optionally, check if the token is expired or invalidated
+            if (user.PasswordLastChanged.HasValue && user.SessionTokenCreatedAt.HasValue &&
+                user.SessionTokenCreatedAt < user.PasswordLastChanged)
+            {
+                return Unauthorized(new { message = "Unauthorized: Token expired due to password change." });
+            }
+
+            return Ok(new
+            {
+                message = "Session is valid.",
+                user = new
+                {
+                    user.Id,
+                    user.Email,
+                    user.Type
+                }
+            });
+        }
+
 
     }
 }
