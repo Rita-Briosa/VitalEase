@@ -45,13 +45,13 @@ namespace VitalEase.Server.Controllers
             var loginAttempts = _context.AuditLogs.Select(l => l).Where(l => l.UserId == user.Id && l.Action == "Login Attempt" && l.Status != "Failed - Account Blocked").ToList();
             loginAttempts.Reverse();
             List<AuditLog> lastAttempts = new List<AuditLog>();
-            if (loginAttempts != null)
+            if(loginAttempts != null)
             {
-                if (loginAttempts.Count >= 3)
+                if(loginAttempts.Count >= 3)
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        lastAttempts.Add(loginAttempts[i]);
+                            lastAttempts.Add(loginAttempts[i]);
                     }
                 }
 
@@ -71,7 +71,7 @@ namespace VitalEase.Server.Controllers
             var hashedPasswordFromInput = HashPassword(model.Password);
 
             // Verifica se o usuário existe e a senha está correta
-            if (user.Password != hashedPasswordFromInput)
+            if ( user.Password != hashedPasswordFromInput)
             {
                 // Registrar log de erro (credenciais incorretas)
                 await LogAction("Login Attempt", "Failed - Password Incorrect", user.Id);
@@ -79,10 +79,10 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Password is incorrect" }); // Retorna erro 401
             }
 
-
+            
             // Registrar log de sucesso
             await LogAction("Login Attempt", "Success", user.Id);
-
+ 
             var token = GenerateJwtToken(user, model.RememberMe);
             user.SessionToken = token;
             user.SessionTokenCreatedAt = DateTime.Now;
@@ -92,20 +92,20 @@ namespace VitalEase.Server.Controllers
             // Armazenamos o usuário de forma persistente se "Remember Me" estiver selecionado
 
             var userInfo = new
-            {
-                userId = user.Id,
-                email = user.Email,
-                type = user.Type, // Tipo de usuário
-            };
+                {
+                    userId = user.Id,
+                    email = user.Email,
+                    type = user.Type, // Tipo de usuário
+                };
 
-            // Retorna os dados do usuário com "Remember Me" marcado
-            return Ok(new
-            {
-                message = "Login successful",
-                token,
-                user = userInfo
-
-            });
+                // Retorna os dados do usuário com "Remember Me" marcado
+                return Ok(new
+                {
+                    message = "Login successful",
+                    token,
+                    user = userInfo
+                    
+                });
         }
 
         private string HashPassword(string password)
@@ -171,7 +171,6 @@ namespace VitalEase.Server.Controllers
         [HttpGet("validate-session")]
         public IActionResult ValidateSession()
         {
-            // Extract token from Authorization header
             var token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (string.IsNullOrEmpty(token))
@@ -179,55 +178,33 @@ namespace VitalEase.Server.Controllers
                 return Unauthorized(new { message = "Unauthorized: No token provided." });
             }
 
-            // Validate token in the database
+            // Check if the token exists in the database
             var user = _context.Users.FirstOrDefault(u => u.SessionToken == token);
             if (user == null)
             {
                 return Unauthorized(new { message = "Unauthorized: Invalid token." });
             }
 
-            // Decode the token to check expiration
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes("Chave_secreta_pertencente_a_vital_ease");
-
-            try
+            // Optionally check if the token is expired (if you implement expiration logic)
+            if (user.SessionTokenCreatedAt.HasValue &&
+                DateTime.UtcNow.Subtract(user.SessionTokenCreatedAt.Value).TotalMinutes > 15) // Example: 15-minute expiration
             {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero // Disable clock skew
-                }, out SecurityToken validatedToken);
-
-                // If token is valid, return success response
-                return Ok(new
-                {
-                    message = "Session is valid.",
-                    user = new
-                    {
-                        user.Id,
-                        user.Email,
-                        user.Type
-                    }
-                });
-            }
-            catch (SecurityTokenExpiredException)
-            {
-                // Token has expired, update database
-                user.SessionToken = null; // Invalidate the session
-                user.SessionTokenCreatedAt = null; // Clear the creation timestamp
-                _context.Users.Update(user);
-                _context.SaveChanges();
-
                 return Unauthorized(new { message = "Unauthorized: Token expired." });
             }
-            catch (Exception)
-            {
-                return Unauthorized(new { message = "Unauthorized: Invalid token." });
-            }
 
+            return Ok(new
+            {
+                message = "Session is valid.",
+                user = new
+                {
+                    user.Id,
+                    user.Email,
+                    user.Type
+                }
+            });
         }
+
+
+
     }
 }
