@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verified</title>
+</head>
+<body>
+  <div class="email-verified-card">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <h2>Email Verified Successfully!</h2>
+    <p>Your email has been verified. You can now log in to your account.</p>
+
+    <button class="btn-primary" (click)="goToLogin()">Go to Login</button>
+  </div>
+
+  <!-- Modal for error messages -->
+  <div class="modal" [class.show]="showModal">
+    <div class="modal-content">
+      <div class="modal-header">Error</div>
+      <div class="modal-body">
+        <p>{{ modalMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

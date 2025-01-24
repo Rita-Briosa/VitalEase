@@ -25,6 +25,7 @@ namespace VitalEase.Server.Controllers
             _context = context;
             _configuration = configuration;
         }
+
         [HttpPost("api/resetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model)
         {

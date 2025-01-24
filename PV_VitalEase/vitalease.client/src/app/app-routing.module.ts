@@ -7,6 +7,7 @@ import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
+import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'resetPassword', component: ResetPassComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'aboutUs', component: AboutUsComponent },
+  { path: 'emailValidation', component: VerifyEmailComponent },
   { path: '**', redirectTo: '' }]
 
 

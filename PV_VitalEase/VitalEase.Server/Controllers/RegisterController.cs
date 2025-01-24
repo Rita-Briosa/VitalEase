@@ -216,15 +216,15 @@ namespace VitalEase.Server.Controllers
         private string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes("Chave_secreta_pertencente_a_vital_ease");
+            var key = Encoding.UTF8.GetBytes("Chave_secreta_pertencente_a_vital_easee_e_impenetravel");
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+       
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim("userType", user.Type.ToString())
+           
         }),
                 Expires = DateTime.UtcNow.AddHours(1), // Standard session: 15 minutes
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -14,6 +14,7 @@ export class HomePageComponent implements OnInit {
 
   userInfo: any = null;
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -30,6 +31,12 @@ export class HomePageComponent implements OnInit {
         (response: any) => {
           this.isLoggedIn = true;
           this.userInfo = response.user;
+          if (this.userInfo.type === 1) {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+    
         },
         (error) => {
           this.authService.logout();
@@ -51,7 +58,12 @@ export class HomePageComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
+    this.isAdmin = false;
     this.router.navigate(['/']);
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
  
 

@@ -76,4 +76,8 @@ export class DashboardComponent implements OnInit {
     this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
+
+  goToHome() {
+    this.router.navigate(['/']);
+  }
 }
