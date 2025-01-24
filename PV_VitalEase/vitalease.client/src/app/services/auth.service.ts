@@ -11,13 +11,13 @@ import { jwtDecode } from 'jwt-decode';
 export class AuthService {
   [x: string]: any;
 
-  private apiUrl = 'https://localhost:7180/login'; // Endereço do seu backend
+  private apiUrl = 'https://vitalease2025.3utilities.com/api/login'; // Endereço do seu backend
   private sessionToken: string | null = null;
   private storageKey = 'sessionToken'; 
   constructor(private http: HttpClient, private router: Router) { }
 
   login(email: string, password: string, rememberMe: boolean): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password, rememberMe });
+    return this.http.post(`${this.apiUrl}`, { email, password, rememberMe });
   }
 
   // Armazenar informações do usuário no localStorage ou sessionStorage

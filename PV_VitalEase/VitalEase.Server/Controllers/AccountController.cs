@@ -11,8 +11,7 @@ using VitalEase.Server.ViewModel;
 
 namespace VitalEase.Server.Controllers
 {
-    [ApiController]
-    [Route("login")]
+
     public class AccountController : Controller
     {
         private readonly VitalEaseServerContext _context;
@@ -175,7 +174,7 @@ namespace VitalEase.Server.Controllers
             return tokenHandler.WriteToken(token);
         }
 
-        [HttpGet("validate-session")]
+        [HttpGet("api/login/validate-session")]
         public IActionResult ValidateSession()
         {
             // Extract token from Authorization header
