@@ -134,3 +134,54 @@ body {
     background-color: #d6d6d6; /* Cor levemente mais escura ao passar o mouse */
     transform: translateY(-5px);
   }
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .infoText p {
+    font-size: 0.9rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+    header h2 {
+    font-size: 0.5rem;
+  }
+  .auth-buttons {
+    justify-content: center;
+  }
+
+  section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .infoText {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .action-button {
+    padding: 20px 60px; /* Aumenta o tamanho dos botões */
+    border: none;
+    border-radius: 30px;
+    background-color: #e0e0e0; /* Cinza claro semelhante ao mockup */
+    color: #333; /* Texto escuro */
+    font-size: 0.6rem; /* Aumenta o tamanho do texto */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .devs {
+    justify-content: normal;
+  }
+}

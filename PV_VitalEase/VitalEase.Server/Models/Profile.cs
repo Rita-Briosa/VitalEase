@@ -9,6 +9,8 @@
         public double Height { get; set; }
         public DateTime Birthdate { get; set; }
 
+        public bool? HasHeartProblems { get; set; }
+
         public double CalculateBMI()
         {
             return Weight / (Height * Height);

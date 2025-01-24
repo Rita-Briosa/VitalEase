@@ -9,6 +9,8 @@ namespace VitalEase.Server.Models
         public UserType Type { get; set; }
         public Profile Profile { get; set; }
 
+        public bool? IsEmailVerified { get; set; }
+
         // Custom property to track session token
         public string? SessionToken { get; set; }
 

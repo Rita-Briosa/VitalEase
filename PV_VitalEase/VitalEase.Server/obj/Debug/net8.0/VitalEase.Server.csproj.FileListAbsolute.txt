@@ -754,6 +754,7 @@ C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\V
 C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\BouncyCastle.Crypto.dll
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\spa.proxy.json
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\appsettings.json
@@ -832,6 +833,7 @@ C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Serve
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\NuGet.ProjectModel.dll
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\NuGet.Protocol.dll
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\NuGet.Versioning.dll
+C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\BouncyCastle.Crypto.dll
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -1046,4 +1048,3 @@ C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Serve
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\obj\Debug\net8.0\VitalEase.Server.pdb
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\obj\Debug\net8.0\VitalEase.Server.genruntimeconfig.cache
 C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\obj\Debug\net8.0\ref\VitalEase.Server.dll
-C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\VitalEase\PV_VitalEase\VitalEase.Server\bin\Debug\net8.0\BouncyCastle.Crypto.dll

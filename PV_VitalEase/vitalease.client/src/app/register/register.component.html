@@ -1,79 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account</title>
-  <link rel="stylesheet" href="app/register/register.component.css">
-</head>
+
 <body>
-<div class="container">
-  <h1>Create Account</h1>
-  <form>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" required>
-    </div>
+  <div class="container">
+    <div class="column">
+      <h1 class="title">Create account</h1>
+      <div class="row">
+        <div class="form-wrapper">
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
+            </div>
+            <div class="form-group">
+              <input type="date" [(ngModel)]="birthDate" name="birthDate" placeholder="Birthdate" />
+            </div>
+            <div class="form-group">
+              <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group half-width">
+                <input type="number" [(ngModel)]="height" name="height" min="90" max="300" placeholder="Height" required />
+              </div>
+              <div class="form-group half-width">
+                <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight" min="30" max="300" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="gender" name="gender" placeholder="Gender" required />
+            </div>
+            <div class="form-group password-field">
+              <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+            </div>
+            <div class="form-group password-field">
+              <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" [(ngModel)]="heartProblems" name="heartProblems"/>
+                I have heart problems
+              </label>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
 
-    <div class="form-group">
-      <label for="birthdate">Birthdate</label>
-      <input type="date" id="birthdate" name="birthdate" required>
-    </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+            <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-
-    <div class="form-group">
-      <label>Height & Weight</label>
-      <div style="display: flex; justify-content: space-between;">
-        <input type="number" id="height" name="height" placeholder="Height (cm)" required>
-        <input type="number" id="weight" name="weight" placeholder="Weight (kg)" required>
+          </form>
+          <div class="footer">
+            <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="info-section">
+          <img src="../../assets/img/logo.png" alt="Logo" class="logo" />
+          <div class="password-info">
+            <p>Your password must contain:</p>
+            <ul>
+              <li>At least 12 characters</li>
+              <li>1 Lower case letter (a-z)</li>
+              <li>1 Upper case letter (A-Z)</li>
+              <li>1 Special character (! # $ % & ' ( ) * +)</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="gender">Gender</label>
-      <select id="gender" name="gender" required>
-        <option value="">Select</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-
-    <div class="form-group">
-      <label for="confirm-password">Confirm Password</label>
-      <input type="password" id="confirm-password" name="confirm-password" required>
-    </div>
-
-    <div class="password-rules">
-      <p>Your password must contain:</p>
-      <ul>
-        <li>At least 12 characters</li>
-        <li>1 lowercase letter (a-z)</li>
-        <li>1 uppercase letter (A-Z)</li>
-        <li>1 special character (!"#$%&'()*+)</li>
-      </ul>
-    </div>
-
-    <div class="form-group">
-      <label>
-        <input type="checkbox" name="heart-problems"> I have heart problems
-      </label>
-    </div>
-
-    <button type="submit" class="submit-btn">Submit</button>
-  </form>
-  <div class="footer">
-    <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
   </div>
-</div>
 </body>
-</html>
+
