@@ -23,7 +23,6 @@ export class AboutUsComponent {
      }
    }*/
 
-
     const token = this.authService.getSessionToken();
 
     if (token) {
@@ -39,12 +38,9 @@ export class AboutUsComponent {
       );
     } else {
       // No token found, redirect to login
-      this.router.navigate(['/login']);
+      //this.router.navigate(['/login']);
     }
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
-      return;
-    }
+
   }
   logout() {
     this.authService.logout();
