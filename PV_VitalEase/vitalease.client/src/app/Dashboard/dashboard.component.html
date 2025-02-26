@@ -15,7 +15,9 @@
           <div class="auth-buttons">
             <!-- Botões de login/logout -->
             <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-            <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+            <button *ngIf="isLoggedIn" routerLink="/myProfile" class="profile-button">
+              <i class="fas fa-user"></i> My Profile
+            </button>
           </div>
         </div>
       </div>

@@ -53,15 +53,6 @@ export class HomePageComponent implements OnInit {
     }
   }
 
-
-
-  logout() {
-    this.authService.logout();
-    this.isLoggedIn = false;
-    this.isAdmin = false;
-    this.router.navigate(['/']);
-  }
-
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }

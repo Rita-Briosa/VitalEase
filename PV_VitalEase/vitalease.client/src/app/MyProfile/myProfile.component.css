@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f8fbfd;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Garante que a row ocupe toda a largura */
+}
+
+.left {
+  flex: 1;
+}
+
+.center {
+  text-align: center;
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+  .header img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .header span {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .header button:hover {
+      background-color: #ddd;
+    }
+
+  .header a {
+    text-decoration:none;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+.profile-container {
+  display: flex;
+  justify-content: flex-start; /* Aligning the profile card to the left */
+  padding: 20px;
+  margin-left:5%;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 600px; /* Increased the width to make the card a bit larger */
+  text-align: center;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-icon {
+  font-size: 100px;
+}
+
+.profile-info p {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.profile-actions a {
+  display: block;
+  margin: 20px 0;
+  color: teal;
+  text-decoration: none;
+}
+
+.profile-actions .delete {
+  color: red;
+}
+
+.modal {
+  display: none; /* Inicialmente escondida */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 9999; /* Asegure-se de que as modais fiquem em cima de outros elementos */
+}
+
+  .modal.show {
+    display: block; /* Exibe a modal quando a classe 'show' é aplicada */
+  }
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  max-width: 100%;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  font-size: 15px; /* Ajuste o tamanho conforme necessário */
+  cursor: pointer; /* Exibe o cursor de mão ao passar sobre o lápis */
+  margin-left: 1%;
+  background-color: white;
+  border: none;
+}
+
+  .edit-btn:hover {
+    color: #0056b3; /* Cor ao passar o mouse */
+  }
+
+  .edit-btn:focus {
+    outline: none; /* Remove o outline ao clicar */
+  }

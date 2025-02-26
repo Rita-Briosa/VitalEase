@@ -14,11 +14,14 @@ import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
+import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
+
+import { MyProfileComponent } from './MyProfile/myProfile.component';
 
 @NgModule({
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
-    RegisterComponent
+    RegisterComponent, VerifyEmailComponent, MyProfileComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,

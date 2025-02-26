@@ -1,0 +1,147 @@
+
+<div class="container">
+  <div class="header">
+    <div class="row">
+      <img src="assets/img/logo.png" alt="Vital Ease Logo">
+      <a class="action-button" routerLink="#">Exercises</a>
+      <a class="action-button" routerLink="#">Training Routines</a>
+      <a class="action-button" routerLink="#">Map</a>
+      <a class="action-button" routerLink="/aboutUs">About Us</a>
+      <div class="auth-buttons">
+        <!-- Mostrar botão de Login se o usuário não estiver logado -->
+        <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+        <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-icon">👤</div>
+      <h2>{{ username }}</h2>
+    </div>
+    <div class="profile-info">
+      <p>
+        <strong>Date of Birth</strong>
+        <button class="edit-btn" (click)="openModal('birthDate')">
+          ✎
+        </button>
+        <br>
+        {{ birthDate }}
+      </p>
+
+      <p>
+        <strong>Weight</strong>
+        <button class="edit-btn" (click)="openModal('weight')">
+          ✎
+        </button>
+        <br>
+        {{ weight }}
+      </p>
+
+      <p>
+        <strong>Height</strong>
+        <button class="edit-btn" (click)="openModal('height')">
+          ✎
+        </button>
+        <br>
+        {{ height }}
+      </p>
+
+      <p>
+        <strong>Gender</strong>
+        <button class="edit-btn" (click)="openModal('gender')">
+          ✎
+        </button>
+        <br>
+        {{ gender }}
+      </p>
+
+      <p>
+        <strong>Has Heart Problems?</strong>
+        <button class="edit-btn" (click)="openModal('hasHeartProblems')">
+          ✎
+        </button>
+        <br>
+        {{ hasHeartProblems }}
+      </p>
+    </div>
+    <div class="profile-actions">
+      <a href="#">Change Password</a>
+      <a href="#">Change Email</a>
+      <a href="#" class="delete">Delete Account</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Date of Birth -->
+<div class="modal" [class.show]="activeModal === 'birthDate'">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">×</span>
+    <h2>Edit Date of Birth</h2>
+    <form (ngSubmit)="saveChanges('birthDate')">
+      <label for="birthDateInput">Date of Birth:</label>
+      <input type="text" id="birthDateInput" [(ngModel)]="birthDate" name="birthDate" required>
+      <br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for Weight -->
+<div class="modal" [class.show]="activeModal === 'weight'">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">×</span>
+    <h2>Edit Weight</h2>
+    <form (ngSubmit)="saveChanges('weight')">
+      <label for="weightInput">Weight:</label>
+      <input type="number" id="weightInput" [(ngModel)]="weight" name="weight" required>
+      <br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for Height -->
+<div class="modal" [class.show]="activeModal === 'height'">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">×</span>
+    <h2>Edit Height</h2>
+    <form (ngSubmit)="saveChanges('height')">
+      <label for="heightInput">Height:</label>
+      <input type="number" id="heightInput" [(ngModel)]="height" name="height" required>
+      <br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for Gender -->
+<div class="modal" [class.show]="activeModal === 'gender'">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">×</span>
+    <h2>Edit Gender</h2>
+    <form (ngSubmit)="saveChanges('gender')">
+      <label for="genderInput">Gender:</label>
+      <input type="text" id="genderInput" [(ngModel)]="gender" name="gender" required>
+      <br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for Heart Problems -->
+<div class="modal" [class.show]="activeModal === 'hasHeartProblems'">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">×</span>
+    <h2>Edit Heart Problems Status</h2>
+    <form (ngSubmit)="saveChanges('heartProblems')">
+      <label for="heartProblemsInput">Has Heart Problems?</label>
+      <input type="checkbox" id="heartProblemsInput" [(ngModel)]="hasHeartProblems" name="heartProblems">
+      <br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
