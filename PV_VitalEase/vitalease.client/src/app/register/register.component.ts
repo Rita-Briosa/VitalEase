@@ -20,6 +20,8 @@ export class RegisterComponent {
   errorMessage: string = '';
   heartProblems: boolean = false;
   successMessage: string = ''; // Adicionado para exibir sucesso
+  passwordStrength: number = 0; // Valor numérico da força da senha
+  passwordFeedback: string = '';
 
   constructor(private registerService: RegisterService, private router: Router) { }
 
@@ -66,6 +68,31 @@ export class RegisterComponent {
     this.password = '';
     this.confirmPassword = '';
     this.heartProblems = false;
+  }
+
+  calculatePasswordStrength(password: string): void {
+    this.passwordStrength = this.getStrengthScore(password);
+    this.passwordFeedback = this.getStrengthFeedback(this.passwordStrength);
+  }
+
+  private getStrengthScore(password: string): number {
+    let score = 0;
+
+    if (!password) return score;
+
+    if (password.length >= 12) score += 25; // Comprimento mínimo
+    if (/[a-z]/.test(password)) score += 25; // Letras minúsculas
+    if (/[A-Z]/.test(password)) score += 25; // Letras maiúsculas
+    if (/[@$!%*?&]/.test(password)) score += 25; // Caracteres especiais
+
+    return score;
+  }
+
+  // Retorna feedback textual baseado na força
+  private getStrengthFeedback(score: number): string {
+    if (score < 50) return 'Weak';
+    if (score < 75) return 'Moderate';
+    return 'Strong'
   }
 
 }
