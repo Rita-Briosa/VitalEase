@@ -235,6 +235,39 @@ namespace VitalEase.Server.Controllers
             }
 
         }
+        
+        // Delete Account
+        [HttpDelete("api/account/delete")]
+        public async Task<IActionResult> DeleteAccount()
+        {
+            // Obtém o token do cabeçalho Authorization
+            var token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+    
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(new { message = "Unauthorized: No token provided." });
+            }
+
+            // Busca o usuário no banco de dados com base no token
+            var user = _context.Users.FirstOrDefault(u => u.SessionToken == token);
+    
+            if (user == null)
+            {
+                return Unauthorized(new { message = "Unauthorized: Invalid token." });
+            }
+
+            // Registra a ação no log de auditoria antes de deletar a conta
+            await LogAction("Delete Account", "Success", user.Id);
+
+            // Remove o usuário do banco de dados
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Account deleted successfully." });
+        }
+
+         
+        
 
 
 
