@@ -14,7 +14,9 @@
       <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
 
       <!-- Mostrar botão de Logout se o usuário estiver logado -->
-      <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+      <button *ngIf="isLoggedIn" routerLink="/myProfile" class="profile-button">
+        <i class="fas fa-user"></i> My Profile
+      </button>
     </div>
   </header>
 

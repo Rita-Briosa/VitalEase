@@ -8,6 +8,7 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
+import { MyProfileComponent } from './MyProfile/myProfile.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'emailValidation', component: VerifyEmailComponent },
+  { path: 'myProfile', component: MyProfileComponent },
   { path: '**', redirectTo: '' }]
 
 
