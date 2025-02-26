@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
 
-  private apiUrl = 'https://vitalease2025.3utilities.com/api/register'; // Endereço do seu backend
+  private apiUrl = 'https://localhost:7180/api/register'; // Endereço do seu backend
 
   constructor(private http: HttpClient) { }
 

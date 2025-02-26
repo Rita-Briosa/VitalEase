@@ -38,6 +38,13 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
             }
 
+            // Verifica se a idade é maior ou igual a 16 anos
+            if (model.BirthDate > DateTime.Today.AddYears(-16))
+            {
+                await LogAction("Register Attempt", "Failed - Age restriction", 0);
+                return BadRequest(new { message = "You must be at least 16 years old to register." });
+            }
+
             var existingUser = await _context.Users
                                      .FirstOrDefaultAsync(u => u.Email == model.Email);
 
@@ -46,6 +53,16 @@ namespace VitalEase.Server.Controllers
                 // Registrar log de erro (e-mail já existente)
                 await LogAction("Register Attempt", "Failed - Email already exists", 0);
                 return BadRequest(new { message = "Email already exists" }); // Retorna erro 400
+            }
+
+            var existingUsername = await _context.Profiles
+                                     .FirstOrDefaultAsync(u => u.Username == model.Username);
+
+            if (existingUsername != null)
+            {
+                // Registrar log de erro (e-mail já existente)
+                await LogAction("Register Attempt", "Failed - Username already exists", 0);
+                return BadRequest(new { message = "Username already exists" }); // Retorna erro 400
             }
 
             var profile = new Profile
@@ -59,6 +76,7 @@ namespace VitalEase.Server.Controllers
             };
 
 
+
             if (profile == null)
             {
                 await LogAction("Register Attempt", "Failed - Error at profile creation", 0);
@@ -68,6 +86,12 @@ namespace VitalEase.Server.Controllers
 
             _context.Profiles.Add(profile);
             await _context.SaveChangesAsync();
+
+            if (!IsPasswordValid(model.Password))
+            {
+                await LogAction("Password reset attempt", "Failed - Weak password", 0);
+                return BadRequest(new { message = "Password does not meet the required criteria." });
+            } 
 
             var user = new User
             {
@@ -117,6 +141,41 @@ namespace VitalEase.Server.Controllers
 
             });
 
+        }
+
+        /// <summary>
+        /// Método para validar se a senha atende aos critérios de segurança.
+        /// </summary>
+        /// <param name="password">Senha a ser validada.</param>
+        /// <returns>True se a senha for válida, false caso contrário.</returns>
+        private bool IsPasswordValid(string password)
+        {
+            // Verificar se a senha tem pelo menos 12 caracteres
+            if (password.Length < 12)
+            {
+                return false;
+            }
+
+            // Verificar se a senha contém pelo menos uma letra minúscula
+            if (!password.Any(char.IsLower))
+            {
+                return false;
+            }
+
+            // Verificar se a senha contém pelo menos uma letra maiúscula
+            if (!password.Any(char.IsUpper))
+            {
+                return false;
+            }
+
+            // Verificar se a senha contém pelo menos um caractere especial
+            var specialChars = "!@#$%^&*(),.?\":{}|<> ";
+            if (!password.Any(c => specialChars.Contains(c)))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private async Task<bool> SendEmailConfirmation(string toEmail, string emailConfirmationLink)

@@ -21,6 +21,7 @@ namespace VitalEase.Server.ViewModel
         public int Weight { get; set; }
 
         [Required(ErrorMessage = "Gender is required")]
+        [RegularExpression("^(Male|Female)$", ErrorMessage = "Gender must be 'Male' or 'Female'")]
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "The password is required")]
