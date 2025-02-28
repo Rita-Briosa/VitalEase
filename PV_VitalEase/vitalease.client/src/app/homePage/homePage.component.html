@@ -15,9 +15,7 @@
         <div class="auth-buttons">
           <!-- Mostrar botão de Login se o usuário não estiver logado -->
           <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-          <button *ngIf="isLoggedIn" routerLink="/myProfile" class="profile-button">
-            <i class="fas fa-user"></i> My Profile
-          </button>
+          <a href="/myProfile" class="profile-icon">👤</a>
         </div>
       </div>
     </div>

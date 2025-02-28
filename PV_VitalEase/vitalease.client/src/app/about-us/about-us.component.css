@@ -10,6 +10,11 @@ body {
   flex-direction: column; /* Allows child elements to stack vertically */
 }
 
+.profile-icon {
+  font-size: 40px;
+  text-decoration: none;
+}
+
 .devs {
   flex: 1 1 40%; /* Ocupa 40% em telas maiores e encolhe em telas menores */
   max-width: 28%;

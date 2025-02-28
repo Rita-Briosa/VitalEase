@@ -14,9 +14,11 @@ namespace VitalEase.Server.ViewModel
         [EmailAddress(ErrorMessage = "Email is invalid")]
         public string Email { get; set; }
 
+        [Range(125, 250, ErrorMessage = "Height must be between 125 and 250 cm.")]
         [Required(ErrorMessage = "Height is required")]
         public  int Height{ get; set; }
 
+        [Range(30, 450, ErrorMessage = "Weight must be between 30 and 250 kg.")]
         [Required(ErrorMessage = "Weight is required")]
         public int Weight { get; set; }
 

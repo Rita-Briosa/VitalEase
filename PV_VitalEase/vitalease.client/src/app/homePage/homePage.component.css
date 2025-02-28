@@ -112,6 +112,11 @@ body {
   margin-top: 20px; /* Espaço entre os botões e outros elementos acima */
 }
 
+.profile-icon{
+    font-size: 40px;
+    text-decoration: none;
+}
+
 .column, .column1 {
   display: flex;
   flex-direction: column; /* Organiza os botões verticalmente dentro de cada coluna */
