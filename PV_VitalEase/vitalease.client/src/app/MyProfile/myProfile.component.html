@@ -73,7 +73,7 @@
       </p>
     </div>
     <div class="profile-actions">
-      <a href="#">Change Password</a>
+      <a (click)="openModal('password')">Change Password</a>
       <a href="#">Change Email</a>
       <a href="#" class="delete" onclick="openModal()">Delete Account</a>
     </div>
@@ -155,10 +155,10 @@
   <div class="modal-content">
     <h2>Edit Heart Problems Status</h2>
     <form (ngSubmit)="changeHasHeartProblems(newHasHeartProblems)">
-      <select id="heartProblemsInput" [(ngModel)]="newHasHeartProblems" name="heartProblems" required>
+      <select id="heartProblemsInput" [(ngModel)]="newHasHeartProblems"  name="heartProblems" required>
         <option value="" disabled selected>Select an option</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
+        <option value="true">True</option>
+        <option value="false">False</option>
       </select>
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
@@ -184,3 +184,66 @@
     </form>
   </div>
 </div>
+
+<div class="modal" [class.show]="activeModal === 'password'">
+  <div class="modal-content">
+    <h2>Change Password</h2>
+    <form (ngSubmit)="changePassword(oldPassword,newPassword)">
+
+      <div class="input-container1">
+        <input [type]="showOldPassword ? 'text' : 'password'" id="oldPasswordInput" [(ngModel)]="oldPassword" name="oldPassword" placeholder="Old Password" required>
+        <button type="button" class="eye-icon" (click)="togglePasswordVisibilityOld()">
+          {{ showOldPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+
+      <div class="input-container1">
+        <input [type]="showNewPassword ? 'text' : 'password'" id="newPasswordInput" name="newPassword" (input)="calculatePasswordStrength(newPassword)" [(ngModel)]="newPassword" placeholder="New Password" required>
+        <button type="button" class="eye-icon" (click)="togglePasswordVisibilityNew()">
+          {{ showNewPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+
+      <div class="password-strength-container">
+        <div class="strength-indicator">
+          <div class="strength-bar"
+               [style.width]="passwordStrength + '%'"
+               [ngClass]="{
+               'weak' : passwordStrength < 25,
+  'medium': passwordStrength >= 25 && passwordStrength < 80,
+  'strong': passwordStrength >= 80
+}"
+    ></div>
+        </div>
+        <p class="strength-feedback">{{ passwordFeedback }}</p>
+      </div>
+
+      <div class="input-container1">
+        <input [type]="showConfirmPassword ? 'text' : 'password'" id="repeatPasswordInput" [(ngModel)]="confirmPassword" name="repeatPassword" placeholder="Repeat Password" required>
+        <button type="button" class="eye-icon" (click)="togglePasswordVisibilityConfirm()">
+          {{ showConfirmPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+
+      <div class="instructions">
+        <strong>Your password must contain:</strong>
+        <ul>
+          <li>At least 12 characters</li>
+          <li>1 Lower case letter (a-z)</li>
+          <li>1 Upper case letter (A-Z)</li>
+          <li>1 Special character (!&#64;#$%...)</li>
+        </ul>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+      <div class="button-container1">
+        <button class="modalButton" (click)="closeModal()">Cancel</button>
+        <button class="modalButton" type="submit">Confirm</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
