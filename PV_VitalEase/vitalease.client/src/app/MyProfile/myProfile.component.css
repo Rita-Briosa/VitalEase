@@ -83,6 +83,7 @@ body {
   justify-content: flex-start; /* Aligning the profile card to the left */
   padding: 20px;
   margin-left:5%;
+  width:100%;
 }
 
 .profile-card {
@@ -90,14 +91,13 @@ body {
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 600px; /* Increased the width to make the card a bit larger */
+  width: 650px; /* Increased the width to make the card a bit larger */
   text-align: center;
 }
 
 .profile-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -122,49 +122,141 @@ body {
 }
 
 .modal {
-  display: none; /* Inicialmente escondida */
+  display: none;
+  align-items: center;
+  justify-content: center;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
-  z-index: 9999; /* Asegure-se de que as modais fiquem em cima de outros elementos */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: solid black ;
 }
 
-  .modal.show {
-    display: block; /* Exibe a modal quando a classe 'show' é aplicada */
-  }
+.modal.show{
+    display: flex;
+}
 
 .modal-content {
-  background-color: #fff;
+  background: #f3f7f5;
   padding: 20px;
-  border-radius: 5px;
-  width: 300px;
-  max-width: 100%;
+  border-radius: 20px ;
+  text-align: center;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
+
+.usernameEdit {
+  align-items: center; /* Alinha o lápis e o username na mesma linha */
+  font-size: 24px; /* Tamanho maior para o username */
+  margin-top: 10px; /* Espaço entre o ícone e o username */
+}
+
+input[type="date"] {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+input[type="number"] {
+  padding-right: 35px; /* Espaço para o "kg" */
+  width: 100px; /* Ajuste conforme necessário */
+  font-size: 16px;
+  text-align: right;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+input[type="text"] {
+  width: 200px; /* Ajuste conforme necessário */
+  font-size: 16px;
+  height: 30px;
+  border: 2px solid black;
+  padding-left:10px;
+  border-radius: 5px;
+}
+
+.unit {
+  position: absolute;
+  right: 10px;
+  top: 48%;
+  transform: translateY(-53%);
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  pointer-events: none; /* Para evitar interação */
+}
+
+.modalButton {
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px;
+  width: 40%;
+}
+
+.modalButton:first-of-type {
+  background: #5f9c92;
+  color: white;
+}
+
+.modalButton:last-of-type {
+  background: #5f9c92;
+  color: white;
+}
+
+.modalButton:hover {
+  opacity: 0.8;
+}
+
 
 .edit-btn {
-  font-size: 15px; /* Ajuste o tamanho conforme necessário */
-  cursor: pointer; /* Exibe o cursor de mão ao passar sobre o lápis */
+  font-size: 15px;
+  cursor: pointer; 
   margin-left: 1%;
   background-color: white;
   border: none;
 }
 
   .edit-btn:hover {
-    color: #0056b3; /* Cor ao passar o mouse */
+    color: #0056b3;
   }
 
   .edit-btn:focus {
-    outline: none; /* Remove o outline ao clicar */
+    outline: none; 
+  }
+
+select {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: white; 
+  cursor: pointer;
+}
+
+  select:focus {
+    outline: none;
+    border-color: #5f9c92;
   }

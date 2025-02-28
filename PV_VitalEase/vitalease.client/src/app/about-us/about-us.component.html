@@ -13,10 +13,7 @@
       <!-- Mostrar botão de Login se o usuário não estiver logado -->
       <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
 
-      <!-- Mostrar botão de Logout se o usuário estiver logado -->
-      <button *ngIf="isLoggedIn" routerLink="/myProfile" class="profile-button">
-        <i class="fas fa-user"></i> My Profile
-      </button>
+      <a href="/myProfile" class="profile-icon">👤</a>
     </div>
   </header>
 

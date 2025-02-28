@@ -19,7 +19,10 @@
   <div class="profile-card">
     <div class="profile-header">
       <div class="profile-icon">👤</div>
-      <h2>{{ username }}</h2>
+      <h2 class="usernameEdit">
+        {{ username }}
+        <span class="edit-btn" (click)="openModal('username')">✎</span>
+      </h2>
     </div>
     <div class="profile-info">
       <p>
@@ -38,6 +41,7 @@
         </button>
         <br>
         {{ weight }}
+        <span>kg</span>
       </p>
 
       <p>
@@ -47,6 +51,7 @@
         </button>
         <br>
         {{ height }}
+        <span>cm</span>
       </p>
 
       <p>
@@ -78,13 +83,14 @@
 <!-- Modal for Date of Birth -->
 <div class="modal" [class.show]="activeModal === 'birthDate'">
   <div class="modal-content">
-    <span class="close" (click)="closeModal()">×</span>
     <h2>Edit Date of Birth</h2>
-    <form (ngSubmit)="saveChanges('birthDate')">
-      <label for="birthDateInput">Date of Birth:</label>
-      <input type="text" id="birthDateInput" [(ngModel)]="birthDate" name="birthDate" required>
+    <form (ngSubmit)="changeBirthDate(newBirthDate)">
+      <input type="date" id="birthDateInput" [(ngModel)]="newBirthDate" name="birthDate" required>
       <br>
-      <button type="submit">Save</button>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <button class="modalButton" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" type="submit">Confirm</button>
     </form>
   </div>
 </div>
@@ -92,13 +98,17 @@
 <!-- Modal for Weight -->
 <div class="modal" [class.show]="activeModal === 'weight'">
   <div class="modal-content">
-    <span class="close" (click)="closeModal()">×</span>
     <h2>Edit Weight</h2>
-    <form (ngSubmit)="saveChanges('weight')">
-      <label for="weightInput">Weight:</label>
-      <input type="number" id="weightInput" [(ngModel)]="weight" name="weight" required>
+    <form (ngSubmit)="changeWeight(newWeight)">
+      <div class="input-container">
+        <input type="number" id="weightInput" [(ngModel)]="newWeight" name="weigh" required>
+        <span class="unit">kg</span>
+      </div>
       <br>
-      <button type="submit">Save</button>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <button class="modalButton" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" type="submit">Confirm</button>
     </form>
   </div>
 </div>
@@ -106,13 +116,17 @@
 <!-- Modal for Height -->
 <div class="modal" [class.show]="activeModal === 'height'">
   <div class="modal-content">
-    <span class="close" (click)="closeModal()">×</span>
     <h2>Edit Height</h2>
-    <form (ngSubmit)="saveChanges('height')">
-      <label for="heightInput">Height:</label>
-      <input type="number" id="heightInput" [(ngModel)]="height" name="height" required>
+    <form (ngSubmit)="changeHeight(newHeight)">
+      <div class="input-container">
+        <input type="number" id="heightInput" [(ngModel)]="newHeight" name="height" required>
+        <span class="unit">cm</span>
+      </div>
       <br>
-      <button type="submit">Save</button>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <button class="modalButton" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" type="submit">Confirm</button>
     </form>
   </div>
 </div>
@@ -120,13 +134,18 @@
 <!-- Modal for Gender -->
 <div class="modal" [class.show]="activeModal === 'gender'">
   <div class="modal-content">
-    <span class="close" (click)="closeModal()">×</span>
     <h2>Edit Gender</h2>
-    <form (ngSubmit)="saveChanges('gender')">
-      <label for="genderInput">Gender:</label>
-      <input type="text" id="genderInput" [(ngModel)]="gender" name="gender" required>
+    <form (ngSubmit)="changeGender(newGender)">
+      <select id="genderInput" [(ngModel)]="newGender" name="gender" required>
+        <option value="" disabled selected>Select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
       <br>
-      <button type="submit">Save</button>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <button class="modalButton" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" type="submit">Confirm</button>
     </form>
   </div>
 </div>
@@ -134,14 +153,34 @@
 <!-- Modal for Heart Problems -->
 <div class="modal" [class.show]="activeModal === 'hasHeartProblems'">
   <div class="modal-content">
-    <span class="close" (click)="closeModal()">×</span>
     <h2>Edit Heart Problems Status</h2>
-    <form (ngSubmit)="saveChanges('heartProblems')">
-      <label for="heartProblemsInput">Has Heart Problems?</label>
-      <input type="checkbox" id="heartProblemsInput" [(ngModel)]="hasHeartProblems" name="heartProblems">
+    <form (ngSubmit)="changeHasHeartProblems(newHasHeartProblems)">
+      <select id="heartProblemsInput" [(ngModel)]="newHasHeartProblems" name="heartProblems" required>
+        <option value="" disabled selected>Select an option</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
       <br>
-      <button type="submit">Save</button>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <button class="modalButton" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" type="submit">Confirm</button>
     </form>
   </div>
 </div>
 
+<div class="modal" [class.show]="activeModal === 'username'">
+  <div class="modal-content">
+    <h2>Edit Username</h2>
+    <form (ngSubmit)="changeUsername(newUsername)">
+      <div class="input-container">
+        <input type="text" id="usernameInput" [(ngModel)]="newUsername" name="username" required>
+      </div>
+      <br>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <button class="modalButton" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" type="submit">Confirm</button>
+    </form>
+  </div>
+</div>
