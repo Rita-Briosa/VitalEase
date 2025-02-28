@@ -16,7 +16,7 @@ export class MyProfileService {
   private apiUrlChangeHeight = 'https://localhost:7180/api/changeHeight';
   private apiUrlChangeGender = 'https://localhost:7180/api/changeGender';
   private apiUrlChangeHasHeartProblems = 'https://localhost:7180/api/changeHasHeartProblems';
-
+  private apiUrlChangePassword = 'https://localhost:7180/api/changePassword';
   private apiUrlChangeUsername = 'https://localhost:7180/api/changeUsername';
 
   constructor(private http: HttpClient) { }
@@ -47,6 +47,10 @@ export class MyProfileService {
 
   changeHasHeartProblems(hasHeartProblems: boolean, email: string): Observable<any> {
     return this.http.post<any>(this.apiUrlChangeHasHeartProblems, { hasHeartProblems , email });
+  }
+
+  changePassword(oldPassword: string, newPassword: string, email: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlChangePassword, { oldPassword,newPassword, email });
   }
 
 }

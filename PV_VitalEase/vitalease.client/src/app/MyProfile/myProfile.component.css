@@ -115,6 +115,7 @@ body {
   margin: 20px 0;
   color: teal;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .profile-actions .delete {
@@ -260,3 +261,79 @@ select {
     outline: none;
     border-color: #5f9c92;
   }
+
+
+.input-container1 {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  background: white;
+  border-radius: 5px;
+  padding: 5px;
+  justify-content: space-between;
+
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none;
+}
+
+  .input-container1 input {
+    border: none;
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+.eye-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button-container1 {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.password-strength-container {
+  margin: 15px 0;
+}
+
+.strength-indicator {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.strength-bar {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+  .strength-bar.weak {
+    background-color: red;
+  }
+
+  .strength-bar.medium {
+    background-color: orange;
+  }
+
+  .strength-bar.strong {
+    background-color: green;
+  }
+
+.strength-feedback {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+

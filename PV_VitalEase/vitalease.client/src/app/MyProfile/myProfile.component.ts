@@ -27,9 +27,16 @@ export class MyProfileComponent {
   newWeight: number = 30;
   newHeight: number = 90;
   newGender: string = '';
+  oldPassword: string = '';
   newPassword: string = '';
   newEmail: string = '';
   newHasHeartProblems: boolean = false;
+  showOldPassword: boolean = false;
+  showNewPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+  confirmPassword: string = '';
+  passwordStrength: number = 0; // Valor numérico da força da senha
+  passwordFeedback: string = '';
 
   constructor(private authService: AuthService, private router: Router, private profileService: MyProfileService) { }
 
@@ -166,11 +173,11 @@ export class MyProfileComponent {
 
   changeHasHeartProblems(hasHeartProblems: boolean): void {
 
-    if (hasHeartProblems.toString() === "yes" || hasHeartProblems.toString() === "Yes") {
+    if (hasHeartProblems.toString() === "true" || hasHeartProblems.toString() === "True") {
       hasHeartProblems = true;
 
     } else
-      if (hasHeartProblems.toString() === "No" || hasHeartProblems.toString() === "no") {
+      if (hasHeartProblems.toString() === "false" || hasHeartProblems.toString() === "False") {
         hasHeartProblems = false;
       }
     this.profileService.changeHasHeartProblems(hasHeartProblems, this.email).subscribe(
@@ -187,6 +194,61 @@ export class MyProfileComponent {
       });
   }
 
+  changePassword(oldPassword: string, newPassword: string): void {
+    if (this.newPassword === this.confirmPassword) {
+      this.profileService.changePassword(oldPassword,newPassword, this.email).subscribe(
+        (response: any) => {
+          this.successMessage = response.message;
+          this.errorMessage = '';
+          setTimeout(() => {
+            this.closeModal(); // Redireciona após 2 segundos
+          }, 2000);
+        }, (error: any) => {
+          this.errorMessage = error.error?.message;
+          this.successMessage = '';
+        });
+    } else {
+       this.errorMessage = 'Passwords do not match.';
+    }
+  }
+
+  togglePasswordVisibilityOld() {
+    this.showOldPassword = !this.showOldPassword; // Alterna entre true e false
+  }
+
+  togglePasswordVisibilityNew() {
+    this.showNewPassword = !this.showNewPassword; // Alterna entre true e false
+  }
+
+  togglePasswordVisibilityConfirm() {
+    this.showConfirmPassword = !this.showConfirmPassword; // Alterna entre true e false
+  }
+
+  calculatePasswordStrength(password: string): void {
+    this.passwordStrength = this.getStrengthScore(password);
+    this.passwordFeedback = this.getStrengthFeedback(this.passwordStrength);
+  }
+
+  private getStrengthScore(password: string): number {
+    let score = 0;
+
+    if (!password) return score;
+
+    if (password.length >= 12) score += 25; // Comprimento mínimo
+    if (/[a-z]/.test(password)) score += 25; // Letras minúsculas
+    if (/[A-Z]/.test(password)) score += 25; // Letras maiúsculas
+    if (/[@$!%*?&]/.test(password)) score += 25; // Caracteres especiais
+
+    return score;
+  }
+
+  // Retorna feedback textual baseado na força
+  private getStrengthFeedback(score: number): string {
+    if (score < 50) return 'Weak';
+    if (score < 75) return 'Moderate';
+    return 'Strong'
+  }
+
   // Função para abrir a modal específica
   openModal(field: string) {
     this.activeModal = field; // Define qual modal será aberta
@@ -199,11 +261,6 @@ export class MyProfileComponent {
     this.errorMessage = '';
   }
 
-  // Função para salvar as mudanças
-  saveChanges(field: string) {
-    console.log(`Saving ${field} changes`);
-    this.closeModal(); // Fecha a modal após salvar
-  }
 
   logout() {
     this.authService.logout();

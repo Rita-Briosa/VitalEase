@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Azure.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -328,6 +330,56 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        [HttpPost("api/changePassword")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordViewModel model)
+        {
+            try
+            {
+
+                if (!ModelState.IsValid)
+                {
+                    // Registrar log de erro (dados inválidos)
+                    await LogAction("Password change Attempt", "Failed - Invalid Data", 0);
+                    return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
+                }
+
+                var hashedOldPassword = HashPassword(model.OldPassword);
+                var user = await _context.Users
+                   .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == hashedOldPassword);
+
+                if (user == null)
+                {
+                    await LogAction("Password change Attempt", "Failed - No user found", 0);
+                    return Unauthorized(new { message = "No user found" });
+                }
+
+                if (!IsPasswordValid(model.NewPassword))
+                {
+                    await LogAction("Password change Attempt", "Failed - Password is not valid", 0);
+                    return Unauthorized(new { message = "Password is not valid" });
+                }
+
+                var newHashedPassword = HashPassword(model.NewPassword);
+
+                if(hashedOldPassword == newHashedPassword)
+                {
+                    await LogAction("Password change Attempt", "Failed - Password can not be the same as old one.", 0);
+                    return Unauthorized(new { message = "Password can not be the same as old one." });
+                }
+
+
+                user.Password = newHashedPassword;
+                await _context.SaveChangesAsync();
+
+
+                return Ok(new { message = "Password changed sucefully!!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error changing Password", error = ex.Message });
+            }
+        }
+
         private async Task LogAction(string action, string status, int UserId)
         {
             var log = new AuditLog
@@ -341,6 +393,53 @@ namespace VitalEase.Server.Controllers
             // Salvar o log no banco de dados
             _context.AuditLogs.Add(log);
             await _context.SaveChangesAsync();
+        }
+
+        private bool IsPasswordValid(string password)
+        {
+            // Verificar se a senha tem pelo menos 12 caracteres
+            if (password.Length < 12)
+            {
+                return false;
+            }
+
+            // Verificar se a senha contém pelo menos uma letra minúscula
+            if (!password.Any(char.IsLower))
+            {
+                return false;
+            }
+
+            // Verificar se a senha contém pelo menos uma letra maiúscula
+            if (!password.Any(char.IsUpper))
+            {
+                return false;
+            }
+
+            // Verificar se a senha contém pelo menos um caractere especial
+            var specialChars = "!@#$%^&*(),.?\":{}|<> ";
+            if (!password.Any(c => specialChars.Contains(c)))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Converte a senha para um array de bytes e gera o hash
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                // Converte o hash para uma string hexadecimal
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }
