@@ -74,7 +74,7 @@
     </div>
     <div class="profile-actions">
       <a (click)="openModal('password')">Change Password</a>
-      <a href="#">Change Email</a>
+      <a (click)="openModal('email')">Change Email</a>
       <a href="#" class="delete" onclick="openModal()">Delete Account</a>
     </div>
   </div>
@@ -84,13 +84,13 @@
 <div class="modal" [class.show]="activeModal === 'birthDate'">
   <div class="modal-content">
     <h2>Edit Date of Birth</h2>
-    <form (ngSubmit)="changeBirthDate(newBirthDate)">
+    <form >
       <input type="date" id="birthDateInput" [(ngModel)]="newBirthDate" name="birthDate" required>
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
       <button class="modalButton" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" type="submit">Confirm</button>
+      <button class="modalButton" (click)="changeBirthDate(newBirthDate)">Confirm</button>
     </form>
   </div>
 </div>
@@ -99,7 +99,7 @@
 <div class="modal" [class.show]="activeModal === 'weight'">
   <div class="modal-content">
     <h2>Edit Weight</h2>
-    <form (ngSubmit)="changeWeight(newWeight)">
+    <form >
       <div class="input-container">
         <input type="number" id="weightInput" [(ngModel)]="newWeight" name="weigh" required>
         <span class="unit">kg</span>
@@ -107,8 +107,8 @@
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
-      <button class="modalButton" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" type="submit">Confirm</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" (click)="changeWeight(newWeight)">Confirm</button>
     </form>
   </div>
 </div>
@@ -117,7 +117,7 @@
 <div class="modal" [class.show]="activeModal === 'height'">
   <div class="modal-content">
     <h2>Edit Height</h2>
-    <form (ngSubmit)="changeHeight(newHeight)">
+    <form>
       <div class="input-container">
         <input type="number" id="heightInput" [(ngModel)]="newHeight" name="height" required>
         <span class="unit">cm</span>
@@ -125,8 +125,8 @@
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
-      <button class="modalButton" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" type="submit">Confirm</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" (click)="changeHeight(newHeight)">Confirm</button>
     </form>
   </div>
 </div>
@@ -144,8 +144,8 @@
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
-      <button class="modalButton" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" type="submit">Confirm</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" (click)="changeGender(newGender)">Confirm</button>
     </form>
   </div>
 </div>
@@ -154,7 +154,7 @@
 <div class="modal" [class.show]="activeModal === 'hasHeartProblems'">
   <div class="modal-content">
     <h2>Edit Heart Problems Status</h2>
-    <form (ngSubmit)="changeHasHeartProblems(newHasHeartProblems)">
+    <form>
       <select id="heartProblemsInput" [(ngModel)]="newHasHeartProblems"  name="heartProblems" required>
         <option value="" disabled selected>Select an option</option>
         <option value="true">True</option>
@@ -164,7 +164,7 @@
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
       <button class="modalButton" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" type="submit">Confirm</button>
+      <button class="modalButton" (click)="changeHasHeartProblems(newHasHeartProblems)">Confirm</button>
     </form>
   </div>
 </div>
@@ -172,15 +172,15 @@
 <div class="modal" [class.show]="activeModal === 'username'">
   <div class="modal-content">
     <h2>Edit Username</h2>
-    <form (ngSubmit)="changeUsername(newUsername)">
+    <form>
       <div class="input-container">
         <input type="text" id="usernameInput" [(ngModel)]="newUsername" name="username" required>
       </div>
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
-      <button class="modalButton" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" type="submit">Confirm</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" (click)="changeUsername(newUsername)">Confirm</button>
     </form>
   </div>
 </div>
@@ -188,7 +188,7 @@
 <div class="modal" [class.show]="activeModal === 'password'">
   <div class="modal-content">
     <h2>Change Password</h2>
-    <form (ngSubmit)="changePassword(oldPassword,newPassword)">
+    <form>
 
       <div class="input-container1">
         <input [type]="showOldPassword ? 'text' : 'password'" id="oldPasswordInput" [(ngModel)]="oldPassword" name="oldPassword" placeholder="Old Password" required>
@@ -239,9 +239,31 @@
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
 
       <div class="button-container1">
-        <button class="modalButton" (click)="closeModal()">Cancel</button>
-        <button class="modalButton" type="submit">Confirm</button>
+        <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
+        <button class="modalButton" (click)="changePassword(oldPassword,newPassword)">Confirm</button>
       </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" [class.show]="activeModal === 'email'">
+  <div class="modal-content">
+    <h2>Edit Email</h2>
+    <form >
+      <div class="input-container1">
+        <input [type]="showPassword ? 'text' : 'password'" id="passwordInput" [(ngModel)]="password" name="password" placeholder="Password" required>
+        <button type="button" class="eye-icon" (click)="togglePasswordVisibility()">
+          {{ showPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+      <div class="input-container1">
+        <input type="text" id="emailInput" [(ngModel)]="newEmail" name="email" placeholder="New Email" required>
+      </div>
+      <br>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
+      <button class="modalButton" (click)="changeEmail(password,newEmail)">Confirm</button>
     </form>
   </div>
 </div>

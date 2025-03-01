@@ -121,7 +121,7 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Error at token generation" }); // Retorna erro 400
             }
 
-            var emailConfirmationLink = $"https://vitalease2025.3utilities.com/emailValidation?token={Uri.EscapeDataString(token)}";
+            var emailConfirmationLink = $"https://localhost:4200/emailValidation?token={Uri.EscapeDataString(token)}";
 
             // Enviar o email de redefinição de senha
             var emailSent = await SendEmailConfirmation(user.Email, emailConfirmationLink);
@@ -203,7 +203,7 @@ namespace VitalEase.Server.Controllers
                 var message = new MailMessage
                 {
                     From = new MailAddress(fromEmail), // Definindo o endereço de 'from' corretamente
-                    Subject = "Password Reset Request",
+                    Subject = "Register email",
                     Body = $"Click the following link to confirm your Email Address: <a href='{emailConfirmationLink}'>Email Confirmation</a>",
                     IsBodyHtml = true
                 };

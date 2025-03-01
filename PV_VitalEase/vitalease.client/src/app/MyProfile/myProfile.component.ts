@@ -31,12 +31,14 @@ export class MyProfileComponent {
   newPassword: string = '';
   newEmail: string = '';
   newHasHeartProblems: boolean = false;
+  showPassword: boolean = false;
   showOldPassword: boolean = false;
   showNewPassword: boolean = false;
   showConfirmPassword: boolean = false;
   confirmPassword: string = '';
   passwordStrength: number = 0; // Valor numérico da força da senha
   passwordFeedback: string = '';
+  password: string = '';
 
   constructor(private authService: AuthService, private router: Router, private profileService: MyProfileService) { }
 
@@ -212,6 +214,25 @@ export class MyProfileComponent {
     }
   }
 
+  changeEmail(password: string, newEmail: string): void {
+
+      this.profileService.changeEmail(password, this.email, newEmail).subscribe(
+        (response: any) => {
+          this.successMessage = response.message;
+          this.errorMessage = '';
+          setTimeout(() => {
+            this.closeModal(); // Redireciona após 2 segundos
+          }, 2000);
+        }, (error: any) => {
+          this.errorMessage = error.error?.message;
+          this.successMessage = '';
+        });
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword; // Alterna entre true e false
+  }
+
   togglePasswordVisibilityOld() {
     this.showOldPassword = !this.showOldPassword; // Alterna entre true e false
   }
@@ -252,13 +273,19 @@ export class MyProfileComponent {
   // Função para abrir a modal específica
   openModal(field: string) {
     this.activeModal = field; // Define qual modal será aberta
+    this.newUsername = this.username;
+    this.newBirthDate = this.birthDate;
+    this.newHeight = this.height;
+    this.newWeight = this.weight;
+    this.newGender = this.gender;
+    this.newHasHeartProblems = this.hasHeartProblems;
   }
 
   // Função para fechar a modal
   closeModal() {
-    this.activeModal = null; // Remove a modal ativa
     this.successMessage = '';
     this.errorMessage = '';
+    this.activeModal = null; // Remove a modal ativa
   }
 
 
