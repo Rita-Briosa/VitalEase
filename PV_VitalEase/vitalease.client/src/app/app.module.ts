@@ -17,12 +17,13 @@ import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
 
 import { MyProfileComponent } from './MyProfile/myProfile.component';
+import { ConfirmNewEmailComponent } from './ConfirmNewEmail/confirmNewEmail.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
-    RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent
+    RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,

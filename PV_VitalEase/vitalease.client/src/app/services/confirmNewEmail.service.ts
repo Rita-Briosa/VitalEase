@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class VerifyEmailService {
-  private apiUrlValidateVerifyEmailToken = 'https://localhost:7180/api/ValidateVerifyEmailToken';
+export class ConfirmNewEmailService {
+  private apiUrlValidateConfirmNewEmailToken = 'https://localhost:7180/api/ConfirmNewEmailToken';
 
   constructor(private http: HttpClient) { }
 
   validateToken(token: string): Observable<any> {
 
-    const url = `${this.apiUrlValidateVerifyEmailToken}?token=${token}`; // Adiciona o token como query parameter
+    const url = `${this.apiUrlValidateConfirmNewEmailToken}?token=${token}`; // Adiciona o token como query parameter
     return this.http.get<any>(url); // Chamada para o endpoint com GET
   }
 }

@@ -1,29 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using Azure.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using NuGet.Common;
+using System.Net.Mail;
+using System.Net;
 using VitalEase.Server.Data;
-using VitalEase.Server.Models;
 using VitalEase.Server.ViewModel;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using VitalEase.Server.Models;
+using System.Security.Cryptography;
 
 namespace VitalEase.Server.Controllers
 {
     public class MyProfileController : Controller
     {
         private readonly VitalEaseServerContext _context;
-
-        public MyProfileController(VitalEaseServerContext context)
+        private readonly IConfiguration _configuration;
+        public MyProfileController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         [HttpGet("api/getProfileInfo/{email}")]
@@ -108,8 +105,8 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Birthdate = model.BirthDate;
                 await _context.SaveChangesAsync();
 
-
-                return Ok(new {message = "Birth date changed sucefully!!"});
+                await LogAction("Birth Date change Attempt", "Success - Birth Date changed successfully.", 0);
+                return Ok(new {message = "Birth date changed successfully!!"});
             }
             catch (Exception ex) {
                 return BadRequest(new { message = "Error changing birth date", error = ex.Message });
@@ -148,8 +145,8 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Weight = model.Weight;
                 await _context.SaveChangesAsync();
 
-
-                return Ok(new { message = "Weight changed sucefully!!" });
+                await LogAction("Weight change Attempt", "Success - Weight changed successfully.", 0);
+                return Ok(new { message = "Weight changed successfully!!" });
             }
             catch (Exception ex)
             {
@@ -189,8 +186,8 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Height = model.Height;
                 await _context.SaveChangesAsync();
 
-
-                return Ok(new { message = "Height changed sucefully!!" });
+                await LogAction("Height change Attempt", "Success - Height changed successfully.", 0);
+                return Ok(new { message = "Height changed successfully!!" });
             }
             catch (Exception ex)
             {
@@ -231,8 +228,8 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Gender = model.Gender;
                 await _context.SaveChangesAsync();
 
-
-                return Ok(new { message = "Gender changed sucefully!!" });
+                await LogAction("Gender change Attempt", "Success - Gender changed successfully.", 0);
+                return Ok(new { message = "Gender changed succesfully!!" });
             }
             catch (Exception ex)
             {
@@ -272,8 +269,8 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.HasHeartProblems = model.HasHeartProblems;
                 await _context.SaveChangesAsync();
 
-
-                return Ok(new { message = "Has heart problems changed sucefully!!" });
+                await LogAction("Has Heart Problems change Attempt", "Success - Has Heart Problems changed successfully.", 0);
+                return Ok(new { message = "Has heart problems changed successfully!!" });
             }
             catch (Exception ex)
             {
@@ -321,8 +318,8 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Username = model.Username;
                 await _context.SaveChangesAsync();
 
-
-                return Ok(new { message = "Username changed sucefully!!" });
+                await LogAction("Username change Attempt", "Success - Username changed successfully.", 0);
+                return Ok(new { message = "Username changed successfully!!" });
             }
             catch (Exception ex)
             {
@@ -371,12 +368,208 @@ namespace VitalEase.Server.Controllers
                 user.Password = newHashedPassword;
                 await _context.SaveChangesAsync();
 
-
-                return Ok(new { message = "Password changed sucefully!!" });
+                await LogAction("Password change Attempt", "Success - Password changed successfully.", 0);
+                return Ok(new { message = "Password changed successfully!!" });
             }
             catch (Exception ex)
             {
+                await LogAction("Password change Attempt", "Failed - Error changing Password.", 0);
                 return BadRequest(new { message = "Error changing Password", error = ex.Message });
+            }
+        }
+
+        
+        [HttpPost("api/changeEmail")]
+        public async Task<IActionResult> ChangeEmail([FromBody] ChangeEmailViewModel model)
+        {
+            try
+            {
+
+                if (!ModelState.IsValid)
+                {
+                    // Registrar log de erro (dados inválidos)
+                    await LogAction("Email change Attempt", "Failed - Invalid Data", 0);
+                    return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
+                }
+
+                var hashedPassword = HashPassword(model.Password);
+
+                var user = await _context.Users
+                   .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == hashedPassword);
+
+                if (user == null)
+                {
+                    await LogAction("Email change Attempt", "Failed - No user found", 0);
+                    return Unauthorized(new { message = "No user found" });
+                }
+
+                var token = GenerateToken(model.NewEmail, user.Id);
+
+                var changeEmailLink = $"https://localhost:4200/confirmNewEmail?token={Uri.EscapeDataString(token)}";
+
+                var emailSent = await SendPasswordResetEmail(model.NewEmail, changeEmailLink);
+                if (!emailSent)
+                {
+                    await LogAction("Email change Attempt", "Failed - Failed to send change email to new email", user.Id);
+                    return StatusCode(500, new { message = "Failed to send change email to new email." });
+                }
+
+                var emailSentOldEmail = await SendPasswordResetEmail(user.Email, changeEmailLink);
+                if (!emailSentOldEmail)
+                {
+                    await LogAction("Email change Attempt", "Failed - Failed to send change email to old email", user.Id);
+                    return StatusCode(500, new { message = "Failed to send change email to old email." });
+                }
+
+
+                await LogAction("Email change Attempt", "Success - Password changed successfully.", user.Id);
+                return Ok(new { message = "Email verification has been sent to your old email and new email"});
+            }
+            catch (Exception ex)
+            {
+                await LogAction("Email change Attempt", "Failed - Error changing Email.", 0);
+                return BadRequest(new { message = "Error changing Email", error = ex.Message });
+            }
+        }
+
+        [HttpGet("api/ConfirmNewEmailToken")]
+        public IActionResult ConfirmNewEmailToken([FromQuery] ConfirmNewEmailViewModel model)
+        {
+            var (isValid, email, userId, tokenId) = ValidateToken(model.Token);
+
+            if (!isValid)
+            {
+
+                return BadRequest(new { message = "Token expired." });
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+
+
+            if (user == null)
+            {
+                return BadRequest(new { message = "Token inválido." });
+            }
+
+            var resetEmailToken = _context.ResetEmailTokens.FirstOrDefault(u => u.TokenId == tokenId);
+
+            if (resetEmailToken != null && resetEmailToken.IsUsed != true)
+            {
+
+                resetEmailToken.IsUsed = true;
+            }
+            else
+            {
+                return BadRequest(new { message = "Email já verificado." });
+            }
+
+            if (resetEmailToken.IsUsed == true && resetEmailToken.IsUsedOnOldEmail == true)
+            {
+                user.Email = email;
+            }
+
+            _context.SaveChanges();
+            return Ok(new { message = "Token is valid.", email });
+        }
+
+        [HttpGet("api/ConfirmOldEmailToken")]
+        public IActionResult ConfirmOldEmailToken([FromQuery] ConfirmOldEmailViewModel model)
+        {
+            var (isValid, email, userId, tokenId) = ValidateToken(model.Token);
+
+            if (!isValid)
+            {
+
+                return BadRequest(new { message = "Token expired." });
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if(user == null)
+            {
+                return BadRequest(new { message = "Token inválido." });
+            }
+
+            var resetEmailToken = _context.ResetEmailTokens.FirstOrDefault(u => u.TokenId == tokenId);
+
+            if (resetEmailToken != null && resetEmailToken.IsUsedOnOldEmail != true)
+            {
+
+                resetEmailToken.IsUsedOnOldEmail = true;
+            }
+            else
+            {
+                return BadRequest(new { message = "Email já verificado." });
+            }
+
+            if(resetEmailToken.IsUsed == true && resetEmailToken.IsUsedOnOldEmail == true)
+            {
+                user.Email = email;
+            }
+
+            _context.SaveChanges();
+            return Ok(new { message = "Token is valid.", email });
+        }
+
+        private async Task<bool> SendPasswordResetEmail(string toEmail, string emailLink)
+        {
+            try
+            {
+                var fromEmail = _configuration["EmailSettings:FromEmail"];
+                var smtpServer = _configuration["EmailSettings:SmtpServer"];
+                var smtpPortString = _configuration["EmailSettings:SmtpPort"];
+                var smtpUsername = _configuration["EmailSettings:SmtpUsername"];
+                var smtpPassword = _configuration["EmailSettings:SmtpPassword"];
+
+                // Verificar se o fromEmail está configurado corretamente
+                if (string.IsNullOrEmpty(fromEmail) || !IsValidEmail(fromEmail))
+                {
+                    throw new Exception("From email is not valid or not configured.");
+                }
+
+                // Verificar se o smtpPort é um número válido
+                if (!int.TryParse(smtpPortString, out var smtpPort))
+                {
+                    throw new Exception("SMTP port is not a valid number.");
+                }
+
+                var message = new MailMessage
+                {
+                    From = new MailAddress(fromEmail), // Definindo o endereço de 'from' corretamente
+                    Subject = "Password Reset Request",
+                    Body = $"Click the following link to confirm your email change: <a href='{emailLink}'>Reset Password</a>",
+                    IsBodyHtml = true
+                };
+
+                message.To.Add(toEmail); // Adicionando o destinatário do e-mail
+
+                using (var client = new SmtpClient(smtpServer, smtpPort))
+                {
+                    client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                    client.EnableSsl = true; // Garantir que o envio seja seguro via SSL
+                    await client.SendMailAsync(message);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Para fins de depuração, vamos logar a mensagem de erro
+                Console.WriteLine($"Error occurred while sending email: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
 
@@ -439,6 +632,127 @@ namespace VitalEase.Server.Controllers
                     builder.Append(bytes[i].ToString("x2"));
                 }
                 return builder.ToString();
+            }
+        }
+
+        public string GenerateToken(string email, int userId)
+        {
+
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new ArgumentNullException("Jwt:Key", "A chave JWT não está configurada corretamente.");
+            }
+
+            var tokenId = Guid.NewGuid().ToString();
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var expiresAt = DateTime.Now.AddMinutes(60);
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: new[]
+                {
+                    new Claim(ClaimTypes.Email, email),
+                    new Claim("userId", userId.ToString()),
+                    new Claim("tokenId", tokenId)
+                },
+                expires: expiresAt, // Define o tempo de expiração do token (1 hora, por exemplo)
+                signingCredentials: creds
+            );
+
+            var resetEmailToken = new ResetEmailTokens
+            {
+                TokenId = tokenId,         // Usando o tokenId gerado
+                CreatedAt = DateTime.Now,
+                ExpiresAt = expiresAt,
+                IsUsed = false,
+                IsUsedOnOldEmail = false,
+            };
+
+            _context.ResetEmailTokens.Add(resetEmailToken);
+            _context.SaveChanges();
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        /// <summary>
+        /// Valida o token JWT.
+        /// </summary>
+        /// <param name="token">Token a ser validado.</param>
+        /// <returns>Uma tupla com: se é válido, email e userId.</returns>
+        private (bool IsValid, string Email, int UserId, string idToken) ValidateToken(string token)
+        {
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new ArgumentNullException("Jwt:Key", "A chave JWT não está configurada corretamente.");
+            }
+            var key = Encoding.UTF8.GetBytes(jwtKey);
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            try
+            {
+                // Tente validar o token com os parâmetros necessários.
+                var claimsPrincipal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true, // Validar a chave de assinatura
+                    IssuerSigningKey = new SymmetricSecurityKey(key), // Usar a chave para validação
+                    ValidateIssuer = true, // Validar o emissor
+                    ValidateAudience = true, // Validar o público
+                    ValidIssuer = _configuration["Jwt:Issuer"], // Emissor configurado
+                    ValidAudience = _configuration["Jwt:Audience"], // Público configurado
+                    ClockSkew = TimeSpan.FromMinutes(5) // Permitir uma margem de 5 minutos para a expiração
+                }, out _);
+
+                // Obter o email e userId do token
+                var email = claimsPrincipal.FindFirst(ClaimTypes.Email)?.Value;
+                var userIdClaim = claimsPrincipal.FindFirst("userId");
+                var userId = userIdClaim != null ? int.Parse(userIdClaim.Value) : 0;
+                var tokenIdClaim = claimsPrincipal.FindFirst("tokenId");
+                var tokenId = tokenIdClaim != null ? tokenIdClaim.Value : "";
+                
+                // Validar se o email e userId são válidos
+                if (string.IsNullOrEmpty(email) || userId == 0)
+                {
+                    return (false, "", 0,tokenId);
+                }
+                var tokenRecord = _context.ResetPasswordTokens
+              .FirstOrDefault(l => l.TokenId == tokenId);
+
+                if (tokenRecord == null)
+                {
+                    // Token não encontrado na base de dados
+                    return (false, email, userId,tokenId);
+                }
+
+                if (tokenRecord.IsUsed)
+                {
+                    // Se o token já foi usado, retorna falso
+                    return (false, email, userId,tokenId);
+                }
+
+                
+                // Se chegou até aqui, o token é válido
+                return (true, email, userId,tokenId);
+            }
+            catch (SecurityTokenExpiredException)
+            {
+                // Token expirado
+                return (false, "", 0,"");
+            }
+            catch (SecurityTokenException)
+            {
+                // Token inválido, mas não expirado
+                return (false, "", 0,"");
+            }
+            catch (Exception ex)
+            {
+                // Outros erros ao validar
+                Console.WriteLine($"Error during token validation: {ex.Message}");
+                return (false, "", 0,"");
             }
         }
     }

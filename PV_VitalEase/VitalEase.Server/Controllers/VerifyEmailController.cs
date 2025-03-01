@@ -30,10 +30,6 @@ namespace VitalEase.Server.Controllers
 
                 return BadRequest(new { message = "Token expired." });
             }
-            else if (!isValid)
-            {
-                return BadRequest(new { message = "Invalid token." });
-            }
 
             var user =  _context.Users.FirstOrDefault(u => u.Email == email);
 

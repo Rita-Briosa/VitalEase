@@ -9,6 +9,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
 import { MyProfileComponent } from './MyProfile/myProfile.component';
+import { ConfirmNewEmailComponent } from './ConfirmNewEmail/confirmNewEmail.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'emailValidation', component: VerifyEmailComponent },
   { path: 'myProfile', component: MyProfileComponent },
+  { path: 'confirmNewEmail', component: ConfirmNewEmailComponent },
   { path: '**', redirectTo: '' }]
 
 
