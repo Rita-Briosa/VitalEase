@@ -1,0 +1,26 @@
+<html>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="row">
+        <img src="assets/img/logo.png" alt="Vital Ease Logo">
+        <h2>Vital Ease - Your app focused in wellness and exercise</h2>
+        <div class="auth-buttons">
+          <!-- Mostrar botão de Login se o usuário não estiver logado -->
+          <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+          <a href="/myProfile" *ngIf="isLoggedIn" class="profile-icon">👤</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <img src="assets/img/logo.png" alt="Cancellation Icon" class="cancellation-icon" />
+    <p class="message">
+      Your request to change your email address has been successfully canceled! Your account will continue using your existing email address for all communications, including notifications, updates, and account-related information.
+      If this cancellation was intentional, no further action is required. However, if this was done in error or you still wish to update your email address, you can initiate the process again at any time.
+      Thank you for keeping your account secure and up to date. If you have any questions or need further assistance, our support team is always here to help!
+    </p>
+  </div>
+</body>
+</html>
+

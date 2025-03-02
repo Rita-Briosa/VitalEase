@@ -18,12 +18,16 @@ import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
 
 import { MyProfileComponent } from './MyProfile/myProfile.component';
 import { ConfirmNewEmailComponent } from './ConfirmNewEmail/confirmNewEmail.component';
+import { ConfirmOldEmailComponent } from './ConfirmOldEmail/confirmOldEmail.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/changeEmailConfirmation.component';
+import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
 
 @NgModule({
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
-    RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent
+    RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent 
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,
