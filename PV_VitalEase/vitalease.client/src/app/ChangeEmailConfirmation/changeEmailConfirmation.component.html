@@ -1,0 +1,25 @@
+<html>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="row">
+        <img src="assets/img/logo.png" alt="Vital Ease Logo">
+        <h2>Vital Ease - Your app focused in wellness and exercise</h2>
+        <div class="auth-buttons">
+          <!-- Mostrar botão de Login se o usuário não estiver logado -->
+          <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+          <a href="/myProfile" *ngIf="isLoggedIn" class="profile-icon">👤</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <img src="assets/img/logo.png" alt="Success Icon" class="success-icon" />
+    <p class="message">
+      Your email address has been successfully updated! All future communications, including notifications, updates, and account-related information, will now be sent to your new email address.
+      If this change was made intentionally, no further action is needed. However, if you did not request this update or believe it was made in error, please contact our support team immediately for assistance.
+      Thank you for keeping your account information up to date, and we’re here to support you with anything you need!
+    </p>
+  </div>
+</body>
+</html>

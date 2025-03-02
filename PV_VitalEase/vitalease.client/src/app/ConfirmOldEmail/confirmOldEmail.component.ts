@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { ConfirmNewEmailService } from '../services/confirmNewEmail.service';
+import { ConfirmOldEmailService } from '../services/confirmOldEmail.service';
 
 @Component({
-  selector: 'app-confirm-new-email',
-  templateUrl: './confirmNewEmail.component.html',
+  selector: 'app-confirm-old-email',
+  templateUrl: './confirmOldEmail.component.html',
   standalone: false,
-  styleUrls: ['./confirmNewEmail.component.css'],
+  styleUrls: ['./confirmOldEmail.component.css'],
 })
-export class ConfirmNewEmailComponent implements OnInit {
+export class ConfirmOldEmailComponent implements OnInit {
   token: string | null = null; // Token JWT recebido
   errorMessage: string = ''; // Mensagem de erro
   successMessage: string = ''; // Mensagem de sucesso
@@ -20,7 +20,7 @@ export class ConfirmNewEmailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private ConfirmNewEmailService: ConfirmNewEmailService
+    private ConfirmOldEmailService: ConfirmOldEmailService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class ConfirmNewEmailComponent implements OnInit {
   }
 
   validateToken(token: string): void {
-    this.ConfirmNewEmailService.validateToken(token).subscribe(
+    this.ConfirmOldEmailService.validateToken(token).subscribe(
       (response) => {
         console.log(response.message); // Token válido
       },
@@ -53,9 +53,9 @@ export class ConfirmNewEmailComponent implements OnInit {
     );
   }
 
-  ConfirmNewEmailChange(): void {
+  ConfirmOldEmailChange(): void {
     if (this.token != null) {
-      this.ConfirmNewEmailService.confirmNewEmailChange(this.token).subscribe(
+      this.ConfirmOldEmailService.confirmOldEmailChange(this.token).subscribe(
         (response) => {
           this.modalInfo = 'Success';
           if (response.message === "Email changed successfully.") {
@@ -76,6 +76,7 @@ export class ConfirmNewEmailComponent implements OnInit {
             }, 2000);
           }
           this.showErrorModal(response.message);
+
         }, (error) => {
           this.modalInfo = 'Error';
           if (error.error?.message === 'Token expired.') {
@@ -83,14 +84,15 @@ export class ConfirmNewEmailComponent implements OnInit {
           } else {
             this.showErrorModal('Invalid token or an error happen. Please, try again.');
           }
-        });}
+        });
+    }
   }
 
-  CancelNewEmailChange(): void {
-    this.modalInfo = 'Success';
+  CancelOldEmailChange(): void {
     if (this.token != null) {
-      this.ConfirmNewEmailService.cancelNewEmailChange(this.token).subscribe(
+      this.ConfirmOldEmailService.cancelOldEmailChange(this.token).subscribe(
         (response) => {
+          this.modalInfo = 'Success';
           this.showErrorModal(response.message);
           setTimeout(() => {
             this.closeModal();
@@ -100,8 +102,8 @@ export class ConfirmNewEmailComponent implements OnInit {
             this.router.navigate(['/changeEmailCancellation']);
           }, 2000);
         }, (error) => {
+          this.modalInfo = 'Error';
           if (error.error?.message === 'Token expired.') {
-            this.modalInfo = 'Error';
             this.showErrorModal('Token has expired. Please, request new change email link.');
           } else {
             this.showErrorModal('Invalid token or an error happen. Please, try again.');

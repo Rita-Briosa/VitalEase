@@ -10,6 +10,9 @@ import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
 import { MyProfileComponent } from './MyProfile/myProfile.component';
 import { ConfirmNewEmailComponent } from './ConfirmNewEmail/confirmNewEmail.component';
+import { ConfirmOldEmailComponent } from './ConfirmOldEmail/confirmOldEmail.component';
+import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/changeEmailConfirmation.component';
+import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'emailValidation', component: VerifyEmailComponent },
   { path: 'myProfile', component: MyProfileComponent },
   { path: 'confirmNewEmail', component: ConfirmNewEmailComponent },
+  { path: 'confirmOldEmail', component: ConfirmOldEmailComponent },
+  { path: 'changeEmailConfirmation', component: ChangeEmailConfirmationComponent },
+  { path: 'changeEmailCancellation', component: ChangeEmailCancellationComponent },
   { path: '**', redirectTo: '' }]
 
 
