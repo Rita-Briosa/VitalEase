@@ -85,8 +85,8 @@ export class MyProfileComponent {
         this.newHasHeartProblems = this.hasHeartProblems;
       },
       (error: any) => {
-        console.error('Erro ao procurar perfil:');
-
+        this.errorMessage = error.error?.message;
+        this.openModal('error');
       }
     );
   }
@@ -203,7 +203,8 @@ export class MyProfileComponent {
           this.successMessage = response.message;
           this.errorMessage = '';
           setTimeout(() => {
-            this.closeModal(); // Redireciona após 2 segundos
+            this.closeModal();
+            this.logout();
           }, 2000);
         }, (error: any) => {
           this.errorMessage = error.error?.message;

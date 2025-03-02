@@ -433,7 +433,7 @@ namespace VitalEase.Server.Controllers
                 }
 
 
-                await LogAction("Email change Attempt", "Success - Password changed successfully.", user.Id);
+                await LogAction("Email change Attempt", "Success - Change emails are sent to old and new email's.", user.Id);
                 return Ok(new { message = "Email verification has been sent to your old email and new email"});
             }
             catch (Exception ex)
@@ -487,7 +487,7 @@ namespace VitalEase.Server.Controllers
             }
             else
             {
-                await LogAction("Email change Attempt", "Failed - Email already verified.", 0);
+                await LogAction("Email change Attempt", "Failed - Email already verified.", userId);
                 return BadRequest(new { message = "Email already verified." });
             }
 
