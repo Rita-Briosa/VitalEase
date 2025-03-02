@@ -268,4 +268,12 @@
   </div>
 </div>
 
+<div class="modal" [class.show]="activeModal === 'error'">
+  <div class="modal-content">
+    <h2>Error Getting User details, please refresh the page.</h2>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
+  </div>
+</div>
+
 
