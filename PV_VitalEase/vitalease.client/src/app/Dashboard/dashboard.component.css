@@ -192,5 +192,34 @@ body {
   .home-button:hover {
     background-color: #0056b3;
   }
- 
- 
+
+.filters {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 3 colunas iguais */
+  gap: 1rem; /* Espaço entre os elementos */
+  width: 100%; /* Ocupa o espaço todo */
+  margin-bottom: 1rem;
+}
+
+  .filters input, .filters button {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%; /* Ocupa sempre 100% da célula */
+  }
+
+  .filters button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease;
+    grid-column: span 6; /* Faz o botão ocupar todas as colunas */
+    justify-self: center; /* Centra o botão na horizontal */
+    width: 200px; /* Dá uma largura fixa ao botão (opcional) */
+  }
+
+    .filters button:hover {
+      background-color: #0056b3;
+    }
