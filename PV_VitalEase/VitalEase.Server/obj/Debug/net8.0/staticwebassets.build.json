@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "Tip+n63VkOUAhG2s7dTY+Es1AEKI+WWSqb2XoUCInW4=",
+  "Hash": "GwD1nJC10JQlPiSXV45tNkRD0WV2txLmNzFLX1YYLPY=",
   "Source": "VitalEase.Server",
   "BasePath": "_content/VitalEase.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "/Users/ritabriosa/Desktop/PV/VitalEase-1/PV_VitalEase/vitalease.client/vitalease.client.esproj",
+      "Identity": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
       "Version": 2,
       "Source": "vitalease.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

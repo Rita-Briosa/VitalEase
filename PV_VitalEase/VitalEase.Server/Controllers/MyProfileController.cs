@@ -23,6 +23,39 @@ namespace VitalEase.Server.Controllers
             _configuration = configuration;
         }
 
+        [HttpDelete("api/deleteAccount/{email}")]
+        public async Task<IActionResult> DeleteAccount(string email)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(email))
+                {
+                    return BadRequest(new { message = "Email is required" });
+                }
+
+                email = Uri.UnescapeDataString(email);
+
+                var user = await _context.Users
+                    .Include(u => u.Profile) // Inclui o perfil para garantir que seja removido também
+                    .FirstOrDefaultAsync(u => u.Email == email);
+
+                if (user == null)
+                {
+                    return NotFound(new { message = "User not found" });
+                }
+
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Account deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error deleting account", error = ex.Message });
+            }
+        }
+        
+
         [HttpGet("api/getProfileInfo/{email}")]
         public async Task<IActionResult> GetProfileInfo(string email)
         {

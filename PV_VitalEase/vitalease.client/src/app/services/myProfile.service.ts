@@ -11,8 +11,8 @@ export class MyProfileService {
   private apiUrl = 'https://localhost:7180/api'; // Endereço do seu backend ASP.NET Core
 
   private apiUrlChangeBirthDate = 'https://localhost:7180/api/changeBirthDate';
-
   private apiUrlChangeWeight = 'https://localhost:7180/api/changeWeight';
+  private apiUrlDeleteAcc = 'https://localhost:7180/api/deleteAccount';
   private apiUrlChangeHeight = 'https://localhost:7180/api/changeHeight';
   private apiUrlChangeGender = 'https://localhost:7180/api/changeGender';
   private apiUrlChangeHasHeartProblems = 'https://localhost:7180/api/changeHasHeartProblems';
@@ -24,6 +24,10 @@ export class MyProfileService {
 
   getProfileInfo(email: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/getProfileInfo/${email}`);
+  }
+
+  deleteUserAcc(email: string): Observable<any> {
+    return this.http.delete(`${this.apiUrlDeleteAcc}/${(email)}`);
   }
 
   changeBirthDate(birthDate: string, email: string): Observable<any> {
