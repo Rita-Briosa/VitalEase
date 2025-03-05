@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VitalEaseTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9607eae5cac40f620f2c26d98a5225c4e6b421c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4291e2e6f6325247b14e3e5635f426037d913833")]
 [assembly: System.Reflection.AssemblyProductAttribute("VitalEaseTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VitalEaseTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

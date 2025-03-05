@@ -36,7 +36,7 @@ namespace VitalEase.Server.Controllers
                 email = Uri.UnescapeDataString(email);
 
                 var user = await _context.Users
-                    .Include(u => u.Profile) // Inclui o perfil para garantir que seja removido também
+                    .Include(u => u.Profile) // Garante que o perfil também é carregado
                     .FirstOrDefaultAsync(u => u.Email == email);
 
                 if (user == null)
@@ -44,7 +44,12 @@ namespace VitalEase.Server.Controllers
                     return NotFound(new { message = "User not found" });
                 }
 
-                _context.Users.Remove(user);
+                if (user.Profile != null)
+                {
+                    _context.Profiles.Remove(user.Profile); // Remove o perfil corretamente
+                }
+
+                _context.Users.Remove(user); // Remove o utilizador
                 await _context.SaveChangesAsync();
 
                 return Ok(new { message = "Account deleted successfully" });
@@ -54,7 +59,7 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Error deleting account", error = ex.Message });
             }
         }
-        
+
 
         [HttpGet("api/getProfileInfo/{email}")]
         public async Task<IActionResult> GetProfileInfo(string email)
