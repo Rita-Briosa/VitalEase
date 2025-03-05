@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:4200",
 "RedirectUrl": "",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "/Users/ritabriosa/Desktop/PV/VitalEase-1/PV_VitalEase/VitalEase.Server/../vitalease.client",
+"WorkingDirectory": "C:\\Users\\ritab\\Source\\Repos\\VitalEase\\PV_VitalEase\\VitalEase.Server\\..\\vitalease.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

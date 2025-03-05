@@ -91,6 +91,24 @@ export class MyProfileComponent {
     );
   }
 
+  confirmDeleteAccount() {
+    if (confirm('Are you sure you want to delete your account? This action is irreversible!')) {
+      this.deleteAccount(this.email);
+    }
+  }
+  deleteAccount(email: string) {
+    this.profileService.deleteUserAcc(email).subscribe({
+      next: (response) => {
+        console.log('Account deleted:', response);
+        alert('Conta eliminada com sucesso!');
+      },
+      error: (error) => {
+        console.error('Error deleting account:', error);
+        alert('Erro ao eliminar conta!');
+      }
+    });
+  }
+
   changeUsername(username: string): void {
     this.profileService.changeUsername(username, this.email).subscribe(
       (response: any) => {
