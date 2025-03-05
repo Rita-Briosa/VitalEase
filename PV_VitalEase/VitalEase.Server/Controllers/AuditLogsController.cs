@@ -87,16 +87,6 @@ namespace VitalEase.Server.Controllers
                 // Fetch all logs with UserID 
                 var logs = await query.ToListAsync();
 
-                if (logs.IsNullOrEmpty())
-                {
-                    return BadRequest(new List<AuditLog>());
-                }
-
-                if (!logs.Any())
-                {
-                    return NotFound(new { message = "No logs found for this user." });
-                }
-
                 return Ok(logs);
             }
             catch (Exception ex)

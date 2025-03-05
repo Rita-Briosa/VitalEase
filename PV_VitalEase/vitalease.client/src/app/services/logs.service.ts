@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,12 +8,24 @@ import { Observable } from 'rxjs';
 export class LogsService {
 
   // O endereço da sua API que retorna os logs
-  private apiUrl = 'https://localhost:7180/api/getLogs'; // Endereço do seu backend ASP.NET Core
+  private apiUrl = 'https://localhost:7180/api'; // Endereço do seu backend ASP.NET Core
 
   constructor(private http: HttpClient) { }
 
   // Método para pegar os logs
   getLogs(): Observable<any> {
-    return this.http.get(this.apiUrl); // Envia uma requisição GET para pegar os logs
+    return this.http.get(`${this.apiUrl}/getLogs`); // Envia uma requisição GET para pegar os logs
+  }
+
+  getLogsFilter(filters: any): Observable<any> {
+    let params = new HttpParams();
+
+    Object.keys(filters).forEach(key => {
+      if (filters[key] !== null && filters[key] !== undefined && filters[key] !== '') {
+        params = params.set(key, filters[key])
+      }
+    });
+
+    return this.http.get(`${this.apiUrl}/getLogsFilter`, {params});
   }
 }

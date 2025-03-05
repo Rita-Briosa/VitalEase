@@ -35,26 +35,35 @@
             <p>{{ errorMessage }}</p>
           </div>
 
-         
-          <!-- Tabela de logs -->
-          <table *ngIf="logs.length > 0" class="logs-table">
-            <thead>
-              <tr>
-                <th>Timestamp</th>
-                <th>Action</th>
-                <th>Status</th>
-                <th>UserId</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let log of logs">
-                <td>{{ log.timestamp | date: 'short' }}</td>
-                <td>{{ log.action }}</td>
-                <td>{{ log.status }}</td>
-                <td>{{ log.userId }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="filters">
+            <input type="number" placeholder="User ID" [(ngModel)]="filters.userId" />
+            <input type="text" placeholder="User Email" [(ngModel)]="filters.userEmail" />
+            <input type="date" [(ngModel)]="filters.dateFrom" />
+            <input type="date" [(ngModel)]="filters.dateTo" />
+            <input type="text" placeholder="Action Type" [(ngModel)]="filters.actionType" />
+            <input type="text" placeholder="Status" [(ngModel)]="filters.status" />
+
+            <button (click)="getFilterLogs()">Search</button>
+          </div>
+
+            <table *ngIf="logs.length > 0" class="logs-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Action</th>
+                  <th>Status</th>
+                  <th>User</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let log of logs">
+                  <td>{{ log.timestamp | date: 'short' }}</td>
+                  <td>{{ log.action }}</td>
+                  <td>{{ log.status }}</td>
+                  <td>{{ log.userId }}</td>
+                </tr>
+              </tbody>
+            </table>
 
           <!-- Mensagem para quando não houver logs -->
           <div *ngIf="logs.length === 0" class="no-logs">

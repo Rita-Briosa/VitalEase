@@ -10,6 +10,15 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  filters: any = {
+    userId: '',
+    userEmail: '',
+    dateFrom: '',
+    dateTo: '',
+    actionType: '',
+    status: ''
+  };
+
   logs: any[] = []; // Array para armazenar os logs
   errorMessage: string = '';
   email = '';// Mensagem de erro caso algo dê errado
@@ -71,6 +80,29 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  getFilterLogs(): void {
+
+    // Converte as datas para Date, se existirem
+    if (this.filters.dateFrom) {
+      this.filters.dateFrom = this.convertToDateTime(this.filters.dateFrom);
+    }
+
+    if (this.filters.dateTo) {
+      this.filters.dateTo = this.convertToDateTime(this.filters.dateTo);
+    }
+
+    this.logsService.getLogsFilter(this.filters).subscribe(
+      (response: any) => {
+        this.logs = response;
+        console.log('Logs carregados com sucesso:', this.logs);
+      },
+      (error) => {
+        this.errorMessage = 'Erro ao carregar os logs'; // Define a mensagem de erro se a requisição falhar
+        console.log('Erro ao carregar os logs:', error);
+      }
+    )
+  }
+
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
@@ -79,5 +111,20 @@ export class DashboardComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['/']);
+  }
+
+  convertToDateTime(dateString: string): string | null {
+    if (dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Mês começa em 0, por isso somamos 1
+      const day = date.getDate().toString().padStart(2, '0');
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+
+      return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`; // Formato yyyy-MM-ddTHH:mm:ss
+    }
+    return null;
   }
 }
