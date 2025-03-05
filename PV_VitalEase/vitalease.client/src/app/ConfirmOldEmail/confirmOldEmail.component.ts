@@ -58,18 +58,7 @@ export class ConfirmOldEmailComponent implements OnInit {
       this.ConfirmOldEmailService.confirmOldEmailChange(this.token).subscribe(
         (response) => {
           this.modalInfo = 'Success';
-          if (response.message === 'Token is valid.') {
-            this.showErrorModal(response.message);
-
-            setTimeout(() => {
-              this.closeModal();
-            }, 1500);
-
-            setTimeout(() => {
-              this.router.navigate(['/']);
-            }, 2500);
-          }
-          else {
+          if (response.message === "Email changed successfully.") {
             this.showErrorModal(response.message);
 
             setTimeout(() => {
@@ -78,10 +67,15 @@ export class ConfirmOldEmailComponent implements OnInit {
 
             setTimeout(() => {
               this.router.navigate(['/changeEmailConfirmation']);
-            }, 2500);
+            }, 2000);
+          } else {
 
+            setTimeout(() => {
+              this.closeModal();
+              this.router.navigate(['/']);
+            }, 2000);
           }
-         
+          this.showErrorModal(response.message);
 
         }, (error) => {
           this.modalInfo = 'Error';

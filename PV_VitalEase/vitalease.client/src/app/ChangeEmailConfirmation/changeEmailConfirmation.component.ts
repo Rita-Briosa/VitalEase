@@ -46,6 +46,10 @@ export class ChangeEmailConfirmationComponent implements OnInit {
       // No token found, redirect to login
       this.router.navigate(['/login']);
     }
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/']);
+      return;
+    }
   }
 
 }
