@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\VitalEase.Server.props" />
+  <Import Project="../buildMultiTargeting/VitalEase.Server.props" />
 </Project>
