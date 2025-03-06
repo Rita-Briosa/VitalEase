@@ -4,3 +4,4 @@ C:/VitalEase/PV_VitalEase/vitalease.client/obj/Debug/vitalease.client.esproj.Cor
 C:/Users/zluci/OneDrive/Documentos/GitHub/VitalEase/PV_VitalEase/vitalease.client/obj/Debug/vitalease.client.esproj.CoreCompileInputs.cache
 /Users/ritabriosa/Desktop/PV/VitalEase-1/PV_VitalEase/vitalease.client/obj/Debug/vitalease.client.esproj.CoreCompileInputs.cache
 C:\Users\joana\OneDrive\Ambiente de Trabalho\Faculdade\Aulas 24-25\ESA\projeto\VitalEase\PV_VitalEase\vitalease.client\obj\Debug\vitalease.client.esproj.CoreCompileInputs.cache
+C:\VitalEase\PV_VitalEase\vitalease.client\obj\Debug\vitalease.client.esproj.CoreCompileInputs.cache

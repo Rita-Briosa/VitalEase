@@ -29,7 +29,7 @@ export class MyProfileService {
   ////////////////////////
 
   validatePassword(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrlValidatePassword, { password, email });
+    return this.http.post<any>(this.apiUrlValidatePassword, { email, password });
   }
 
   deleteUserAcc(email: string): Observable<any> {

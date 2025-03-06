@@ -92,10 +92,8 @@ namespace VitalEase.Server.Controllers
         {
             // Here you would implement the password hashing verification
             // If you're using ASP.NET Identity, you can use PasswordHasher
-            var passwordHasher = new PasswordHasher<User>();
-            var result = passwordHasher.VerifyHashedPassword(null, hashedPassword, password);
 
-            return result == PasswordVerificationResult.Success;
+            return HashPassword(password) == hashedPassword ? true : false;
         }
 
 

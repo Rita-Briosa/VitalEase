@@ -91,7 +91,7 @@
     <label for="confirmCheck">I understand the consequences</label>
 
     <div class="input-container1">
-      <input [type]="showOldPassword ? 'text' : 'password'" id="oldPasswordInput" [(ngModel)]="oldPassword" name="oldPassword" placeholder="Confirm Password" required>
+      <input [type]="showOldPassword ? 'text' : 'password'" id="oldPasswordInput" [(ngModel)]="password" name="password" placeholder="Confirm Password" required>
       <button type="button" class="eye-icon" (click)="togglePasswordVisibilityOld()">
         {{ showOldPassword ? '🙈' : '👁️' }}
       </button>
