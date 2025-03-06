@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using VitalEase.Server.Models;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Identity;
 
 namespace VitalEase.Server.Controllers
 {
@@ -23,6 +24,7 @@ namespace VitalEase.Server.Controllers
             _configuration = configuration;
         }
 
+        ///
         [HttpDelete("api/deleteAccount/{email}")]
         public async Task<IActionResult> DeleteAccount(string email)
         {
@@ -61,7 +63,45 @@ namespace VitalEase.Server.Controllers
         }
 
 
-        [HttpGet("api/getProfileInfo/{email}")]
+        [HttpPost("api/validatePassword")]
+        public async Task<IActionResult> ValidatePassword([FromBody] PasswordValidationRequest request)
+        {
+            if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))
+            {
+                return BadRequest(new { message = "Email and password are required." });
+            }
+
+            // Retrieve the user by email
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            // Validate password (you might need to implement password hashing check here)
+            var passwordIsValid = VerifyPassword(request.Password, user.Password);
+            if (!passwordIsValid)
+            {
+                return Unauthorized(new { message = "Invalid password." });
+            }
+
+            return Ok(new { message = "Password is valid." });
+        }
+
+        private bool VerifyPassword(string password, string hashedPassword)
+        {
+            // Here you would implement the password hashing verification
+            // If you're using ASP.NET Identity, you can use PasswordHasher
+            var passwordHasher = new PasswordHasher<User>();
+            var result = passwordHasher.VerifyHashedPassword(null, hashedPassword, password);
+
+            return result == PasswordVerificationResult.Success;
+        }
+
+
+    ///
+
+    [HttpGet("api/getProfileInfo/{email}")]
         public async Task<IActionResult> GetProfileInfo(string email)
         {
             try

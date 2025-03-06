@@ -39,10 +39,12 @@ export class MyProfileComponent {
   passwordStrength: number = 0; // Valor numérico da força da senha
   passwordFeedback: string = '';
   password: string = '';
+  isConfirmed: boolean = false;
 
   constructor(private authService: AuthService, private router: Router, private profileService: MyProfileService) { }
 
   ngOnInit() {
+
     const token = this.authService.getSessionToken();
 
     if (token) {
@@ -91,13 +93,33 @@ export class MyProfileComponent {
     );
   }
 
+  ////////////////////////////////////////
   confirmDeleteAccount() {
     if (confirm('Are you sure you want to delete your account? This action is irreversible!')) {
-      this.deleteAccount(this.email);
+      this.accDeleteConfirmation(this.password);
     }
   }
-  deleteAccount(email: string) {
-    this.profileService.deleteUserAcc(email).subscribe({
+
+  accDeleteConfirmation(password: string): void {
+    // Pass both email and password to the validatePassword method
+    this.profileService.validatePassword(this.email, password).subscribe( // Pass email and password
+      (response: any) => {
+        this.successMessage = response.message;
+        this.errorMessage = '';
+
+        // If password validation is successful, delete the account
+        this.deleteAccount();
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message;
+        this.successMessage = '';
+      }
+    );
+  }
+
+
+  deleteAccount() {
+    this.profileService.deleteUserAcc(this.email).subscribe({ // Agora elimina a conta usando o email
       next: (response) => {
         console.log('Account deleted:', response);
         alert('Conta eliminada com sucesso!');
@@ -109,6 +131,8 @@ export class MyProfileComponent {
     });
   }
 
+
+  ////////////////////////////////////////////////
   changeUsername(username: string): void {
     this.profileService.changeUsername(username, this.email).subscribe(
       (response: any) => {

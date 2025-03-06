@@ -12,7 +12,6 @@ export class MyProfileService {
 
   private apiUrlChangeBirthDate = 'https://localhost:7180/api/changeBirthDate';
   private apiUrlChangeWeight = 'https://localhost:7180/api/changeWeight';
-  private apiUrlDeleteAcc = 'https://localhost:7180/api/deleteAccount';
   private apiUrlChangeHeight = 'https://localhost:7180/api/changeHeight';
   private apiUrlChangeGender = 'https://localhost:7180/api/changeGender';
   private apiUrlChangeHasHeartProblems = 'https://localhost:7180/api/changeHasHeartProblems';
@@ -20,15 +19,25 @@ export class MyProfileService {
   private apiUrlChangeUsername = 'https://localhost:7180/api/changeUsername';
   private apiUrlChangeEmail = 'https://localhost:7180/api/changeEmail';
 
+  private apiUrlDeleteAcc = 'https://localhost:7180/api/deleteAccount';
+  private apiUrlValidatePassword = 'https://localhost:7180/api/validatePassword';
   constructor(private http: HttpClient) { }
 
   getProfileInfo(email: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/getProfileInfo/${email}`);
   }
+  ////////////////////////
+
+  validatePassword(email: string, password: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlValidatePassword, { password, email });
+  }
 
   deleteUserAcc(email: string): Observable<any> {
-    return this.http.delete(`${this.apiUrlDeleteAcc}/${(email)}`);
+    return this.http.get(`${this.apiUrlDeleteAcc}/${email}`);
   }
+  ///////////////////////////////
+
+
 
   changeBirthDate(birthDate: string, email: string): Observable<any> {
     return this.http.post<any>(this.apiUrlChangeBirthDate, { birthDate, email });
