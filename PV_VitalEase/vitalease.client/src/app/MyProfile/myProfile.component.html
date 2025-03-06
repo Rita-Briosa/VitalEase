@@ -75,16 +75,41 @@
     <div class="profile-actions">
       <a (click)="openModal('password')">Change Password</a>
       <a (click)="openModal('email')">Change Email</a>
-      <button class="delete-btn" (click)="confirmDeleteAccount()">🗑️ Delete</button>
+      <a (click)="openModal('deleteAcc')">Delete Account</a>
     </div>
   </div>
 </div>
+
+<!-- Modal para eliminar conta -->
+<div id="deleteModal" class="modal" [class.show]="activeModal === 'deleteAcc'">
+  <div class="modal-content">
+    <h3>Confirm Account Deletion</h3>
+    <p>Are you sure you want to delete your account? This action is irreversible!</p>
+
+    <!-- Checkbox de confirmação -->
+    <input type="checkbox" id="confirmCheck" [(ngModel)]="isConfirmed">
+    <label for="confirmCheck">I understand the consequences</label>
+
+    <div class="input-container1">
+      <input [type]="showOldPassword ? 'text' : 'password'" id="oldPasswordInput" [(ngModel)]="password" name="password" placeholder="Confirm Password" required>
+      <button type="button" class="eye-icon" (click)="togglePasswordVisibilityOld()">
+        {{ showOldPassword ? '🙈' : '👁️' }}
+      </button>
+    </div>
+    <div class="buttons">
+      <!-- Botão desativado até a checkbox ser marcada -->
+      <button (click)="confirmDeleteAccount()" [disabled]="!isConfirmed">Confirm</button>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 
 <!-- Modal for Date of Birth -->
 <div class="modal" [class.show]="activeModal === 'birthDate'">
   <div class="modal-content">
     <h2>Edit Date of Birth</h2>
-    <form >
+    <form>
       <input type="date" id="birthDateInput" [(ngModel)]="newBirthDate" name="birthDate" required>
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
@@ -99,7 +124,7 @@
 <div class="modal" [class.show]="activeModal === 'weight'">
   <div class="modal-content">
     <h2>Edit Weight</h2>
-    <form >
+    <form>
       <div class="input-container">
         <input type="number" id="weightInput" [(ngModel)]="newWeight" name="weigh" required>
         <span class="unit">kg</span>
@@ -155,7 +180,7 @@
   <div class="modal-content">
     <h2>Edit Heart Problems Status</h2>
     <form>
-      <select id="heartProblemsInput" [(ngModel)]="newHasHeartProblems"  name="heartProblems" required>
+      <select id="heartProblemsInput" [(ngModel)]="newHasHeartProblems" name="heartProblems" required>
         <option value="" disabled selected>Select an option</option>
         <option value="true">True</option>
         <option value="false">False</option>
@@ -249,7 +274,7 @@
 <div class="modal" [class.show]="activeModal === 'email'">
   <div class="modal-content">
     <h2>Edit Email</h2>
-    <form >
+    <form>
       <div class="input-container1">
         <input [type]="showPassword ? 'text' : 'password'" id="passwordInput" [(ngModel)]="password" name="password" placeholder="Password" required>
         <button type="button" class="eye-icon" (click)="togglePasswordVisibility()">
@@ -271,8 +296,8 @@
 <div class="modal" [class.show]="activeModal === 'error'">
   <div class="modal-content">
     <h2>Error Getting User details, please refresh the page.</h2>
-      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
   </div>
 </div>
 

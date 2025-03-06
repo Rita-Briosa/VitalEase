@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using VitalEase.Server.Models;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Identity;
 
 namespace VitalEase.Server.Controllers
 {
@@ -23,6 +24,7 @@ namespace VitalEase.Server.Controllers
             _configuration = configuration;
         }
 
+        ///
         [HttpDelete("api/deleteAccount/{email}")]
         public async Task<IActionResult> DeleteAccount(string email)
         {
@@ -36,7 +38,7 @@ namespace VitalEase.Server.Controllers
                 email = Uri.UnescapeDataString(email);
 
                 var user = await _context.Users
-                    .Include(u => u.Profile) // Inclui o perfil para garantir que seja removido também
+                    .Include(u => u.Profile) // Garante que o perfil também é carregado
                     .FirstOrDefaultAsync(u => u.Email == email);
 
                 if (user == null)
@@ -44,7 +46,12 @@ namespace VitalEase.Server.Controllers
                     return NotFound(new { message = "User not found" });
                 }
 
-                _context.Users.Remove(user);
+                if (user.Profile != null)
+                {
+                    _context.Profiles.Remove(user.Profile); // Remove o perfil corretamente
+                }
+
+                _context.Users.Remove(user); // Remove o utilizador
                 await _context.SaveChangesAsync();
 
                 return Ok(new { message = "Account deleted successfully" });
@@ -54,9 +61,45 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Error deleting account", error = ex.Message });
             }
         }
-        
 
-        [HttpGet("api/getProfileInfo/{email}")]
+
+        [HttpPost("api/validatePassword")]
+        public async Task<IActionResult> ValidatePassword([FromBody] PasswordValidationRequest request)
+        {
+            if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))
+            {
+                return BadRequest(new { message = "Email and password are required." });
+            }
+
+            // Retrieve the user by email
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            // Validate password (you might need to implement password hashing check here)
+            var passwordIsValid = VerifyPassword(request.Password, user.Password);
+            if (!passwordIsValid)
+            {
+                return Unauthorized(new { message = "Invalid password." });
+            }
+
+            return Ok(new { message = "Password is valid." });
+        }
+
+        private bool VerifyPassword(string password, string hashedPassword)
+        {
+            // Here you would implement the password hashing verification
+            // If you're using ASP.NET Identity, you can use PasswordHasher
+
+            return HashPassword(password) == hashedPassword ? true : false;
+        }
+
+
+    ///
+
+    [HttpGet("api/getProfileInfo/{email}")]
         public async Task<IActionResult> GetProfileInfo(string email)
         {
             try
