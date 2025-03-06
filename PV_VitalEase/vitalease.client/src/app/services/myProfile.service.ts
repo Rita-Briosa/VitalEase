@@ -33,7 +33,7 @@ export class MyProfileService {
   }
 
   deleteUserAcc(email: string): Observable<any> {
-    return this.http.get(`${this.apiUrlDeleteAcc}/${email}`);
+    return this.http.delete(`${this.apiUrlDeleteAcc}/${email}`);
   }
   ///////////////////////////////
 

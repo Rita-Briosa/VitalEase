@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\myprofile\\myprofile.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\myprofile\\myprofile.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\myprofile\\myprofile.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\myprofile\\myprofile.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\myprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\myprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\myprofile\\myprofile.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\myprofile\\myprofile.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\services\\myprofile.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -21,6 +17,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\vitalease\\pv_vitalease\\vitalease.server\\models\\passwordvalidationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\models\\passwordvalidationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,58 +43,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "myProfile.component.html",
-              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
-              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
-              "RelativeToolTip": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAewLYAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-03-06T00:37:55.495Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "myProfile.component.ts",
               "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.ts",
               "RelativeDocumentMoniker": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.ts",
               "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.ts",
               "RelativeToolTip": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.ts",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAgwG8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAgwHkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-03-06T00:30:48.204Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "myProfile.component.html",
+              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-06T00:57:31.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAEwEwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T00:41:35.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "myProfile.service.ts",
               "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\myProfile.service.ts",
               "RelativeDocumentMoniker": "vitalease.client\\src\\app\\services\\myProfile.service.ts",
               "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\myProfile.service.ts",
               "RelativeToolTip": "vitalease.client\\src\\app\\services\\myProfile.service.ts",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAACIAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABUAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-03-06T00:09:46.577Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MyProfileController.cs",
-              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\MyProfileController.cs",
-              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\MyProfileController.cs",
-              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\MyProfileController.cs",
-              "RelativeToolTip": "VitalEase.Server\\Controllers\\MyProfileController.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAA3wFIAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T00:06:50.745Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "PasswordValidationRequest.cs",
               "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Models\\PasswordValidationRequest.cs",
               "RelativeDocumentMoniker": "VitalEase.Server\\Models\\PasswordValidationRequest.cs",
