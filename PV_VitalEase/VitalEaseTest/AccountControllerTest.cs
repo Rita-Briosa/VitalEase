@@ -3,6 +3,7 @@ using VitalEase.Server.Controllers;
 using VitalEase.Server.Data;
 using VitalEase.Server.Models;
 using VitalEase.Server.ViewModel;
+using Microsoft.Extensions.Configuration;
 using Xunit;
 using Moq;
 using System;
@@ -16,10 +17,12 @@ namespace VitalEaseTest
     public class AccountControllerTests : IClassFixture<VitalEaseContextFixture>
     {
         private readonly VitalEaseServerContext _context;
+        private readonly Mock<IConfiguration> _configurationMock;
 
         public AccountControllerTests(VitalEaseContextFixture fixture)
         {
             _context = fixture.VitalEaseTestContext;
+            _configurationMock = new Mock<IConfiguration>(); // Mock do IConfiguration
 
             if (!_context.Users.Any())
             {
@@ -48,7 +51,7 @@ namespace VitalEaseTest
         public async Task Login_UserNotFound_ReturnsUnauthorized()
         {
             // Arrange
-            var controller = new AccountController(_context);
+            var controller = new AccountController(_context, _configurationMock.Object);
 
             var model = new LoginViewModel { Email = "user1234@test.com", Password = "hashed_password" }; // Email inexistente
 
@@ -78,7 +81,7 @@ namespace VitalEaseTest
             VitalEaseContextFixture fixture = new VitalEaseContextFixture();
             var context = fixture.VitalEaseTestContext;
             // Arrange
-            var controller = new AccountController(context);
+            var controller = new AccountController(context, _configurationMock.Object);
 
             var model = new LoginViewModel { Email = "user@example.com", Password = "wrong_password" }; // Senha errada
 
@@ -101,7 +104,7 @@ namespace VitalEaseTest
         public async Task Login_AccountBlocked_ReturnsUnauthorized()
         {
             // Arrange
-            var controller = new AccountController(_context);
+            var controller = new AccountController(_context, _configurationMock.Object);
 
 
             var auditLogs = new List<AuditLog>
@@ -138,7 +141,7 @@ namespace VitalEaseTest
         public async Task Login_Success_ReturnsOkWithToken()
         {
             // Arrange
-            var controller = new AccountController(_context);
+            var controller = new AccountController(_context, _configurationMock.Object);
 
             var model = new LoginViewModel { Email = "user@example.com", Password = "Password1234!" };
 

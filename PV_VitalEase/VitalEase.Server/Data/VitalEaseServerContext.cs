@@ -24,5 +24,13 @@ namespace VitalEase.Server.Data
 
         public DbSet<ResetEmailTokens> ResetEmailTokens { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Exercise>()
+                .HasMany(e => e.Media)  // Um exercício tem muitas mídias
+                .WithOne(m => m.Exercise)  // Cada mídia pertence a um exercício
+                .HasForeignKey(m => m.ExerciseId)  // Chave estrangeira
+                .OnDelete(DeleteBehavior.Cascade);  // Se deletar exercício, deleta mídias
+        }
     }
 }

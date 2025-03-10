@@ -13,6 +13,7 @@ import { ConfirmNewEmailComponent } from './ConfirmNewEmail/confirmNewEmail.comp
 import { ConfirmOldEmailComponent } from './ConfirmOldEmail/confirmOldEmail.component';
 import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/changeEmailConfirmation.component';
 import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
+import { ExercisesComponent } from './Exercises/exercises.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'confirmOldEmail', component: ConfirmOldEmailComponent },
   { path: 'changeEmailConfirmation', component: ChangeEmailConfirmationComponent },
   { path: 'changeEmailCancellation', component: ChangeEmailCancellationComponent },
+  { path: 'exercises', component: ExercisesComponent },
   { path: '**', redirectTo: '' }]
 
 

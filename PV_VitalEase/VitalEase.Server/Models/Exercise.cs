@@ -6,6 +6,13 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Type { get; set; }
+
+        public string DifficultyLevel { get; set; }
+
+        public string MuscleGroup { get; set; }
+
+        public string EquipmentNecessary { get; set; }
+
         public int Reps { get; set; }
         public int Duration { get; set; } // in seconds
         public List<Media> Media { get; set; } = new();
