@@ -61,8 +61,20 @@ namespace VitalEase.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DifficultyLevel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Duration")
                         .HasColumnType("int");
+
+                    b.Property<string>("EquipmentNecessary")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MuscleGroup")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -120,7 +132,7 @@ namespace VitalEase.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ExerciseId")
+                    b.Property<int>("ExerciseId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -330,9 +342,13 @@ namespace VitalEase.Server.Migrations
 
             modelBuilder.Entity("VitalEase.Server.Models.Media", b =>
                 {
-                    b.HasOne("VitalEase.Server.Models.Exercise", null)
+                    b.HasOne("VitalEase.Server.Models.Exercise", "Exercise")
                         .WithMany("Media")
-                        .HasForeignKey("ExerciseId");
+                        .HasForeignKey("ExerciseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exercise");
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.User", b =>

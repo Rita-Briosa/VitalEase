@@ -22,12 +22,14 @@ import { ConfirmOldEmailComponent } from './ConfirmOldEmail/confirmOldEmail.comp
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/changeEmailConfirmation.component';
 import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
+import { ExercisesComponent } from './Exercises/exercises.component';
+
 
 @NgModule({
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent 
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,
