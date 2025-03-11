@@ -47,32 +47,39 @@
     <div class="modal-content">
       <h2>{{ modalExercise?.name }}</h2>
 
+      
+
       <div *ngIf="media && media.length > 0">
-        <!-- Controle para navegação entre imagens ou vídeos -->
-        <div *ngIf="media[activeMediaIndex].type === 'Image'">
-          <img [src]="media[activeMediaIndex].url" class="image" alt="Exercise Image">
+        <div class="media-container">
+
+          <button class="media-navigation previous" *ngIf="activeMediaIndex > 0" (click)="previousMedia()">
+            &#8592; <!-- Setinha para a esquerda -->
+          </button>
+
+          <div *ngIf="media[activeMediaIndex].type === 'Image'">
+            <img [src]="media[activeMediaIndex].url" class="image" alt="Exercise Image">
+          </div>
+          <div *ngIf="media[activeMediaIndex].type === 'Video'">
+            <iframe [src]="sanitizeUrl(media[activeMediaIndex].url)" class="Video" frameborder="0" allowfullscreen></iframe>
+          </div>
+
+          <!-- Botões de navegação para alternar entre imagens e vídeos -->
+          <button class="media-navigation next" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">
+            &#8594; <!-- Setinha para a direita -->
+          </button>
         </div>
-        <div *ngIf="media[activeMediaIndex].type === 'Video'">
-          <iframe [src]="sanitizeUrl(media[activeMediaIndex].url)" class="Video" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <!-- Botões de navegação para alternar entre imagens e vídeos -->
-        <div >
-          <button class="media-navigation" *ngIf="activeMediaIndex > 0" (click)="previousMedia()">Previous</button>
-          <button class="media-navigation" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">Next</button>
-        </div>
+        <!-- Informações do exercício -->
+        <span [ngClass]="modalExercise?.type"><strong>Type:</strong> {{ modalExercise?.type }}</span><br />
+        <span><strong>Description:</strong> {{ modalExercise?.description }}</span><br />
+        <span><strong>Difficulty:</strong> {{ modalExercise?.difficultyLevel }}</span><br />
+        <span><strong>Muscle Group:</strong> {{ modalExercise?.muscleGroup }}</span><br />
+        <span><strong>Necessary equipment:</strong> {{ modalExercise?.equipmentNecessary }}</span><br />
+
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+        <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
       </div>
-
-      <!-- Informações do exercício -->
-      <span [ngClass]="modalExercise?.type"><strong>Type:</strong> {{ modalExercise?.type }}</span><br />
-      <span><strong>Description:</strong> {{ modalExercise?.description }}</span><br />
-      <span><strong>Difficulty:</strong> {{ modalExercise?.difficultyLevel }}</span><br />
-      <span><strong>Muscle Group:</strong> {{ modalExercise?.muscleGroup }}</span><br />
-      <span><strong>Necessary equipment:</strong> {{ modalExercise?.equipmentNecessary }}</span><br />
-
-      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
-    </div>
   </div>
 
 </body>
