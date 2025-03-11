@@ -226,3 +226,44 @@ body {
   font-size: 40px;
   text-decoration: none;
 }
+
+
+.image {
+  width: 100%; /* Ajusta a largura da imagem ao tamanho disponível */
+  max-width: 500px; /* Define uma largura máxima para a imagem */
+  height: auto; /* Mantém a proporção da imagem */
+  margin: 0 auto; /* Centraliza a imagem horizontalmente */
+}
+
+/* Ajustando o tamanho do vídeo */
+.Video {
+  width: 100%; /* Ajusta a largura do vídeo ao tamanho disponível */
+  max-width: 500px; /* Define uma largura máxima para o vídeo */
+  height: auto; /* Mantém a proporção do vídeo */
+  margin: 0 auto; /* Centraliza o vídeo horizontalmente */
+}
+
+.media-navigation {
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px;
+  width: 40%;
+}
+
+  .media-navigation:first-of-type {
+    background: #5f9c92;
+    color: white;
+  }
+
+  .media-navigation:last-of-type {
+    background: #5f9c92;
+    color: white;
+  }
+
+  .media-navigation:hover {
+    opacity: 0.8;
+  }

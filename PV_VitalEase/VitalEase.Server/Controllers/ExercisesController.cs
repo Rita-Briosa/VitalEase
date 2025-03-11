@@ -28,7 +28,7 @@
 
                 try
                 {
-                    // Fetch all logs from the database
+                    // Fetch all exercises from the database
                     var exercises = await _context.Exercises.ToListAsync();
 
 
@@ -46,5 +46,30 @@
                     return BadRequest(new { message = "Error fetching exercises", error = ex.Message });
                 }
             }
+
+        [HttpGet("api/getMedia/{exerciseId}")]
+        public async Task<IActionResult> GetMedia(int exerciseId)
+        {
+
+            try
+            {
+                // Fetch all media from the database
+                var media = await _context.Media.Where( m => m.ExerciseId == exerciseId).ToListAsync();
+
+
+                if (media.IsNullOrEmpty())
+                {
+                    return BadRequest(new List<Media>());
+                }
+
+                // Return the logs in JSON format
+                return Ok(media);
+            }
+            catch (Exception ex)
+            {
+                // Handle error and return a bad request response
+                return BadRequest(new { message = "Error fetching media", error = ex.Message });
+            }
         }
+    }
 }

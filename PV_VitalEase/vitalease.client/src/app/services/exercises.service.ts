@@ -17,4 +17,8 @@ export class ExercisesService {
     return this.http.get(`${this.apiUrl}/getExercises`); // Envia uma requisição GET para pegar os logs
   }
 
+  getMedia(exerciseId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getMedia/${exerciseId}`); // Correto: agora o exerciseId é passado corretamente na URL
+  }
+
 }
