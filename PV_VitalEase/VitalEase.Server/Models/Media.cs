@@ -7,9 +7,8 @@
         public string Url { get; set; }
         public string Type { get; set; }
 
-        // Relacionamento com Exercise
         public int ExerciseId { get; set; }  // Chave estrangeira
-        public Exercise Exercise { get; set; }  // Propriedade de navegação
+        public Exercise Exercise { get; set; }
 
         public void DeleteMedia()
         {

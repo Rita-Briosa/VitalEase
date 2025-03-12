@@ -149,27 +149,27 @@ body {
   }
 
 
-.warmup-text {
+.Warmup {
   color: orange;
   font-weight: bold;
 }
 
-.cooldown-text {
+.Cooldown {
   color: blue;
   font-weight: bold;
 }
 
-.stretching-text {
+.Stretching{
   color: green;
   font-weight: bold;
 }
 
-.muscle-text {
+.Muscle-focused {
   color: red;
   font-weight: bold;
 }
 
-.default-text {
+.Default {
   color: black; /* Caso não se encaixe em nenhuma categoria */
 }
 

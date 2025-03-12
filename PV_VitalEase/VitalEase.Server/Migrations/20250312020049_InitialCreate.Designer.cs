@@ -12,7 +12,7 @@ using VitalEase.Server.Data;
 namespace VitalEase.Server.Migrations
 {
     [DbContext(typeof(VitalEaseServerContext))]
-    [Migration("20250310031058_InitialCreate")]
+    [Migration("20250312020049_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,21 @@ namespace VitalEase.Server.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ExerciseRoutine", b =>
+                {
+                    b.Property<int>("ExercisesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoutinesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExercisesId", "RoutinesId");
+
+                    b.HasIndex("RoutinesId");
+
+                    b.ToTable("ExerciseRoutine");
+                });
 
             modelBuilder.Entity("VitalEase.Server.Models.AuditLog", b =>
                 {
@@ -86,16 +101,11 @@ namespace VitalEase.Server.Migrations
                     b.Property<int>("Reps")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RoutineId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoutineId");
 
                     b.ToTable("Exercises");
                 });
@@ -336,11 +346,19 @@ namespace VitalEase.Server.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("VitalEase.Server.Models.Exercise", b =>
+            modelBuilder.Entity("ExerciseRoutine", b =>
                 {
+                    b.HasOne("VitalEase.Server.Models.Exercise", null)
+                        .WithMany()
+                        .HasForeignKey("ExercisesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("VitalEase.Server.Models.Routine", null)
-                        .WithMany("Exercises")
-                        .HasForeignKey("RoutineId");
+                        .WithMany()
+                        .HasForeignKey("RoutinesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.Media", b =>
@@ -368,11 +386,6 @@ namespace VitalEase.Server.Migrations
             modelBuilder.Entity("VitalEase.Server.Models.Exercise", b =>
                 {
                     b.Navigation("Media");
-                });
-
-            modelBuilder.Entity("VitalEase.Server.Models.Routine", b =>
-                {
-                    b.Navigation("Exercises");
                 });
 #pragma warning restore 612, 618
         }

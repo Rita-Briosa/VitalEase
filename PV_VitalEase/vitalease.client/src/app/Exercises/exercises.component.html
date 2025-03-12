@@ -28,11 +28,7 @@
       <div class="exercise-card" *ngFor="let exercise of exercises">
         <div class="exercise-info">
           <strong>{{ exercise.name }}</strong> <br />
-          <span [ngClass]="getTypeClass(exercise.type)"><strong>Type: </strong> {{ exercise.type }}</span><br />
-          <span><strong>Description: </strong> {{ exercise.description }}</span><br />
-          <span><strong>Difficulty: </strong> {{ exercise.difficultyLevel }}</span><br />
-          <span><strong>Muscle Group: </strong> {{ exercise.muscleGroup }}</span><br />
-          <span><strong>Equipment Necessary: </strong> {{ exercise.equipmentNecessary }}</span><br />
+          <span>{{ exercise.description }}</span><br />
         </div>
         <div class="exercise-actions">
           <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
