@@ -17,6 +17,8 @@
         public int Duration { get; set; } // in seconds
         public List<Media> Media { get; set; } = new();
 
+        public List<Routine> Routines { get; set; } = new();
+
         public void AddMedia(Media media)
         {
             Media.Add(media);

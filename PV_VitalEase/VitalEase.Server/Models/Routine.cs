@@ -7,6 +7,8 @@
         public string Description { get; set; }
         public string Type { get; set; }
         public RoutineLevel Level { get; set; }
+
+        
         public List<Exercise> Exercises { get; set; } = new();
 
         public int CalculateTotalDuration()
@@ -33,5 +35,6 @@
         {
             Exercises.Remove(exercise);
         }
+        
     }
 }

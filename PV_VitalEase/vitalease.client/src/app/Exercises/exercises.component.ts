@@ -149,6 +149,7 @@ export class ExercisesComponent implements OnInit {
     this.activeModal = ''; // Fechar a modal
     this.modalExercise = null; // Limpa o exercício selecionado
     this.media = [];
+    this.activeMediaIndex = 0;
   }
 
   previousMedia() {
