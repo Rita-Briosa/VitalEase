@@ -24,5 +24,26 @@ namespace VitalEase.Server.Data
 
         public DbSet<ResetEmailTokens> ResetEmailTokens { get; set; }
 
+        public DbSet<ExerciseRoutine> ExerciseRoutines { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configurando o relacionamento muitos-para-muitos entre Exercise e Routine usando a tabela de junção
+            modelBuilder.Entity<ExerciseRoutine>()
+                .HasKey(er => new { er.ExerciseId, er.RoutineId }); // Chave composta
+
+            modelBuilder.Entity<ExerciseRoutine>()
+                .HasOne(er => er.Exercise)
+                .WithMany(e => e.ExerciseRoutines)
+                .HasForeignKey(er => er.ExerciseId);
+
+            modelBuilder.Entity<ExerciseRoutine>()
+                .HasOne(er => er.Routine)
+                .WithMany(r => r.ExerciseRoutines)
+                .HasForeignKey(er => er.RoutineId);
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class ExercisesService {
   // O endereço da sua API que retorna os logs
   private apiUrl = 'https://localhost:7180/api'; // Endereço do seu backend ASP.NET Core
 
+  private apiUrlAddRoutine = 'https://localhost:7180/api/addRoutine';
   constructor(private http: HttpClient) { }
 
   // Método para pegar os logs
@@ -19,6 +20,26 @@ export class ExercisesService {
 
   getMedia(exerciseId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/getMedia/${exerciseId}`); // Correto: agora o exerciseId é passado corretamente na URL
+  }
+
+  getFilteredExercises(filters: any): Observable<any> {
+    let params = new HttpParams();
+
+    Object.keys(filters).forEach(key => {
+      if (filters[key] !== null && filters[key] !== undefined && filters[key] !== '') {
+        params = params.set(key, filters[key])
+      }
+    });
+
+    return this.http.get(`${this.apiUrl}/getFilteredExercises`, { params });
+  }
+
+  getRoutines(userId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getRoutinesOnExercises/${userId}`); // Correto: agora o exerciseId é passado corretamente na URL
+  }
+
+  addRoutine(routineId: number, exerciseId: number): Observable<any> {
+    return this.http.post<any>(this.apiUrlAddRoutine, { routineId, exerciseId });
   }
 
 }

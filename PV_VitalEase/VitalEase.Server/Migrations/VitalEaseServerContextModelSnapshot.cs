@@ -22,21 +22,6 @@ namespace VitalEase.Server.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ExerciseRoutine", b =>
-                {
-                    b.Property<int>("ExercisesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoutinesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ExercisesId", "RoutinesId");
-
-                    b.HasIndex("RoutinesId");
-
-                    b.ToTable("ExerciseRoutine");
-                });
-
             modelBuilder.Entity("VitalEase.Server.Models.AuditLog", b =>
                 {
                     b.Property<int>("Id")
@@ -76,9 +61,8 @@ namespace VitalEase.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DifficultyLevel")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DifficultyLevel")
+                        .HasColumnType("int");
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");
@@ -105,6 +89,21 @@ namespace VitalEase.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Exercises");
+                });
+
+            modelBuilder.Entity("VitalEase.Server.Models.ExerciseRoutine", b =>
+                {
+                    b.Property<int>("ExerciseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoutineId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExerciseId", "RoutineId");
+
+                    b.HasIndex("RoutineId");
+
+                    b.ToTable("ExerciseRoutines");
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.FavoriteLocation", b =>
@@ -275,7 +274,12 @@ namespace VitalEase.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Routines");
                 });
@@ -291,6 +295,9 @@ namespace VitalEase.Server.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("RoutineId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -298,6 +305,8 @@ namespace VitalEase.Server.Migrations
                         .HasColumnType("time");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoutineId");
 
                     b.ToTable("ScheduledRoutines");
                 });
@@ -343,19 +352,23 @@ namespace VitalEase.Server.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ExerciseRoutine", b =>
+            modelBuilder.Entity("VitalEase.Server.Models.ExerciseRoutine", b =>
                 {
-                    b.HasOne("VitalEase.Server.Models.Exercise", null)
-                        .WithMany()
-                        .HasForeignKey("ExercisesId")
+                    b.HasOne("VitalEase.Server.Models.Exercise", "Exercise")
+                        .WithMany("ExerciseRoutines")
+                        .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VitalEase.Server.Models.Routine", null)
-                        .WithMany()
-                        .HasForeignKey("RoutinesId")
+                    b.HasOne("VitalEase.Server.Models.Routine", "Routine")
+                        .WithMany("ExerciseRoutines")
+                        .HasForeignKey("RoutineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Exercise");
+
+                    b.Navigation("Routine");
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.Media", b =>
@@ -367,6 +380,28 @@ namespace VitalEase.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Exercise");
+                });
+
+            modelBuilder.Entity("VitalEase.Server.Models.Routine", b =>
+                {
+                    b.HasOne("VitalEase.Server.Models.User", "User")
+                        .WithMany("Routines")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VitalEase.Server.Models.ScheduledRoutine", b =>
+                {
+                    b.HasOne("VitalEase.Server.Models.Routine", "Routine")
+                        .WithMany("ScheduledRoutines")
+                        .HasForeignKey("RoutineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Routine");
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.User", b =>
@@ -382,7 +417,21 @@ namespace VitalEase.Server.Migrations
 
             modelBuilder.Entity("VitalEase.Server.Models.Exercise", b =>
                 {
+                    b.Navigation("ExerciseRoutines");
+
                     b.Navigation("Media");
+                });
+
+            modelBuilder.Entity("VitalEase.Server.Models.Routine", b =>
+                {
+                    b.Navigation("ExerciseRoutines");
+
+                    b.Navigation("ScheduledRoutines");
+                });
+
+            modelBuilder.Entity("VitalEase.Server.Models.User", b =>
+                {
+                    b.Navigation("Routines");
                 });
 #pragma warning restore 612, 618
         }

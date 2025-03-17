@@ -149,12 +149,12 @@ body {
   }
 
 
-.Warmup {
+.Warm-up {
   color: orange;
   font-weight: bold;
 }
 
-.Cooldown {
+.Cool-down {
   color: blue;
   font-weight: bold;
 }
@@ -173,12 +173,12 @@ body {
   color: black; /* Caso não se encaixe em nenhuma categoria */
 }
 
-.warmup {
+.warm-up {
   color: orange;
   font-weight: bold;
 }
 
-.cooldown {
+.cool-down {
   color: blue;
   font-weight: bold;
 }
@@ -263,3 +263,61 @@ body {
   .media-navigation:hover {
     color: #007bff; /* Cor para o hover */
   }
+
+
+.filters {
+  display: grid;
+  gap: 1rem; /* Espaço entre os elementos */
+  width: 100%;
+  margin: 1rem auto; /* Centraliza o bloco de filtros */
+  padding: 1rem;
+  background: #f0f0f0; /* Fundo suave para destacar os filtros */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+  .filters select,
+  .filters input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%; /* Garante que o input ocupe a célula inteira */
+    background: #fff;
+  }
+
+  .filters button {
+    background-color: #5c8a80;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    grid-column: span 2; /* O botão ocupa duas colunas no grid */
+    justify-self: center; /* Centraliza o botão na célula */
+    width: 200px;
+  }
+
+    .filters button:hover {
+      background-color: #476e66;
+    }
+
+.modal-content select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%; /* Garante que o input ocupe a célula inteira */
+  background: #fff;
+}
+
+.alert-danger{
+    color: red;
+}
+
+.successMessage{
+    color: green;
+}

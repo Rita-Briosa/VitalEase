@@ -14,16 +14,26 @@ import { HttpClient } from '@angular/common/http';
 
 export class ExercisesComponent implements OnInit {
 
+  filters: any = {
+    type: '',
+    difficultyLevel: null,
+    muscleGroup: '',
+    equipmentNeeded: '',
+  };
 
   userInfo: any = null;
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
   exercises: any[] = []; // Array para armazenar os exercises
+  routines: any[] = []; // Array para armazenar as routines
   errorMessage: string = '';
   activeModal: string = '';
   modalExercise: any = null; // Armazena o exercício para a modal
   media: any[] = []; // Array para armazenar os media
   activeMediaIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
+  selectedSortedOption: string = '';
+  selectedRoutine: number = 0;// Armazena a rotina selecionada
+  successMessage: string = '';
 
 
   constructor(
@@ -79,15 +89,55 @@ export class ExercisesComponent implements OnInit {
     );
   }
 
+  getRoutines(): void {
+    this.exercisesService.getRoutines(this.userInfo.id).subscribe(
+      (response: any) => {
+        this.routines = response; // Armazena as routines na variável 'routines'
+        console.log('Routines loaded successfully:', this.routines);
+      },
+      (error: any) => {
+        this.errorMessage = 'Error loading routines'; // Define a mensagem de erro se a requisição falhar
+        console.log('Error loading routines:', error);
+      }
+    );
+  }
+
   getModalExerciseMedia(): void {
     this.exercisesService.getMedia(this.modalExercise.id).subscribe(
       (response: any) => {
-        this.media = response; // Armazena os exercises na variável 'exercises'
+        this.media = response; // Armazena os media na variável 'media'
         console.log('Exercise media loaded successfully:', this.media);
       },
       (error: any) => {
         this.errorMessage = 'Error loading exercise media'; // Define a mensagem de erro se a requisição falhar
         console.log('Error loading exercise media:', error);
+      }
+    );
+  }
+
+  addRoutine(): void {
+    if (!this.selectedRoutine || !this.modalExercise) {
+      this.errorMessage = 'Please select a routine before adding.';
+      return;
+    }
+
+    const exerciseId = this.modalExercise.id;
+    const routineId = this.selectedRoutine;
+
+    console.log('Adding exercise:', exerciseId, 'to routine:', routineId);
+
+    this.exercisesService.addRoutine(routineId, exerciseId).subscribe(
+      (response: any) => {
+        this.successMessage = response.message;
+        this.errorMessage = '';
+
+        setTimeout(() => {
+          this.closeModal();
+        }, 2000);
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message || 'An error occurred';
+        this.successMessage = '';
       }
     );
   }
@@ -110,9 +160,9 @@ export class ExercisesComponent implements OnInit {
 
   getTypeClass(type: string): string {
     switch (type.toLowerCase()) {
-      case 'warmup':
+      case 'warm-up':
         return 'warmup-text';
-      case 'cooldown':
+      case 'cool-down':
         return 'cooldown-text';
       case 'stretching':
         return 'stretching-text';
@@ -125,9 +175,9 @@ export class ExercisesComponent implements OnInit {
 
   getTypeStyle(type: string): any {
     switch (type.toLowerCase()) {
-      case 'warmup':
+      case 'warm-up':
         return { color: '#FFCC00' }; // Cor amarela para warmup
-      case 'cooldown':
+      case 'cool-down':
         return { color: '#00CCFF' }; // Cor azul para cooldown
       case 'stretching':
         return { color: '#FF66CC' }; // Cor rosa para stretching
@@ -150,6 +200,14 @@ export class ExercisesComponent implements OnInit {
     this.modalExercise = null; // Limpa o exercício selecionado
     this.media = [];
     this.activeMediaIndex = 0;
+    this.errorMessage = '';
+    this.successMessage = '';
+  }
+
+  openAddModal(exercise: any): void {
+    this.activeModal = 'add';
+    this.modalExercise = exercise;
+    this.getRoutines();
   }
 
   previousMedia() {
@@ -162,6 +220,57 @@ export class ExercisesComponent implements OnInit {
     if (this.activeMediaIndex < this.media.length - 1) {
       this.activeMediaIndex++;
     }
+  }
+
+  getFilteredExercises(): void {
+
+    this.exercisesService.getFilteredExercises(this.filters).subscribe(
+      (response: any) => {
+        this.exercises = response;
+        console.log('Exercises filtered Successfully:', this.exercises);
+      },
+      (error) => {
+        this.errorMessage = 'Error filtering exercises'; // Define a mensagem de erro se a requisição falhar
+        console.log('Error filtering exercises:', error);
+      }
+    )
+  }
+
+  sortExercises(): void {
+    this.exercises = this.getSortedExercises(this.selectedSortedOption, this.exercises);
+    console.log('Exercises sorted successfully:', this.exercises);
+  }
+
+  getSortedExercises(sortedOption: string, exercises: any[]): any[] {
+    if (!sortedOption || !exercises || exercises.length === 0) {
+      return exercises; // Se não houver opção de ordenação ou exercícios, retorna a lista original
+    }
+
+    // Mapeia os níveis de dificuldade para números
+    const difficultyOrder: { [key: string]: number } = {
+      'Beginner': 1,
+      'Intermediate': 2,
+      'Advanced': 3
+    };
+
+    return [...exercises].sort((a, b) => {
+      switch (sortedOption) {
+        case 'name-asc':
+          return a.name.localeCompare(b.name);
+        case 'name-desc':
+          return b.name.localeCompare(a.name);
+        case 'difficulty-asc':
+          return difficultyOrder[a.difficultyLevel] - difficultyOrder[b.difficultyLevel]; // Ascendente
+        case 'difficulty-desc':
+          return difficultyOrder[b.difficultyLevel] - difficultyOrder[a.difficultyLevel]; // Descendente
+        case 'muscle-group':
+          return a.muscleGroup.localeCompare(b.muscleGroup);
+        case 'equipment':
+          return a.equipmentNecessary.localeCompare(b.equipmentNecessary);
+        default:
+          return 0;
+      }
+    });
   }
 
   /*// Check if user is logged in by fetching the user info

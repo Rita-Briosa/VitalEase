@@ -7,6 +7,10 @@
         public TimeSpan Time { get; set; }
         public ScheduleStatus Status { get; set; }
 
+        public int RoutineId { get; set; }
+
+        public Routine Routine { get; set; }
+
         public void MarkAsCompleted()
         {
             Status = ScheduleStatus.Completed;
