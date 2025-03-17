@@ -165,7 +165,7 @@
         }
 
         [HttpPost("api/addRoutine")]
-        public async Task<IActionResult> AddRoutine([FromBody] AddRoutineFromExercisesModel model)
+        public async Task<IActionResult> AddRoutine([FromBody] AddRoutineFromExercisesViewModel model)
         {
             try
             {
@@ -222,6 +222,64 @@
             catch (Exception ex)
             {
                 return BadRequest(new { message = "Error adding exercise to routine", error = ex.Message });
+            }
+        }
+
+        [HttpPost("api/addExercise")]
+        public async Task<IActionResult> AddExercise([FromBody] AddExercisesViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new
+                    {
+                        message = "Invalid data",
+                    });
+                }
+
+                if (!Enum.TryParse(model.newDifficultyLevel, out RoutineLevel difficultyLevel))
+                {
+                    return BadRequest(new { message = "Invalid difficulty level" });
+                }
+
+                var newExercise = new Exercise
+                {
+                    Name = model.newName,
+                    Description = model.newDescription,
+                    Type = model.newType,
+                    DifficultyLevel = difficultyLevel,
+                    MuscleGroup = model.newMuscleGroup,
+                    EquipmentNecessary = model.newEquipmentNecessary,
+                    Reps = 0,
+                    Duration = 0
+                };
+
+                _context.Exercises.Add(newExercise);
+                await _context.SaveChangesAsync();
+
+                // Criar e adicionar mídias associadas ao exercício
+                var mediaList = new List<Media>
+        {
+            new Media { Name = model.newMediaName, Url = model.newMediaUrl, Type = model.newMediaType, ExerciseId = newExercise.Id },
+            new Media { Name = model.newMediaName1, Url = model.newMediaUrl1, Type = model.newMediaType1, ExerciseId = newExercise.Id }
+        };
+
+                if (!string.IsNullOrEmpty(model.newMediaName2) &&
+                    !string.IsNullOrEmpty(model.newMediaUrl2) &&
+                    !string.IsNullOrEmpty(model.newMediaType2))
+                {
+                    mediaList.Add(new Media { Name = model.newMediaName2, Url = model.newMediaUrl2, Type = model.newMediaType2, ExerciseId = newExercise.Id });
+                }
+
+                _context.Media.AddRange(mediaList);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Exercise added successfully!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error adding exercise", error = ex.Message });
             }
         }
     }

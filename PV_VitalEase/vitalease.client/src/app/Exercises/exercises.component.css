@@ -316,8 +316,52 @@ body {
 
 .alert-danger{
     color: red;
+    margin-top: 10px;
 }
 
-.successMessage{
-    color: green;
+.successMessage {
+  color: green;
+  margin-top: 10px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+
+
+input[type="text"],
+select {
+  width: 100%;
+  font-size: 16px;
+  height: 40px;
+  border: 2px solid #ccc;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.modal-content-one {
+  background: #f3f7f5;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  width: 1200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.addExercise-button {
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px;
+  width: 20%;
 }
