@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Routines</title>
+  <link rel="stylesheet" href="manage-training-routines.component.css">
+</head>
+<body>
+  <div class="container-header">
+    <div class="header">
+      <img src="assets/img/logo.png" alt="Vital Ease Logo">
+      <a class="action-button" href="/exercises">Exercises</a>
+      <a class="action-button" href="../manage-training-routines">Training Routines</a>
+      <a class="action-button" href="#">Map</a>
+      <a class="action-button" href="/aboutUs">About Us</a>
+      <div class="auth-buttons">
+        <button class="login-btn">Login</button>
+        <a href="/myProfile" class="profile-icon">👤</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Training Routines</h1>
+    <div class="routine-grid">
+      <div class="routine-card" *ngFor="let routine of routines">
+        <h3>{{ routine.name }}</h3>
+        <p><strong>Type:</strong> {{ routine.type }}</p>
+        <p><strong>Description:</strong> {{ routine.description }}</p>
+        <div class="routine-actions">
+          <button class="edit">✏️</button>
+          <button class="delete">🗑️</button>
+        </div>
+      </div>
+    </div>
+    <button class="add-button">+</button>
+  </div>
+</body>
+</html>

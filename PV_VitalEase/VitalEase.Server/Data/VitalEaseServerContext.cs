@@ -26,6 +26,8 @@ namespace VitalEase.Server.Data
 
         public DbSet<ExerciseRoutine> ExerciseRoutines { get; set; }
 
+        public DbSet<ManageTrainingRoutines> ManageTrainingRoutines { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

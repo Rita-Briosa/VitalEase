@@ -23,13 +23,14 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
 import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/changeEmailConfirmation.component';
 import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
 import { ExercisesComponent } from './Exercises/exercises.component';
+import { ManageTrainingRoutinesComponent } from './manage-training-routines/manage-training-routines.component';
 
 
 @NgModule({
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,
