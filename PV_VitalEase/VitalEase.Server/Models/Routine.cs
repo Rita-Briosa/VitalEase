@@ -8,33 +8,12 @@
         public string Type { get; set; }
         public RoutineLevel Level { get; set; }
 
-        
-        public List<Exercise> Exercises { get; set; } = new();
+        public int UserId { get; set; }
 
-        public int CalculateTotalDuration()
-        {
-            int totalDuration = 0;
-            foreach (var exercise in Exercises)
-            {
-                totalDuration += exercise.Duration;
-            }
-            return totalDuration;
-        }
+        public User User { get; set; }
 
-        public string GetRoutineInfo()
-        {
-            return $"Name: {Name}, Level: {Level}, Total Duration: {CalculateTotalDuration()} seconds";
-        }
+        public List<ScheduledRoutine> ScheduledRoutines { get; set; } = new();
 
-        public void AddExercise(Exercise exercise)
-        {
-            Exercises.Add(exercise);
-        }
-
-        public void RemoveExercise(Exercise exercise)
-        {
-            Exercises.Remove(exercise);
-        }
-        
+        public ICollection<ExerciseRoutine> ExerciseRoutines { get; set; }
     }
 }

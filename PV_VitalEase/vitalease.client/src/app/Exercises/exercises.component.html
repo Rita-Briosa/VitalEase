@@ -24,16 +24,54 @@
 
   <div class="container">
     <h1>Exercises</h1>
+
+    <div class="filters">
+      <select [(ngModel)]="filters.type">
+        <option value="" selected>Select Exercise Type</option>
+        <option value="Warm-up"> Warm-up </option>
+        <option value="Cool-Down">Cool-Down </option>
+        <option value="Stretching"> Stretching</option>
+        <option value="Muscle-focused"> Muscle-focused </option>
+      </select>
+
+      <input type="text" placeholder="Muscle group targeted" [(ngModel)]="filters.muscleGroup" />
+
+      <select [(ngModel)]="filters.difficultyLevel">
+        <option value="" selected> Select Difficulty </option>
+        <option value="Beginner"> Beginner </option>
+        <option value="Intermediate"> Intermediate </option>
+        <option value="Advanced"> Advanced </option>
+      </select>
+
+      <input type="text" placeholder="Equipment Needed" [(ngModel)]="filters.equipmentNeeded" />
+
+
+      <button (click)="getFilteredExercises()">Search</button>
+
+      <select [(ngModel)]="selectedSortedOption" (ngModelChange)="sortExercises()">
+        <option value="" selected>Select Sort Option</option>
+        <option value="name-asc">Alphabetical (A-Z)</option>
+        <option value="name-desc">Alphabetical (Z-A)</option>
+        <option value="difficulty-asc">Difficulty (Beginner to Advanced)</option>
+        <option value="difficulty-desc">Difficulty (Advanced to Beginner)</option>
+        <option value="muscle-group">Alphabetical Muscle Group (A-Z)</option>
+        <option value="equipment">Alphabetical Equipment Requirements (A-Z)</option>
+      </select>
+
+    </div>
+
     <div class="exercise-list">
       <div class="exercise-card" *ngFor="let exercise of exercises">
         <div class="exercise-info">
           <strong>{{ exercise.name }}</strong> <br />
           <span>{{ exercise.description }}</span><br />
+          <span [ngClass]="exercise.type">{{ exercise.type }}</span><br />
+          <span>{{ exercise.difficultyLevel }}</span><br />
         </div>
         <div class="exercise-actions">
           <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
           <button class="details" (click)="openModal('details', exercise)">Details</button>
-          <button class="add">ADD</button>
+          <button class="add" (click)="openAddModal(exercise)">ADD</button>
         </div>
       </div>
     </div>
@@ -43,7 +81,7 @@
     <div class="modal-content">
       <h2>{{ modalExercise?.name }}</h2>
 
-      
+
 
       <div *ngIf="media && media.length > 0">
         <div class="media-container">
@@ -64,18 +102,36 @@
             &#8594; <!-- Setinha para a direita -->
           </button>
         </div>
-        </div>
-
-        <!-- Informações do exercício -->
-        <span [ngClass]="modalExercise?.type"><strong>Type:</strong> {{ modalExercise?.type }}</span><br />
-        <span><strong>Description:</strong> {{ modalExercise?.description }}</span><br />
-        <span><strong>Difficulty:</strong> {{ modalExercise?.difficultyLevel }}</span><br />
-        <span><strong>Muscle Group:</strong> {{ modalExercise?.muscleGroup }}</span><br />
-        <span><strong>Necessary equipment:</strong> {{ modalExercise?.equipmentNecessary }}</span><br />
-
-        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-        <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
       </div>
+
+      <!-- Informações do exercício -->
+      <span [ngClass]="modalExercise?.type"><strong>Type:</strong> {{ modalExercise?.type }}</span><br />
+      <span><strong>Description:</strong> {{ modalExercise?.description }}</span><br />
+      <span><strong>Difficulty:</strong> {{ modalExercise?.difficultyLevel }}</span><br />
+      <span><strong>Muscle Group:</strong> {{ modalExercise?.muscleGroup }}</span><br />
+      <span><strong>Necessary equipment:</strong> {{ modalExercise?.equipmentNecessary }}</span><br />
+
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" [class.show]="activeModal === 'add'">
+    <div class="modal-content">
+      <h2> Add exercise to your routine</h2>
+      <p class="chooseRoutine"> Choose a custom training routine</p>
+
+      <select [(ngModel)]="selectedRoutine">
+        <option value="" selected>Select a routine</option>
+        <option *ngFor="let routine of routines" [value]="routine.id">{{ routine.name }}</option>
+      </select>
+
+      <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+
+      <button class="modalButton" [disabled]="!selectedRoutine" (click)="addRoutine()">Add</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
+    </div>
   </div>
 
 </body>

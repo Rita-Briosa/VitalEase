@@ -36,7 +36,7 @@ namespace VitalEase.Server.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DifficultyLevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DifficultyLevel = table.Column<int>(type: "int", nullable: false),
                     MuscleGroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EquipmentNecessary = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Reps = table.Column<int>(type: "int", nullable: false),
@@ -115,37 +115,6 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Routines",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Level = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Routines", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ScheduledRoutines",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Time = table.Column<TimeSpan>(type: "time", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ScheduledRoutines", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Media",
                 columns: table => new
                 {
@@ -194,38 +163,93 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExerciseRoutine",
+                name: "Routines",
                 columns: table => new
                 {
-                    ExercisesId = table.Column<int>(type: "int", nullable: false),
-                    RoutinesId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExerciseRoutine", x => new { x.ExercisesId, x.RoutinesId });
+                    table.PrimaryKey("PK_Routines", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ExerciseRoutine_Exercises_ExercisesId",
-                        column: x => x.ExercisesId,
+                        name: "FK_Routines_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ExerciseRoutines",
+                columns: table => new
+                {
+                    ExerciseId = table.Column<int>(type: "int", nullable: false),
+                    RoutineId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExerciseRoutines", x => new { x.ExerciseId, x.RoutineId });
+                    table.ForeignKey(
+                        name: "FK_ExerciseRoutines_Exercises_ExerciseId",
+                        column: x => x.ExerciseId,
                         principalTable: "Exercises",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ExerciseRoutine_Routines_RoutinesId",
-                        column: x => x.RoutinesId,
+                        name: "FK_ExerciseRoutines_Routines_RoutineId",
+                        column: x => x.RoutineId,
+                        principalTable: "Routines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ScheduledRoutines",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Time = table.Column<TimeSpan>(type: "time", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    RoutineId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ScheduledRoutines", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ScheduledRoutines_Routines_RoutineId",
+                        column: x => x.RoutineId,
                         principalTable: "Routines",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExerciseRoutine_RoutinesId",
-                table: "ExerciseRoutine",
-                column: "RoutinesId");
+                name: "IX_ExerciseRoutines_RoutineId",
+                table: "ExerciseRoutines",
+                column: "RoutineId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Media_ExerciseId",
                 table: "Media",
                 column: "ExerciseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Routines_UserId",
+                table: "Routines",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ScheduledRoutines_RoutineId",
+                table: "ScheduledRoutines",
+                column: "RoutineId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_ProfileId",
@@ -240,7 +264,7 @@ namespace VitalEase.Server.Migrations
                 name: "AuditLogs");
 
             migrationBuilder.DropTable(
-                name: "ExerciseRoutine");
+                name: "ExerciseRoutines");
 
             migrationBuilder.DropTable(
                 name: "FavoriteLocations");
@@ -258,13 +282,13 @@ namespace VitalEase.Server.Migrations
                 name: "ScheduledRoutines");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Exercises");
 
             migrationBuilder.DropTable(
                 name: "Routines");
 
             migrationBuilder.DropTable(
-                name: "Exercises");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Profiles");

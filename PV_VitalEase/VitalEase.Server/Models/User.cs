@@ -20,6 +20,7 @@ namespace VitalEase.Server.Models
         // Property to track when the session token was created (optional)
         public DateTime? SessionTokenCreatedAt { get; set; }
 
+        public List<Routine> Routines { get; set; } = new();
 
 
         public bool Login(string email, string password)
