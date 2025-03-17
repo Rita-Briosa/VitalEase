@@ -25,6 +25,11 @@
   <div class="container">
     <h1>Exercises</h1>
 
+    <button class="addExercise-button"
+            *ngIf="isAdmin"
+            (click)="openAddExerciseModal()">
+      Add New Exercise
+    </button>
     <div class="filters">
       <select [(ngModel)]="filters.type">
         <option value="" selected>Select Exercise Type</option>
@@ -131,6 +136,85 @@
 
       <button class="modalButton" [disabled]="!selectedRoutine" (click)="addRoutine()">Add</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+
+
+  <div class="modal" [ngClass]="{ 'show': activeModal === 'addExercise' }">
+    <div class="modal-content-one">
+      <h2>Add New Exercise</h2>
+      <form #exerciseForm="ngForm">
+        <div class="input-container">
+          <div class="input-group">
+            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Exercise Name" required>
+            <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" placeholder="Exercise Description" required>
+          </div>
+
+          <div class="input-group">
+            <select [(ngModel)]="newType" name="newType" required>
+              <option value="" selected>Select Exercise Type</option>
+              <option value="Warm-up">Warm-up</option>
+              <option value="Cool-Down">Cool-Down</option>
+              <option value="Stretching">Stretching</option>
+              <option value="Muscle-focused">Muscle-focused</option>
+            </select>
+
+            <select [(ngModel)]="newDifficultyLevel" name="newDifficultyLevel" required>
+              <option value="" selected>Select Difficulty</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="newMuscleGroup" [(ngModel)]="newMuscleGroup" name="newMuscleGroup" placeholder="Muscle Group" required>
+            <input type="text" id="newEquipmentNecessary" [(ngModel)]="newEquipmentNecessary" name="newEquipmentNecessary" placeholder="Equipment Necessary" required>
+          </div>
+
+          <!-- Media 1 -->
+          <div class="input-group">
+            <input type="text" id="newMediaName" [(ngModel)]="newMediaName" name="newMediaName" placeholder="Media Name" required>
+            <select [(ngModel)]="newMediaType" name="newMediaType" required>
+              <option value="" selected>Select Media Type</option>
+              <option value="Image">Image</option>
+              <option value="Video">Video</option>
+            </select>
+          </div>
+          <input type="text" id="newMediaUrl" [(ngModel)]="newMediaUrl" name="newMediaUrl" placeholder="Media URL" required>
+
+          <!-- Media 2 -->
+          <div class="input-group">
+            <input type="text" id="newMediaName1" [(ngModel)]="newMediaName1" name="newMediaName1" placeholder="Media Name1" required>
+            <select [(ngModel)]="newMediaType1" name="newMediaType1" required>
+              <option value="" selected>Select Media Type</option>
+              <option value="Image">Image</option>
+              <option value="Video">Video</option>
+            </select>
+          </div>
+          <input type="text" id="newMediaUrl1" [(ngModel)]="newMediaUrl1" name="newMediaUrl1" placeholder="Media URL1" required>
+
+          <!-- Media 3 (Opcional) -->
+          <div class="input-group">
+            <input type="text" id="newMediaName2" [(ngModel)]="newMediaName2" name="newMediaName2" placeholder="Media Name2">
+            <select [(ngModel)]="newMediaType2" name="newMediaType2">
+              <option value="" selected>Select Media Type</option>
+              <option value="Image">Image</option>
+              <option value="Video">Video</option>
+            </select>
+          </div>
+          <input type="text" id="newMediaUrl2" [(ngModel)]="newMediaUrl2" name="newMediaUrl2" placeholder="Media URL2">
+
+        </div>
+
+        <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+
+        <div class="modal-buttons">
+          <button type="button" class="modalButton" (click)="addExercise()">Add</button>
+          <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
+        </div>
+      </form>
     </div>
   </div>
 

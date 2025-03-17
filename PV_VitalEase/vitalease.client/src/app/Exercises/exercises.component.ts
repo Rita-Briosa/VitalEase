@@ -34,6 +34,21 @@ export class ExercisesComponent implements OnInit {
   selectedSortedOption: string = '';
   selectedRoutine: number = 0;// Armazena a rotina selecionada
   successMessage: string = '';
+  newName: string = '';
+  newDescription: string = '';
+  newType: string = '';
+  newDifficultyLevel: string = '';
+  newMuscleGroup: string = '';
+  newEquipmentNecessary: string = '';
+  newMediaName: string = '';
+  newMediaType: string = '';
+  newMediaUrl: string = '';
+  newMediaName1: string = '';
+  newMediaType1: string = '';
+  newMediaUrl1: string = '';
+  newMediaName2: string = '';
+  newMediaType2: string = '';
+  newMediaUrl2: string = '';
 
 
   constructor(
@@ -124,7 +139,6 @@ export class ExercisesComponent implements OnInit {
     const exerciseId = this.modalExercise.id;
     const routineId = this.selectedRoutine;
 
-    console.log('Adding exercise:', exerciseId, 'to routine:', routineId);
 
     this.exercisesService.addRoutine(routineId, exerciseId).subscribe(
       (response: any) => {
@@ -133,6 +147,28 @@ export class ExercisesComponent implements OnInit {
 
         setTimeout(() => {
           this.closeModal();
+        }, 2000);
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message || 'An error occurred';
+        this.successMessage = '';
+      }
+    );
+  }
+
+  addExercise(): void {
+
+
+    this.exercisesService.addExercise(this.newName, this.newDescription, this.newType, this.newDifficultyLevel,
+      this.newMuscleGroup, this.newEquipmentNecessary, this.newMediaName, this.newMediaType, this.newMediaUrl,
+      this.newMediaName1, this.newMediaType1, this.newMediaUrl1, this.newMediaName2, this.newMediaType2, this.newMediaUrl2).subscribe(
+      (response: any) => {
+        this.successMessage = response.message;
+        this.errorMessage = '';
+
+        setTimeout(() => {
+          this.closeModal();
+          window.location.reload();
         }, 2000);
       },
       (error: any) => {
@@ -208,6 +244,10 @@ export class ExercisesComponent implements OnInit {
     this.activeModal = 'add';
     this.modalExercise = exercise;
     this.getRoutines();
+  }
+
+  openAddExerciseModal(): void {
+    this.activeModal = 'addExercise';
   }
 
   previousMedia() {
