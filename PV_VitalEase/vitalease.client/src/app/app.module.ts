@@ -2,7 +2,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Importando FormsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importando FormsModule
 import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +35,7 @@ import { ManageTrainingRoutinesComponent } from './manage-training-routines/mana
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,
-    AppRoutingModule, FormsModule, 
+    AppRoutingModule, FormsModule, ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
