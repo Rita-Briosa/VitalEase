@@ -14,6 +14,7 @@ import { ConfirmOldEmailComponent } from './ConfirmOldEmail/confirmOldEmail.comp
 import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/changeEmailConfirmation.component';
 import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
 import { ExercisesComponent } from './Exercises/exercises.component';
+import { ManageTrainingRoutinesComponent } from './manage-training-routines/manage-training-routines.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'changeEmailConfirmation', component: ChangeEmailConfirmationComponent },
   { path: 'changeEmailCancellation', component: ChangeEmailCancellationComponent },
   { path: 'exercises', component: ExercisesComponent },
+  { path: 'manage-training-routines', component: ManageTrainingRoutinesComponent },
   { path: '**', redirectTo: '' }]
 
 

@@ -71,6 +71,9 @@ namespace VitalEase.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ManageTrainingRoutinesId")
+                        .HasColumnType("int");
+
                     b.Property<string>("MuscleGroup")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -87,6 +90,8 @@ namespace VitalEase.Server.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ManageTrainingRoutinesId");
 
                     b.ToTable("Exercises");
                 });
@@ -131,6 +136,34 @@ namespace VitalEase.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FavoriteLocations");
+                });
+
+            modelBuilder.Entity("VitalEase.Server.Models.ManageTrainingRoutines", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsCustom")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Needs")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ManageTrainingRoutines");
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.Media", b =>
@@ -352,6 +385,13 @@ namespace VitalEase.Server.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("VitalEase.Server.Models.Exercise", b =>
+                {
+                    b.HasOne("VitalEase.Server.Models.ManageTrainingRoutines", null)
+                        .WithMany("Exercises")
+                        .HasForeignKey("ManageTrainingRoutinesId");
+                });
+
             modelBuilder.Entity("VitalEase.Server.Models.ExerciseRoutine", b =>
                 {
                     b.HasOne("VitalEase.Server.Models.Exercise", "Exercise")
@@ -420,6 +460,11 @@ namespace VitalEase.Server.Migrations
                     b.Navigation("ExerciseRoutines");
 
                     b.Navigation("Media");
+                });
+
+            modelBuilder.Entity("VitalEase.Server.Models.ManageTrainingRoutines", b =>
+                {
+                    b.Navigation("Exercises");
                 });
 
             modelBuilder.Entity("VitalEase.Server.Models.Routine", b =>
