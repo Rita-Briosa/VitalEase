@@ -15,7 +15,7 @@ import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/chan
 import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
 import { ExercisesComponent } from './Exercises/exercises.component';
 import { ManageTrainingRoutinesComponent } from './manage-training-routines/manage-training-routines.component';
-
+import { TrainingRoutineDetailsComponent } from './training-routine-details/training-routine-details.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'login', component: LoginComponent },
@@ -32,6 +32,7 @@ const routes: Routes = [
   { path: 'changeEmailCancellation', component: ChangeEmailCancellationComponent },
   { path: 'exercises', component: ExercisesComponent },
   { path: 'manage-training-routines', component: ManageTrainingRoutinesComponent },
+  { path: 'training-routine-details/:id', component: TrainingRoutineDetailsComponent },
   { path: '**', redirectTo: '' }]
 
 
