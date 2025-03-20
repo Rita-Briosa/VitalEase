@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Training Routines</title>
-  <link rel="stylesheet" href="manage-training-routines.component.css">
-</head>
+<html>
 <body>
   <div class="container-header">
     <div class="header">
       <div class="row">
-        <img src="assets/img/logo.png" alt="Vital Ease Logo">
+        <img src="../../assets/img/logo.png" alt="Vital Ease Logo">
         <a class="action-button" routerLink="/exercises">Exercises</a>
         <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
         <a class="action-button" routerLink="#">Map</a>
@@ -30,17 +23,22 @@
   </div>
 
   <div class="container">
-    <h1>Your training routines</h1>
-
-    <div class="routine-header">
-      <a routerLink="/custom-training-routines" class="custom-training">Custom Training Routines</a>
+    <h1>Exercises</h1>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <div class="exercise-list">
+      <div class="exercise-card" *ngFor="let exercise of exercises">
+        <div class="exercise-info">
+          <strong>{{ exercise.name }}</strong> <br />
+          <span>{{ exercise.description }}</span><br />
+          <span [ngClass]="exercise.type">{{ exercise.type }}</span><br />
+          <span>{{ exercise.difficultyLevel }}</span><br />
+        </div>
+        <div class="exercise-actions">
+          <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+          <button class="details">Details</button>
+        </div>
+      </div>
     </div>
-
-    <ul class="routine-list">
-      <li class="routine-item" *ngFor="let routine of routines">
-        <a class="routine-name" [routerLink]="['/training-routine-details', routine.id]">{{ routine.name }}</a>
-      </li>
-    </ul>
   </div>
-</body>
+  </body>
 </html>

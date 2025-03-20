@@ -24,6 +24,8 @@ import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/chan
 import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
 import { ExercisesComponent } from './Exercises/exercises.component';
 import { ManageTrainingRoutinesComponent } from './manage-training-routines/manage-training-routines.component';
+import { TrainingProgressComponent } from './training-progress/training-progress.component';
+import { TrainingRoutineDetailsComponent } from './training-routine-details/training-routine-details.component';
 
 
 
@@ -31,7 +33,7 @@ import { ManageTrainingRoutinesComponent } from './manage-training-routines/mana
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingProgressComponent, TrainingRoutineDetailsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,

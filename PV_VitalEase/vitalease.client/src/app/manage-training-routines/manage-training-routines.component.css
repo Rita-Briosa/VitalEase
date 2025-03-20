@@ -6,25 +6,42 @@
 
 body {
   font-family: Arial, sans-serif;
+  line-height: 1.6;
   background-color: #f8fbfd;
   color: #333;
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%; /* Garante que a row ocupe toda a largura */
 }
 
-.container-header {
-  width: 100%;
-  background-color: #f0f0f0;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.left {
+  flex: 1;
 }
 
+.center {
+  text-align: center;
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
   .header img {
@@ -32,19 +49,40 @@ body {
     height: 100px;
   }
 
-  .header .action-button {
-    text-decoration: none;
-    color: black;
+  .header span {
     font-size: 1.2rem;
     font-weight: bold;
-    margin: 0 10px;
+  }
+
+  .header button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .header button:hover {
+      background-color: #ddd;
+    }
+
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.7rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
   }
 
 .container {
-  width: 80%;
   padding: 20px;
 }
 
+/*
 .routine-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -99,3 +137,53 @@ body {
   .add-button:hover {
     background: #476e66;
   }
+*/
+
+.routine-header {
+  display: flex;
+  justify-content: flex-end; /* Move os elementos para a direita */
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px; /* Adiciona um pequeno espaço entre os elementos */
+}
+
+.custom-training {
+  color: black;
+  font-weight: bold;
+}
+
+/* Lista de rotinas */
+.routine-list {
+  list-style: none;
+  background-color: #f3eaf7;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.routine-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+  .routine-item:last-child {
+    border-bottom: none;
+  }
+
+.routine-icon {
+  width: 30px;
+  height: 30px;
+  background: #d4b5f9;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.routine-name {
+  font-size: 18px;
+}
