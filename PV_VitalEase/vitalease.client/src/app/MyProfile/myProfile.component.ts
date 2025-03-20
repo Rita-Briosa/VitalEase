@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { MyProfileService } from '../services/myProfile.service'
 import { Router } from '@angular/router';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-myProfile',
@@ -42,6 +43,29 @@ export class MyProfileComponent {
   isConfirmed: boolean = false;
 
   constructor(private authService: AuthService, private router: Router, private profileService: MyProfileService) { }
+
+  form: FormGroup = new FormGroup({
+    email: new FormControl("", [Validators.required, this.customEmailValidator]),
+    password: new FormControl("")
+  })
+
+  getError(control: any): string {
+    if (control.errors?.required && control.touched)
+      return 'This field is required!';
+    else if (control.errors?.emailError && control.touched)
+      return 'Please enter valid email address!';
+    else return '';
+  }
+
+  customEmailValidator(control: AbstractControl) {
+    const pattern = /^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,20}$/;
+    const value = control.value;
+    if (!pattern.test(value) && control.touched)
+      return {
+        emailError: true
+      }
+    else return null;
+  }
 
   ngOnInit() {
 
