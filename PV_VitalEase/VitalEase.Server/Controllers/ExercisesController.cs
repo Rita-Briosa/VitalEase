@@ -169,7 +169,6 @@
         {
             try
             {
-             
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(new
@@ -179,9 +178,9 @@
                     });
                 }
 
-               
                 var existingExercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == model.ExerciseId);
                 var routine = await _context.Routines.FirstOrDefaultAsync(r => r.Id == model.RoutineId);
+                var mediaList = await _context.Media.Where(m => m.ExerciseId == model.ExerciseId).ToListAsync();
 
                 if (existingExercise == null)
                     return NotFound(new { message = "Exercise not found" });
@@ -189,7 +188,7 @@
                 if (routine == null)
                     return NotFound(new { message = "Routine not found" });
 
-                
+
                 var newExercise = new Exercise
                 {
                     Name = existingExercise.Name,
@@ -198,24 +197,37 @@
                     DifficultyLevel = existingExercise.DifficultyLevel,
                     MuscleGroup = existingExercise.MuscleGroup,
                     EquipmentNecessary = existingExercise.EquipmentNecessary,
-                    Reps = 1, 
-                    Duration = 1 
+                    Reps = 1,
+                    Duration = 1
                 };
 
-                
                 _context.Exercises.Add(newExercise);
-                await _context.SaveChangesAsync(); 
+                await _context.SaveChangesAsync();
 
-              
+
+                if (mediaList.Any())
+                {
+                    var newMediaList = mediaList.Select(m => new Media
+                    {
+                        ExerciseId = newExercise.Id,
+                        Name = m.Name + newExercise.Id,
+                        Url = m.Url,
+                        Type = m.Type
+                    }).ToList();
+
+                    _context.Media.AddRange(newMediaList);
+                    await _context.SaveChangesAsync();
+                }
+
+
                 var exerciseRoutine = new ExerciseRoutine
                 {
-                    ExerciseId = newExercise.Id, 
+                    ExerciseId = newExercise.Id,
                     RoutineId = routine.Id
                 };
 
-                
                 _context.ExerciseRoutines.Add(exerciseRoutine);
-                await _context.SaveChangesAsync(); 
+                await _context.SaveChangesAsync();
 
                 return Ok(new { message = "Exercise added to routine successfully!" });
             }

@@ -20,4 +20,12 @@ export class TrainingRoutinesService {
     return this.http.get(`${this.apiUrl}/getExercisesFromRoutine/${routineId}`); 
   }
 
+  getExercise(exerciseId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getExerciseDetailsFromRoutine/${exerciseId}`);
+  }
+
+  getMedia(exerciseId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getExerciseMediaFromRoutine/${exerciseId}`);
+  }
+
 }

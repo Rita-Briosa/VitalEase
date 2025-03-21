@@ -37,8 +37,8 @@
     </div>
 
     <ul class="routine-list">
-      <li class="routine-item" *ngFor="let routine of routines">
-        <a class="routine-name" [routerLink]="['/training-routine-details', routine.id]">{{ routine.name }}</a>
+      <li class="routine-item" *ngFor="let routine of routines" (click)="navigateToRoutine(routine.id)">
+        <a class="routine-name">{{ routine.name }}</a>
       </li>
     </ul>
   </div>

@@ -26,6 +26,7 @@ import { ExercisesComponent } from './Exercises/exercises.component';
 import { ManageTrainingRoutinesComponent } from './manage-training-routines/manage-training-routines.component';
 import { TrainingProgressComponent } from './training-progress/training-progress.component';
 import { TrainingRoutineDetailsComponent } from './training-routine-details/training-routine-details.component';
+import { TrainingRoutineExerciseDetailsComponent } from './training-routine-exercise-details/training-routine-exercise-details.component';
 
 
 
@@ -33,7 +34,7 @@ import { TrainingRoutineDetailsComponent } from './training-routine-details/trai
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingProgressComponent, TrainingRoutineDetailsComponent
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingProgressComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,

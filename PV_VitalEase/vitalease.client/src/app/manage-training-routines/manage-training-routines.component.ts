@@ -106,6 +106,10 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     }
   }
 
+  navigateToRoutine(routineId: number) {
+    this.router.navigate(['/training-routine-details', routineId]);
+  }
+
   /*// Check if user is logged in by fetching the user info
   this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
   if (this.isLoggedIn) {
