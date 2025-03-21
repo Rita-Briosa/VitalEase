@@ -155,35 +155,24 @@ body {
 /* Lista de rotinas */
 .routine-list {
   list-style: none;
-  background-color: #f3eaf7;
+  background-color: #d9d9d9;
   padding: 20px;
   border-radius: 10px;
 }
 
 .routine-item {
-  display: flex;
-  align-items: center;
+  cursor: pointer;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  transition: background 0.2s;
 }
 
   .routine-item:last-child {
     border-bottom: none;
   }
 
-.routine-icon {
-  width: 30px;
-  height: 30px;
-  background: #d4b5f9;
-  color: black;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
 .routine-name {
   font-size: 18px;
+  text-decoration: none;
+  color: black;
 }

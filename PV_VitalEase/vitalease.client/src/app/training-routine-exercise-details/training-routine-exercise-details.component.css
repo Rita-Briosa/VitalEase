@@ -80,31 +80,85 @@ body {
     transition: background-color 0.3s;
   }
 
+.auth-buttons button, .Dashboard-button {
+  padding: 8px 15px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
 
-.exercise-list {
+  .auth-buttons button:hover, .Dashboard-button:hover {
+    background-color: #ccc;
+  }
+
+.container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 40px auto;
+  width: 90%;
+  background: #f4f9f7;
+  padding: 40px;
 }
 
-.exercise-card {
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #d9d9d9;
-  padding: 10px;
-  border-radius: 10px;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.exercise-info {
+.text-content {
+  max-width: 50%;
   text-align: left;
 }
 
-.exercise-actions {
+  .text-content p {
+    font-size: 1rem;
+  }
+
+.media-container {
   display: flex;
-  flex-direction: column; /* Coloca os botões em coluna */
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+  position: relative;
 }
+
+  .media-container img,
+  .media-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+.media-navigation {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.prev {
+  left: -35px;
+}
+
+.next {
+  right: -35px;
+}
+
 
 
 .Warm-up {
@@ -153,21 +207,4 @@ body {
 
 .default {
   color: black; /* Caso não se encaixe em nenhuma categoria */
-}
-
-.details{
-  background: #5c8a80;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-  .details:hover {
-    background: #476e66;
-  }
-
-.container {
-    padding: 20px;
 }

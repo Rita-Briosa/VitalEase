@@ -69,7 +69,80 @@
                 return BadRequest(new { message = "Error fetching exercises", error = ex.Message });
             }
         }
-        
+
+        [HttpGet("api/getExerciseDetailsFromRoutine/{exerciseId}")]
+        public async Task<IActionResult> GetExerciseDetailsFromRoutine(string exerciseId)
+        {
+            try
+            {
+                if (!int.TryParse(exerciseId, out int exerciseInteger))
+                {
+                    return BadRequest(new { message = "Invalid exercise ID" });
+                }
+
+
+
+                // Buscar os exercícios completos na tabela Exercises
+                var exercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == exerciseInteger);
+
+                if (exercise == null)
+                {
+                    return BadRequest(new { message = "Exercise don't found" });
+                }
+
+                // Mapear para DTO para evitar expor entidades diretamente
+                var exerciseDto = new
+                {
+                    Id = exercise.Id,
+                    Name = exercise.Name,
+                    Description = exercise.Description,
+                    Type = exercise.Type,
+                    DifficultyLevel = exercise.DifficultyLevel.ToString(),
+                    MuscleGroup = exercise.MuscleGroup,
+                    EquipmentNecessary = exercise.EquipmentNecessary,
+                    Reps = exercise.Reps,
+                    Duration = exercise.Duration
+                };
+
+                return Ok(exerciseDto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error fetching exercise", error = ex.Message });
+            }
+        }
+
+        [HttpGet("api/getExerciseMediaFromRoutine/{exerciseId}")]
+        public async Task<IActionResult> GetExerciseMedia(string exerciseId)
+        {
+
+            try
+            {
+
+                if (!int.TryParse(exerciseId, out int exerciseInteger))
+                {
+                    return BadRequest(new { message = "Invalid exercise ID" });
+                }
+
+                // Fetch all media from the database
+                var media = await _context.Media.Where(m => m.ExerciseId == exerciseInteger).ToListAsync();
+
+
+                if (media.IsNullOrEmpty())
+                {
+                    return BadRequest(new List<Media>());
+                }
+
+                // Return the logs in JSON format
+                return Ok(media);
+            }
+            catch (Exception ex)
+            {
+                // Handle error and return a bad request response
+                return BadRequest(new { message = "Error fetching media", error = ex.Message });
+            }
+        }
+
 
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllRoutines()
