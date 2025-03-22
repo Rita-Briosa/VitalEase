@@ -8,12 +8,19 @@ import { Observable } from 'rxjs';
 export class TrainingRoutinesService {
 
  
-  private apiUrl = 'https://localhost:7180/api'; 
+  private apiUrl = 'https://localhost:7180/api';
+
+  private apiUrlAddRoutine = 'https://localhost:7180/api/addNewRoutine';
 
   constructor(private http: HttpClient) { }
 
   getRoutines(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/getRoutinesOnExercises/${userId}`); 
+    return this.http.get(`${this.apiUrl}/getRoutines`); 
+  }
+
+  // Método para pegar os logs
+  getExercisesToAddToRoutine(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getExercises`); // Envia uma requisição GET para pegar os logs
   }
 
   getExercises(routineId: string): Observable<any> {
@@ -28,4 +35,11 @@ export class TrainingRoutinesService {
     return this.http.get(`${this.apiUrl}/getExerciseMediaFromRoutine/${exerciseId}`);
   }
 
-}
+  addRoutine(newName: string, newDescription: string, newType: string, newRoutineLevel: string, newNeeds: string, exercises: number[]): Observable<any> {
+
+    return this.http.post<any>(this.apiUrlAddRoutine, { newName, newDescription, newType, newRoutineLevel, newNeeds, exercises });
+    
+    }
+
+  }
+

@@ -26,7 +26,7 @@ namespace VitalEase.Server.Data
 
         public DbSet<ExerciseRoutine> ExerciseRoutines { get; set; }
 
-        public DbSet<ManageTrainingRoutines> ManageTrainingRoutines { get; set; }
+        public DbSet<ExerciseMedia> ExerciseMedia { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,13 +38,26 @@ namespace VitalEase.Server.Data
 
             modelBuilder.Entity<ExerciseRoutine>()
                 .HasOne(er => er.Exercise)
-                .WithMany(e => e.ExerciseRoutines)
+                .WithMany(e => e.ExerciseRoutine)
                 .HasForeignKey(er => er.ExerciseId);
 
             modelBuilder.Entity<ExerciseRoutine>()
                 .HasOne(er => er.Routine)
-                .WithMany(r => r.ExerciseRoutines)
+                .WithMany(r => r.ExerciseRoutine)
                 .HasForeignKey(er => er.RoutineId);
+
+            modelBuilder.Entity<ExerciseMedia>()
+               .HasKey(er => new { er.ExerciseId, er.MediaId }); // Chave composta
+
+            modelBuilder.Entity<ExerciseMedia>()
+                .HasOne(er => er.Exercise)
+                .WithMany(e => e.ExerciseMedia)
+                .HasForeignKey(er => er.ExerciseId);
+
+            modelBuilder.Entity<ExerciseMedia>()
+                .HasOne(er => er.Media)
+                .WithMany(r => r.ExerciseMedia)
+                .HasForeignKey(er => er.MediaId);
         }
 
     }

@@ -131,6 +131,22 @@
         <option *ngFor="let routine of routines" [value]="routine.id">{{ routine.name }}</option>
       </select>
 
+      <div class="radio-container">
+        <label>
+          <input type="radio" name="option" value="duration" [(ngModel)]="selectedOption"> Duration
+        </label>
+        <label>
+          <input type="radio" name="option" value="reps" [(ngModel)]="selectedOption"> Reps
+        </label>
+      </div>
+
+      <div class="input-container-modal">
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" [(ngModel)]="duration" name="duration" required>
+        <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
+
+        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
+      </div><br /> 
+
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 

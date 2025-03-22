@@ -46,5 +46,6 @@
         public string? newMediaType2 { get; set; }
 
         public string? newMediaUrl2 { get; set; }
+
     }
 }

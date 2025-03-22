@@ -10,5 +10,9 @@ namespace VitalEase.Server.ViewModel
 
         [Required(ErrorMessage = "The Routine Id is required")]
         public int RoutineId { get; set; }
+
+        public int? reps { get; set; }
+
+        public int? duration { get; set; }
     }
 }

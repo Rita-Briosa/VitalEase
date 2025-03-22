@@ -365,3 +365,28 @@ select {
   margin: 10px;
   width: 20%;
 }
+
+.input-container-modal {
+  position: relative;
+  display: inline-block;
+}
+
+input[type="number"] {
+  padding-right: 40px; 
+  width: 150px; /* Ajuste conforme necessário */
+  font-size: 16px;
+  text-align: right;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.unit {
+  position: absolute;
+  right: 7px;
+  top: 52%;
+  transform: translateY(-51%);
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  pointer-events: none; /* Para evitar interação */
+}

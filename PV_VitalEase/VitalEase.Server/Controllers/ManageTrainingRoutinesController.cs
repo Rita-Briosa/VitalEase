@@ -9,6 +9,7 @@
     using Microsoft.IdentityModel.Tokens;
     using VitalEase.Server.Data;
     using VitalEase.Server.Models;
+    using VitalEase.Server.ViewModel;
 
     public class ManageTrainingRoutinesController : ControllerBase
     {
@@ -124,17 +125,20 @@
                     return BadRequest(new { message = "Invalid exercise ID" });
                 }
 
-                // Fetch all media from the database
-                var media = await _context.Media.Where(m => m.ExerciseId == exerciseInteger).ToListAsync();
+                var mediaIds = await _context.ExerciseMedia
+                                             .Where(em => em.ExerciseId == exerciseInteger)
+                                             .Select(em => em.MediaId)
+                                             .ToListAsync();
 
-
-                if (media.IsNullOrEmpty())
+                var mediaList = await _context.Media
+                                             .Where(m => mediaIds.Contains(m.Id))
+                                             .ToListAsync();
+                if (!mediaList.Any()) // Verifica se a lista está vazia
                 {
-                    return BadRequest(new List<Media>());
+                    return NotFound(new { message = "No media found for this exercise." });
                 }
 
-                // Return the logs in JSON format
-                return Ok(media);
+                return Ok(mediaList);
             }
             catch (Exception ex)
             {
@@ -143,7 +147,122 @@
             }
         }
 
+        [HttpPost("api/addNewRoutine")]
+        public async Task<IActionResult> AddRoutine([FromBody] AddRoutineViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new { message = "Invalid data" });
+                }
 
+                if (!Enum.TryParse(model.newRoutineLevel, out RoutineLevel routineLevel))
+                {
+                    return BadRequest(new { message = "Invalid difficulty level" });
+                }
+
+                // Criar nova rotina
+                var newRoutine = new Routine
+                {
+                    Name = model.newName,
+                    Description = model.newDescription,
+                    Type = model.newType,
+                    Level = routineLevel,
+                    IsCustom = false,
+                    Needs = model.newNeeds,
+                };
+
+                _context.Routines.Add(newRoutine);
+                await _context.SaveChangesAsync(); // Salva para gerar o ID da rotina
+
+                // Lista para armazenar associações de exercícios
+                var exerciseRoutines = new List<ExerciseRoutine>();
+                var exerciseMediaLinks = new List<ExerciseMedia>();
+
+                if (model.Exercises != null && model.Exercises.Any())
+                {
+                    foreach (var exerciseId in model.Exercises)
+                    {
+                        // Buscar exercício original
+                        var originalExercise = await _context.Exercises.FindAsync(exerciseId);
+                        if (originalExercise == null) continue;
+
+                        // Criar novo exercício baseado no original
+                        var newExercise = new Exercise
+                        {
+                            Name = originalExercise.Name,
+                            Description = originalExercise.Description,
+                            Type = originalExercise.Type,
+                            DifficultyLevel = originalExercise.DifficultyLevel,
+                            MuscleGroup = originalExercise.MuscleGroup,
+                            EquipmentNecessary = originalExercise.EquipmentNecessary,
+                            Reps = 12,
+                            Duration = originalExercise.Duration
+                        };
+
+                        _context.Exercises.Add(newExercise);
+                        await _context.SaveChangesAsync(); // Salva para gerar o ID do novo exercício
+
+                        // Criar associação na tabela ExerciseRoutine
+                        exerciseRoutines.Add(new ExerciseRoutine
+                        {
+                            RoutineId = newRoutine.Id,
+                            ExerciseId = newExercise.Id // Usando o novo exercício criado
+                        });
+
+                        // Reutilizar os mesmos IDs de mídia já existentes
+                        var mediaList = await _context.ExerciseMedia.Where(m => m.ExerciseId == exerciseId).ToListAsync();
+                        foreach (var media in mediaList)
+                        {
+                            exerciseMediaLinks.Add(new ExerciseMedia
+                            {
+                                ExerciseId = newExercise.Id, // Associa ao novo exercício
+                                MediaId = media.MediaId      // Usa o mesmo mediaId do exercício original
+                            });
+                        }
+                    }
+
+                    // Adicionar todas as associações de exercícios de uma vez
+                    _context.ExerciseRoutines.AddRange(exerciseRoutines);
+                    _context.ExerciseMedia.AddRange(exerciseMediaLinks);
+                    await _context.SaveChangesAsync();
+                }
+
+                return Ok(new { message = "Routine and exercises added successfully!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error adding routine", error = ex.Message });
+            }
+        }
+
+        [HttpGet("api/getRoutines")]
+        public async Task<IActionResult> GetRoutines()
+        {
+
+            try
+            {
+                // Fetch all media from the database
+                var routines = await _context.Routines.Where(r => r.IsCustom == false).ToListAsync();
+
+
+                if (routines.IsNullOrEmpty())
+                {
+                    return BadRequest( new { message = "Dont exist Routines"});
+                }
+
+                // Return the logs in JSON format
+                return Ok(routines);
+            }
+            catch (Exception ex)
+            {
+                // Handle error and return a bad request response
+                return BadRequest(new { message = "Error fetching routines", error = ex.Message });
+            }
+        }
+
+        /* 
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllRoutines()
         {
@@ -226,5 +345,6 @@
                 return BadRequest(new { message = "Error adding routine", error = ex.Message });
             }
         }
+        */
     }
 }

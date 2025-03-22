@@ -66,24 +66,28 @@
         [HttpGet("api/getMedia/{exerciseId}")]
         public async Task<IActionResult> GetMedia(int exerciseId)
         {
-
             try
             {
-                // Fetch all media from the database
-                var media = await _context.Media.Where( m => m.ExerciseId == exerciseId).ToListAsync();
+                // Buscar os IDs da mídia associada ao exercício na tabela ExerciseMedia
+                var mediaIds = await _context.ExerciseMedia
+                                             .Where(em => em.ExerciseId == exerciseId)
+                                             .Select(em => em.MediaId)
+                                             .ToListAsync();
 
+                // Buscar os detalhes da mídia correspondente na tabela Media
+                var mediaList = await _context.Media
+                                              .Where(m => mediaIds.Contains(m.Id))
+                                              .ToListAsync();
 
-                if (media.IsNullOrEmpty())
+                if (!mediaList.Any()) // Verifica se a lista está vazia
                 {
-                    return BadRequest(new List<Media>());
+                    return NotFound(new { message = "No media found for this exercise." });
                 }
 
-                // Return the logs in JSON format
-                return Ok(media);
+                return Ok(mediaList);
             }
             catch (Exception ex)
             {
-                // Handle error and return a bad request response
                 return BadRequest(new { message = "Error fetching media", error = ex.Message });
             }
         }
@@ -146,12 +150,12 @@
             try
             {
                 // Fetch all media from the database
-                var routines = await _context.Routines.Where(r => r.UserId == userId).ToListAsync();
+                var routines = await _context.Routines.Where(r => r.UserId == userId && r.IsCustom == true).ToListAsync();
 
 
                 if (routines.IsNullOrEmpty())
                 {
-                    return BadRequest(new List<Routine>());
+                    return BadRequest(new { message = "Dont exist Custom Routines" });
                 }
 
                 // Return the logs in JSON format
@@ -180,7 +184,7 @@
 
                 var existingExercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == model.ExerciseId);
                 var routine = await _context.Routines.FirstOrDefaultAsync(r => r.Id == model.RoutineId);
-                var mediaList = await _context.Media.Where(m => m.ExerciseId == model.ExerciseId).ToListAsync();
+                var mediaList = await _context.ExerciseMedia.Where(em => em.ExerciseId == model.ExerciseId).ToListAsync();
 
                 if (existingExercise == null)
                     return NotFound(new { message = "Exercise not found" });
@@ -188,7 +192,7 @@
                 if (routine == null)
                     return NotFound(new { message = "Routine not found" });
 
-
+                // Criando o novo exercício com base nos parâmetros fornecidos
                 var newExercise = new Exercise
                 {
                     Name = existingExercise.Name,
@@ -197,29 +201,33 @@
                     DifficultyLevel = existingExercise.DifficultyLevel,
                     MuscleGroup = existingExercise.MuscleGroup,
                     EquipmentNecessary = existingExercise.EquipmentNecessary,
-                    Reps = 1,
-                    Duration = 1
+                    Reps = model.reps != null && model.reps > 0 ? model.reps.Value : 0,
+                    Duration = model.duration != null && model.duration > 0 ? model.duration.Value : 0
                 };
+
+                // Se nenhum dos valores for válido, definir um padrão
+                if (newExercise.Reps == 0 && newExercise.Duration == 0)
+                {
+                    newExercise.Reps = 10; // Valor padrão caso não seja informado
+                }
 
                 _context.Exercises.Add(newExercise);
                 await _context.SaveChangesAsync();
 
-
+                // Criar relações na tabela ExerciseMedia
                 if (mediaList.Any())
                 {
-                    var newMediaList = mediaList.Select(m => new Media
+                    var newExerciseMediaList = mediaList.Select(m => new ExerciseMedia
                     {
                         ExerciseId = newExercise.Id,
-                        Name = m.Name + newExercise.Id,
-                        Url = m.Url,
-                        Type = m.Type
+                        MediaId = m.MediaId // Mantendo a relação correta com a mídia existente
                     }).ToList();
 
-                    _context.Media.AddRange(newMediaList);
+                    _context.ExerciseMedia.AddRange(newExerciseMediaList);
                     await _context.SaveChangesAsync();
                 }
 
-
+                // Criar relação entre o novo exercício e a rotina
                 var exerciseRoutine = new ExerciseRoutine
                 {
                     ExerciseId = newExercise.Id,
@@ -273,19 +281,31 @@
                 // Criar e adicionar mídias associadas ao exercício
                 var mediaList = new List<Media>
         {
-            new Media { Name = model.newMediaName, Url = model.newMediaUrl, Type = model.newMediaType, ExerciseId = newExercise.Id },
-            new Media { Name = model.newMediaName1, Url = model.newMediaUrl1, Type = model.newMediaType1, ExerciseId = newExercise.Id }
+            new Media { Name = model.newMediaName, Url = model.newMediaUrl, Type = model.newMediaType },
+            new Media { Name = model.newMediaName1, Url = model.newMediaUrl1, Type = model.newMediaType1 }
         };
 
                 if (!string.IsNullOrEmpty(model.newMediaName2) &&
                     !string.IsNullOrEmpty(model.newMediaUrl2) &&
                     !string.IsNullOrEmpty(model.newMediaType2))
                 {
-                    mediaList.Add(new Media { Name = model.newMediaName2, Url = model.newMediaUrl2, Type = model.newMediaType2, ExerciseId = newExercise.Id });
+                    mediaList.Add(new Media { Name = model.newMediaName2, Url = model.newMediaUrl2, Type = model.newMediaType2});
                 }
 
                 _context.Media.AddRange(mediaList);
                 await _context.SaveChangesAsync();
+
+                if (mediaList.Any())
+                {
+                    var newExerciseMediaList = mediaList.Select(m => new ExerciseMedia
+                    {
+                        ExerciseId = newExercise.Id,
+                        MediaId = m.Id // Mantendo a relação correta com a mídia existente
+                    }).ToList();
+
+                    _context.ExerciseMedia.AddRange(newExerciseMediaList);
+                    await _context.SaveChangesAsync();
+                }
 
                 return Ok(new { message = "Exercise added successfully!" });
             }
