@@ -24,9 +24,9 @@ import { ChangeEmailConfirmationComponent } from './ChangeEmailConfirmation/chan
 import { ChangeEmailCancellationComponent } from './ChangeEmalCancellation/changeEmailCancellation.component';
 import { ExercisesComponent } from './Exercises/exercises.component';
 import { ManageTrainingRoutinesComponent } from './manage-training-routines/manage-training-routines.component';
-import { TrainingProgressComponent } from './training-progress/training-progress.component';
 import { TrainingRoutineDetailsComponent } from './training-routine-details/training-routine-details.component';
 import { TrainingRoutineExerciseDetailsComponent } from './training-routine-exercise-details/training-routine-exercise-details.component';
+import { TraininigRoutineProgressComponent } from './traininig-routine-progress/traininig-routine-progress.component';
 
 
 
@@ -34,7 +34,7 @@ import { TrainingRoutineExerciseDetailsComponent } from './training-routine-exer
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingProgressComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,

@@ -23,8 +23,11 @@
         <strong>Difficulty:</strong> <span class="difficulty"> {{ exercise.difficultyLevel }}</span> <br />
         <strong>Muscle Group:</strong> <span class="muscleGroup"> {{ exercise.muscleGroup }}</span> <br />
         <strong>Equipment Necessary:</strong><span class="equipment"> {{ exercise.equipmentNecessary }}</span> <br />
-        <strong>Reps: </strong> <span class="reps"> {{ exercise.reps }}</span> <br />
-        <strong>Duaration: </strong><span class="duration"> {{ exercise.duration }}</span> <br />
+        <strong *ngIf="exercise.reps !== 0">Reps:</strong>
+        <span *ngIf="exercise.reps !== 0" class="reps"> {{ exercise.reps }}</span> <br *ngIf="exercise.reps !== 0">
+
+        <strong *ngIf="exercise.duration !== 0">Duration:</strong>
+        <span *ngIf="exercise.duration !== 0" class="duration"> {{ exercise.duration }}</span> <br *ngIf="exercise.duration !== 0">
       </div>
       <div class="media-container">
         <button class="media-navigation prev" *ngIf="activeMediaIndex > 0" (click)="previousMedia()">&#8592;</button>

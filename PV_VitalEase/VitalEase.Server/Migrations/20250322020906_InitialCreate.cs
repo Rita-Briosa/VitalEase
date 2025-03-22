@@ -28,6 +28,26 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Exercises",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DifficultyLevel = table.Column<int>(type: "int", nullable: false),
+                    MuscleGroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EquipmentNecessary = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Reps = table.Column<int>(type: "int", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exercises", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FavoriteLocations",
                 columns: table => new
                 {
@@ -44,19 +64,18 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ManageTrainingRoutines",
+                name: "Media",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsCustom = table.Column<bool>(type: "bit", nullable: false),
-                    Needs = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ManageTrainingRoutines", x => x.Id);
+                    table.PrimaryKey("PK_Media", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -111,29 +130,27 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Exercises",
+                name: "ExerciseMedia",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DifficultyLevel = table.Column<int>(type: "int", nullable: false),
-                    MuscleGroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EquipmentNecessary = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Reps = table.Column<int>(type: "int", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false),
-                    ManageTrainingRoutinesId = table.Column<int>(type: "int", nullable: true)
+                    ExerciseId = table.Column<int>(type: "int", nullable: false),
+                    MediaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exercises", x => x.Id);
+                    table.PrimaryKey("PK_ExerciseMedia", x => new { x.ExerciseId, x.MediaId });
                     table.ForeignKey(
-                        name: "FK_Exercises_ManageTrainingRoutines_ManageTrainingRoutinesId",
-                        column: x => x.ManageTrainingRoutinesId,
-                        principalTable: "ManageTrainingRoutines",
-                        principalColumn: "Id");
+                        name: "FK_ExerciseMedia_Exercises_ExerciseId",
+                        column: x => x.ExerciseId,
+                        principalTable: "Exercises",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ExerciseMedia_Media_MediaId",
+                        column: x => x.MediaId,
+                        principalTable: "Media",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,28 +180,6 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Media",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExerciseId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Media", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Media_Exercises_ExerciseId",
-                        column: x => x.ExerciseId,
-                        principalTable: "Exercises",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Routines",
                 columns: table => new
                 {
@@ -194,7 +189,9 @@ namespace VitalEase.Server.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    IsCustom = table.Column<bool>(type: "bit", nullable: false),
+                    Needs = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -203,8 +200,7 @@ namespace VitalEase.Server.Migrations
                         name: "FK_Routines_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -254,19 +250,14 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ExerciseMedia_MediaId",
+                table: "ExerciseMedia",
+                column: "MediaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ExerciseRoutines_RoutineId",
                 table: "ExerciseRoutines",
                 column: "RoutineId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Exercises_ManageTrainingRoutinesId",
-                table: "Exercises",
-                column: "ManageTrainingRoutinesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Media_ExerciseId",
-                table: "Media",
-                column: "ExerciseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Routines_UserId",
@@ -291,13 +282,13 @@ namespace VitalEase.Server.Migrations
                 name: "AuditLogs");
 
             migrationBuilder.DropTable(
+                name: "ExerciseMedia");
+
+            migrationBuilder.DropTable(
                 name: "ExerciseRoutines");
 
             migrationBuilder.DropTable(
                 name: "FavoriteLocations");
-
-            migrationBuilder.DropTable(
-                name: "Media");
 
             migrationBuilder.DropTable(
                 name: "ResetEmailTokens");
@@ -309,13 +300,13 @@ namespace VitalEase.Server.Migrations
                 name: "ScheduledRoutines");
 
             migrationBuilder.DropTable(
+                name: "Media");
+
+            migrationBuilder.DropTable(
                 name: "Exercises");
 
             migrationBuilder.DropTable(
                 name: "Routines");
-
-            migrationBuilder.DropTable(
-                name: "ManageTrainingRoutines");
 
             migrationBuilder.DropTable(
                 name: "Users");

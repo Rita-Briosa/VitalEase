@@ -16,19 +16,11 @@
         public int Reps { get; set; }
         public int Duration { get; set; } // in seconds
 
-        public ICollection<ExerciseRoutine> ExerciseRoutines { get; set; }
-        public List<Media> Media { get; set; } = new();
+        public ICollection<ExerciseRoutine> ExerciseRoutine { get; set; }
 
+        public ICollection<ExerciseMedia> ExerciseMedia { get; set; }
+  
 
-        public void AddMedia(Media media)
-        {
-            Media.Add(media);
-        }
-
-        public void RemoveMedia(Media media)
-        {
-            Media.Remove(media);
-        }
 
         public string GetExerciseInfo()
         {

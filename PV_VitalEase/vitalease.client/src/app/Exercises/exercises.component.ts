@@ -32,6 +32,7 @@ export class ExercisesComponent implements OnInit {
   media: any[] = []; // Array para armazenar os media
   activeMediaIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
   selectedSortedOption: string = '';
+  selectedOption: string = 'duration';
   selectedRoutine: number = 0;// Armazena a rotina selecionada
   successMessage: string = '';
   newName: string = '';
@@ -49,7 +50,8 @@ export class ExercisesComponent implements OnInit {
   newMediaName2: string = '';
   newMediaType2: string = '';
   newMediaUrl2: string = '';
-
+  reps: number = 0;// Armazena a rotina selecionada
+  duration: number = 0;// Armazena a rotina selecionada
 
   constructor(
     private exercisesService: ExercisesService,
@@ -111,7 +113,7 @@ export class ExercisesComponent implements OnInit {
         console.log('Routines loaded successfully:', this.routines);
       },
       (error: any) => {
-        this.errorMessage = 'Error loading routines'; // Define a mensagem de erro se a requisição falhar
+        this.errorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
         console.log('Error loading routines:', error);
       }
     );
@@ -124,7 +126,7 @@ export class ExercisesComponent implements OnInit {
         console.log('Exercise media loaded successfully:', this.media);
       },
       (error: any) => {
-        this.errorMessage = 'Error loading exercise media'; // Define a mensagem de erro se a requisição falhar
+        this.errorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
         console.log('Error loading exercise media:', error);
       }
     );
@@ -140,7 +142,7 @@ export class ExercisesComponent implements OnInit {
     const routineId = this.selectedRoutine;
 
 
-    this.exercisesService.addRoutine(routineId, exerciseId).subscribe(
+    this.exercisesService.addRoutine(routineId, exerciseId, this.reps, this.duration).subscribe(
       (response: any) => {
         this.successMessage = response.message;
         this.errorMessage = '';
@@ -172,7 +174,7 @@ export class ExercisesComponent implements OnInit {
         }, 2000);
       },
       (error: any) => {
-        this.errorMessage = error.error?.message || 'An error occurred';
+        this.errorMessage = error.error?.message || 'An unexpected error occurred';
         this.successMessage = '';
       }
     );
@@ -270,7 +272,7 @@ export class ExercisesComponent implements OnInit {
         console.log('Exercises filtered Successfully:', this.exercises);
       },
       (error) => {
-        this.errorMessage = 'Error filtering exercises'; // Define a mensagem de erro se a requisição falhar
+        this.errorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
         console.log('Error filtering exercises:', error);
       }
     )

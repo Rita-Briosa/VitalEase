@@ -7,8 +7,7 @@
         public string Url { get; set; }
         public string Type { get; set; }
 
-        public int ExerciseId { get; set; }  // Chave estrangeira
-        public Exercise Exercise { get; set; }
+        public ICollection<ExerciseMedia> ExerciseMedia { get; set; }
 
         public void DeleteMedia()
         {
