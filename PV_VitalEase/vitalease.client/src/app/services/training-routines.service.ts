@@ -18,6 +18,18 @@ export class TrainingRoutinesService {
     return this.http.get(`${this.apiUrl}/getRoutines`); 
   }
 
+    getFilteredRoutines(filters: any): Observable < any > {
+      let params = new HttpParams();
+
+      Object.keys(filters).forEach(key => {
+        if (filters[key] !== null && filters[key] !== undefined && filters[key] !== '') {
+          params = params.set(key, filters[key])
+        }
+      });
+
+      return this.http.get(`${this.apiUrl}/getFilteredRoutines`, { params });
+  }
+
   // Método para pegar os logs
   getExercisesToAddToRoutine(): Observable<any> {
     return this.http.get(`${this.apiUrl}/getExercises`); // Envia uma requisição GET para pegar os logs
