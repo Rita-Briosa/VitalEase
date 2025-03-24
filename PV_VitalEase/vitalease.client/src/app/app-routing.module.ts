@@ -18,6 +18,8 @@ import { ManageTrainingRoutinesComponent } from './manage-training-routines/mana
 import { TrainingRoutineDetailsComponent } from './training-routine-details/training-routine-details.component';
 import { TrainingRoutineExerciseDetailsComponent } from './training-routine-exercise-details/training-routine-exercise-details.component';
 import { TraininigRoutineProgressComponent } from './traininig-routine-progress/traininig-routine-progress.component';
+import { MapComponent } from './map/map.component';
+import { CustomTrainingRoutinesComponent } from './custom-training-routines/custom-training-routines.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'login', component: LoginComponent },
@@ -37,6 +39,8 @@ const routes: Routes = [
   { path: 'training-routine-details/:id', component: TrainingRoutineDetailsComponent },
   { path: 'training-routine-exercise-details/:id', component: TrainingRoutineExerciseDetailsComponent },
   { path: 'training-routine-progress/:id', component: TraininigRoutineProgressComponent },
+  { path: 'map', component: MapComponent },
+  { path: 'manage-training-routines/custom-training-routines', component: CustomTrainingRoutinesComponent },
   { path: '**', redirectTo: '' }]
 
 

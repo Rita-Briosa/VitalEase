@@ -1,0 +1,25 @@
+<router-outlet></router-outlet>
+
+<html>
+<body>
+  <header>
+    <a [routerLink]="['/']">
+      <img src="assets/img/logo.png" alt="VitalEase Logo">
+    </a>
+    <div class="headText">
+      <h2> Vital Ease - Your app focused in wellness and exercise </h2>
+    </div>
+    <div class="auth-buttons">
+      <!-- Mostrar botão de Login se o usuário não estiver logado -->
+      <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+
+      <a href="/myProfile" class="profile-icon">👤</a>
+    </div>
+  </header>
+
+  <section>
+    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/work-in-progress-design-template-6cc0b86afbb81d0528f26113e3ec02cf_screen.jpg?ts=1698307882" alt="Work in Progress!" />
+  </section>
+
+</body>
+</html>

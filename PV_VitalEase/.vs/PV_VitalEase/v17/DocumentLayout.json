@@ -1,7 +1,88 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app-routing.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app-routing.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\map\\map.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\map\\map.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\app.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\app.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\exercises\\exercises.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\exercises\\exercises.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\map\\map.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\map\\map.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\map\\map.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\map\\map.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\myprofile\\myprofile.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\myprofile\\myprofile.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\homepage\\homepage.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\homepage\\homepage.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\andre\\onedrive\\ambiente de trabalho\\projesa\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\about-us\\about-us.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\about-us\\about-us.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,19 +90,267 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "map.component.ts",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\map\\map.component.ts",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\map\\map.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-24T11:29:25.555Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "custom-training-routines.component.ts",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-24T11:27:23.107Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "manage-training-routines.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.html",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAE8AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:19:27.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "custom-training-routines.component.css",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.css",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.css",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-24T11:27:25.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "app-routing.module.ts",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app-routing.module.ts",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app-routing.module.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app-routing.module.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-24T11:30:25.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "custom-training-routines.component.spec.ts",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.spec.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.spec.ts",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.spec.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.spec.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-24T11:29:46.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "app.module.ts",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.module.ts",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.module.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.module.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-24T11:36:25.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "custom-training-routines.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:27:20.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "map.component.css",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\map\\map.component.css",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\map\\map.component.css",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-24T11:26:31.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "app.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\app.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\app.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\app.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:30:20.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "training-routine-details.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:20:10.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "map.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\map\\map.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\map\\map.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:22:03.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "exercises.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\Exercises\\exercises.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\Exercises\\exercises.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\Exercises\\exercises.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\Exercises\\exercises.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:18:35.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "traininig-routine-progress.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:20:40.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "traininig-routine-progress.component.spec.ts",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.spec.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.spec.ts",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.spec.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.spec.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-24T11:20:38.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "training-routine-exercise-details.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:20:25.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "training-routine-exercise-details.component.spec.ts",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.spec.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.spec.ts",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.spec.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.spec.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-24T11:20:24.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "myProfile.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\MyProfile\\myProfile.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:19:46.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "homePage.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\homePage\\homePage.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\homePage\\homePage.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\homePage\\homePage.component.html",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:18:49.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "about-us.component.html",
+              "DocumentMoniker": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "ToolTip": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\about-us\\about-us.component.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-24T11:18:17.921Z",
+              "EditorCaption": ""
             }
           ]
         }
