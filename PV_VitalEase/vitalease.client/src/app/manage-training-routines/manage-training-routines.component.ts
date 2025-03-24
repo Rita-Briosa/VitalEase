@@ -12,9 +12,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ManageTrainingRoutinesComponent implements OnInit {
   filters: any = {
+    name: '',
     type: '',
     difficultyLevel: null,
-    muscleGroup: '',
+    numberOfExercises: null,
     equipmentNeeded: '',
   };
 
@@ -32,6 +33,7 @@ export class ManageTrainingRoutinesComponent implements OnInit {
   newNeeds: string = '';
   exercises: any[] = []; // Lista de exercícios disponíveis
   selectedExercises: number[] = []; // IDs dos exercícios selecionados
+  selectedSortOption: string = '';
 
   constructor(
     private trainingRoutinesService: TrainingRoutinesService,
@@ -110,6 +112,8 @@ export class ManageTrainingRoutinesComponent implements OnInit {
         console.log('Error loading routines:', error);
       }
     );
+
+    this.getFilteredRoutines();
   }
 
   getTypeClass(type: string): string {
@@ -179,6 +183,56 @@ export class ManageTrainingRoutinesComponent implements OnInit {
         }
       );
   }
+
+  getFilteredRoutines(): void {
+
+    this.trainingRoutinesService.getFilteredRoutines(this.filters).subscribe(
+      (response: any) => {
+        this.routines = response;
+        console.log('Exercises filtered Successfully:', this.routines);
+      },
+      (error) => {
+        this.errorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
+        console.log('Error filtering exercises:', error);
+      }
+    )
+  }
+
+  sortRoutines(): void {
+    this.routines = this.getSortedRoutines(this.selectedSortOption, this.routines);
+    console.log('Exercises sorted successfully:', this.routines);
+  }
+
+  getSortedRoutines(sortOption: string, routines: any[]): any[] {
+    if (!sortOption || !routines || routines.length === 0) {
+      return routines; // Se não houver opção de ordenação ou exercícios, retorna a lista original
+    }
+
+    // Mapeia os níveis de dificuldade para números
+    const difficultyOrder: { [key: string]: number } = {
+      'Beginner': 0,
+      'Intermediate': 1,
+      'Advanced': 2
+    };
+
+    return [...routines].sort((a, b) => {
+      switch (sortOption) {
+        case 'name-asc':
+          return a.name.localeCompare(b.name);
+        case 'name-desc':
+          return b.name.localeCompare(a.name);
+        case 'difficulty-asc':
+          return a.level - b.level; // Ascendente
+        case 'difficulty-desc':
+          return b.level - a.level; // Descendente
+        case 'number-of-exercises-asc':
+          return a.exerciseCount - b.exerciseCount;
+        case 'number-of-exercises-desc':
+          return b.exerciseCount - a .exerciseCount;
+      }
+    });
+  }
+
   /*// Check if user is logged in by fetching the user info
   this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
   if (this.isLoggedIn) {

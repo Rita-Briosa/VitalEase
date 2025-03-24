@@ -262,6 +262,67 @@
             }
         }
 
+        [HttpGet("api/getFilteredRoutines")]
+        public async Task<IActionResult> GetFilteredRoutines(string? name, string? type, string? difficultyLevel, int? numberOfExercises, string? equipmentNeeded)
+        {
+            try
+            {
+                var query = _context.Routines.AsQueryable();
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    query = query.Where(r => r.Name.ToLower() == name.ToLower());
+                }
+
+                if (!string.IsNullOrEmpty(type))
+                {
+                    query = query.Where(r => r.Type.ToLower() == type.ToLower());
+                }
+
+                if (!string.IsNullOrEmpty(difficultyLevel))
+                {
+                    query = query.Where(r => r.Level.ToString().ToLower().Equals(difficultyLevel.ToLower()));
+                }
+
+                if (!string.IsNullOrEmpty(equipmentNeeded))
+                {
+                    query = query.Where(r => r.Needs.ToString().ToLower().Equals(equipmentNeeded.ToLower()));
+                }
+
+                var routinesWithExerciseCount = await query
+                    .Select(r => new
+                    {
+                        Routine = r,
+                        ExerciseCount = _context.ExerciseRoutines.Count(er => er.RoutineId == r.Id)
+                    })
+                    .Where(r => !numberOfExercises.HasValue || r.ExerciseCount == numberOfExercises) // Apply filtering on count
+                    .Select(r => new
+                    {
+                        r.Routine.Id,
+                        r.Routine.Name,
+                        r.Routine.Type,
+                        r.Routine.Level,
+                        r.Routine.Needs,
+                        r.Routine.Description,
+                        r.Routine.IsCustom,
+                        ExerciseCount = r.ExerciseCount // Include exercise count in response
+                    })
+                    .ToListAsync();
+
+
+
+                // Fetch all exercises
+                //var exercises = await query.Where(r => r.IsCustom == false).ToListAsync();
+
+                return Ok(routinesWithExerciseCount);
+            }
+            catch (Exception ex)
+            {
+                //Handle error and return a bad request response
+                return BadRequest(new { message = "Error filtering exercises", error = ex.Message });
+            }
+        }
+
         /* 
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllRoutines()
