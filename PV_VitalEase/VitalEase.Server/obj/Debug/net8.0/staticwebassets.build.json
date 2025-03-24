@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "qUjNc6K2NvyiyH2ksEDuhTMYgFcXL47JGz8A2KdypHM=",
+  "Hash": "Ucs+mk1g0Il4aj0/x2DSxaAFoPTi3HTU16oQZ8Imp3Q=",
   "Source": "VitalEase.Server",
   "BasePath": "_content/VitalEase.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
       "Version": 2,
       "Source": "vitalease.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
