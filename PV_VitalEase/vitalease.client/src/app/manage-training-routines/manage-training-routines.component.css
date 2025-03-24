@@ -287,3 +287,66 @@ input[type="number"] {
   border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .infoText p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .header span {
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 0.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.5rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+  .addRoutine-button {
+    border: none;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    width: 30%;
+  }
+
+  .start {
+    background: #5c8a80;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 59%; /* Move para a direita */
+  }
+
+}

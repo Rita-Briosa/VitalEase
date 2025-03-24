@@ -171,3 +171,56 @@ body {
 .container {
     padding: 20px;
 }
+
+@media (max-width: 480px) {
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .header span {
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 0.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.5rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+  .exercise-info {
+    text-align: left;
+    font-size: 10px;
+  }
+
+  .exercise-actions {
+    display: flex;
+    flex-direction: column; /* Coloca os botões em coluna */
+    gap: 10px;
+  }
+
+  .details {
+    background: #5c8a80;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+}

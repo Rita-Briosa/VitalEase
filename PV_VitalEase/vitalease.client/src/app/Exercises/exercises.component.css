@@ -390,3 +390,161 @@ input[type="number"] {
   color: black;
   pointer-events: none; /* Para evitar interação */
 }
+
+
+@media (max-width: 480px) {
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    margin-left: 5px;
+  }
+
+  .header span {
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 0.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.5rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+  .exercise-info {
+    text-align: left;
+    font-size: 10px;
+  }
+
+  .exercise-actions {
+    display: flex;
+    flex-direction: column; /* Coloca os botões em coluna */
+    gap: 10px;
+  }
+
+  .text-content {
+    max-width: 50%;
+    text-align: left;
+    font-size: 0.5rem;
+  }
+
+
+  .media-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    position: relative;
+    margin-left:30%;
+  }
+
+    .media-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+
+  .media-navigation {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .next {
+    right: -45px;
+  }
+
+  .previous {
+      left: -45px;
+  }
+
+  .addExercise-button {
+    border: none;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    width: 30%;
+  }
+
+  .filters {
+    display: grid;
+    gap: 1rem; /* Espaço entre os elementos */
+    width: 100%;
+    margin: 1rem auto; /* Centraliza o bloco de filtros */
+    padding: 1rem;
+    background: #f0f0f0; /* Fundo suave para destacar os filtros */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+    .filters select,
+    .filters input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.5rem;
+      width: 100%; /* Garante que o input ocupe a célula inteira */
+      background: #fff;
+    }
+
+    .filters button {
+      background-color: #5c8a80;
+      color: white;
+      font-size: 0.5rem;
+      font-weight: bold;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      grid-column: span 2; /* O botão ocupa duas colunas no grid */
+      justify-self: center; /* Centraliza o botão na célula */
+      width: 50%;
+    }
+
+      .filters button:hover {
+        background-color: #476e66;
+      }
+
+  .details, .add {
+    background: #5c8a80;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.5rem;
+  }
+
+  .media-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin-bottom: 45px;
+  }
+
+}

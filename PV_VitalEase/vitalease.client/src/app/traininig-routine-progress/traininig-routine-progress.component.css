@@ -79,6 +79,245 @@ body {
     transition: background-color 0.3s;
   }
 
+/* Container principal */
 .container {
+  max-width: 80%;
+  margin: 50px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+h1 {
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Wrapper de conteúdo */
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Card de exercício */
+.text-content {
+  background: #d9d9d9;
   padding: 20px;
+  border-radius: 15px;
+  width: 40%;
+}
+
+  .text-content h3 {
+    margin-bottom: 10px;
+  }
+
+  .text-content strong {
+    display: block;
+    margin-top: 10px;
+    color: #2c3e50;
+  }
+
+  .text-content span {
+    color: #34495e;
+  }
+
+/* Container de mídia */
+.media-container {
+  background: #d9d9d9;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  position: relative;
+}
+
+  .media-container img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .media-container iframe {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+/* Botões de navegação entre mídias */
+.media-navigation {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.3s;
+}
+
+  .media-navigation:hover {
+    background: #1a252f;
+  }
+
+  .media-navigation.prev {
+    left: -40px;
+  }
+
+  .media-navigation.next {
+    right: -40px;
+  }
+
+/* Navegação entre exercícios */
+.exercise-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+  .exercise-navigation button {
+    background: #d1d1d1;
+    color: black;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+  }
+
+    .exercise-navigation button:hover {
+      background: #bfbfbf;
+    }
+
+  .exercise-navigation .prev-exercise {
+    background: #e74c3c;
+  }
+
+    .exercise-navigation .prev-exercise:hover {
+      background: #c0392b;
+    }
+
+  .exercise-navigation .skip-exercise {
+    background: #0e9df5;
+  }
+
+    .exercise-navigation .skip-exercise:hover {
+      background: #5dc1fe;
+    }
+
+  .exercise-navigation .next-exercise {
+    background: #27ae60;
+  }
+
+    .exercise-navigation .next-exercise:hover {
+      background: #219150;
+    }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .text-content,
+  .media-container {
+    width: 100%;
+  }
+
+  .exercise-navigation {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .media-navigation {
+    position: static;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  h1 {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .header span {
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 0.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.5rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .text-content,
+  .media-container {
+    width: 100%;
+    font-size: 0.5rem;
+  }
+
+  .exercise-navigation {
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .media-navigation {
+    position: static;
+    margin: 10px;
+  }
+
+  .exercise-navigation button {
+    background: #d1d1d1;
+    color: black;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+  }
+
 }
