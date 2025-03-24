@@ -30,6 +30,53 @@
 
   <div class="container">
     <h1>Training Routine Progress</h1>
+
+    <div class="content-wrapper" *ngIf="exercises.length > 0">
+      <!-- Exibição do exercício atual -->
+      <div class="text-content">
+        <h3>{{ exercises[activeExerciseIndex]?.name }}</h3>
+        <strong>Description:</strong> <span>{{ exercises[activeExerciseIndex]?.description }}</span> <br />
+        <strong>Type:</strong> <span [ngClass]="exercises[activeExerciseIndex]?.type"> {{ exercises[activeExerciseIndex]?.type }}</span> <br />
+        <strong>Difficulty:</strong> <span class="difficulty"> {{ exercises[activeExerciseIndex]?.difficultyLevel }}</span> <br />
+        <strong>Muscle Group:</strong> <span class="muscleGroup"> {{ exercises[activeExerciseIndex]?.muscleGroup }}</span> <br />
+        <strong>Equipment Necessary:</strong> <span class="equipment"> {{ exercises[activeExerciseIndex]?.equipmentNecessary }}</span> <br />
+
+        <strong *ngIf="exercises[activeExerciseIndex]?.reps !== 0">Reps:</strong>
+        <span *ngIf="exercises[activeExerciseIndex]?.reps !== 0" class="reps"> {{ exercises[activeExerciseIndex]?.reps }}</span> <br *ngIf="exercises[activeExerciseIndex]?.reps !== 0">
+
+        <strong *ngIf="exercises[activeExerciseIndex]?.duration !== 0">Duration:</strong>
+        <span *ngIf="exercises[activeExerciseIndex]?.duration !== 0" class="duration"> {{ exercises[activeExerciseIndex]?.duration }}</span> <br *ngIf="exercises[activeExerciseIndex]?.duration !== 0">
+      </div>
+
+      <!-- Exibição de mídia (imagem ou vídeo) -->
+      <div class="media-container">
+        <button class="media-navigation prev" *ngIf="activeMediaIndex > 0" (click)="previousMedia()">&#8592;</button>
+
+        <div *ngIf="media.length > 0">
+          <div *ngIf="media[activeMediaIndex].type === 'Image'">
+            <img [src]="media[activeMediaIndex].url" alt="Exercise Image">
+          </div>
+          <div *ngIf="media[activeMediaIndex].type === 'Video'">
+            <iframe [src]="sanitizeUrl(media[activeMediaIndex].url)" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <button class="media-navigation next" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">&#8594;</button>
+      </div>
+    </div>
+
+    <!-- Mensagem caso não existam exercícios -->
+    <div *ngIf="exercises.length === 0">
+      <p>No exercises available for this routine.</p>
+    </div>
+
+    <!-- Botões de navegação entre exercícios -->
+    <div class="exercise-navigation">
+      <button class="prev-exercise" *ngIf="activeExerciseIndex > 0" (click)="previousExercise()">⟵ Previous</button>
+      <button class="skip-exercise" *ngIf="activeExerciseIndex < exercises.length - 1" (click)="skipExercises()">⏭️ Skip</button>
+      <button class="next-exercise" *ngIf="activeExerciseIndex < exercises.length - 1" (click)="nextExercise()">Next ⟶</button>
+      <button class="next-exercise" *ngIf="activeExerciseIndex == exercises.length - 1" (click)="goToTrainingRoutines()">Complete</button>
+    </div>
   </div>
-  </body>
+</body>
 </html>
