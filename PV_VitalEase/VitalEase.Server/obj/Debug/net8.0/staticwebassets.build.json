@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "XRLTzBEoVsYVIbwDyiww3FrfMpj3YhEAytOEbCp8D/8=",
+  "Hash": "qUjNc6K2NvyiyH2ksEDuhTMYgFcXL47JGz8A2KdypHM=",
   "Source": "VitalEase.Server",
   "BasePath": "_content/VitalEase.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\andre\\OneDrive\\Ambiente de Trabalho\\ProjESA\\VitalEase\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
+      "Identity": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
       "Version": 2,
       "Source": "vitalease.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
@@ -19,5 +19,6 @@
     }
   ],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

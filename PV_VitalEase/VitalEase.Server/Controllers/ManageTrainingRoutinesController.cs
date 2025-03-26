@@ -323,6 +323,26 @@
             }
         }
 
+        [HttpGet("api/getCustomTrainingRoutines")]
+        public async Task<IActionResult> getCustomTrainingRoutines(int userId)
+        {
+            try
+            {
+                var routines = await _context.Routines.Where(r => r.IsCustom == true && r.UserId == userId).ToListAsync();
+
+                if (routines.IsNullOrEmpty())
+                {
+                    return NotFound("Couldn't find custom routines for the user");
+                }
+
+                return Ok(routines);
+            }
+            catch
+            {
+                return BadRequest(new { message = "Error fetching custom training routines" });
+            }
+        }
+
         /* 
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllRoutines()
