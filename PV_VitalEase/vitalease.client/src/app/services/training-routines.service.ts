@@ -18,6 +18,13 @@ export class TrainingRoutinesService {
     return this.http.get(`${this.apiUrl}/getRoutines`); 
   }
 
+  getCustomTrainingRoutines(userId: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('userId', userId);
+
+    return this.http.get(`${this.apiUrl}/getCustomTrainingRoutines`, { params });
+  }
+
     getFilteredRoutines(filters: any): Observable < any > {
       let params = new HttpParams();
 

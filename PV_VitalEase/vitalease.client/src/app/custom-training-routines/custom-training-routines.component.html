@@ -4,10 +4,13 @@
 <body>
   <header>
     <a [routerLink]="['/']">
-      <img src="assets/img/logo.png" alt="VitalEase Logo">
+      <img src="../../assets/img/logo.png" alt="VitalEase Logo">
     </a>
     <div class="headText">
-      <h2> Vital Ease - Your app focused in wellness and exercise </h2>
+      <a class="action-button" routerLink="/exercises">Exercises</a>
+      <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
+      <a class="action-button" routerLink="/map">Map</a>
+      <a class="action-button" routerLink="/aboutUs">About Us</a>
     </div>
     <div class="auth-buttons">
       <!-- Mostrar botão de Login se o usuário não estiver logado -->
@@ -17,9 +20,34 @@
     </div>
   </header>
 
-  <section>
-    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/work-in-progress-design-template-6cc0b86afbb81d0528f26113e3ec02cf_screen.jpg?ts=1698307882" alt="Work in Progress!" />
-  </section>
+  <div class="routines-container" *ngIf="routines && routines.length > 0">
+
+    <div class="routine-container" *ngFor="let routine of routines">
+      <h4> {{routine.name}} </h4>
+      <h5> Type: {{routine.type}} </h5>
+      <div class="routineDescription">
+        <p id="description"> Description:</p>
+        <p> {{routine.description}} </p>
+      </div>
+      <div class="buttons">
+        <a id="edit" [routerLink]="'/'">
+          <img src="../../assets/img/pencil-43.png" alt="Edit Routine" title="Edit Routine" />
+        </a>
+        <a id="start" [routerLink]="'/'">
+          <img src="../../assets/img/arrow_right.png" alt="Start Routine" title="Start Routine"/>
+        </a>
+        <a id="delete" [routerLink]="'/'">
+          <img src="../../assets/img/garbage_can.png" alt="Delete Routine" title="Delete Routine"/>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-routine">
+    <a id="add" [routerLink]="'/'">
+      <img src="../../assets/img/plusIcon.png" alt="Add Routine" title="Add Routine"/>
+    </a>
+  </div>
 
 </body>
 </html>
