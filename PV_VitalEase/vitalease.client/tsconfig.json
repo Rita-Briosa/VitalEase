@@ -16,8 +16,13 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
+    "types": [ "google.maps" ],
     "module": "ES2022"
   },
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

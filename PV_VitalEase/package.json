@@ -2,5 +2,8 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "jwt-decode": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.58.1"
   }
 }
