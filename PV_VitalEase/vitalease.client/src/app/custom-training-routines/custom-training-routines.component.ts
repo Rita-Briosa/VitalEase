@@ -12,10 +12,19 @@ import { TrainingRoutinesService } from '../services/training-routines.service';
 })
 export class CustomTrainingRoutinesComponent {
   errorMessage: string = '';
+  successMessage: string = '';
+  activeModal: string = '';
 
   userInfo: any = null;
   isLoggedIn: boolean = false;
   routines: any = [];
+
+  newName: string = '';
+  newDescription: string = '';
+  newType: string = '';
+  newRoutineLevel: string = '';
+  newNeeds: string = '';
+
 
   constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router) { }
 
@@ -49,12 +58,6 @@ export class CustomTrainingRoutinesComponent {
 
   }
 
-  logout() {
-    this.authService.logout();
-    this.isLoggedIn = false;
-    this.router.navigate(['/']);
-  }
-
   getRoutines() {
     this.routinesService.getCustomTrainingRoutines(this.userInfo.id).subscribe(
       (response: any) => {
@@ -67,6 +70,38 @@ export class CustomTrainingRoutinesComponent {
       }
     );
   }
+  
+  addCustomRoutine() {
+    console.log(this.userInfo.id);
 
+    this.routinesService.addCustomRoutine(this.userInfo.id, this.newName, this.newDescription, this.newType, this.newRoutineLevel, this.newNeeds).subscribe(
+      (response: any) => {
+        console.log(response.message);
+        this.closeModal();
+        window.location.reload();
+      },
+      (error: any) => {
+        console.log(error.error?.message);
+      }
+    );
+  }
+
+  openAddRoutineModal(): void {
+    this.activeModal = 'addRoutine';
+  }
+
+  closeModal() {
+    this.activeModal = ''; // Fechar a modal
+    this.errorMessage = '';
+    this.successMessage = '';
+  }
+
+
+
+  logout() {
+    this.authService.logout();
+    this.isLoggedIn = false;
+    this.router.navigate(['/']);
+  }
 
 }

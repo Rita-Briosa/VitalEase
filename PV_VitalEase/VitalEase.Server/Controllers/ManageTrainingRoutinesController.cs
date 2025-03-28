@@ -237,6 +237,46 @@
             }
         }
 
+        [HttpPost("api/addNewCustomRoutine/{userId}")]
+        public async Task<IActionResult> AddCustomRoutine(int userId, [FromBody] AddRoutineViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new { message = "Invalid data" });
+                }
+
+                if (!Enum.TryParse(model.newRoutineLevel, out RoutineLevel routineLevel))
+                {
+                    return BadRequest(new { message = "Invalid difficulty level" });
+                }
+
+                // Criar nova rotina
+                var newRoutine = new Routine
+                {
+                    Name = model.newName,
+                    UserId = userId,
+                    User =  await _context.Users.FindAsync(userId),
+                    Description = model.newDescription,
+                    Type = model.newType,
+                    Level = routineLevel,
+                    IsCustom = true,
+                    Needs = model.newNeeds,
+                };
+
+                _context.Routines.Add(newRoutine);
+                await _context.SaveChangesAsync(); // Salva para gerar o ID da rotina
+
+
+                return Ok(new { message = "Routine and exercises added successfully!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error adding routine", error = ex.Message });
+            }
+        }
+
         [HttpGet("api/getRoutines")]
         public async Task<IActionResult> GetRoutines()
         {

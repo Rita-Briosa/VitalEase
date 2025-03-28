@@ -58,7 +58,12 @@ export class TrainingRoutinesService {
 
     return this.http.post<any>(this.apiUrlAddRoutine, { newName, newDescription, newType, newRoutineLevel, newNeeds, exercises });
     
-    }
-
   }
+
+  addCustomRoutine(userId: number, newName: string, newDescription: string, newType: string, newRoutineLevel: string, newNeeds: string): Observable<any> {
+    let exercises: number[] = [];
+    return this.http.post<any>(`${this.apiUrl}/addNewCustomRoutine/${userId}`, { newName, newDescription, newType, newRoutineLevel, newNeeds, exercises });
+  }
+
+}
 
