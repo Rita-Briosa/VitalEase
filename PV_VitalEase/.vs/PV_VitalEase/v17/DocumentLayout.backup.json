@@ -3,27 +3,8 @@
   "WorkspaceRootPath": "C:\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/VitalEaseServerContext_385ab724_83fc_4dc2_b68a_bfc02289bd6c/True/SqlTable/dbo.Routines.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\managetrainingroutinescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\managetrainingroutinescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\services\\training-routines.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\services\\training-routines.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,17 +14,17 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "custom-training-routines.component.ts",
               "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
               "RelativeDocumentMoniker": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
               "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
               "RelativeToolTip": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.ts",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAgwGIAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAD4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-03-27T20:18:40.373Z",
               "IsPinned": true,
@@ -60,68 +41,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "dbo.Routines [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/VitalEaseServerContext_385ab724_83fc_4dc2_b68a_bfc02289bd6c/True/SqlTable/dbo.Routines.sql",
-              "ToolTip": "dbo.Routines [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-29T16:45:28.545Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "custom-training-routines.component.html",
-              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
-              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
-              "RelativeToolTip": "vitalease.client\\src\\app\\custom-training-routines\\custom-training-routines.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAABiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-03-29T13:16:07.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ManageTrainingRoutinesController.cs",
-              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ManageTrainingRoutinesController.cs",
-              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\ManageTrainingRoutinesController.cs",
-              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ManageTrainingRoutinesController.cs",
-              "RelativeToolTip": "VitalEase.Server\\Controllers\\ManageTrainingRoutinesController.cs",
-              "ViewState": "AgIAAHgBAAAAAAAAAAAUwJQBAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T12:56:25.738Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "manage-training-routines.component.ts",
-              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.ts",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.ts",
-              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.ts",
-              "RelativeToolTip": "vitalease.client\\src\\app\\manage-training-routines\\manage-training-routines.component.ts",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAgwLAAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-03-28T23:02:21.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "training-routines.service.ts",
-              "DocumentMoniker": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\training-routines.service.ts",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\services\\training-routines.service.ts",
-              "ToolTip": "C:\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\services\\training-routines.service.ts",
-              "RelativeToolTip": "vitalease.client\\src\\app\\services\\training-routines.service.ts",
-              "ViewState": "AgIAADMAAAAAAAAAAAAowEoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-03-28T22:51:32.878Z",
-              "EditorCaption": ""
             }
           ]
         }

@@ -59,6 +59,12 @@ header .headText {
     transition: background-color 0.3s;
   }
 
+a {
+  text-decoration: none;
+  color: black;
+  transition: background-color 0.3s;
+}
+
 .routines-container {
   padding-bottom: 50px;
   display: flex;

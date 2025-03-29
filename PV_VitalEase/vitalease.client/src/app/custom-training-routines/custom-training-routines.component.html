@@ -23,7 +23,7 @@
   <div class="routines-container" *ngIf="routines && routines.length > 0">
 
     <div class="routine-container" *ngFor="let routine of routines">
-      <h4> {{routine.name}} </h4>
+      <a [routerLink]="'/training-routine-details/' + routine.id"> <h4> {{routine.name}} </h4> </a>
       <h5> Type: {{routine.type}} </h5>
       <div class="routineDescription">
         <p id="description"> Description:</p>
