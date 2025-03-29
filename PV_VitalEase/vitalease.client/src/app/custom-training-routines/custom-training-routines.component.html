@@ -4,10 +4,13 @@
 <body>
   <header>
     <a [routerLink]="['/']">
-      <img src="assets/img/logo.png" alt="VitalEase Logo">
+      <img src="../../assets/img/logo.png" alt="VitalEase Logo">
     </a>
     <div class="headText">
-      <h2> Vital Ease - Your app focused in wellness and exercise </h2>
+      <a class="action-button" routerLink="/exercises">Exercises</a>
+      <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
+      <a class="action-button" routerLink="/map">Map</a>
+      <a class="action-button" routerLink="/aboutUs">About Us</a>
     </div>
     <div class="auth-buttons">
       <!-- Mostrar botão de Login se o usuário não estiver logado -->
@@ -17,9 +20,87 @@
     </div>
   </header>
 
-  <section>
-    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/work-in-progress-design-template-6cc0b86afbb81d0528f26113e3ec02cf_screen.jpg?ts=1698307882" alt="Work in Progress!" />
-  </section>
+  <div class="routines-container" *ngIf="routines && routines.length > 0">
+
+    <div class="routine-container" *ngFor="let routine of routines">
+      <a [routerLink]="'/training-routine-details/' + routine.id"> <h4> {{routine.name}} </h4> </a>
+      <h5> Type: {{routine.type}} </h5>
+      <div class="routineDescription">
+        <p id="description"> Description:</p>
+        <p> {{routine.description}} </p>
+      </div>
+      <div class="buttons">
+        <a id="edit" [routerLink]="'/edit-custom-training-routine/' + routine.id">
+          <img src="../../assets/img/pencil-43.png" alt="Edit Routine" title="Edit Routine" />
+        </a>
+        <a id="start" [routerLink]="'/training-routine-progress/' + routine.id">
+          <img src="../../assets/img/arrow_right.png" alt="Start Routine" title="Start Routine" />
+        </a>
+        <button id="delete" (click)="openDeleteRoutineModal(routine.id)">
+          <img src="../../assets/img/garbage_can.png" alt="Delete Routine" title="Delete Routine" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-routine">
+    <button id="add" (click)="openAddRoutineModal()">
+      <img src="../../assets/img/plusIcon.png" alt="Add Routine" title="Add Routine" />
+    </button>
+  </div>
+
+
+  <div class="modal" [ngClass]="{ 'show': activeModal === 'addRoutine' }">
+    <div class="modal-content-one">
+      <h2>Add New Routine</h2>
+      <form #exerciseForm="ngForm">
+        <div class="input-container">
+          <div class="input-group">
+            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Routine Name" required>
+            <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" placeholder="Routine Description" required>
+            <input type="text" id="newNeeds" [(ngModel)]="newNeeds" name="newNeeds" placeholder="Routine Needs" required>
+          </div>
+
+          <div class="input-group">
+            <select [(ngModel)]="newType" name="newType" required>
+              <option value="" selected>Select Routine Type</option>
+              <option value="Warm-up">Warm-up</option>
+              <option value="Cool-Down">Cool-Down</option>
+              <option value="Stretching">Stretching</option>
+              <option value="Muscle-focused">Muscle-focused</option>
+            </select>
+
+            <select [(ngModel)]="newRoutineLevel" name="newRoutineLevel" required>
+              <option value="" selected>Select Routine Level</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+
+        <div class="modal-buttons">
+          <button type="button" class="modalButton" (click)="addCustomRoutine()">Add</button>
+          <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" [ngClass]="{ 'show': activeModal === 'deleteRoutine' }">
+    <div class="modal-content-one">
+      <h2>Delete Routine</h2>
+      <form #exerciseForm="ngForm">
+        <div class="modal-buttons">
+          <button type="button" class="modalButton" (click)="deleteCustomRoutine(selectedRoutineId)">Delete</button>
+          <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>

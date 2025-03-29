@@ -1,0 +1,120 @@
+<router-outlet></router-outlet>
+
+<html>
+<body>
+  <header>
+    <a [routerLink]="['/']">
+      <img src="../../assets/img/logo.png" alt="VitalEase Logo">
+    </a>
+    <div class="headText">
+      <a class="action-button" routerLink="/exercises">Exercises</a>
+      <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
+      <a class="action-button" routerLink="/map">Map</a>
+      <a class="action-button" routerLink="/aboutUs">About Us</a>
+    </div>
+    <div class="auth-buttons">
+      <!-- Mostrar botão de Login se o usuário não estiver logado -->
+      <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+
+      <a href="/myProfile" class="profile-icon">👤</a>
+    </div>
+  </header>
+
+  <h3 id="ExercisesTitle">
+    <a routerLink="/manage-training-routines/custom-training-routines">◄</a>
+    Exercises
+  </h3>
+  <div class="exercises" *ngIf="exercises.length > 0">
+
+    <div class="warm-up">
+      <h3>Warm-up Exercises</h3>
+      <div *ngIf="warmUpExercises.length > 0">
+        <div class="exercise-card" *ngFor="let exercise of warmUpExercises">
+          <div class="exercise-info">
+            <h4>{{ exercise.name }}</h4>
+            <p>{{ exercise.description }}</p>
+          </div>
+          <div class="exercise-actions">
+            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
+            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="warmUpExercises.length === 0">
+        No Warp-up exercises in this routine.
+      </div>
+    </div>
+
+    <div class="main-exercises">
+      <h3>Main Exercises</h3>
+      <div *ngIf="mainExercises.length > 0">
+        <div class="exercise-card" *ngFor="let exercise of mainExercises">
+          <div class="exercise-info">
+            <h4>{{ exercise.name }}</h4>
+            <p>{{ exercise.description }}</p>
+          </div>
+          <div class="exercise-actions">
+            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
+            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="mainExercises.length === 0">
+        No Main exercises in this routine.
+      </div>
+    </div>
+
+    <div class="cool-down">
+      <h3>Cool-down Exercises</h3>
+      <div *ngIf="coolDownExercises.length > 0">
+        <div class="exercise-card" *ngFor="let exercise of coolDownExercises">
+          <div class="exercise-info">
+            <h4>{{ exercise.name }}</h4>
+            <p>{{ exercise.description }}</p>
+          </div>
+          <div class="exercise-actions">
+            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
+            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="coolDownExercises.length === 0">
+        No Warp-up exercises in this routine.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="exercises" *ngIf="exercises.length === 0">
+    There are no exercises in this custom training routine! Start by adding some!
+  </div>
+
+  <div class="add-exercise">
+    <button id="add">
+      <img src="../../assets/img/plusIcon.png" alt="Add Routine" title="Add Routine" />
+    </button>
+  </div>
+
+  <div class="modal" [ngClass]="{ 'show': activeModal === 'deleteExercise' }">
+    <div class="modal-content-one">
+      <h2>Delete Exercise</h2>
+      <form #exerciseForm="ngForm">
+        <div class="modal-buttons">
+          <button type="button" class="modalButton" (click)="deleteExercise(selectedExerciseId)">Delete</button>
+          <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

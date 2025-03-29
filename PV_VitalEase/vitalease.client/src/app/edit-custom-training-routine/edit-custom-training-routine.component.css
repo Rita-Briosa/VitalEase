@@ -33,7 +33,7 @@ header {
   margin-bottom: 20px;
 }
 
-header .headText {
+  header .headText {
     display: flex;
     gap: 200px; /* Espaço entre os links */
     align-items: center; /* Alinha os itens no centro verticalmente */
@@ -59,84 +59,52 @@ header .headText {
     transition: background-color 0.3s;
   }
 
-a {
+.add-exercise {
+  text-align: center;
+}
+
+  .add-exercise #add img {
+    max-width: 50px;
+    max-height: 50px;
+  }
+
+.exercise-card {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background: #d9d9d9;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px 0px 10px 0px;
+}
+
+.warm-up h3 {
+    color: orange;
+}
+
+.main-exercises h3{
+    color: darkred;
+}
+
+.cool-down h3{
+    color: blue;
+}
+
+h3 a {
   text-decoration: none;
   color: black;
   transition: background-color 0.3s;
 }
 
-.routines-container {
-  padding-bottom: 50px;
+#ExercisesTitle {
+  font-size: 30px;
+}
+
+.exercise-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: row; /* Coloca os botões em linha */
+  gap: 10px;
 }
-
-.routine-container {
-  display: flex;
-  justify-content: space-between; /* Pushes buttons to the bottom */
-  flex-direction: column; /* Makes children stack vertically */
-  width: 300px;
-  height: 200px;
-  border: 3px solid aquamarine;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-}
-
-.routine-container h4{
-    text-align: center;
-    padding-right: 10px;
-    margin-bottom: 0px;
-}
-
-  .routine-container h5 {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 0px;
-  }
-
-  .routine-container p {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-.routine-container #description{
-    font-weight: bold;
-}
-
-.routine-container .routineDescription{
-    display: inline-flex;
-    font-size: 14px;
-}
-
-.routine-container .buttons {
-  display: flex;
-  gap: 100px;
-  justify-content: center;
-  margin-top: auto;
-}
-
-.buttons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.buttons img {
-  max-width: 20px;
-  max-height: 20px;
-}
-
-.add-routine{
-    text-align: center;
-}
-
-  .add-routine #add img{
-    max-width: 50px;
-    max-height: 50px;
-  }
 
 .modal {
   display: none;

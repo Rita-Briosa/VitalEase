@@ -18,6 +18,13 @@ export class TrainingRoutinesService {
     return this.http.get(`${this.apiUrl}/getRoutines`); 
   }
 
+  getCustomTrainingRoutines(userId: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('userId', userId);
+
+    return this.http.get(`${this.apiUrl}/getCustomTrainingRoutines`, { params });
+  }
+
     getFilteredRoutines(filters: any): Observable < any > {
       let params = new HttpParams();
 
@@ -51,7 +58,27 @@ export class TrainingRoutinesService {
 
     return this.http.post<any>(this.apiUrlAddRoutine, { newName, newDescription, newType, newRoutineLevel, newNeeds, exercises });
     
-    }
-
   }
+
+  addCustomRoutine(userId: number, newName: string, newDescription: string, newType: string, newRoutineLevel: string, newNeeds: string): Observable<any> {
+    let exercises: number[] = [];
+    return this.http.post<any>(`${this.apiUrl}/addNewCustomRoutine/${userId}`, { newName, newDescription, newType, newRoutineLevel, newNeeds, exercises });
+  }
+
+  deleteRoutine(routineId: number): Observable<any> {
+    let params = new HttpParams();
+    params.set('routineId', routineId);
+
+    return this.http.delete<any>(`${this.apiUrl}/deleteRoutine/${routineId}`, { params });
+  }
+
+  deleteExerciseFromRoutine(routineId: number, exerciseId: number): Observable<any>{
+    let params = new HttpParams();
+    params.set('routineId', routineId);
+    params.set('exerciseId', exerciseId);
+
+    return this.http.delete<any>(`${this.apiUrl}/deleteExerciseFromRoutine/${routineId}/${exerciseId}`, {params});
+  }
+
+}
 

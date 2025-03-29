@@ -71,6 +71,29 @@
             }
         }
 
+        [HttpDelete("api/deleteExerciseFromRoutine/{routineId}/{exerciseId}")]
+        public async Task<IActionResult> deleteExerciseFromRoutine(int routineId, int exerciseId)
+        {
+            try
+            {
+                var exercise = await _context.ExerciseRoutines.Where(exRout => exRout.RoutineId == routineId && exRout.ExerciseId == exerciseId).FirstOrDefaultAsync();
+
+                if (exercise == null)
+                {
+                    return NotFound("Exercise not Found");
+                }
+
+                _context.Remove(exercise);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new {message = "Error deleting exercise from routine"});
+            }
+        }
+
         [HttpGet("api/getExerciseDetailsFromRoutine/{exerciseId}")]
         public async Task<IActionResult> GetExerciseDetailsFromRoutine(string exerciseId)
         {
@@ -237,6 +260,46 @@
             }
         }
 
+        [HttpPost("api/addNewCustomRoutine/{userId}")]
+        public async Task<IActionResult> AddCustomRoutine(int userId, [FromBody] AddRoutineViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new { message = "Invalid data" });
+                }
+
+                if (!Enum.TryParse(model.newRoutineLevel, out RoutineLevel routineLevel))
+                {
+                    return BadRequest(new { message = "Invalid difficulty level" });
+                }
+
+                // Criar nova rotina
+                var newRoutine = new Routine
+                {
+                    Name = model.newName,
+                    UserId = userId,
+                    User =  await _context.Users.FindAsync(userId),
+                    Description = model.newDescription,
+                    Type = model.newType,
+                    Level = routineLevel,
+                    IsCustom = true,
+                    Needs = model.newNeeds,
+                };
+
+                _context.Routines.Add(newRoutine);
+                await _context.SaveChangesAsync(); // Salva para gerar o ID da rotina
+
+
+                return Ok(new { message = "Routine and exercises added successfully!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error adding routine", error = ex.Message });
+            }
+        }
+
         [HttpGet("api/getRoutines")]
         public async Task<IActionResult> GetRoutines()
         {
@@ -320,6 +383,49 @@
             {
                 //Handle error and return a bad request response
                 return BadRequest(new { message = "Error filtering exercises", error = ex.Message });
+            }
+        }
+
+        [HttpGet("api/getCustomTrainingRoutines")]
+        public async Task<IActionResult> getCustomTrainingRoutines(int userId)
+        {
+            try
+            {
+                var routines = await _context.Routines.Where(r => r.IsCustom == true && r.UserId == userId).ToListAsync();
+
+                if (routines.IsNullOrEmpty())
+                {
+                    return NotFound("Couldn't find custom routines for the user");
+                }
+
+                return Ok(routines);
+            }
+            catch
+            {
+                return BadRequest(new { message = "Error fetching custom training routines" });
+            }
+        }
+
+        [HttpDelete("api/deleteRoutine/{routineId}")]
+        public async Task<IActionResult> deleteRoutine(int routineId)
+        {
+            try
+            {
+                var routine = await _context.Routines.FindAsync(routineId);
+
+                if(routine == null)
+                {
+                    return NotFound("Routine not Found");
+                }
+
+                _context.Routines.Remove(routine);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new { message = "Error deleting Training Routine" });
             }
         }
 

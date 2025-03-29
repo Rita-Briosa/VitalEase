@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { TrainingRoutinesService } from '../services/training-routines.service';
 
 @Component({
   selector: 'app-custom-training-routines',
@@ -10,10 +11,24 @@ import { Router } from '@angular/router';
   styleUrl: './custom-training-routines.component.css'
 })
 export class CustomTrainingRoutinesComponent {
+  errorMessage: string = '';
+  successMessage: string = '';
+  activeModal: string = '';
+
   userInfo: any = null;
   isLoggedIn: boolean = false;
+  routines: any = [];
 
-  constructor(private authService: AuthService, private router: Router) { }
+  newName: string = '';
+  newDescription: string = '';
+  newType: string = '';
+  newRoutineLevel: string = '';
+  newNeeds: string = '';
+
+  selectedRoutineId: number = 0;
+
+
+  constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router) { }
 
   ngOnInit() {
     // Check if user is logged in by fetching the user info
@@ -30,6 +45,8 @@ export class CustomTrainingRoutinesComponent {
         (response: any) => {
           this.isLoggedIn = true;
           this.userInfo = response.user;
+
+          this.getRoutines();
         },
         (error) => {
           this.authService.logout();
@@ -37,14 +54,84 @@ export class CustomTrainingRoutinesComponent {
         }
       );
     } else {
-      // No token found, redirect to login
-      //this.router.navigate(['/login']);
+      //No token found, redirect to login
+      this.router.navigate(['/login']);
     }
 
   }
+
+  getRoutines() {
+    this.routinesService.getCustomTrainingRoutines(this.userInfo.id).subscribe(
+      (response: any) => {
+        this.routines = response;
+        console.log("Custom Routines loaded successfully!");
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message; // Define a mensagem de erro se a requisição falhar
+        console.log('Error loading Custom Routines:', error);
+      }
+    );
+  }
+  
+  addCustomRoutine() {
+    console.log(this.userInfo.id);
+
+    this.routinesService.addCustomRoutine(this.userInfo.id, this.newName, this.newDescription, this.newType, this.newRoutineLevel, this.newNeeds).subscribe(
+      (response: any) => {
+        console.log(response.message);
+        this.closeModal();
+        window.location.reload();
+      },
+      (error: any) => {
+        console.log(error.error?.message);
+      }
+    );
+  }
+
+  deleteCustomRoutine(routineId: number) {
+    this.routinesService.deleteRoutine(routineId).subscribe(
+      (response: any) => {
+        this.unselectRoutine();
+        window.location.reload();
+        console.log(response);
+      },
+      (error: any) => {
+        this.unselectRoutine();
+        console.log(error.error?.message);
+      }
+    )
+  }
+
+  selectRoutine(routineId: number) {
+    this.selectedRoutineId = routineId;
+  }
+
+  unselectRoutine() {
+    this.selectedRoutineId = 0;
+  }
+
+  openAddRoutineModal(): void {
+    this.activeModal = 'addRoutine';
+  }
+
+  openDeleteRoutineModal(routineId: number): void {
+    this.selectRoutine(routineId);
+    this.activeModal = 'deleteRoutine';
+  }
+
+  closeModal() {
+    this.unselectRoutine();
+    this.activeModal = ''; // Fechar a modal
+    this.errorMessage = '';
+    this.successMessage = '';
+  }
+
+
+
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
+
 }

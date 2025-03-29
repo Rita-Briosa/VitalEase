@@ -20,6 +20,7 @@ import { TrainingRoutineExerciseDetailsComponent } from './training-routine-exer
 import { TraininigRoutineProgressComponent } from './traininig-routine-progress/traininig-routine-progress.component';
 import { MapComponent } from './map/map.component';
 import { CustomTrainingRoutinesComponent } from './custom-training-routines/custom-training-routines.component';
+import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routine/edit-custom-training-routine.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'login', component: LoginComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'training-routine-details/:id', component: TrainingRoutineDetailsComponent },
   { path: 'training-routine-exercise-details/:id', component: TrainingRoutineExerciseDetailsComponent },
   { path: 'training-routine-progress/:id', component: TraininigRoutineProgressComponent },
+  { path: 'edit-custom-training-routine/:id', component: EditCustomTrainingRoutineComponent },
   { path: 'map', component: MapComponent },
   { path: 'manage-training-routines/custom-training-routines', component: CustomTrainingRoutinesComponent },
   { path: '**', redirectTo: '' }]
