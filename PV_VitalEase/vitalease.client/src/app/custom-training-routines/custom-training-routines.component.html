@@ -30,15 +30,15 @@
         <p> {{routine.description}} </p>
       </div>
       <div class="buttons">
-        <a id="edit" [routerLink]="'/'">
+        <a id="edit" [routerLink]="'/edit-custom-training-routine/' + routine.id">
           <img src="../../assets/img/pencil-43.png" alt="Edit Routine" title="Edit Routine" />
         </a>
-        <a id="start" [routerLink]="'/'">
+        <a id="start" [routerLink]="'/training-routine-progress/' + routine.id">
           <img src="../../assets/img/arrow_right.png" alt="Start Routine" title="Start Routine" />
         </a>
-        <a id="delete" [routerLink]="'/'">
+        <button id="delete" (click)="openDeleteRoutineModal(routine.id)">
           <img src="../../assets/img/garbage_can.png" alt="Delete Routine" title="Delete Routine" />
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -84,6 +84,18 @@
 
         <div class="modal-buttons">
           <button type="button" class="modalButton" (click)="addCustomRoutine()">Add</button>
+          <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" [ngClass]="{ 'show': activeModal === 'deleteRoutine' }">
+    <div class="modal-content-one">
+      <h2>Delete Routine</h2>
+      <form #exerciseForm="ngForm">
+        <div class="modal-buttons">
+          <button type="button" class="modalButton" (click)="deleteCustomRoutine(selectedRoutineId)">Add</button>
           <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
         </div>
       </form>

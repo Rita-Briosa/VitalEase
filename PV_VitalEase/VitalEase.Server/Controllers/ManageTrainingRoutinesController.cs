@@ -383,6 +383,29 @@
             }
         }
 
+        [HttpDelete("api/deleteRoutine/{routineId}")]
+        public async Task<IActionResult> deleteRoutine(int routineId)
+        {
+            try
+            {
+                var routine = await _context.Routines.FindAsync(routineId);
+
+                if(routine == null)
+                {
+                    return NotFound("Routine not Found");
+                }
+
+                _context.Routines.Remove(routine);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new { message = "Error deleting Training Routine" });
+            }
+        }
+
         /* 
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllRoutines()

@@ -29,6 +29,7 @@ import { TrainingRoutineExerciseDetailsComponent } from './training-routine-exer
 import { TraininigRoutineProgressComponent } from './traininig-routine-progress/traininig-routine-progress.component';
 import { MapComponent } from './map/map.component';
 import { CustomTrainingRoutinesComponent } from './custom-training-routines/custom-training-routines.component';
+import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routine/edit-custom-training-routine.component';
 
 
 
@@ -36,7 +37,7 @@ import { CustomTrainingRoutinesComponent } from './custom-training-routines/cust
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent, MapComponent, CustomTrainingRoutinesComponent
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent, MapComponent, CustomTrainingRoutinesComponent, EditCustomTrainingRoutineComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule,

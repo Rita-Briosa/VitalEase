@@ -25,6 +25,8 @@ export class CustomTrainingRoutinesComponent {
   newRoutineLevel: string = '';
   newNeeds: string = '';
 
+  selectedRoutineId: number = 0;
+
 
   constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router) { }
 
@@ -86,11 +88,39 @@ export class CustomTrainingRoutinesComponent {
     );
   }
 
+  deleteCustomRoutine(routineId: number) {
+    this.routinesService.deleteRoutine(routineId).subscribe(
+      (response: any) => {
+        this.unselectRoutine();
+        window.location.reload();
+        console.log(response);
+      },
+      (error: any) => {
+        this.unselectRoutine();
+        console.log(error.error?.message);
+      }
+    )
+  }
+
+  selectRoutine(routineId: number) {
+    this.selectedRoutineId = routineId;
+  }
+
+  unselectRoutine() {
+    this.selectedRoutineId = 0;
+  }
+
   openAddRoutineModal(): void {
     this.activeModal = 'addRoutine';
   }
 
+  openDeleteRoutineModal(routineId: number): void {
+    this.selectRoutine(routineId);
+    this.activeModal = 'deleteRoutine';
+  }
+
   closeModal() {
+    this.unselectRoutine();
     this.activeModal = ''; // Fechar a modal
     this.errorMessage = '';
     this.successMessage = '';
