@@ -71,6 +71,29 @@
             }
         }
 
+        [HttpDelete("api/deleteExerciseFromRoutine/{routineId}/{exerciseId}")]
+        public async Task<IActionResult> deleteExerciseFromRoutine(int routineId, int exerciseId)
+        {
+            try
+            {
+                var exercise = await _context.ExerciseRoutines.Where(exRout => exRout.RoutineId == routineId && exRout.ExerciseId == exerciseId).FirstOrDefaultAsync();
+
+                if (exercise == null)
+                {
+                    return NotFound("Exercise not Found");
+                }
+
+                _context.Remove(exercise);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new {message = "Error deleting exercise from routine"});
+            }
+        }
+
         [HttpGet("api/getExerciseDetailsFromRoutine/{exerciseId}")]
         public async Task<IActionResult> GetExerciseDetailsFromRoutine(string exerciseId)
         {

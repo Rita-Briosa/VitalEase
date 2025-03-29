@@ -11,6 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './edit-custom-training-routine.component.css'
 })
 export class EditCustomTrainingRoutineComponent {
+  errorMessage: string = '';
+  successMessage: string = '';
+  activeModal: string = '';
+
   userInfo: any = null;
   isLoggedIn: boolean = false;
 
@@ -19,6 +23,8 @@ export class EditCustomTrainingRoutineComponent {
   warmUpExercises: any[] = [];
   mainExercises: any[] = [];
   coolDownExercises: any[] = [];
+
+  selectedExerciseId: number = 0;
 
   constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router, private route: ActivatedRoute,) { }
 
@@ -84,6 +90,42 @@ export class EditCustomTrainingRoutineComponent {
         console.error('Error loading exercises:', error);
       }
     );
+  }
+
+  deleteExercise(exerciseId: number) {
+    if (!this.routineId) {
+      return;
+    }
+
+    this.routinesService.deleteExerciseFromRoutine(parseInt(this.routineId), exerciseId).subscribe(
+      (response: any) => {
+        console.log(response);
+        window.location.reload();
+      },
+      (error: any) => {
+        console.error('Error removing exercice:', error);
+      }
+    )
+  }
+
+  selectExercise(exerciseId: number) {
+    this.selectedExerciseId = exerciseId;
+  }
+
+  unselectExercise() {
+    this.selectedExerciseId = 0;
+  }
+
+  openDeleteExerciseModal(exerciseId: number): void {
+    this.selectExercise(exerciseId);
+    this.activeModal = 'deleteExercise';
+  }
+
+  closeModal() {
+    this.unselectExercise();
+    this.activeModal = ''; // Fechar a modal
+    this.errorMessage = '';
+    this.successMessage = '';
   }
 
 }

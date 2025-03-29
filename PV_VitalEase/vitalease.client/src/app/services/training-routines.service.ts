@@ -72,5 +72,13 @@ export class TrainingRoutinesService {
     return this.http.delete<any>(`${this.apiUrl}/deleteRoutine/${routineId}`, { params });
   }
 
+  deleteExerciseFromRoutine(routineId: number, exerciseId: number): Observable<any>{
+    let params = new HttpParams();
+    params.set('routineId', routineId);
+    params.set('exerciseId', exerciseId);
+
+    return this.http.delete<any>(`${this.apiUrl}/deleteExerciseFromRoutine/${routineId}/${exerciseId}`, {params});
+  }
+
 }
 

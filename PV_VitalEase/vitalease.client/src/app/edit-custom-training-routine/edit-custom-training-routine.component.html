@@ -20,8 +20,10 @@
     </div>
   </header>
 
-  <h3 id="ExercisesTitle"> <a routerLink="/manage-training-routines/custom-training-routines">◄</a>
-  Exercises</h3>
+  <h3 id="ExercisesTitle">
+    <a routerLink="/manage-training-routines/custom-training-routines">◄</a>
+    Exercises
+  </h3>
   <div class="exercises" *ngIf="exercises.length > 0">
 
     <div class="warm-up">
@@ -31,9 +33,15 @@
           <div class="exercise-info">
             <h4>{{ exercise.name }}</h4>
             <p>{{ exercise.description }}</p>
-           </div>
+          </div>
+          <div class="exercise-actions">
+            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
+            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
           </div>
         </div>
+      </div>
 
       <div *ngIf="warmUpExercises.length === 0">
         No Warp-up exercises in this routine.
@@ -47,6 +55,12 @@
           <div class="exercise-info">
             <h4>{{ exercise.name }}</h4>
             <p>{{ exercise.description }}</p>
+          </div>
+          <div class="exercise-actions">
+            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
+            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
           </div>
         </div>
       </div>
@@ -63,6 +77,12 @@
           <div class="exercise-info">
             <h4>{{ exercise.name }}</h4>
             <p>{{ exercise.description }}</p>
+          </div>
+          <div class="exercise-actions">
+            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
+            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
+            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
           </div>
         </div>
       </div>
@@ -83,5 +103,18 @@
       <img src="../../assets/img/plusIcon.png" alt="Add Routine" title="Add Routine" />
     </button>
   </div>
+
+  <div class="modal" [ngClass]="{ 'show': activeModal === 'deleteExercise' }">
+    <div class="modal-content-one">
+      <h2>Delete Exercise</h2>
+      <form #exerciseForm="ngForm">
+        <div class="modal-buttons">
+          <button type="button" class="modalButton" (click)="deleteExercise(selectedExerciseId)">Delete</button>
+          <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>
