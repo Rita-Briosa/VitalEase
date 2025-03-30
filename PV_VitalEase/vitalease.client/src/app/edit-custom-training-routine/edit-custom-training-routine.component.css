@@ -68,6 +68,73 @@ header {
     max-height: 50px;
   }
 
+.exercises {
+  float: left;
+  width: 50%;
+}
+
+.exerciseView {
+  background: #d9d9d9;
+  float: right;
+  padding-left: 10px;
+  margin-right: 10px;
+  width: 45%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.exerciseView h3{
+  text-align: center; 
+}
+
+.media-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  text-align: center;
+  width: 100%
+}
+
+.media-container img,
+.media-container iframe {
+  width: 480px; /* Ensures it does not exceed the container */
+  height: 270px;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: inherit;
+  color: inherit; /* Uses the text color of the parent */
+}
+
+.exercises button{
+    font-size: 25px;
+}
+
+.media-container button{
+    font-size: 55px;
+}
+
+button:focus {
+    outline: none; /* Removes focus outline */
+  }
+
+button:hover {
+    opacity: 0.7; /* Adds slight transparency on hover */
+  }
+
 .exercise-card {
   display: flex;
   justify-content: space-between; 

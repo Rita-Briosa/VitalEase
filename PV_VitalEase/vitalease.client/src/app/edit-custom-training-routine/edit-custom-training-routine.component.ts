@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { TrainingRoutinesService } from '../services/training-routines.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-custom-training-routine',
@@ -25,8 +26,11 @@ export class EditCustomTrainingRoutineComponent {
   coolDownExercises: any[] = [];
 
   selectedExerciseId: number = 0;
+  selectedExercise: any = null;
+  activeMediaIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
+  media: any[] = []; // Array para armazenar os media
 
-  constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router, private route: ActivatedRoute,) { }
+  constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer,) { }
 
   ngOnInit() {
     // Check if user is logged in by fetching the user info
@@ -110,10 +114,14 @@ export class EditCustomTrainingRoutineComponent {
 
   selectExercise(exerciseId: number) {
     this.selectedExerciseId = exerciseId;
+    this.selectedExercise = this.exercises.find(e => e.id === exerciseId)
+    this.getExerciseMedia(exerciseId);
   }
 
   unselectExercise() {
     this.selectedExerciseId = 0;
+    this.selectedExercise = null;
+    this.media = [];
   }
 
   openDeleteExerciseModal(exerciseId: number): void {
@@ -126,6 +134,52 @@ export class EditCustomTrainingRoutineComponent {
     this.activeModal = ''; // Fechar a modal
     this.errorMessage = '';
     this.successMessage = '';
+  }
+
+  previousMedia() {
+    if (this.activeMediaIndex > 0) {
+      this.activeMediaIndex--;
+    }
+  }
+
+  nextMedia() {
+    if (this.activeMediaIndex < this.media.length - 1) {
+      this.activeMediaIndex++;
+    }
+  }
+
+  convertToEmbedUrl(url: string): string {
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S+?\?v=))([a-zA-Z0-9_-]{11})/;
+    const match = url.match(youtubeRegex);
+
+    if (match && match[1]) {
+      return `https://www.youtube.com/embed/${match[1]}`;
+    }
+    return url;  // Retorna a URL original se não for do YouTube
+  }
+
+  sanitizeUrl(url: string): SafeResourceUrl {
+    const embedUrl = this.convertToEmbedUrl(url);  // Converte a URL para embed, se necessário
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl); // Sanitiza a URL
+  }
+
+  getExerciseMedia(exerciseId: number): void {
+
+    if (exerciseId != null) {
+      this.routinesService.getMedia(exerciseId.toString()).subscribe(
+        (response: any) => {
+          this.media = response; // Armazena os media na variável 'media'
+          console.log('Exercise media loaded successfully:', this.media);
+        },
+        (error: any) => {
+          this.errorMessage = 'Error loading exercise media'; // Define a mensagem de erro se a requisição falhar
+          console.log('Error loading exercise media:', error);
+        }
+      );
+    } else {
+      this.errorMessage = 'exercise Id doesn t exists';
+    }
+
   }
 
 }
