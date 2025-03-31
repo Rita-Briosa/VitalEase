@@ -13149,11 +13149,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\patin\\Source\\Repos\\VitalEase3\\PV_VitalEase\\VitalEaseTest\\VitalEaseTest.csproj",
+      "projectUniqueName": "C:\\Users\\patin\\Source\\Repos\\VitalEase1\\PV_VitalEase\\VitalEaseTest\\VitalEaseTest.csproj",
       "projectName": "VitalEaseTest",
-      "projectPath": "C:\\Users\\patin\\Source\\Repos\\VitalEase3\\PV_VitalEase\\VitalEaseTest\\VitalEaseTest.csproj",
+      "projectPath": "C:\\Users\\patin\\Source\\Repos\\VitalEase1\\PV_VitalEase\\VitalEaseTest\\VitalEaseTest.csproj",
       "packagesPath": "C:\\Users\\patin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\patin\\Source\\Repos\\VitalEase3\\PV_VitalEase\\VitalEaseTest\\obj\\",
+      "outputPath": "C:\\Users\\patin\\Source\\Repos\\VitalEase1\\PV_VitalEase\\VitalEaseTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -13175,8 +13175,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\patin\\Source\\Repos\\VitalEase3\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj": {
-              "projectPath": "C:\\Users\\patin\\Source\\Repos\\VitalEase3\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj"
+            "C:\\Users\\patin\\Source\\Repos\\VitalEase1\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj": {
+              "projectPath": "C:\\Users\\patin\\Source\\Repos\\VitalEase1\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj"
             }
           }
         }

@@ -1,37 +1,35 @@
-<router-outlet></router-outlet>
+<header>
+  <a [routerLink]="['/']">
+    <img src="assets/img/logo.png" alt="VitalEase Logo">
+  </a>
+  <div class="headText">
+    <h2>Vital Ease - Your app focused on wellness and exercise</h2>
+  </div>
+  <div class="auth-buttons">
+    <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+    <a href="/myProfile" class="profile-icon">👤</a>
+  </div>
+</header>
 
-<html>
-<body>
-  <header>
-    <a [routerLink]="['/']">
-      <img src="assets/img/logo.png" alt="VitalEase Logo">
-    </a>
-    <div class="headText">
-      <h2> Vital Ease - Your app focused in wellness and exercise </h2>
-    </div>
-    <div class="auth-buttons">
-      <!-- Mostrar botão de Login se o usuário não estiver logado -->
-      <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+<!-- Container para o mapa -->
+<section>
+  <h3>Clique no mapa para escolher um destino e calcular a rota:</h3>
+  <div #map id="map" style="height: 600px; width: 100%;"></div>
 
-      <a href="/myProfile" class="profile-icon">👤</a>
-    </div>
-  </header>
+  <!-- Pop-up que será exibido com o resumo da rota -->
+  <div *ngIf="routeSummary" class="route-summary">
+    <h3>Resumo da Rota</h3>
+    <p><strong>Distância:</strong> {{ routeSummary?.distance }}</p>
+    <p><strong>Tempo Estimado:</strong> {{ routeSummary?.duration }}</p>
+    <button (click)="calculateRoute()">Recalcular</button>
+  </div>
+</section>
 
-  <section>
-    <input id="pac-input" class="form-control"
-           type="text" placeholder="Search for places"
-           style="width: 300px; margin-top:10px; margin-left:10px; position:absolute; z-index:1;">
 
-    <div #map id="map" style="height:600px; width:100%;"></div>
 
-    <div *ngIf="routeSummary" class="route-summary">
-      <h3>Route Summary</h3>
-      <p><strong>Distance:</strong> {{ routeSummary.distance }}</p>
-      <p><strong>Estimated Time:</strong> {{ routeSummary.duration }}</p>
-      <button (click)="calculateRoute()">Recalculate</button>
-    </div>
 
-  </section>
 
-</body>
-</html>
+
+
+
+

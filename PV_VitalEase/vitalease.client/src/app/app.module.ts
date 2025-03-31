@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importando FormsModule
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verifyEmail/verify-email.component';
+
+
 
 import { MyProfileComponent } from './MyProfile/myProfile.component';
 import { ConfirmNewEmailComponent } from './ConfirmNewEmail/confirmNewEmail.component';
@@ -33,14 +36,15 @@ import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routi
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent,
+    AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent, 
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent,ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent, MapComponent, CustomTrainingRoutinesComponent, EditCustomTrainingRoutineComponent
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent, ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent, CustomTrainingRoutinesComponent, EditCustomTrainingRoutineComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule, CommonModule,
+    BrowserModule, HttpClientModule, CommonModule, RouterModule, CommonModule, MapComponent,
     AppRoutingModule, FormsModule, ReactiveFormsModule,
   ],
   providers: [],
