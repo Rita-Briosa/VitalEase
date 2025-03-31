@@ -69,6 +69,29 @@ export class MapComponent implements OnInit {
     });
   }
 
+  addMarker(position: L.LatLng) {
+    this.markers.forEach(marker => this.map.removeLayer(marker));  // Remove marcadores anteriores
+    this.markers = [];
+
+    const marker = L.marker(position).addTo(this.map);
+
+    // Agora, adicionamos o pop-up ao marcador
+    marker.bindPopup(`
+    <b>Resumo da Rota</b><br>
+    Distância: ${this.routeSummary?.distance}<br>
+    Tempo Estimado: ${this.routeSummary?.duration}
+  `).openPopup();  // Abre o pop-up automaticamente
+
+    this.markers.push(marker);
+  }
+
+  closePopup() {
+    if (this.map) {
+      this.map.closePopup();  // Fecha o pop-up
+    }
+  }
+
+
   
  
 
