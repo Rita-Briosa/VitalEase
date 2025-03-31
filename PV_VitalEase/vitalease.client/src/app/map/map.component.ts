@@ -18,6 +18,16 @@ export class MapComponent implements OnInit {
   searchBox!: google.maps.places.SearchBox;
   markers: google.maps.Marker[] = [];
 
+  //serviço google para calcular as rotas
+  directionsService!: google.maps.DirectionsService;
+  //Renderizar a rota no mapa
+  directionsRenderer!: google.maps.DirectionsRenderer;
+  //Guardar o local escolhid pelo user
+  selectedDestination: google.maps.LatLng | null = null;
+  // Guaradar os dados do resumo da rota (distância e tempo estimado)
+  routeSummary: { distance: string, duration: string } | null = null;
+
+
   loadGoogleMaps() {
     const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&libraries=places`;
