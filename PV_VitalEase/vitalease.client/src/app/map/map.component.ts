@@ -125,8 +125,7 @@ export class MapComponent implements OnInit {
       .catch(error => console.error('Erro ao obter a rota:', error));
   }
 
-  
- 
+
 
   logout() {
     this.authService.logout();
