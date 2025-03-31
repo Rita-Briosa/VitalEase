@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\map\\map.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\map\\map.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\joana\\onedrive\\ambiente de trabalho\\faculdade\\aulas 24-25\\esa\\projeto\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\map\\map.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\map\\map.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "tsconfig.json",
-              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\tsconfig.json",
-              "RelativeDocumentMoniker": "vitalease.client\\tsconfig.json",
-              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\tsconfig.json*",
-              "RelativeToolTip": "vitalease.client\\tsconfig.json*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-28T14:10:26.339Z",
+              "Title": "map.component.ts",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.ts",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\map\\map.component.ts",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.ts",
+              "RelativeToolTip": "vitalease.client\\src\\app\\map\\map.component.ts",
+              "ViewState": "AgIAABkAAAAAAAAAAAAmwCcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-03-31T09:50:54.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "map.component.html",
+              "DocumentMoniker": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.html",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\map\\map.component.html",
+              "ToolTip": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\map\\map.component.html",
+              "RelativeToolTip": "vitalease.client\\src\\app\\map\\map.component.html",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-31T09:50:50.865Z",
               "EditorCaption": ""
             }
           ]

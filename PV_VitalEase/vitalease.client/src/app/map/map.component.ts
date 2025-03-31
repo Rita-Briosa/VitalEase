@@ -47,6 +47,7 @@ export class MapComponent implements OnInit {
       const places = this.searchBox.getPlaces();
 
       if (!places || places.length === 0) {
+        alert('No results found. Please try again.');
         return;
       }
 
