@@ -91,6 +91,39 @@ export class MapComponent implements OnInit {
     }
   }
 
+  calculateRoute() {
+    if (!this.selectedDestination) return;
+
+    const start = '-8.839083,38.521877'; // Coordenadas de partida
+    const end = `${this.selectedDestination.lng},${this.selectedDestination.lat}`; // Coordenadas de destino
+    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson`;
+
+    fetch(osrmUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.routes.length > 0) {
+          const route = data.routes[0];
+
+          if (this.routeLayer) {
+            this.map.removeLayer(this.routeLayer);
+          }
+
+          this.routeLayer = L.geoJSON(route.geometry, {
+            style: { color: 'blue', weight: 5 }
+          }).addTo(this.map);
+
+          this.routeSummary = {
+            distance: (route.distance / 1000).toFixed(2) + ' km',
+            duration: (route.duration / 60).toFixed(2) + ' min'
+          };
+
+          this.cdr.detectChanges(); // Força a detecção de mudanças
+        } else {
+          alert('Não foi possível calcular a rota.');
+        }
+      })
+      .catch(error => console.error('Erro ao obter a rota:', error));
+  }
 
   
  
