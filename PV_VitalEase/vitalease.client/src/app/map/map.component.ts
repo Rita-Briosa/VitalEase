@@ -77,9 +77,9 @@ export class MapComponent implements OnInit {
 
     // Agora, adicionamos o pop-up ao marcador
     marker.bindPopup(`
-    <b>Resumo da Rota</b><br>
-    Distância: ${this.routeSummary?.distance}<br>
-    Tempo Estimado: ${this.routeSummary?.duration}
+    <b>Route summary</b><br>
+    Distance: ${this.routeSummary?.distance}<br>
+    Estimated time: ${this.routeSummary?.duration}
   `).openPopup();  // Abre o pop-up automaticamente
 
     this.markers.push(marker);

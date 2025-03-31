@@ -13,15 +13,15 @@
 
 <!-- Container para o mapa -->
 <section>
-  <h3>Clique no mapa para escolher um destino e calcular a rota:</h3>
-  <div #map id="map" style="height: 600px; width: 100%;"></div>
+  <h3>Click on the map to choose a destination and calculate the route:</h3>
+  <div #map id="map" style="height: 70vh; width: 100%;"></div>
 
   <!-- Pop-up que será exibido com o resumo da rota -->
   <div *ngIf="routeSummary" class="route-summary">
-    <h3>Resumo da Rota</h3>
-    <p><strong>Distância:</strong> {{ routeSummary?.distance }}</p>
-    <p><strong>Tempo Estimado:</strong> {{ routeSummary?.duration }}</p>
-    <button (click)="calculateRoute()">Recalcular</button>
+    <h3>Route summary</h3>
+    <p><strong>Distance:</strong> {{ routeSummary?.distance }}</p>
+    <p><strong>Estimated time:</strong> {{ routeSummary?.duration }}</p>
+    <button (click)="calculateRoute()">Recalculate</button>
   </div>
 </section>
 
