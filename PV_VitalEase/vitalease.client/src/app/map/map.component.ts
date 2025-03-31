@@ -100,24 +100,31 @@ export class MapComponent implements OnInit {
     const origin = new google.maps.LatLng(38.7223, -9.1393); // Lisboa (simulação de ponto de partida)
     const destination = this.selectedDestination;
 
-    this.directionsService.route({
-      origin,
-      destination,
-      travelMode: google.maps.TravelMode.DRIVING
-    }, (result, status) => {
-      if (status === google.maps.DirectionsStatus.OK) {
-        this.directionsRenderer.setDirections(result);
+    this.directionsService.route(
+      {
+        origin,
+        destination,
+        travelMode: google.maps.TravelMode.DRIVING
+      },
+      (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK && result && result.routes.length > 0) {
+          const route = result.routes[0].legs[0];
 
-        const route = result.routes[0].legs[0];
-        this.routeSummary = {
-          distance: route.distance.text,
-          duration: route.duration.text
-        };
-      } else {
-        alert('Failed to get route. Try again.');
+          if (route.distance && route.duration) {
+            this.routeSummary = {
+              distance: route.distance.text,
+              duration: route.duration.text
+            };
+          } else {
+            alert("Não foi possível calcular a distância ou tempo estimado.");
+          }
+        } else {
+          alert("Falha ao obter a rota. Tente novamente.");
+        }
       }
-    });
+    );
   }
+
 
 
   constructor(private authService: AuthService, private router: Router) { }
