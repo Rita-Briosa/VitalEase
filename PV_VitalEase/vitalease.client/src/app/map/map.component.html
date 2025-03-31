@@ -24,6 +24,13 @@
 
     <div #map id="map" style="height:600px; width:100%;"></div>
 
+    <div *ngIf="routeSummary" class="route-summary">
+      <h3>Route Summary</h3>
+      <p><strong>Distance:</strong> {{ routeSummary.distance }}</p>
+      <p><strong>Estimated Time:</strong> {{ routeSummary.duration }}</p>
+      <button (click)="calculateRoute()">Recalculate</button>
+    </div>
+
   </section>
 
 </body>
