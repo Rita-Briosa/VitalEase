@@ -61,20 +61,19 @@ export class MapComponent implements OnInit {
 
     this.searchBox.addListener('places_changed', () => {
       const places = this.searchBox.getPlaces();
-
       if (!places || places.length === 0) {
         alert('No results found. Please try again.');
         return;
       }
 
-      // Remove previous markers
       this.markers.forEach(marker => marker.setMap(null));
       this.markers = [];
 
       const bounds = new google.maps.LatLngBounds();
-
       places.forEach(place => {
         if (!place.geometry || !place.geometry.location) return;
+
+        this.selectedDestination = place.geometry.location;
 
         const marker = new google.maps.Marker({
           map: this.map,
@@ -83,17 +82,43 @@ export class MapComponent implements OnInit {
         });
 
         this.markers.push(marker);
-
-        if (place.geometry.viewport) {
-          bounds.union(place.geometry.viewport);
-        } else {
-          bounds.extend(place.geometry.location);
-        }
+        bounds.extend(place.geometry.location);
       });
 
       this.map.fitBounds(bounds);
+      if (this.selectedDestination) this.calculateRoute(); // Agora chama a função de cálculo de rota
     });
   }
+
+
+  //define lisboa como ponto de partida e calcula a rota
+  //Obtém tempo e distância da rota utilizando Google Directions API
+  //Se a rota for encontrada, armazena os detalhes em routeSummary e exibe no template
+  calculateRoute() {
+    if (!this.selectedDestination) return;
+
+    const origin = new google.maps.LatLng(38.7223, -9.1393); // Lisboa (simulação de ponto de partida)
+    const destination = this.selectedDestination;
+
+    this.directionsService.route({
+      origin,
+      destination,
+      travelMode: google.maps.TravelMode.DRIVING
+    }, (result, status) => {
+      if (status === google.maps.DirectionsStatus.OK) {
+        this.directionsRenderer.setDirections(result);
+
+        const route = result.routes[0].legs[0];
+        this.routeSummary = {
+          distance: route.distance.text,
+          duration: route.duration.text
+        };
+      } else {
+        alert('Failed to get route. Try again.');
+      }
+    });
+  }
+
 
   constructor(private authService: AuthService, private router: Router) { }
 
