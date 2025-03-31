@@ -45,6 +45,12 @@ export class MapComponent implements OnInit {
       zoom: 12
     });
 
+    //Configuração para o Google Maps para poder mostrar as rotas traçadas
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsRenderer = new google.maps.DirectionsRenderer();
+    this.directionsRenderer.setMap(this.map);
+
+
     const input = document.getElementById('pac-input') as HTMLInputElement;
     this.searchBox = new google.maps.places.SearchBox(input);
     this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
