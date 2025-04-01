@@ -8,19 +8,19 @@ import { Observable } from 'rxjs';
 export class MyProfileService {
 
   // O endereço da sua API que retorna os logs
-  private apiUrl = 'https://localhost:7180/api'; // Endereço do seu backend ASP.NET Core
+  private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api'; // Endereço do seu backend ASP.NET Core
 
-  private apiUrlChangeBirthDate = 'https://localhost:7180/api/changeBirthDate';
-  private apiUrlChangeWeight = 'https://localhost:7180/api/changeWeight';
-  private apiUrlChangeHeight = 'https://localhost:7180/api/changeHeight';
-  private apiUrlChangeGender = 'https://localhost:7180/api/changeGender';
-  private apiUrlChangeHasHeartProblems = 'https://localhost:7180/api/changeHasHeartProblems';
-  private apiUrlChangePassword = 'https://localhost:7180/api/changePassword';
-  private apiUrlChangeUsername = 'https://localhost:7180/api/changeUsername';
-  private apiUrlChangeEmail = 'https://localhost:7180/api/changeEmail';
+  private apiUrlChangeBirthDate = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeBirthDate';
+  private apiUrlChangeWeight = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeWeight';
+  private apiUrlChangeHeight = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeHeight';
+  private apiUrlChangeGender = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeGender';
+  private apiUrlChangeHasHeartProblems = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeHasHeartProblems';
+  private apiUrlChangePassword = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changePassword';
+  private apiUrlChangeUsername = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeUsername';
+  private apiUrlChangeEmail = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeEmail';
 
-  private apiUrlDeleteAcc = 'https://localhost:7180/api/deleteAccount';
-  private apiUrlValidatePassword = 'https://localhost:7180/api/validatePassword';
+  private apiUrlDeleteAcc = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/deleteAccount';
+  private apiUrlValidatePassword = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/validatePassword';
   constructor(private http: HttpClient) { }
 
   getProfileInfo(email: string): Observable<any> {

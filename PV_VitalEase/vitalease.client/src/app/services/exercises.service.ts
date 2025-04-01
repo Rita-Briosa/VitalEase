@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 export class ExercisesService {
 
   // O endereço da sua API que retorna os logs
-  private apiUrl = 'https://localhost:7180/api'; // Endereço do seu backend ASP.NET Core
+  private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api'; // Endereço do seu backend ASP.NET Core
 
-  private apiUrlAddRoutine = 'https://localhost:7180/api/addRoutine';
+  private apiUrlAddRoutine = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/addRoutine';
 
-  private apiUrlAddExercise = 'https://localhost:7180/api/addExercise';
+  private apiUrlAddExercise = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/addExercise';
   constructor(private http: HttpClient) { }
 
   // Método para pegar os logs

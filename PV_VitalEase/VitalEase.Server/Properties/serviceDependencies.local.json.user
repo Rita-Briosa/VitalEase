@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "apis1": {
+      "restored": true,
+      "restoreTime": "2025-04-01T10:15:04.4959016Z"
+    },
+    "apis2": {
+      "restored": true,
+      "restoreTime": "2025-04-01T14:24:49.2901524Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2025-04-01T10:23:38.0875853Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2025-04-01T14:20:18.9050617Z"
+    }
+  },
+  "parameters": {}
+}

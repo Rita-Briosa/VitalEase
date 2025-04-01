@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 
 export class ConfirmOldEmailService {
-  private apiUrlConfirmOldEmailToken = 'https://localhost:7180/api/ConfirmOldEmailToken';
+  private apiUrlConfirmOldEmailToken = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/ConfirmOldEmailToken';
 
-  private apiUrlValidateOldEmailToken = 'https://localhost:7180/api/ValidateOldEmailToken';
+  private apiUrlValidateOldEmailToken = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/ValidateOldEmailToken';
 
-  private apiUrlCancelOldEmailToken = 'https://localhost:7180/api/CancelOldEmailChange';
+  private apiUrlCancelOldEmailToken = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/CancelOldEmailChange';
 
 
   constructor(private http: HttpClient) { }

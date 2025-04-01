@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 export class TrainingRoutinesService {
 
  
-  private apiUrl = 'https://localhost:7180/api';
+  private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api';
 
-  private apiUrlAddRoutine = 'https://localhost:7180/api/addNewRoutine';
+  private apiUrlAddRoutine = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/addNewRoutine';
 
   constructor(private http: HttpClient) { }
 

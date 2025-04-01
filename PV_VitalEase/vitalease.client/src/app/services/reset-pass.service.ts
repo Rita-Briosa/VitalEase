@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 
 export class ResetService {
 
-  private apiUrlResetPassword = 'https://vitalease2025.3utilities.com/api/resetPassword';
+  private apiUrlResetPassword = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/resetPassword';
 
-  private apiUrlValidateToken = 'https://vitalease2025.3utilities.com/api/validateTokenAtAccess';
+  private apiUrlValidateToken = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/validateTokenAtAccess';
 
   constructor(private http: HttpClient) { }
 

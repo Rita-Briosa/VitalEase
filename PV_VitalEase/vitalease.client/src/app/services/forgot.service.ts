@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ForgotService {
 
-  private apiUrl = 'https://vitalease2025.3utilities.com/api/forgotPassword'; // Endereço atualizado do backend
+  private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/forgotPassword'; // Endereço atualizado do backend
  
   constructor(private http: HttpClient) { }
 

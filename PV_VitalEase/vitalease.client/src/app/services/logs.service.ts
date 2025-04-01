@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class LogsService {
 
   // O endereço da sua API que retorna os logs
-  private apiUrl = 'https://localhost:7180/api'; // Endereço do seu backend ASP.NET Core
+  private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api'; // Endereço do seu backend ASP.NET Core
 
   constructor(private http: HttpClient) { }
 

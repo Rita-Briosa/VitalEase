@@ -42,7 +42,7 @@ namespace VitalEase.Server.Controllers
             var token = GenerateToken(user.Email, user.Id);
 
             // Gerar link de redefinição de senha direto, sem token
-            var resetLink = $"https://localhost:4200/resetPassword?token={Uri.EscapeDataString(token)}";
+            var resetLink = $"https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/resetPassword?token={Uri.EscapeDataString(token)}";
 
             // Enviar o email de redefinição de senha
             var emailSent = await SendPasswordResetEmail(user.Email, resetLink);

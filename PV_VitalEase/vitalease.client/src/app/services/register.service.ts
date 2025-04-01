@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RegisterService {
 
-  private apiUrl = 'https://localhost:7180/api/register'; // Endereço do seu backend
+  private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/register'; // Endereço do seu backend
 
   constructor(private http: HttpClient) { }
 
