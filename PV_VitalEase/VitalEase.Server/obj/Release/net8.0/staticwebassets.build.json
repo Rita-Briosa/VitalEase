@@ -1,0 +1,1991 @@
+{
+  "Version": 1,
+  "Hash": "t7ToYAX8RHQEF4GWRgxAl03xiUrIYqyGmlRVr+a2rHU=",
+  "Source": "VitalEase.Server",
+  "BasePath": "_content/VitalEase.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
+      "Version": 2,
+      "Source": "vitalease.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [
+    {
+      "Name": "VitalEase.Server\\wwwroot",
+      "Source": "VitalEase.Server",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/3rdpartylicenses#[.{fingerprint}]?.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "73nkoqwz6f",
+      "Integrity": "Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\3rdpartylicenses.txt"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/arrow_right#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "nydkq4sg7f",
+      "Integrity": "UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/dev1#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "usgvsvujzf",
+      "Integrity": "zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/dev2#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yxd8d5a0ys",
+      "Integrity": "agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/dev3#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5ma6kiswi0",
+      "Integrity": "PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/dev4#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kte9kpxwfu",
+      "Integrity": "SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/fitness-illustration#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1q355k7c7h",
+      "Integrity": "GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/garbage_can#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qb0j2xyvmx",
+      "Integrity": "Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/logo#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "omupm3b1xx",
+      "Integrity": "UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/pencil-43#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "54zdg5nori",
+      "Integrity": "+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/assets/img/plusIcon#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "le7skris2l",
+      "Integrity": "fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "aytwbm6qv9",
+      "Integrity": "Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/main-LTSJLSFF#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1hlq1hyqac",
+      "Integrity": "y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/media/layers-2x-TBM42ERR#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ef5uc09gvw",
+      "Integrity": "Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/media/layers-55W3Q4RM#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ptvguihtoq",
+      "Integrity": "Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/media/marker-icon-2V3QKKVC#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vq9wvlav5t",
+      "Integrity": "V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/polyfills-FFHMD2TL#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "39tegmrjtp",
+      "Integrity": "adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/browser/styles-OPSORIUJ#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "h1uvasrz41",
+      "Integrity": "K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css"
+    },
+    {
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
+      "SourceId": "VitalEase.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "BasePath": "_content/VitalEase.Server",
+      "RelativePath": "vitalease.client/prerendered-routes#[.{fingerprint}]?.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tvy3j3n584",
+      "Integrity": "p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vitalease.client\\prerendered-routes.json"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "vitalease.client/3rdpartylicenses.73nkoqwz6f.txt",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20919"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "73nkoqwz6f"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/3rdpartylicenses.txt"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/3rdpartylicenses.txt",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20919"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/arrow_right.nydkq4sg7f.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7596"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nydkq4sg7f"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/arrow_right.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/arrow_right.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7596"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev1.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766048"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev1.usgvsvujzf.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766048"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "usgvsvujzf"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev1.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev2.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "290301"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev2.yxd8d5a0ys.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "290301"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yxd8d5a0ys"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev2.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev3.5ma6kiswi0.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252761"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5ma6kiswi0"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev3.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev3.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252761"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev4.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1843042"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev4.kte9kpxwfu.jpeg",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1843042"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kte9kpxwfu"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev4.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/fitness-illustration.1q355k7c7h.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "271775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1q355k7c7h"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/fitness-illustration.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/fitness-illustration.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "271775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/garbage_can.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7156"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/garbage_can.qb0j2xyvmx.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7156"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qb0j2xyvmx"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/garbage_can.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/logo.omupm3b1xx.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100187"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "omupm3b1xx"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/logo.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/logo.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100187"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/pencil-43.54zdg5nori.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "54zdg5nori"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/pencil-43.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/pencil-43.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/plusIcon.le7skris2l.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9851"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "le7skris2l"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/plusIcon.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/plusIcon.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9851"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/index.aytwbm6qv9.html",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aytwbm6qv9"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/index.html",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/main-LTSJLSFF.1hlq1hyqac.js",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "684989"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1hlq1hyqac"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/main-LTSJLSFF.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/main-LTSJLSFF.js",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "684989"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-2x-TBM42ERR.ef5uc09gvw.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1259"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ef5uc09gvw"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/media/layers-2x-TBM42ERR.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-2x-TBM42ERR.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1259"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-55W3Q4RM.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "696"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-55W3Q4RM.ptvguihtoq.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "696"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ptvguihtoq"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/media/layers-55W3Q4RM.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/marker-icon-2V3QKKVC.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1466"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/marker-icon-2V3QKKVC.vq9wvlav5t.png",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1466"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vq9wvlav5t"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/media/marker-icon-2V3QKKVC.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.39tegmrjtp.js",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34519"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39tegmrjtp"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/polyfills-FFHMD2TL.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.js",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34519"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/styles-OPSORIUJ.css",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11072"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/styles-OPSORIUJ.h1uvasrz41.css",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11072"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h1uvasrz41"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/styles-OPSORIUJ.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/prerendered-routes.json",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/prerendered-routes.tvy3j3n584.json",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tvy3j3n584"
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/prerendered-routes.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
+        }
+      ]
+    }
+  ]
+}

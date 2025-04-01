@@ -1,5 +1,6 @@
 using VitalEase.Server.Data;
 using Microsoft.EntityFrameworkCore;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<VitalEaseServerContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("VitalEaseServerContext") ?? throw new InvalidOperationException("Connection string 'VitalEaseServerContext' not found.")));
+builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions
+{
+    ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]
+});
 
 
 var app = builder.Build();

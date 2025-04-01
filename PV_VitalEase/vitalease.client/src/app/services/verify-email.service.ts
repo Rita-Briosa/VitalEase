@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class VerifyEmailService {
-  private apiUrlValidateVerifyEmailToken = 'https://localhost:7180/api/ValidateVerifyEmailToken';
+  private apiUrlValidateVerifyEmailToken = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/ValidateVerifyEmailToken';
 
   constructor(private http: HttpClient) { }
 

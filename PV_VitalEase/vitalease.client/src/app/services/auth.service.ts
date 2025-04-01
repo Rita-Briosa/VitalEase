@@ -11,7 +11,7 @@ import { jwtDecode } from 'jwt-decode';
 export class AuthService {
   [x: string]: any;
 
-  private apiUrl = 'https://localhost:7180/api/login'; // Endereço do seu backend
+  private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/login'; // Endereço do seu backend
   private sessionToken: string | null = null;
   private storageKey = 'sessionToken'; 
   constructor(private http: HttpClient, private router: Router) { }

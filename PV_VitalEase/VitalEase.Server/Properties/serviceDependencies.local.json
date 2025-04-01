@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "appInsights1": {
+      "ignored": "true",
+      "type": "appInsights"
+    },
+    "apis2": {
+      "ignored": "True",
+      "type": "apis"
+    },
+    "apis1": {
+      "ignored": "True",
+      "type": "apis"
+    }
+  }
+}

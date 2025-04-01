@@ -491,7 +491,7 @@ namespace VitalEase.Server.Controllers
 
                 var token = GenerateToken(user.Email, model.NewEmail, user.Id);
 
-                var changeEmailLink = $"https://localhost:4200/confirmNewEmail?token={Uri.EscapeDataString(token)}";
+                var changeEmailLink = $"https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/confirmNewEmail?token={Uri.EscapeDataString(token)}";
 
                 var emailSent = await SendEmailResetLink(model.NewEmail, changeEmailLink);
                 if (!emailSent)
@@ -500,7 +500,7 @@ namespace VitalEase.Server.Controllers
                     return StatusCode(500, new { message = "Failed to send change email to new email." });
                 }
 
-                var changeOldEmailLink = $"https://localhost:4200/confirmOldEmail?token={Uri.EscapeDataString(token)}";
+                var changeOldEmailLink = $"https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/confirmOldEmail?token={Uri.EscapeDataString(token)}";
 
                 var emailSentOldEmail = await SendEmailResetLink(user.Email, changeOldEmailLink);
                 if (!emailSentOldEmail)

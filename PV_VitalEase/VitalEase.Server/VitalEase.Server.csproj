@@ -7,6 +7,8 @@
     <SpaRoot>..\vitalease.client</SpaRoot>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:4200</SpaProxyServerUrl>
+    <ApplicationInsightsResourceId>/subscriptions/e5a4ff97-6ce3-4285-9b20-5cca89c6fda7/resourceGroups/VitalEase/providers/microsoft.insights/components/vitalEaseApi</ApplicationInsightsResourceId>
+    <UserSecretsId>38d71c10-4b0e-40d1-a538-eaadebb21359</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.13.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
@@ -32,6 +36,10 @@
     <ProjectReference Include="..\vitalease.client\vitalease.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

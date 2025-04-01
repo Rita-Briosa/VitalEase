@@ -121,7 +121,7 @@ namespace VitalEase.Server.Controllers
                 return BadRequest(new { message = "Error at token generation" }); // Retorna erro 400
             }
 
-            var emailConfirmationLink = $"https://localhost:4200/emailValidation?token={Uri.EscapeDataString(token)}";
+            var emailConfirmationLink = $"https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/emailValidation?token={Uri.EscapeDataString(token)}";
 
             // Enviar o email de redefinição de senha
             var emailSent = await SendEmailConfirmation(user.Email, emailConfirmationLink);
