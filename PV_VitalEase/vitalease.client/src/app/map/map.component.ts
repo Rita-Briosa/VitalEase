@@ -121,7 +121,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         const service = new google.maps.places.PlacesService(document.createElement('div'));
         service.nearbySearch(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-                // Remove marcadores existentes
+                // Remove existing markers
                 this.markers.forEach(marker => this.map.removeLayer(marker));
                 this.markers = [];
                 results.forEach(place => {
@@ -129,18 +129,32 @@ export class MapComponent implements OnInit, AfterViewInit {
                     const lat = place.geometry.location.lat();
                     const lng = place.geometry.location.lng();
                     const leafletLatLng = L.latLng(lat, lng);
+
+                    // Create the details string from the place data
+                    const details = `<b>${place.name}</b><br>${place.vicinity || ''}<br>${place.rating ? 'Avaliação: ' + place.rating : ''}`;
+
+                    // Create marker with the red icon
                     const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
-                    marker.bindPopup(`
-                      <b>${place.name}</b><br>
-                      ${place.vicinity || ''}<br>
-                      ${place.rating ? 'Avaliação: ' + place.rating : ''}
-        `);
-                    // Ao clicar no marcador, define-o como destino e calcula a rota
+
+                    // Initially bind a popup with details plus a "Loading route..." message
+                    marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
+
+                    // On marker click, set the destination, center map and calculate route,
+                    // then update the popup with the route summary appended to the details.
                     marker.on('click', () => {
                         this.selectedDestination = leafletLatLng;
-                        // Opcional: centra o mapa nessa posição
                         this.map.setView(leafletLatLng, 15);
-                        this.calculateRoute();
+                        // Show initial popup content
+                        marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
+                        // Calculate route and update popup when done
+                        this.calculateRoute().then(() => {
+                            marker.bindPopup(
+                                details +
+                                `<br><br><b>Route Summary</b><br>` +
+                                `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
+                                `Time: ${this.routeSummary?.duration ?? 'N/D'}`
+                            ).openPopup();
+                        });
                     });
                     this.markers.push(marker);
                 });
@@ -242,47 +256,50 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.markers.push(marker);
   }
 
-  calculateRoute() {
-    if (!this.userLocation || !this.selectedDestination) return;
+    // Modify calculateRoute to return a Promise
+    calculateRoute(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            if (!this.userLocation || !this.selectedDestination) {
+                resolve();
+                return;
+            }
+            const start = `${this.userLocation.lng},${this.userLocation.lat}`;
+            const end = `${this.selectedDestination.lng},${this.selectedDestination.lat}`;
+            const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson&alternatives=true`;
 
-    // Define as coordenadas de início (usando a localização do utilizador) e destino.
-    const start = `${this.userLocation.lng},${this.userLocation.lat}`;
-    const end = `${this.selectedDestination.lng},${this.selectedDestination.lat}`;
+            fetch(osrmUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.routes && data.routes.length > 0) {
+                        // Choose the best route (e.g. with the least distance)
+                        const bestRoute = data.routes.reduce((prev: any, curr: any) => {
+                            return (prev.distance < curr.distance) ? prev : curr;
+                        });
+                        if (this.routeLayer) {
+                            this.map.removeLayer(this.routeLayer);
+                        }
+                        this.routeLayer = L.geoJSON(bestRoute.geometry, {
+                            style: { color: 'red', weight: 5 }
+                        }).addTo(this.map);
 
-    // Modifica a URL para solicitar alternativas (várias rotas)
-    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson&alternatives=true`;
+                        this.routeSummary = {
+                            distance: (bestRoute.distance / 1000).toFixed(2) + ' km',
+                            duration: (bestRoute.duration / 60).toFixed(2) + ' min'
+                        };
 
-    fetch(osrmUrl)
-      .then(response => response.json())
-      .then(data => {
-        if (data.routes && data.routes.length > 0) {
-          // Seleciona a rota com a menor distância (ou pode usar o tempo, se preferir)
-          const bestRoute = data.routes.reduce((prev: any, curr: any) => {
-            return (prev.distance < curr.distance) ? prev : curr;
-          });
-
-          // Remove a rota anterior, se existir
-          if (this.routeLayer) {
-            this.map.removeLayer(this.routeLayer);
-          }
-
-          this.routeLayer = L.geoJSON(bestRoute.geometry, {
-            style: { color: 'red', weight: 5 }
-          }).addTo(this.map);
-
-          // Atualiza o resumo da rota (distância e tempo)
-          this.routeSummary = {
-            distance: (bestRoute.distance / 1000).toFixed(2) + ' km',
-            duration: (bestRoute.duration / 60).toFixed(2) + ' min'
-          };
-
-          this.cdr.detectChanges();
-        } else {
-          alert('Não foi possível calcular a rota.');
-        }
-      })
-      .catch(error => console.error('Erro ao obter a rota:', error));
-  }
+                        this.cdr.detectChanges();
+                        resolve();
+                    } else {
+                        alert('Não foi possível calcular a rota.');
+                        resolve();
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao obter a rota:', error);
+                    resolve();
+                });
+        });
+    }
 
   logout() {
     this.authService.logout();
