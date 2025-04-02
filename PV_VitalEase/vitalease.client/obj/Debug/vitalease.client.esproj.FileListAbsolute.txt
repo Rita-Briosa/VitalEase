@@ -7,3 +7,4 @@ C:\VitalEase\PV_VitalEase\vitalease.client\obj\Debug\vitalease.client.esproj.Cor
 C:\Users\andre\OneDrive\Ambiente de Trabalho\ProjESA\VitalEase\PV_VitalEase\vitalease.client\obj\Debug\vitalease.client.esproj.CoreCompileInputs.cache
 C:\Users\patin\Source\Repos\VitalEase3\PV_VitalEase\vitalease.client\obj\Debug\vitalease.client.esproj.CoreCompileInputs.cache
 C:\Users\patin\Source\Repos\VitalEase1\PV_VitalEase\vitalease.client\obj\Debug\vitalease.client.esproj.CoreCompileInputs.cache
+C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\vitalease.client\obj\Debug\vitalease.client.esproj.CoreCompileInputs.cache

@@ -18,6 +18,7 @@ export class CustomTrainingRoutinesComponent {
   userInfo: any = null;
   isLoggedIn: boolean = false;
   routines: any = [];
+  isAdmin: boolean = false;
 
   newName: string = '';
   newDescription: string = '';
@@ -47,6 +48,12 @@ export class CustomTrainingRoutinesComponent {
           this.userInfo = response.user;
 
           this.getRoutines();
+
+          if (this.userInfo.type === 1) {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
         },
         (error) => {
           this.authService.logout();
@@ -100,6 +107,10 @@ export class CustomTrainingRoutinesComponent {
         console.log(error.error?.message);
       }
     )
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
   selectRoutine(routineId: number) {

@@ -223,3 +223,41 @@ body {
     .filters button:hover {
       background-color: #0056b3;
     }
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .infoText p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  header h2 {
+    font-size: 0.5rem;
+  }
+
+  .auth-buttons {
+    justify-content: center;
+  }
+
+  .action-button {
+    padding: 7px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e0e0e0; 
+    color: #333; 
+    font-size: 0.3rem; 
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+}

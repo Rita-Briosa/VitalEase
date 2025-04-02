@@ -76,9 +76,10 @@
       <button (click)="getFilteredRoutines()">Search</button>
     </div>
 
-      <div class="routine-header">
-        <a routerLink="/manage-training-routines/custom-training-routines" class="custom-training">Custom Training Routines</a>
-      </div>
+    <div class="routine-header">
+      <a routerLink="/manage-training-routines/custom-training-routines" class="custom-training">Custom Training Routines</a>
+      <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+    </div>
 
       <ul class="routine-list" *ngIf="routines && routines.length > 0">
         <li class="routine-item" *ngFor="let routine of routines">
@@ -87,7 +88,7 @@
         </li>
       </ul>
     </div>
-
+ 
 
     <div class="modal" [ngClass]="{ 'show': activeModal === 'addRoutine' }">
       <div class="modal-content-one">
@@ -128,12 +129,11 @@
                 {{ exercise.name }}
               </label>
 
-
             </div>
           </div>
 
           <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
-          <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+          <div *ngIf="addRoutineErrorMessage" class="alert-danger">{{ addRoutineErrorMessage }}</div>
 
           <div class="modal-buttons">
             <button type="button" class="modalButton" (click)="addRoutine()">Add</button>

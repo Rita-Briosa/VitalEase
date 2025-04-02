@@ -24,6 +24,7 @@ export class ManageTrainingRoutinesComponent implements OnInit {
   isAdmin: boolean = false;
   routines: any[] = []; // Array para armazenar as routines
   errorMessage: string = '';
+  addRoutineErrorMessage: string = '';
   activeModal: string = '';
   successMessage: string = '';
   newName: string = '';
@@ -95,7 +96,7 @@ export class ManageTrainingRoutinesComponent implements OnInit {
         console.log('Exercises loaded successfully:', this.exercises);
       },
       (error: any) => {
-        this.errorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
+        this.addRoutineErrorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
         console.log('Error loading exercises:', error);
       }
     );
@@ -162,6 +163,7 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     this.activeModal = ''; // Fechar a modal
     this.errorMessage = '';
     this.successMessage = '';
+    this.addRoutineErrorMessage = '';
   }
 
   addRoutine(): void {
@@ -178,7 +180,7 @@ export class ManageTrainingRoutinesComponent implements OnInit {
           }, 2000);
         },
         (error: any) => {
-          this.errorMessage = error.error?.message || 'An error occurred';
+          this.addRoutineErrorMessage = error.error?.message || 'An error occurred';
           this.successMessage = '';
         }
       );

@@ -1,0 +1,1564 @@
+{
+  "Version": 1,
+  "ManifestType": "Build",
+  "Endpoints": [
+    {
+      "Route": "vitalease.client/3rdpartylicenses.73nkoqwz6f.txt",
+      "AssetFile": "vitalease.client/3rdpartylicenses.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20919"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "73nkoqwz6f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/3rdpartylicenses.txt"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/3rdpartylicenses.txt",
+      "AssetFile": "vitalease.client/3rdpartylicenses.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20919"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/arrow_right.nydkq4sg7f.png",
+      "AssetFile": "vitalease.client/browser/assets/img/arrow_right.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7596"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nydkq4sg7f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/arrow_right.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/arrow_right.png",
+      "AssetFile": "vitalease.client/browser/assets/img/arrow_right.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7596"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UdIvVTgHXu+zGi65yV0ISk9Lxhl+SdOnY1Apnt1BrJs="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev1.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev1.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766048"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev1.usgvsvujzf.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev1.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766048"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "usgvsvujzf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn+htnw="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev1.jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev2.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev2.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "290301"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev2.yxd8d5a0ys.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev2.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "290301"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yxd8d5a0ys"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev2.jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev3.5ma6kiswi0.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev3.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252761"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5ma6kiswi0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev3.jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev3.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev3.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252761"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev4.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev4.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1843042"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/dev4.kte9kpxwfu.jpeg",
+      "AssetFile": "vitalease.client/browser/assets/img/dev4.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1843042"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kte9kpxwfu"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/dev4.jpeg"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/fitness-illustration.1q355k7c7h.png",
+      "AssetFile": "vitalease.client/browser/assets/img/fitness-illustration.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "271775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1q355k7c7h"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/fitness-illustration.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/fitness-illustration.png",
+      "AssetFile": "vitalease.client/browser/assets/img/fitness-illustration.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "271775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/garbage_can.png",
+      "AssetFile": "vitalease.client/browser/assets/img/garbage_can.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7156"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/garbage_can.qb0j2xyvmx.png",
+      "AssetFile": "vitalease.client/browser/assets/img/garbage_can.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7156"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qb0j2xyvmx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/garbage_can.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/logo.omupm3b1xx.png",
+      "AssetFile": "vitalease.client/browser/assets/img/logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100187"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "omupm3b1xx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/logo.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/logo.png",
+      "AssetFile": "vitalease.client/browser/assets/img/logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100187"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UBnvrM9+N3pL4+BooWqIADkkbaCmpYSkaf2X/88baio="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/pencil-43.54zdg5nori.png",
+      "AssetFile": "vitalease.client/browser/assets/img/pencil-43.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "54zdg5nori"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/pencil-43.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/pencil-43.png",
+      "AssetFile": "vitalease.client/browser/assets/img/pencil-43.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7035"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/plusIcon.le7skris2l.png",
+      "AssetFile": "vitalease.client/browser/assets/img/plusIcon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9851"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "le7skris2l"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/assets/img/plusIcon.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/assets/img/plusIcon.png",
+      "AssetFile": "vitalease.client/browser/assets/img/plusIcon.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9851"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/index.aytwbm6qv9.html",
+      "AssetFile": "vitalease.client/browser/index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aytwbm6qv9"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/index.html"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/index.html",
+      "AssetFile": "vitalease.client/browser/index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xr1EG6d/3RGJQ+Ja+s3FWm1jXVuIseFmSY9LkIXTpnk="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/main-LTSJLSFF.1hlq1hyqac.js",
+      "AssetFile": "vitalease.client/browser/main-LTSJLSFF.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "684989"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1hlq1hyqac"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/main-LTSJLSFF.js"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/main-LTSJLSFF.js",
+      "AssetFile": "vitalease.client/browser/main-LTSJLSFF.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "684989"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-2x-TBM42ERR.ef5uc09gvw.png",
+      "AssetFile": "vitalease.client/browser/media/layers-2x-TBM42ERR.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1259"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ef5uc09gvw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/media/layers-2x-TBM42ERR.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-2x-TBM42ERR.png",
+      "AssetFile": "vitalease.client/browser/media/layers-2x-TBM42ERR.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1259"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-55W3Q4RM.png",
+      "AssetFile": "vitalease.client/browser/media/layers-55W3Q4RM.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "696"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/layers-55W3Q4RM.ptvguihtoq.png",
+      "AssetFile": "vitalease.client/browser/media/layers-55W3Q4RM.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "696"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ptvguihtoq"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/media/layers-55W3Q4RM.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/marker-icon-2V3QKKVC.png",
+      "AssetFile": "vitalease.client/browser/media/marker-icon-2V3QKKVC.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1466"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/media/marker-icon-2V3QKKVC.vq9wvlav5t.png",
+      "AssetFile": "vitalease.client/browser/media/marker-icon-2V3QKKVC.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1466"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vq9wvlav5t"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/media/marker-icon-2V3QKKVC.png"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.39tegmrjtp.js",
+      "AssetFile": "vitalease.client/browser/polyfills-FFHMD2TL.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34519"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "39tegmrjtp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/polyfills-FFHMD2TL.js"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.js",
+      "AssetFile": "vitalease.client/browser/polyfills-FFHMD2TL.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34519"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/styles-OPSORIUJ.css",
+      "AssetFile": "vitalease.client/browser/styles-OPSORIUJ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11072"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/browser/styles-OPSORIUJ.h1uvasrz41.css",
+      "AssetFile": "vitalease.client/browser/styles-OPSORIUJ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11072"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h1uvasrz41"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/browser/styles-OPSORIUJ.css"
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/prerendered-routes.json",
+      "AssetFile": "vitalease.client/prerendered-routes.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/prerendered-routes.tvy3j3n584.json",
+      "AssetFile": "vitalease.client/prerendered-routes.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tvy3j3n584"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/prerendered-routes.json"
+        }
+      ]
+    }
+  ]
+}

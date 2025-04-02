@@ -337,3 +337,43 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 }
 
 
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+  }
+
+  @media (max-width: 480px) {
+
+    .header span {
+      font-size: 0.5rem;
+      font-weight: bold;
+    }
+
+    .header button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #fff;
+      font-size: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+
+    .header a {
+      text-decoration: none;
+      color: black;
+      font-size: 0.5rem;
+      font-weight: bold;
+      font-family: Inter;
+      transition: background-color 0.3s;
+    }
+
+    
+  }
