@@ -192,3 +192,30 @@ h2 {
     .modal-footer button:hover {
       background-color: #0056b3;
     }
+
+
+footer {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #6C9C94;
+  margin-left: 40%;
+}
+
+  footer a {
+    color: #6C9C94;
+    text-decoration: none;
+  }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+@media (max-width: 480px) {
+
+  footer {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #6C9C94;
+    margin-left: 40%;
+  }
+}

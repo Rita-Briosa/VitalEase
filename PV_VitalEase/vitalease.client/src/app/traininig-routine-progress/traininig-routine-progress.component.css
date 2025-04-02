@@ -225,6 +225,22 @@ h1 {
       background: #219150;
     }
 
+footer {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #6C9C94;
+  margin-left: 40%;
+}
+
+  footer a {
+    color: #6C9C94;
+    text-decoration: none;
+  }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
 /* Responsividade */
 @media (max-width: 768px) {
   .content-wrapper {
@@ -320,4 +336,16 @@ h1 {
     transition: 0.3s;
   }
 
+
+  footer {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #6C9C94;
+    margin-left: 40%;
+  }
+
 }
+
+
+
+

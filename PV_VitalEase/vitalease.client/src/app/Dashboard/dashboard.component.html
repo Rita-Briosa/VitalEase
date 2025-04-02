@@ -46,24 +46,24 @@
             <button (click)="getFilterLogs()">Search</button>
           </div>
 
-            <table *ngIf="logs.length > 0" class="logs-table">
-              <thead>
-                <tr>
-                  <th>Timestamp</th>
-                  <th>Action</th>
-                  <th>Status</th>
-                  <th>User</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let log of logs">
-                  <td>{{ log.timestamp | date: 'short' }}</td>
-                  <td>{{ log.action }}</td>
-                  <td>{{ log.status }}</td>
-                  <td>{{ log.userId }}</td>
-                </tr>
-              </tbody>
-            </table>
+          <table *ngIf="logs.length > 0" class="logs-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Action</th>
+                <th>Status</th>
+                <th>User</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let log of logs">
+                <td>{{ log.timestamp | date: 'short' }}</td>
+                <td>{{ log.action }}</td>
+                <td>{{ log.status }}</td>
+                <td>{{ log.userId }}</td>
+              </tr>
+            </tbody>
+          </table>
 
           <!-- Mensagem para quando não houver logs -->
           <div *ngIf="logs.length === 0" class="no-logs">
@@ -72,5 +72,9 @@
         </div>
       </div>
     </div>
+
+    <footer>
+      <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
+    </footer>
   </body>
 </html>
