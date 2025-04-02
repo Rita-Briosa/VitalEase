@@ -161,7 +161,10 @@ body {
 }
 
 .routine-item {
-  padding: 20px;
+  display: flex; /* Permite alinhamento lado a lado */
+  justify-content: space-between; /* Empurra os elementos para os extremos */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 3%;
   border-bottom: 1px solid #ddd;
   transition: background 0.2s;
 }
@@ -171,11 +174,24 @@ body {
   }
 
 .routine-name {
-  font-size: 18px;
+  font-size: 1rem;
   text-decoration: none;
   color: black;
   cursor: pointer;
 }
+
+.start {
+  background: #5c8a80;
+  color: white;
+  border: none;
+  padding: 20px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+  .start:hover {
+    background: #476e66;
+  }
 
 .modal {
   display: none;
@@ -219,7 +235,7 @@ body {
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
-  margin-left: 91%; /* Move para a direita */
+  margin-left: 60%; /* Move para a direita */
 }
 
   .start:hover {
@@ -379,16 +395,6 @@ input[type="number"] {
     width: 30%;
   }
 
-  .start {
-    background: #5c8a80;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 59%; /* Move para a direita */
-  }
-
   .filters {
     display: grid;
     gap: 1rem; /* Espaço entre os elementos */
@@ -428,5 +434,38 @@ input[type="number"] {
       .filters button:hover {
         background-color: #476e66;
       }
+
+  .routine-item {
+    display: flex; /* Permite alinhamento lado a lado */
+    justify-content: space-between; /* Empurra os elementos para os extremos */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 3%;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.2s;
+  }
+
+    .routine-item:last-child {
+      border-bottom: none;
+    }
+
+  .routine-name {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+  }
+
+  .start {
+    background: #5c8a80;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+    .start:hover {
+      background: #476e66;
+    }
 
 }

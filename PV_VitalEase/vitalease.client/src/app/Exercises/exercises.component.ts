@@ -27,6 +27,8 @@ export class ExercisesComponent implements OnInit {
   exercises: any[] = []; // Array para armazenar os exercises
   routines: any[] = []; // Array para armazenar as routines
   errorMessage: string = '';
+  addErrorMessage: string = '';
+  addRoutineErrorMessage: string = '';
   activeModal: string = '';
   modalExercise: any = null; // Armazena o exercício para a modal
   media: any[] = []; // Array para armazenar os media
@@ -113,7 +115,7 @@ export class ExercisesComponent implements OnInit {
         console.log('Routines loaded successfully:', this.routines);
       },
       (error: any) => {
-        this.errorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
+        this.addRoutineErrorMessage = error.error?.message || 'An unexpected error occurred'; // Define a mensagem de erro se a requisição falhar
         console.log('Error loading routines:', error);
       }
     );
@@ -134,7 +136,7 @@ export class ExercisesComponent implements OnInit {
 
   addRoutine(): void {
     if (!this.selectedRoutine || !this.modalExercise) {
-      this.errorMessage = 'Please select a routine before adding.';
+      this.addErrorMessage = 'Please select a routine before adding.';
       return;
     }
 
@@ -145,14 +147,14 @@ export class ExercisesComponent implements OnInit {
     this.exercisesService.addRoutine(routineId, exerciseId, this.reps, this.duration).subscribe(
       (response: any) => {
         this.successMessage = response.message;
-        this.errorMessage = '';
+        this.addErrorMessage = '';
 
         setTimeout(() => {
           this.closeModal();
         }, 2000);
       },
       (error: any) => {
-        this.errorMessage = error.error?.message || 'An error occurred';
+        this.addErrorMessage = error.error?.message || 'An error occurred';
         this.successMessage = '';
       }
     );
@@ -240,6 +242,8 @@ export class ExercisesComponent implements OnInit {
     this.activeMediaIndex = 0;
     this.errorMessage = '';
     this.successMessage = '';
+    this.addErrorMessage = '';
+    this.addRoutineErrorMessage = '';
   }
 
   openAddModal(exercise: any): void {

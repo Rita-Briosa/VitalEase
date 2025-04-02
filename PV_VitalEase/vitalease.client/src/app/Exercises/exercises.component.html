@@ -148,7 +148,7 @@
       </div><br /> 
 
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
-      <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="addRoutineErrorMessage" class="alert-danger">{{ addRoutineErrorMessage }}</div>
 
       <button class="modalButton" [disabled]="!selectedRoutine" (click)="addRoutine()">Add</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
@@ -224,7 +224,7 @@
         </div>
 
         <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
-        <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+        <div *ngIf="addErrorMessage" class="alert-danger">{{ addErrorMessage }}</div>
 
         <div class="modal-buttons">
           <button type="button" class="modalButton" (click)="addExercise()">Add</button>
