@@ -34,6 +34,9 @@ export class MapComponent implements OnInit, AfterViewInit {
   userInfo: any = null;
   isLoggedIn: boolean = false;
 
+  // New property to store user's current location
+  userLocation: L.LatLng | null = null;
+
   @ViewChild('map', { static: true }) mapElement!: ElementRef;
   @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
 
@@ -43,7 +46,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   routeSummary: { distance: string, duration: string } | null = null;
   selectedDestination: L.LatLng | null = null;
 
-  // Google Maps Autocomplete instance (se continuar a usar para obter um único resultado)
+  // Google Maps Autocomplete instance (for single result use)
   googleAutocomplete!: google.maps.places.Autocomplete;
 
   constructor(private authService: AuthService, private router: Router, private cdr: ChangeDetectorRef) { }
@@ -56,13 +59,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.loadGoogleMapsAPI()
       .then(() => {
-        // Optionally, you may initialise autocomplete if you wish to get a single result.
         this.initializeGoogleAutocomplete();
       })
       .catch(err => console.error('Erro ao carregar a Google Maps API:', err));
   }
 
-  // Carrega a API do Google Maps dinamicamente e insere a chave diretamente
   loadGoogleMapsAPI(): Promise<void> {
     return new Promise((resolve, reject) => {
       if ((window as any).google && (window as any).google.maps) {
@@ -70,7 +71,6 @@ export class MapComponent implements OnInit, AfterViewInit {
         return;
       }
       const script = document.createElement('script');
-      // Chave do Google Maps inserida diretamente na URL
       script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCacOSrxFC3yjrFfIwqW1Y571gxtqrXEwk&libraries=places`;
       script.async = true;
       script.defer = true;
@@ -80,7 +80,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // (Opcional) Inicializa o Autocomplete do Google Places no input de pesquisa
   initializeGoogleAutocomplete() {
     if (!this.searchInput) {
       console.error('Elemento de pesquisa não encontrado!');
@@ -112,39 +111,31 @@ export class MapComponent implements OnInit, AfterViewInit {
       alert("Insira um termo de pesquisa.");
       return;
     }
-
-    // Use the current map center for the nearby search location.
     const center = this.map.getCenter();
     const request = {
       location: new google.maps.LatLng(center.lat, center.lng),
-      radius: 5000,  // Radius in meters (adjust as needed)
-      type: query.toLowerCase()  // Interpret the query as a place type (e.g., "spa")
+      radius: 5000,
+      type: query.toLowerCase()
     };
 
     const service = new google.maps.places.PlacesService(document.createElement('div'));
     service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        // Remove existing markers
         this.markers.forEach(marker => this.map.removeLayer(marker));
         this.markers = [];
-
         results.forEach(place => {
           if (!place.geometry || !place.geometry.location) return;
           const lat = place.geometry.location.lat();
           const lng = place.geometry.location.lng();
           const leafletLatLng = L.latLng(lat, lng);
-
-          // Create a red marker for each result
           const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
           marker.bindPopup(`
-          <b>${place.name}</b><br>
-          ${place.vicinity || ''}<br>
-          ${place.rating ? 'Avaliação: ' + place.rating : ''}
-        `);
+            <b>${place.name}</b><br>
+            ${place.vicinity || ''}<br>
+            ${place.rating ? 'Avaliação: ' + place.rating : ''}
+          `);
           this.markers.push(marker);
         });
-
-        // Optionally, adjust the map to fit all markers.
         if (this.markers.length > 0) {
           const group = new L.FeatureGroup(this.markers);
           this.map.fitBounds(group.getBounds());
@@ -155,9 +146,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-
-  // Verifica se o utilizador está autenticado
   checkUserSession() {
     const token = this.authService.getSessionToken();
     if (token) {
@@ -174,14 +162,33 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Inicializa o mapa Leaflet
   initMap() {
-    this.map = L.map(this.mapElement.nativeElement).setView([38.521877, -8.839083], 15);
+    const defaultLocation: [number, number] = [38.521877, -8.839083];
+    this.map = L.map(this.mapElement.nativeElement).setView(defaultLocation, 15);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-    // Mantém o evento de clique no mapa
+    // Use HTML5 Geolocation API to get user's location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userLat = position.coords.latitude;
+          const userLng = position.coords.longitude;
+          this.userLocation = L.latLng(userLat, userLng);
+          this.map.setView([userLat, userLng], 15);
+          const userMarker = L.marker([userLat, userLng], { icon: redIcon }).addTo(this.map);
+          userMarker.bindPopup('Você está aqui.').openPopup();
+        },
+        (error) => {
+          console.error('Erro ao obter a localização do utilizador:', error);
+        }
+      );
+    } else {
+      console.error('Geolocalização não é suportada pelo navegador.');
+    }
+
+    // Event for adding destination via map click
     this.map.on('click', (event: L.LeafletMouseEvent) => {
       this.selectedDestination = event.latlng;
       this.addMarker(event.latlng);
@@ -189,40 +196,32 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // Adiciona um marcador no mapa (usando o ícone vermelho)
   addMarker(position: L.LatLng) {
-    // Se pretender limpar marcadores anteriores (opcional):
     this.markers.forEach(marker => this.map.removeLayer(marker));
     this.markers = [];
-
     const marker = L.marker(position, { icon: redIcon }).addTo(this.map);
+    marker.bindPopup(`
+      <b>Resumo da rota</b><br>
+      Distância: ${this.routeSummary?.distance ?? 'N/D'}<br>
+      Tempo: ${this.routeSummary?.duration ?? 'N/D'}
+    `).openPopup();
 
-    // Listen for the popup close event (triggered when "x" is clicked)
     marker.on('popupclose', () => {
-      // Remove the blue route layer if it exists
       if (this.routeLayer) {
         this.map.removeLayer(this.routeLayer);
         this.routeLayer = null;
       }
-      // Remove the marker from the map
       this.map.removeLayer(marker);
-      // Optionally, remove the marker from the markers array
       this.markers = this.markers.filter(m => m !== marker);
     });
-    marker.bindPopup(`
-    <b>Resumo da rota</b><br>
-    Distância: ${this.routeSummary?.distance ?? 'N/D'}<br>
-    Tempo: ${this.routeSummary?.duration ?? 'N/D'}
-  `).openPopup();
     this.markers.push(marker);
   }
 
-
-  // Calcula a rota entre um ponto fixo de origem e o destino selecionado
   calculateRoute() {
-    if (!this.selectedDestination) return;
+    // Use user's location as starting point
+    if (!this.userLocation || !this.selectedDestination) return;
 
-    const start = '-8.839083,38.521877'; // Coordenadas de origem fixas
+    const start = `${this.userLocation.lng},${this.userLocation.lat}`;
     const end = `${this.selectedDestination.lng},${this.selectedDestination.lat}`;
     const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson`;
 
@@ -231,20 +230,16 @@ export class MapComponent implements OnInit, AfterViewInit {
       .then(data => {
         if (data.routes.length > 0) {
           const route = data.routes[0];
-
           if (this.routeLayer) {
             this.map.removeLayer(this.routeLayer);
           }
-
           this.routeLayer = L.geoJSON(route.geometry, {
             style: { color: 'blue', weight: 5 }
           }).addTo(this.map);
-
           this.routeSummary = {
             distance: (route.distance / 1000).toFixed(2) + ' km',
             duration: (route.duration / 60).toFixed(2) + ' min'
           };
-
           this.cdr.detectChanges();
         } else {
           alert('Não foi possível calcular a rota.');
@@ -253,7 +248,6 @@ export class MapComponent implements OnInit, AfterViewInit {
       .catch(error => console.error('Erro ao obter a rota:', error));
   }
 
-  // Função para logout do utilizador
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;

@@ -13,10 +13,10 @@
 
 <!-- Container para o mapa -->
 <section>
-  <div class="search-container">
-    <input #searchInput type="text" placeholder="Pesquisar localizações (ex: spa)" />
-    <button (click)="searchPlaces()">Pesquisar</button>
-  </div>
+<div class="search-container">
+  <input #searchInput type="text" placeholder="Pesquisar (ex: gym ou spa)" />
+  <button (click)="searchPlaces()">Pesquisar</button>
+</div>
   <div #map style="width: 100%; height: 400px;"></div>
   <h3>Click on the map to choose a destination and calculate the route:</h3>
   <div #map id="map" style="height: 70vh; width: 100%;"></div>
