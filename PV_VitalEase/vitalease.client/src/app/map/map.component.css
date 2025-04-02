@@ -10,6 +10,9 @@ body {
   flex-direction: column; /* Allows child elements to stack vertically */
 }
 
+.login-button{
+    color: black;
+}
 .profile-icon {
   font-size: 40px;
   text-decoration: none;
@@ -22,6 +25,9 @@ header img {
   height: 100px;
 }
 
+.locationButton{
+    float: right;
+}
 header {
   display: flex;
   width: 100%;
