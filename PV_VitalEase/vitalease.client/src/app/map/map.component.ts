@@ -82,7 +82,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   initializeGoogleAutocomplete() {
     if (!this.searchInput) {
-      console.error('Elemento de pesquisa não encontrado!');
+      console.error('No results found. Please try again.');
       return;
     }
     this.googleAutocomplete = new google.maps.places.Autocomplete(this.searchInput.nativeElement, {
@@ -91,7 +91,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.googleAutocomplete.addListener('place_changed', () => {
       const place = this.googleAutocomplete.getPlace();
       if (!place.geometry || !place.geometry.location) {
-        alert('Nenhum resultado foi encontrado!');
+     
         return;
       }
       const lat = place.geometry.location.lat();
@@ -108,7 +108,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   searchPlaces() {
     const query = this.searchInput.nativeElement.value;
     if (!query) {
-      alert("Insira um termo de pesquisa.");
+      alert("You need to write something.");
       return;
     }
     const center = this.map.getCenter();
@@ -163,32 +163,41 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   initMap() {
-    const defaultLocation: [number, number] = [38.521877, -8.839083];
+    const defaultLocation: [number, number] = [38.521877, -8.839083]; 
     this.map = L.map(this.mapElement.nativeElement).setView(defaultLocation, 15);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-    // Use HTML5 Geolocation API to get user's location
+    // Function to add a marker at the user location (or fallback) 
+    const addUserMarker = (lat: number, lng: number) => {
+      this.userLocation = L.latLng(lat, lng);
+      const marker = L.marker([lat, lng], { icon: redIcon }).addTo(this.map);
+      marker.bindPopup('You are here.').openPopup();
+    };
+
+    // Try to get user's current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const userLat = position.coords.latitude;
           const userLng = position.coords.longitude;
-          this.userLocation = L.latLng(userLat, userLng);
-          this.map.setView([userLat, userLng], 15);
-          const userMarker = L.marker([userLat, userLng], { icon: redIcon }).addTo(this.map);
-          userMarker.bindPopup('Você está aqui.').openPopup();
+          this.map.setView([userLat, userLng]);
+          addUserMarker(userLat, userLng);
         },
         (error) => {
           console.error('Erro ao obter a localização do utilizador:', error);
+          // If error occurs or permission is denied, fall back to default location (Lisbon)
+          addUserMarker(defaultLocation[0], defaultLocation[1]);
         }
       );
     } else {
       console.error('Geolocalização não é suportada pelo navegador.');
+      // Fallback if geolocation is not available
+      addUserMarker(defaultLocation[0], defaultLocation[1]);
     }
 
-    // Event for adding destination via map click
+    // Map click event for adding a destination
     this.map.on('click', (event: L.LeafletMouseEvent) => {
       this.selectedDestination = event.latlng;
       this.addMarker(event.latlng);
@@ -196,14 +205,22 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
+  goToUserLocation(): void {
+    if (this.userLocation) {
+      this.map.setView(this.userLocation, 15);
+    } else {
+      alert('Localização do utilizador não disponível.');
+    }
+  }
+
   addMarker(position: L.LatLng) {
     this.markers.forEach(marker => this.map.removeLayer(marker));
     this.markers = [];
     const marker = L.marker(position, { icon: redIcon }).addTo(this.map);
     marker.bindPopup(`
-      <b>Resumo da rota</b><br>
-      Distância: ${this.routeSummary?.distance ?? 'N/D'}<br>
-      Tempo: ${this.routeSummary?.duration ?? 'N/D'}
+      <b>Route Summary</b><br>
+      Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>
+      Time: ${this.routeSummary?.duration ?? 'N/D'}
     `).openPopup();
 
     marker.on('popupclose', () => {
@@ -218,28 +235,39 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   calculateRoute() {
-    // Use user's location as starting point
     if (!this.userLocation || !this.selectedDestination) return;
 
+    // Define as coordenadas de início (usando a localização do utilizador) e destino.
     const start = `${this.userLocation.lng},${this.userLocation.lat}`;
     const end = `${this.selectedDestination.lng},${this.selectedDestination.lat}`;
-    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson`;
+
+    // Modifica a URL para solicitar alternativas (várias rotas)
+    const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson&alternatives=true`;
 
     fetch(osrmUrl)
       .then(response => response.json())
       .then(data => {
-        if (data.routes.length > 0) {
-          const route = data.routes[0];
+        if (data.routes && data.routes.length > 0) {
+          // Seleciona a rota com a menor distância (ou pode usar o tempo, se preferir)
+          const bestRoute = data.routes.reduce((prev: any, curr: any) => {
+            return (prev.distance < curr.distance) ? prev : curr;
+          });
+
+          // Remove a rota anterior, se existir
           if (this.routeLayer) {
             this.map.removeLayer(this.routeLayer);
           }
-          this.routeLayer = L.geoJSON(route.geometry, {
-            style: { color: 'blue', weight: 5 }
+
+          this.routeLayer = L.geoJSON(bestRoute.geometry, {
+            style: { color: 'red', weight: 5 }
           }).addTo(this.map);
+
+          // Atualiza o resumo da rota (distância e tempo)
           this.routeSummary = {
-            distance: (route.distance / 1000).toFixed(2) + ' km',
-            duration: (route.duration / 60).toFixed(2) + ' min'
+            distance: (bestRoute.distance / 1000).toFixed(2) + ' km',
+            duration: (bestRoute.duration / 60).toFixed(2) + ' min'
           };
+
           this.cdr.detectChanges();
         } else {
           alert('Não foi possível calcular a rota.');
