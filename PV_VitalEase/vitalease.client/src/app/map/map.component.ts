@@ -6,116 +6,133 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-// Personalização do ícone padrão do marcador do Leaflet (usado para cliques no mapa)
+// Standard marker icon (used for map click markers)
 L.Marker.prototype.options.icon = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowUrl: ''
+    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowUrl: ''
 });
 
+// A common red icon (used for search markers and user location)
 const redIcon = L.icon({
-  iconUrl: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32]
+    iconUrl: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
 });
-
 
 @Component({
-  selector: 'app-map',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: 'map.component.html',
-  styleUrls: ['map.component.css']
+    selector: 'app-map',
+    standalone: true,
+    imports: [CommonModule, RouterModule],
+    templateUrl: 'map.component.html',
+    styleUrls: ['map.component.css']
 })
 export class MapComponent implements OnInit, AfterViewInit {
-  userInfo: any = null;
-  isLoggedIn: boolean = false;
+    userInfo: any = null;
+    isLoggedIn: boolean = false;
 
-  // New property to store user's current location
-  userLocation: L.LatLng | null = null;
+    // To store user's current location
+    userLocation: L.LatLng | null = null;
 
-  @ViewChild('map', { static: true }) mapElement!: ElementRef;
-  @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
+    @ViewChild('map', { static: true }) mapElement!: ElementRef;
+    @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
 
-  map!: L.Map;
-  markers: L.Marker[] = [];
-  routeLayer: L.GeoJSON | null = null;
-  routeSummary: { distance: string, duration: string } | null = null;
-  selectedDestination: L.LatLng | null = null;
+    map!: L.Map;
+    markers: L.Marker[] = [];
+    routeLayer: L.GeoJSON | null = null;
+    routeSummary: { distance: string, duration: string } | null = null;
+    selectedDestination: L.LatLng | null = null;
 
-  // Google Maps Autocomplete instance (for single result use)
-  googleAutocomplete!: google.maps.places.Autocomplete;
+    // Google Places Autocomplete instance (for full address search)
+    googleAutocomplete!: google.maps.places.Autocomplete;
 
-  constructor(private authService: AuthService, private router: Router, private cdr: ChangeDetectorRef) { }
+    // Favorites array and visibility toggle
+    favoriteLocations: Array<{ lat: number, lng: number, name: string }> = [];
+    favoritesVisible: boolean = false;
 
-  ngOnInit() {
-    this.initMap();
-    this.checkUserSession();
-  }
+    constructor(private authService: AuthService, private router: Router, private cdr: ChangeDetectorRef) { }
 
-  ngAfterViewInit() {
-    this.loadGoogleMapsAPI()
-      .then(() => {
-        this.initializeGoogleAutocomplete();
-      })
-      .catch(err => console.error('Erro ao carregar a Google Maps API:', err));
-  }
-
-  loadGoogleMapsAPI(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      if ((window as any).google && (window as any).google.maps) {
-        resolve();
-        return;
-      }
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCacOSrxFC3yjrFfIwqW1Y571gxtqrXEwk&libraries=places`;
-      script.async = true;
-      script.defer = true;
-      script.onload = () => resolve();
-      script.onerror = (error: any) => reject(error);
-      document.head.appendChild(script);
-    });
-  }
-
-  initializeGoogleAutocomplete() {
-    if (!this.searchInput) {
-      console.error('No results found for your search. Please try again.');
-      return;
+    ngOnInit() {
+        this.initMap();
+        this.checkUserSession();
+        // Listen for custom "addFavorite" events from popups
+        document.addEventListener('addFavorite', (event: any) => {
+            const { lat, lng, name } = event.detail;
+            this.addFavorite(L.latLng(lat, lng), name);
+        });
+        this.loadFavoriteLocations();
     }
-    this.googleAutocomplete = new google.maps.places.Autocomplete(this.searchInput.nativeElement, {
-      types: ['geocode']
-    });
-    this.googleAutocomplete.addListener('place_changed', () => {
-      const place = this.googleAutocomplete.getPlace();
-      if (!place.geometry || !place.geometry.location) {
-     
-        return;
-      }
-      const lat = place.geometry.location.lat();
-      const lng = place.geometry.location.lng();
-      const leafletLatLng = L.latLng(lat, lng);
 
-      this.selectedDestination = leafletLatLng;
-      this.addMarker(leafletLatLng);
-        this.map.setView([lat, lng], 15);
-      this.calculateRoute();
-    });
-  }
+    ngAfterViewInit() {
+        this.loadGoogleMapsAPI()
+            .then(() => {
+                this.initializeGoogleAutocomplete();
+            })
+            .catch(err => console.error('Erro ao carregar a Google Maps API:', err));
+    }
 
-    searchPlaces() {
+    loadGoogleMapsAPI(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            if ((window as any).google && (window as any).google.maps) {
+                resolve();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCacOSrxFC3yjrFfIwqW1Y571gxtqrXEwk&libraries=places`;
+            script.async = true;
+            script.defer = true;
+            script.onload = () => resolve();
+            script.onerror = (error: any) => reject(error);
+            document.head.appendChild(script);
+        });
+    }
+
+    // Initialize autocomplete (for full address search)
+    initializeGoogleAutocomplete() {
+        if (!this.searchInput) {
+            console.error('Elemento de pesquisa não encontrado!');
+            return;
+        }
+        this.googleAutocomplete = new google.maps.places.Autocomplete(this.searchInput.nativeElement, {
+            types: ['geocode']
+        });
+        this.googleAutocomplete.addListener('place_changed', () => {
+            const place = this.googleAutocomplete.getPlace();
+            if (!place.geometry || !place.geometry.location) {
+                alert('Nenhum resultado foi encontrado!');
+                return;
+            }
+            const lat = place.geometry.location.lat();
+            const lng = place.geometry.location.lng();
+            const leafletLatLng = L.latLng(lat, lng);
+            // For autocomplete, we use a default details string
+            const details = `<b>Selected Location</b>`;
+            this.selectedDestination = leafletLatLng;
+            this.addMarker(leafletLatLng, details);
+            this.map.setView([lat, lng], 15);
+            this.calculateRoute();
+        });
+    }
+
+    // Basic search function – calls the filtered search function
+    searchPlaces(): void {
         const query = this.searchInput.nativeElement.value;
         if (!query) {
             alert("You need to write something.");
             return;
         }
+        this.searchPlacesFilter(query);
+    }
+
+    searchPlacesFilter(filter: string): void {
         const center = this.map.getCenter();
         const request = {
             location: new google.maps.LatLng(center.lat, center.lng),
             radius: 5000,
-            type: query.toLowerCase()
+            type: filter.toLowerCase()
         };
 
         const service = new google.maps.places.PlacesService(document.createElement('div'));
@@ -129,114 +146,58 @@ export class MapComponent implements OnInit, AfterViewInit {
                     const lat = place.geometry.location.lat();
                     const lng = place.geometry.location.lng();
                     const leafletLatLng = L.latLng(lat, lng);
+                    const placeName = place.name ? place.name : 'No name';
+                    const details = `<b>${placeName}</b><br>${place.vicinity || ''}<br>${place.rating ? 'Avaliação: ' + place.rating : ''}`;
 
-                    // Create the details string from the place data
-                    const details = `<b>${place.name}</b><br>${place.vicinity || ''}<br>${place.rating ? 'Avaliação: ' + place.rating : ''}`;
+                    // Build initial popup content with the Add to Favorites button
+                    const popupContent = `
+          ${details}
+          <br><br>
+          <button onclick="document.dispatchEvent(new CustomEvent('addFavorite', { detail: { lat: ${lat}, lng: ${lng}, name: '${placeName.replace(/'/g, "\\'")}' } }))">
+            Add to Favorites
+          </button>
+          <br><br>
+          <b>Route Summary</b><br>Loading route...
+        `;
 
-                    // Create marker with the red icon
                     const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
+                    marker.bindPopup(popupContent).openPopup();
 
-                    // Initially bind a popup with details plus a "Loading route..." message
-                    marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
-
-                    // On marker click, set the destination, center map and calculate route,
-                    // then update the popup with the route summary appended to the details.
-                    marker.on('click', () => {
-                        this.selectedDestination = leafletLatLng;
-                        this.map.setView(leafletLatLng, 15);
-                        // Show initial popup content
-                        marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
-                        // Calculate route and update popup when done
-                        this.calculateRoute().then(() => {
-                            marker.bindPopup(
-                                details +
-                                `<br><br><b>Route Summary</b><br>` +
-                                `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
-                                `Time: ${this.routeSummary?.duration ?? 'N/D'}`
-                            ).openPopup();
-                        });
-                    });
-                    this.markers.push(marker);
-                });
-                if (this.markers.length > 0) {
-                    const group = new L.FeatureGroup(this.markers);
-                    this.map.fitBounds(group.getBounds());
-                }
-            } else {
-                alert("No results found for: " + query);
-            }
-        });
-    }
-
-    onFilterChange(event: Event): void {
-        const filter = (event.target as HTMLSelectElement).value;
-        if (!filter) {
-            alert('Please select a filter.');
-            return;
-        }
-        // Alerta o utilizador que o mapa será actualizado com o filtro selecionado
-        alert('Filter updated: ' + filter);
-        // Efetua a pesquisa com o filtro selecionado
-        this.searchPlacesFilter(filter);
-    }
-
-    // New method to perform filtered search with unified popups
-    searchPlacesFilter(filter: string): void {
-        const center = this.map.getCenter();
-        const request = {
-            location: new google.maps.LatLng(center.lat, center.lng),
-            radius: 5000,
-            type: filter.toLowerCase()
-        };
-
-        const service = new google.maps.places.PlacesService(document.createElement('div'));
-        service.nearbySearch(request, (results, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-                // Remove any existing markers
-                this.markers.forEach(marker => this.map.removeLayer(marker));
-                this.markers = [];
-
-                results.forEach(place => {
-                    if (!place.geometry || !place.geometry.location) return;
-
-                    const lat = place.geometry.location.lat();
-                    const lng = place.geometry.location.lng();
-                    const leafletLatLng = L.latLng(lat, lng);
-
-                    // Build a details string from the place data
-                    const details = `<b>${place.name}</b><br>${place.vicinity || ''}<br>${place.rating ? 'Avaliação: ' + place.rating : ''}`;
-
-                    // Create a marker using the common red icon
-                    const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
-
-                    // Bind an initial popup with the location details and a placeholder for the route summary
-                    marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
-
-                    // When the marker is clicked, update the destination, center the map and calculate the route.
-                    // Once the route is calculated, update the popup with the unified information.
+                    // When the marker is clicked, always include the Add to Favorites button in the popup.
                     marker.on('click', () => {
                         this.selectedDestination = leafletLatLng;
                         this.map.setView(leafletLatLng, 15);
 
-                        // Rebind the popup with the same initial content
-                        marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
+                        // Rebuild initial popup content (with favorites button) when clicked
+                        const initialPopup = `
+            ${details}
+            <br><br>
+            <button onclick="document.dispatchEvent(new CustomEvent('addFavorite', { detail: { lat: ${lat}, lng: ${lng}, name: '${placeName.replace(/'/g, "\\'")}' } }))">
+              Add to Favorites
+            </button>
+            <br><br>
+            <b>Route Summary</b><br>Loading route...
+          `;
+                        marker.bindPopup(initialPopup).openPopup();
 
-                        // Calculate the route (assuming calculateRoute returns a Promise)
+                        // Calculate route and then update the popup with unified content
                         this.calculateRoute().then(() => {
-                            // Update the popup content to include the route summary
-                            marker.bindPopup(
-                                details +
-                                `<br><br><b>Route Summary</b><br>` +
-                                `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
-                                `Time: ${this.routeSummary?.duration ?? 'N/D'}`
-                            ).openPopup();
+                            const updatedPopup = `
+              ${details}
+              <br><br>
+              <button onclick="document.dispatchEvent(new CustomEvent('addFavorite', { detail: { lat: ${lat}, lng: ${lng}, name: '${placeName.replace(/'/g, "\\'")}' } }))">
+                Add to Favorites
+              </button>
+              <br><br>
+              <b>Route Summary</b><br>
+              Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>
+              Time: ${this.routeSummary?.duration ?? 'N/D'}
+            `;
+                            marker.bindPopup(updatedPopup).openPopup();
                         });
                     });
-
                     this.markers.push(marker);
                 });
-
-                // Optionally, adjust the map view to include all markers
                 if (this.markers.length > 0) {
                     const group = new L.FeatureGroup(this.markers);
                     this.map.fitBounds(group.getBounds());
@@ -247,94 +208,151 @@ export class MapComponent implements OnInit, AfterViewInit {
         });
     }
 
-  checkUserSession() {
-    const token = this.authService.getSessionToken();
-    if (token) {
-      this.authService.validateSessionToken().subscribe(
-        (response: any) => {
-          this.isLoggedIn = true;
-          this.userInfo = response.user;
-        },
-        () => {
-          this.authService.logout();
-          this.router.navigate(['/login']);
+    // Called when the filter dropdown changes
+    onFilterChange(event: Event): void {
+        const filter = (event.target as HTMLSelectElement).value;
+        if (!filter) {
+            alert('Please select a filter.');
+            return;
         }
-      );
+        alert('Filter updated: ' + filter);
+        this.searchPlacesFilter(filter);
     }
-  }
 
-  initMap() {
-    const defaultLocation: [number, number] = [38.521877, -8.839083]; 
-    this.map = L.map(this.mapElement.nativeElement).setView(defaultLocation, 15);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(this.map);
+    // Toggle favorites list visibility
+    toggleFavoritesList(): void {
+        this.favoritesVisible = !this.favoritesVisible;
+    }
 
-    // Function to add a marker at the user location (or fallback) 
-    const addUserMarker = (lat: number, lng: number) => {
-      this.userLocation = L.latLng(lat, lng);
-      const marker = L.marker([lat, lng], { icon: redIcon }).addTo(this.map);
-      marker.bindPopup('You are here.').openPopup();
-    };
+    // When a favorite is selected from the list, center the map on that location
+    showFavoriteOnMap(fav: { lat: number, lng: number, name: string }): void {
+        const latlng = L.latLng(fav.lat, fav.lng);
+        this.map.setView(latlng, 15);
+        // Create a marker with the common red icon at the favorite location
+        const marker = L.marker(latlng, { icon: redIcon }).addTo(this.map);
+        // Initial popup content with the favorite's details and a placeholder for the route summary
+        marker.bindPopup(
+            `<b>${fav.name}</b><br><br><b>Route Summary</b><br>` +
+            `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
+            `Time: ${this.routeSummary?.duration ?? 'N/D'}`
+        ).openPopup();
+        // Set the favorite as the selected destination
+        this.selectedDestination = latlng;
+        // Calculate the route (from the user's location to the favorite)
+        this.calculateRoute().then(() => {
+            marker.bindPopup(
+                `<b>${fav.name}</b><br><br><b>Route Summary</b><br>` +
+                `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
+                `Time: ${this.routeSummary?.duration ?? 'N/D'}`
+            ).openPopup();
+        });
+    }
 
-    // Try to get user's current location
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const userLat = position.coords.latitude;
-          const userLng = position.coords.longitude;
-          this.map.setView([userLat, userLng, 15]);
-          addUserMarker(userLat, userLng);
-        },
-        (error) => {
-          console.error('Erro ao obter a localização do utilizador:', error);
-          addUserMarker(defaultLocation[0], defaultLocation[1]);
+
+    checkUserSession() {
+        const token = this.authService.getSessionToken();
+        if (token) {
+            this.authService.validateSessionToken().subscribe(
+                (response: any) => {
+                    this.isLoggedIn = true;
+                    this.userInfo = response.user;
+                },
+                () => {
+                    this.authService.logout();
+                    this.router.navigate(['/login']);
+                }
+            );
         }
-      );
-    } else {
-      console.error('Geolocalização não é suportada pelo navegador.');
-      // Fallback if geolocation is not available
-      addUserMarker(defaultLocation[0], defaultLocation[1]);
     }
 
-    // Map click event for adding a destination
-    this.map.on('click', (event: L.LeafletMouseEvent) => {
-      this.selectedDestination = event.latlng;
-      this.addMarker(event.latlng);
-      this.calculateRoute();
-    });
-  }
+    // Initialize the map and attempt to get the user's location (with fallback)
+    initMap() {
+        const defaultLocation: [number, number] = [38.521877, -8.839083];
+        this.map = L.map(this.mapElement.nativeElement).setView(defaultLocation, 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(this.map);
 
-  goToUserLocation(): void {
-    if (this.userLocation) {
-      this.map.setView(this.userLocation, 15);
-    } else {
-      alert('User location not available.');
+        const addUserMarker = (lat: number, lng: number) => {
+            this.userLocation = L.latLng(lat, lng);
+            const marker = L.marker([lat, lng], { icon: redIcon }).addTo(this.map);
+            marker.bindPopup('You are here.').openPopup();
+        };
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+                    this.map.setView([userLat, userLng], 15);
+                    addUserMarker(userLat, userLng);
+                },
+                (error) => {
+                    console.error('Erro ao obter a localização do utilizador:', error);
+                    addUserMarker(defaultLocation[0], defaultLocation[1]);
+                },
+                { enableHighAccuracy: true }
+            );
+        } else {
+            console.error('Geolocalização não é suportada pelo navegador.');
+            addUserMarker(defaultLocation[0], defaultLocation[1]);
+        }
+
+        // Map click event for manually adding a destination
+        this.map.on('click', (event: L.LeafletMouseEvent) => {
+            this.selectedDestination = event.latlng;
+            // For manual clicks, use a default details string
+            this.addMarker(event.latlng, `<b>Selected Location</b>`);
+            this.calculateRoute();
+        });
     }
-  }
 
-  addMarker(position: L.LatLng) {
-    this.markers.forEach(marker => this.map.removeLayer(marker));
-    this.markers = [];
-    const marker = L.marker(position, { icon: redIcon }).addTo(this.map);
-    marker.bindPopup(`
-      <b>Route Summary</b><br>
-      Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>
-      Time: ${this.routeSummary?.duration ?? 'N/D'}
-    `).openPopup();
+    // Button function to go to the user's location
+    goToUserLocation(): void {
+        if (this.userLocation) {
+            this.map.setView(this.userLocation, 15);
+        } else {
+            alert('User location not available.');
+        }
+    }
 
-    marker.on('popupclose', () => {
-      if (this.routeLayer) {
-        this.map.removeLayer(this.routeLayer);
-        this.routeLayer = null;
-      }
-      this.map.removeLayer(marker);
-      this.markers = this.markers.filter(m => m !== marker);
-    });
-    this.markers.push(marker);
-  }
+    // Modified addMarker: creates a marker at the given position with an optional details string.
+    // The popup will include an "Add to Favorites" button.
+    // Modified addMarker: always includes the "Add to Favorites" button in the popup
+    addMarker(position: L.LatLng, details?: string) {
+        // Remove existing markers if desired
+        this.markers.forEach(marker => this.map.removeLayer(marker));
+        this.markers = [];
 
-    // Modify calculateRoute to return a Promise
+        const marker = L.marker(position, { icon: redIcon }).addTo(this.map);
+        // Use the first line of details (if provided) as the name, or default to "Selected Location"
+        const name = details ? details.split('<br>')[0].replace(/<b>|<\/b>/g, '') : 'Selected Location';
+
+        const content = `
+    ${details ? details : '<b>Selected Location</b>'}
+    <br><br>
+    <button onclick="document.dispatchEvent(new CustomEvent('addFavorite', { detail: { lat: ${position.lat}, lng: ${position.lng}, name: '${name.replace(/'/g, "\\'")}' } }))">
+      Add to Favorites
+    </button>
+    <br><br>
+    <b>Route Summary</b><br>
+    Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>
+    Time: ${this.routeSummary?.duration ?? 'N/D'}
+  `;
+        marker.bindPopup(content).openPopup();
+
+        marker.on('popupclose', () => {
+            if (this.routeLayer) {
+                this.map.removeLayer(this.routeLayer);
+                this.routeLayer = null;
+            }
+            this.map.removeLayer(marker);
+            this.markers = this.markers.filter(m => m !== marker);
+        });
+        this.markers.push(marker);
+    }
+
+    // Modify calculateRoute to return a Promise so we can update popups after route calculation
     calculateRoute(): Promise<void> {
         return new Promise((resolve, reject) => {
             if (!this.userLocation || !this.selectedDestination) {
@@ -349,10 +367,9 @@ export class MapComponent implements OnInit, AfterViewInit {
                 .then(response => response.json())
                 .then(data => {
                     if (data.routes && data.routes.length > 0) {
-                        // Choose the best route (e.g. with the least distance)
-                        const bestRoute = data.routes.reduce((prev: any, curr: any) => {
-                            return (prev.distance < curr.distance) ? prev : curr;
-                        });
+                        const bestRoute = data.routes.reduce((prev: any, curr: any) =>
+                            (prev.distance < curr.distance ? prev : curr)
+                        );
                         if (this.routeLayer) {
                             this.map.removeLayer(this.routeLayer);
                         }
@@ -379,9 +396,33 @@ export class MapComponent implements OnInit, AfterViewInit {
         });
     }
 
-  logout() {
-    this.authService.logout();
-    this.isLoggedIn = false;
-    this.router.navigate(['/']);
-  }
+    // Favorite locations functionality
+
+    addFavorite(location: L.LatLng, name: string): void {
+        const fav = { lat: location.lat, lng: location.lng, name };
+        this.favoriteLocations.push(fav);
+        localStorage.setItem('favoriteLocations', JSON.stringify(this.favoriteLocations));
+        alert('Location added to favorites!');
+    }
+
+    loadFavoriteLocations(): void {
+        const favs = localStorage.getItem('favoriteLocations');
+        if (favs) {
+            this.favoriteLocations = JSON.parse(favs);
+        }
+    }
+
+    deleteFavorite(fav: { lat: number, lng: number, name: string }): void {
+        this.favoriteLocations = this.favoriteLocations.filter(f =>
+            !(f.lat === fav.lat && f.lng === fav.lng && f.name === fav.name)
+        );
+        localStorage.setItem('favoriteLocations', JSON.stringify(this.favoriteLocations));
+        alert('Favorite location deleted.');
+    }
+
+    logout() {
+        this.authService.logout();
+        this.isLoggedIn = false;
+        this.router.navigate(['/']);
+    }
 }

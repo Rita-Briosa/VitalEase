@@ -7,41 +7,40 @@
   </div>
   <div class="auth-buttons">
     <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-    
+
   </div>
 </header>
 
-<!-- Container para o mapa -->
-<section>
-  <div class="search-container">
-    <div class="filter-container">
-      <label for="filter">Filter:</label>
-      <select id="filter" (change)="onFilterChange($event)">
-        <option value="">-- Select a filter --</option>
-        <option value="gym">Gym</option>
-        <option value="spa">Spa</option>
-        <option value="restaurant">Restaurant</option>
-      </select>
-    </div>
-    <input #searchInput type="text" placeholder="Search" (keydown.enter)="searchPlaces()" />
- 
-      <button class="searchButton" (click)="searchPlaces()">Search</button>
-      <button class="locationButton" (click)="goToUserLocation()">Go to start location 📍</button>
 
 
+<div class="search-container">
+  <input #searchInput type="text" placeholder="Search (ex: gym or spa)" (keydown.enter)="searchPlaces()" />
+  <select (change)="onFilterChange($event)">
+    <option value="">-- Select Filter --</option>
+    <option value="gym">Gym</option>
+    <option value="spa">Spa</option>
+    <option value="restaurant">Restaurant</option>
+    <option value="cafe">Cafe</option>
+  </select>
+  <button (click)="searchPlaces()">Search</button>
+   <button class="locationButton" (click)="goToUserLocation()">Go to My Location</button>
+</div>
+
+
+
+<div #map style="width: 100%; height: 400px;"></div>
+
+<div class="favorites-container">
+  <button (click)="toggleFavoritesList()">
+    {{ favoritesVisible ? 'Hide Favorite Locations' : 'Show Favorite Locations' }}
+  </button>
+  <div *ngIf="favoritesVisible">
+    <ul>
+      <li *ngFor="let fav of favoriteLocations">
+        {{ fav.name }}
+        <button (click)="showFavoriteOnMap(fav)">Show route</button>
+        <button (click)="deleteFavorite(fav)">Delete</button>
+      </li>
+    </ul>
   </div>
-  <div #map style="width: 100%; height: 400px;"></div>
-
-  <div #map id="map" style=" width: 100%;"></div>
-
-  <!-- Pop-up que será exibido com o resumo da rota -->
-  <div *ngIf="routeSummary" class="route-summary">
-    <h3>Route summary</h3>
-    <p><strong>Distance:</strong> {{ routeSummary?.distance }}</p>
-    <p><strong>Estimated time:</strong> {{ routeSummary?.duration }}</p>
-    <button (click)="calculateRoute()">Recalculate</button>
-  </div>
-</section>
-
-
-
+</div>
