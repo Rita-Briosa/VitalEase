@@ -22,9 +22,8 @@ header img {
   height: 100px;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
+.locationButton{
+    float: right;
 }
 header {
   display: flex;

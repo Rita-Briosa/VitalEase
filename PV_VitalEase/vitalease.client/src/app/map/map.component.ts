@@ -100,7 +100,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
       this.selectedDestination = leafletLatLng;
       this.addMarker(leafletLatLng);
-      this.map.setView([lat, lng], 15);
+        this.map.setView([lat, lng], 15);
       this.calculateRoute();
     });
   }
@@ -163,7 +163,86 @@ export class MapComponent implements OnInit, AfterViewInit {
                     this.map.fitBounds(group.getBounds());
                 }
             } else {
-                alert("Nenhum resultado foi encontrado para " + query);
+                alert("No results found for: " + query);
+            }
+        });
+    }
+
+    onFilterChange(event: Event): void {
+        const filter = (event.target as HTMLSelectElement).value;
+        if (!filter) {
+            alert('Please select a filter.');
+            return;
+        }
+        // Alerta o utilizador que o mapa será actualizado com o filtro selecionado
+        alert('Filter updated: ' + filter);
+        // Efetua a pesquisa com o filtro selecionado
+        this.searchPlacesFilter(filter);
+    }
+
+    // New method to perform filtered search with unified popups
+    searchPlacesFilter(filter: string): void {
+        const center = this.map.getCenter();
+        const request = {
+            location: new google.maps.LatLng(center.lat, center.lng),
+            radius: 5000,
+            type: filter.toLowerCase()
+        };
+
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        service.nearbySearch(request, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                // Remove any existing markers
+                this.markers.forEach(marker => this.map.removeLayer(marker));
+                this.markers = [];
+
+                results.forEach(place => {
+                    if (!place.geometry || !place.geometry.location) return;
+
+                    const lat = place.geometry.location.lat();
+                    const lng = place.geometry.location.lng();
+                    const leafletLatLng = L.latLng(lat, lng);
+
+                    // Build a details string from the place data
+                    const details = `<b>${place.name}</b><br>${place.vicinity || ''}<br>${place.rating ? 'Avaliação: ' + place.rating : ''}`;
+
+                    // Create a marker using the common red icon
+                    const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
+
+                    // Bind an initial popup with the location details and a placeholder for the route summary
+                    marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
+
+                    // When the marker is clicked, update the destination, center the map and calculate the route.
+                    // Once the route is calculated, update the popup with the unified information.
+                    marker.on('click', () => {
+                        this.selectedDestination = leafletLatLng;
+                        this.map.setView(leafletLatLng, 15);
+
+                        // Rebind the popup with the same initial content
+                        marker.bindPopup(details + `<br><br><b>Route Summary</b><br>Loading route...`).openPopup();
+
+                        // Calculate the route (assuming calculateRoute returns a Promise)
+                        this.calculateRoute().then(() => {
+                            // Update the popup content to include the route summary
+                            marker.bindPopup(
+                                details +
+                                `<br><br><b>Route Summary</b><br>` +
+                                `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
+                                `Time: ${this.routeSummary?.duration ?? 'N/D'}`
+                            ).openPopup();
+                        });
+                    });
+
+                    this.markers.push(marker);
+                });
+
+                // Optionally, adjust the map view to include all markers
+                if (this.markers.length > 0) {
+                    const group = new L.FeatureGroup(this.markers);
+                    this.map.fitBounds(group.getBounds());
+                }
+            } else {
+                alert("Nenhum resultado foi encontrado para " + filter);
             }
         });
     }
@@ -204,12 +283,11 @@ export class MapComponent implements OnInit, AfterViewInit {
         (position) => {
           const userLat = position.coords.latitude;
           const userLng = position.coords.longitude;
-          this.map.setView([userLat, userLng]);
+          this.map.setView([userLat, userLng, 15]);
           addUserMarker(userLat, userLng);
         },
         (error) => {
           console.error('Erro ao obter a localização do utilizador:', error);
-          // If error occurs or permission is denied, fall back to default location (Lisbon)
           addUserMarker(defaultLocation[0], defaultLocation[1]);
         }
       );
@@ -231,7 +309,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     if (this.userLocation) {
       this.map.setView(this.userLocation, 15);
     } else {
-      alert('Localização do utilizador não disponível.');
+      alert('User location not available.');
     }
   }
 

@@ -7,24 +7,32 @@
   </div>
   <div class="auth-buttons">
     <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-    <a href="/myProfile" class="profile-icon">👤</a>
+    
   </div>
 </header>
 
 <!-- Container para o mapa -->
 <section>
   <div class="search-container">
-
-    <input #searchInput type="text" placeholder="Pesquisar (ex: gym ou spa)" (keydown.enter)="searchPlaces()" />
-    <div class="buttons">
-      <button (click)="searchPlaces()">Pesquisar</button>
-      <button (click)="goToUserLocation()">Go to start location 📍</button>
-   
+    <div class="filter-container">
+      <label for="filter">Filter:</label>
+      <select id="filter" (change)="onFilterChange($event)">
+        <option value="">-- Select a filter --</option>
+        <option value="gym">Gym</option>
+        <option value="spa">Spa</option>
+        <option value="restaurant">Restaurant</option>
+      </select>
     </div>
+    <input #searchInput type="text" placeholder="Search" (keydown.enter)="searchPlaces()" />
+ 
+      <button class="searchButton" (click)="searchPlaces()">Search</button>
+      <button class="locationButton" (click)="goToUserLocation()">Go to start location 📍</button>
+
+
   </div>
   <div #map style="width: 100%; height: 400px;"></div>
 
-  <div #map id="map" style="height: 70vh; width: 100%;"></div>
+  <div #map id="map" style=" width: 100%;"></div>
 
   <!-- Pop-up que será exibido com o resumo da rota -->
   <div *ngIf="routeSummary" class="route-summary">
