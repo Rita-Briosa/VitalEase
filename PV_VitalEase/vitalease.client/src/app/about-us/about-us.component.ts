@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AboutUsComponent {
   userInfo: any = null;
   isLoggedIn: boolean = false;
-
+  isAdmin: boolean = false;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -30,6 +30,13 @@ export class AboutUsComponent {
         (response: any) => {
           this.isLoggedIn = true;
           this.userInfo = response.user;
+
+          if (this.userInfo.type === 1) {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+
         },
         (error) => {
           this.authService.logout();
@@ -46,6 +53,10 @@ export class AboutUsComponent {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigate(['/']);
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
   
 }

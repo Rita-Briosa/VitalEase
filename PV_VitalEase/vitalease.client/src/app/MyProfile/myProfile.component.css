@@ -375,5 +375,50 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
       transition: background-color 0.3s;
     }
 
+    .profile-container {
+      display: flex;
+      justify-content: flex-start; /* Aligning the profile card to the left */
+      padding: 20px;
+      margin-left: 2%;
+      width: 100%;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      text-align: center;
+    }
+
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .profile-icon {
+      font-size: 50px;
+    }
+
+    .profile-info p {
+      text-align: left;
+      margin: 20px 0;
+      font-size: 0.5rem;
+    }
+
+    .usernameEdit {
+      font-size: 0.8rem; /* Tamanho maior para o username */
+    }
+
+    .profile-actions a {
+      display: block;
+      margin: 20px 0;
+      color: teal;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 0.6rem;
+    }
     
   }
