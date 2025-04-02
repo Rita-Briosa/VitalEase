@@ -82,7 +82,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   initializeGoogleAutocomplete() {
     if (!this.searchInput) {
-      console.error('No results found. Please try again.');
+      console.error('No results found for your search. Please try again.');
       return;
     }
     this.googleAutocomplete = new google.maps.places.Autocomplete(this.searchInput.nativeElement, {
@@ -105,46 +105,54 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  searchPlaces() {
-    const query = this.searchInput.nativeElement.value;
-    if (!query) {
-      alert("You need to write something.");
-      return;
-    }
-    const center = this.map.getCenter();
-    const request = {
-      location: new google.maps.LatLng(center.lat, center.lng),
-      radius: 5000,
-      type: query.toLowerCase()
-    };
-
-    const service = new google.maps.places.PlacesService(document.createElement('div'));
-    service.nearbySearch(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        this.markers.forEach(marker => this.map.removeLayer(marker));
-        this.markers = [];
-        results.forEach(place => {
-          if (!place.geometry || !place.geometry.location) return;
-          const lat = place.geometry.location.lat();
-          const lng = place.geometry.location.lng();
-          const leafletLatLng = L.latLng(lat, lng);
-          const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
-          marker.bindPopup(`
-            <b>${place.name}</b><br>
-            ${place.vicinity || ''}<br>
-            ${place.rating ? 'Avaliação: ' + place.rating : ''}
-          `);
-          this.markers.push(marker);
-        });
-        if (this.markers.length > 0) {
-          const group = new L.FeatureGroup(this.markers);
-          this.map.fitBounds(group.getBounds());
+    searchPlaces() {
+        const query = this.searchInput.nativeElement.value;
+        if (!query) {
+            alert("You need to write something.");
+            return;
         }
-      } else {
-        alert("Nenhum resultado foi encontrado para " + query);
-      }
-    });
-  }
+        const center = this.map.getCenter();
+        const request = {
+            location: new google.maps.LatLng(center.lat, center.lng),
+            radius: 5000,
+            type: query.toLowerCase()
+        };
+
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        service.nearbySearch(request, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                // Remove marcadores existentes
+                this.markers.forEach(marker => this.map.removeLayer(marker));
+                this.markers = [];
+                results.forEach(place => {
+                    if (!place.geometry || !place.geometry.location) return;
+                    const lat = place.geometry.location.lat();
+                    const lng = place.geometry.location.lng();
+                    const leafletLatLng = L.latLng(lat, lng);
+                    const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
+                    marker.bindPopup(`
+                      <b>${place.name}</b><br>
+                      ${place.vicinity || ''}<br>
+                      ${place.rating ? 'Avaliação: ' + place.rating : ''}
+        `);
+                    // Ao clicar no marcador, define-o como destino e calcula a rota
+                    marker.on('click', () => {
+                        this.selectedDestination = leafletLatLng;
+                        // Opcional: centra o mapa nessa posição
+                        this.map.setView(leafletLatLng, 15);
+                        this.calculateRoute();
+                    });
+                    this.markers.push(marker);
+                });
+                if (this.markers.length > 0) {
+                    const group = new L.FeatureGroup(this.markers);
+                    this.map.fitBounds(group.getBounds());
+                }
+            } else {
+                alert("Nenhum resultado foi encontrado para " + query);
+            }
+        });
+    }
 
   checkUserSession() {
     const token = this.authService.getSessionToken();
