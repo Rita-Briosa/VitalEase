@@ -21,6 +21,9 @@ import { TraininigRoutineProgressComponent } from './traininig-routine-progress/
 import { MapComponent } from './map/map.component';
 import { CustomTrainingRoutinesComponent } from './custom-training-routines/custom-training-routines.component';
 import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routine/edit-custom-training-routine.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+
 const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'login', component: LoginComponent },
@@ -43,6 +46,8 @@ const routes: Routes = [
   { path: 'edit-custom-training-routine/:id', component: EditCustomTrainingRoutineComponent },
   { path: 'map', component: MapComponent },
   { path: 'manage-training-routines/custom-training-routines', component: CustomTrainingRoutinesComponent },
+  { path: 'termsOfUse', component: TermsOfUseComponent },
+  { path: 'privacyPolicy', component: PrivacyPolicyComponent },
   { path: '**', redirectTo: '' }]
 
 

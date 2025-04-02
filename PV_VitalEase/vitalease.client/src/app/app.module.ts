@@ -33,6 +33,8 @@ import { TraininigRoutineProgressComponent } from './traininig-routine-progress/
 import { MapComponent } from './map/map.component';
 import { CustomTrainingRoutinesComponent } from './custom-training-routines/custom-training-routines.component';
 import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routine/edit-custom-training-routine.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 
 
 
@@ -41,7 +43,9 @@ import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routi
   declarations: [
     AppComponent, HomePageComponent, LoginComponent, DashboardComponent, ForgotPassComponent, ResetPassComponent, AboutUsComponent, 
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, DeleteAccountComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
-    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent, ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent, TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent, CustomTrainingRoutinesComponent, EditCustomTrainingRoutineComponent,
+    ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent, ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent,
+    TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent, CustomTrainingRoutinesComponent, EditCustomTrainingRoutineComponent,
+    PrivacyPolicyComponent, TermsOfUseComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule, RouterModule, CommonModule, MapComponent,
