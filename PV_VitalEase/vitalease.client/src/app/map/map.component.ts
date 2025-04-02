@@ -64,6 +64,27 @@ export class MapComponent implements OnInit, AfterViewInit {
             this.addFavorite(L.latLng(lat, lng), name);
         });
         this.loadFavoriteLocations();
+
+        const token = this.authService.getSessionToken();
+        if (token) {
+            this.authService.validateSessionToken().subscribe(
+                (response: any) => {
+                    this.isLoggedIn = true;
+                    this.userInfo = response.user;
+                },
+                (error) => {
+                    
+                }
+            );
+        } else {
+            // No token found, redirect to login
+           
+        }
+        if (!this.authService.isAuthenticated()) {
+           
+            return;
+        }
+
     }
 
     ngAfterViewInit() {
