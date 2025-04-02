@@ -145,7 +145,7 @@
         <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
 
         <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
-      </div><br /> 
+      </div><br />
 
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="addRoutineErrorMessage" class="alert-danger">{{ addRoutineErrorMessage }}</div>
@@ -233,6 +233,10 @@
       </form>
     </div>
   </div>
+
+  <footer>
+    <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
+  </footer>
 
 </body>
 </html>

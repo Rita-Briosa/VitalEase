@@ -140,6 +140,23 @@ body {
     transform: translateY(-5px);
   }
 
+footer {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #6C9C94;
+  margin-left: 40%;
+}
+
+  footer a {
+    color: #6C9C94;
+    text-decoration: none;
+  }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+
 @media (max-width: 768px) {
   h2 {
     font-size: 1rem;
@@ -188,5 +205,12 @@ body {
 
   .devs {
     justify-content: normal;
+  }
+
+  footer {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #6C9C94;
+    margin-left: 40%;
   }
 }

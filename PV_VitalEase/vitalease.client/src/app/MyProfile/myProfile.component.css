@@ -336,6 +336,23 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
   text-align: center;
 }
 
+footer {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #6C9C94;
+  margin-left: 40%;
+}
+
+  footer a {
+    color: #6C9C94;
+    text-decoration: none;
+  }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+
 
   @media (max-width: 768px) {
     h2 {
@@ -420,5 +437,11 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
       cursor: pointer;
       font-size: 0.6rem;
     }
-    
+
+    footer {
+      margin-top: 10px;
+      font-size: 0.6rem;
+      color: #6C9C94;
+      margin-left: 40%;
+    }
   }

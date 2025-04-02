@@ -81,66 +81,70 @@
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
     </div>
 
-      <ul class="routine-list" *ngIf="routines && routines.length > 0">
-        <li class="routine-item" *ngFor="let routine of routines">
-          <a class="routine-name" (click)="navigateToRoutine(routine.id)">{{ routine.name }}</a>
-          <button class="start" (click)="navigateToRoutineProgress(routine.id)">Start</button>
-        </li>
-      </ul>
+    <ul class="routine-list" *ngIf="routines && routines.length > 0">
+      <li class="routine-item" *ngFor="let routine of routines">
+        <a class="routine-name" (click)="navigateToRoutine(routine.id)">{{ routine.name }}</a>
+        <button class="start" (click)="navigateToRoutineProgress(routine.id)">Start</button>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="modal" [ngClass]="{ 'show': activeModal === 'addRoutine' }">
+    <div class="modal-content-one">
+      <h2>Add New Routine</h2>
+      <form #exerciseForm="ngForm">
+        <div class="input-container">
+          <div class="input-group">
+            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Routine Name" required>
+            <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" placeholder="Routine Description" required>
+            <input type="text" id="newNeeds" [(ngModel)]="newNeeds" name="newNeeds" placeholder="Routine Needs" required>
+          </div>
+
+          <div class="input-group">
+            <select [(ngModel)]="newType" name="newType" required>
+              <option value="" selected>Select Routine Type</option>
+              <option value="Warm-up">Warm-up</option>
+              <option value="Cool-Down">Cool-Down</option>
+              <option value="Stretching">Stretching</option>
+              <option value="Muscle-focused">Muscle-focused</option>
+            </select>
+
+            <select [(ngModel)]="newRoutineLevel" name="newRoutineLevel" required>
+              <option value="" selected>Select Routine Level</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="exercise-list">
+          <h3>Select Exercises:</h3>
+
+          <div *ngFor="let exercise of exercises">
+            <label>
+              <input type="checkbox" [value]="exercise.id" (change)="toggleExerciseSelection(exercise.id)">
+              {{ exercise.name }}
+            </label>
+
+          </div>
+        </div>
+
+        <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+        <div *ngIf="addRoutineErrorMessage" class="alert-danger">{{ addRoutineErrorMessage }}</div>
+
+        <div class="modal-buttons">
+          <button type="button" class="modalButton" (click)="addRoutine()">Add</button>
+          <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
+        </div>
+      </form>
     </div>
- 
+  </div>
 
-    <div class="modal" [ngClass]="{ 'show': activeModal === 'addRoutine' }">
-      <div class="modal-content-one">
-        <h2>Add New Routine</h2>
-        <form #exerciseForm="ngForm">
-          <div class="input-container">
-            <div class="input-group">
-              <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Routine Name" required>
-              <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" placeholder="Routine Description" required>
-              <input type="text" id="newNeeds" [(ngModel)]="newNeeds" name="newNeeds" placeholder="Routine Needs" required>
-            </div>
-
-            <div class="input-group">
-              <select [(ngModel)]="newType" name="newType" required>
-                <option value="" selected>Select Routine Type</option>
-                <option value="Warm-up">Warm-up</option>
-                <option value="Cool-Down">Cool-Down</option>
-                <option value="Stretching">Stretching</option>
-                <option value="Muscle-focused">Muscle-focused</option>
-              </select>
-
-              <select [(ngModel)]="newRoutineLevel" name="newRoutineLevel" required>
-                <option value="" selected>Select Routine Level</option>
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-              </select>
-            </div>
-
-          </div>
-
-          <div class="exercise-list">
-            <h3>Select Exercises:</h3>
-
-            <div *ngFor="let exercise of exercises">
-              <label>
-                <input type="checkbox" [value]="exercise.id" (change)="toggleExerciseSelection(exercise.id)">
-                {{ exercise.name }}
-              </label>
-
-            </div>
-          </div>
-
-          <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
-          <div *ngIf="addRoutineErrorMessage" class="alert-danger">{{ addRoutineErrorMessage }}</div>
-
-          <div class="modal-buttons">
-            <button type="button" class="modalButton" (click)="addRoutine()">Add</button>
-            <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
-          </div>
-        </form>
-      </div>
-    </div>
+  <footer>
+    <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
+  </footer>
 </body>
 </html>
