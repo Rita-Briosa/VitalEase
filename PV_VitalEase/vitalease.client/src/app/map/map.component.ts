@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-// Personalização do ícone padrão do marcador do Leaflet
+// Personalização do ícone padrão do marcador do Leaflet (usado para cliques no mapa)
 L.Marker.prototype.options.icon = L.icon({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
   iconSize: [25, 41],
@@ -14,6 +14,14 @@ L.Marker.prototype.options.icon = L.icon({
   popupAnchor: [1, -34],
   shadowUrl: ''
 });
+
+const redIcon = L.icon({
+  iconUrl: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32]
+});
+
 
 @Component({
   selector: 'app-map',
@@ -35,7 +43,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   routeSummary: { distance: string, duration: string } | null = null;
   selectedDestination: L.LatLng | null = null;
 
-  // Google Maps Autocomplete instance
+  // Google Maps Autocomplete instance (se continuar a usar para obter um único resultado)
   googleAutocomplete!: google.maps.places.Autocomplete;
 
   constructor(private authService: AuthService, private router: Router, private cdr: ChangeDetectorRef) { }
@@ -48,6 +56,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.loadGoogleMapsAPI()
       .then(() => {
+        // Optionally, you may initialise autocomplete if you wish to get a single result.
         this.initializeGoogleAutocomplete();
       })
       .catch(err => console.error('Erro ao carregar a Google Maps API:', err));
@@ -71,14 +80,14 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // Inicializa o Autocomplete do Google Places no input de pesquisa
+  // (Opcional) Inicializa o Autocomplete do Google Places no input de pesquisa
   initializeGoogleAutocomplete() {
     if (!this.searchInput) {
       console.error('Elemento de pesquisa não encontrado!');
       return;
     }
     this.googleAutocomplete = new google.maps.places.Autocomplete(this.searchInput.nativeElement, {
-      types: ['geocode']  // Pode ajustar os tipos conforme necessário
+      types: ['geocode']
     });
     this.googleAutocomplete.addListener('place_changed', () => {
       const place = this.googleAutocomplete.getPlace();
@@ -96,6 +105,62 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.calculateRoute();
     });
   }
+
+  // Pesquisa locais (ex: "spa") e adiciona marcadores vermelhos para cada resultado
+  // Pesquisa locais (ex: "spa") e adiciona múltiplos marcadores vermelhos
+  searchPlaces() {
+    const query = this.searchInput.nativeElement.value;
+    if (!query) {
+      alert("Insira um termo de pesquisa.");
+      return;
+    }
+
+    // Obter os limites atuais do mapa (Leaflet) e converter para google.maps.LatLngBounds
+    const bounds = this.map.getBounds();
+    const southWest = bounds.getSouthWest();
+    const northEast = bounds.getNorthEast();
+    const googleBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(southWest.lat, southWest.lng),
+      new google.maps.LatLng(northEast.lat, northEast.lng)
+    );
+
+    // Cria um serviço do Google Places
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+    const request = {
+      query: query,
+      bounds: googleBounds
+    };
+
+    service.textSearch(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+        // Remover marcadores de pesquisa anteriores
+        this.markers.forEach(marker => this.map.removeLayer(marker));
+        this.markers = [];
+
+        results.forEach(place => {
+          if (!place.geometry || !place.geometry.location) return;
+          const lat = place.geometry.location.lat();
+          const lng = place.geometry.location.lng();
+          const leafletLatLng = L.latLng(lat, lng);
+
+          const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
+          marker.bindPopup(`
+          <b>${place.name}</b><br>
+          ${place.formatted_address || ''}<br>
+          ${place.rating ? 'Avaliação: ' + place.rating : ''}
+        `);
+          this.markers.push(marker);
+        });
+
+        // Opcional: Ajusta a vista do mapa para mostrar todos os marcadores
+        const group = new L.FeatureGroup(this.markers);
+        this.map.fitBounds(group.getBounds());
+      } else {
+        alert("Nenhum resultado foi encontrado!");
+      }
+    });
+  }
+
 
   // Verifica se o utilizador está autenticado
   checkUserSession() {
@@ -129,19 +194,21 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // Adiciona um marcador no mapa
+  // Adiciona um marcador no mapa (usando o ícone vermelho)
   addMarker(position: L.LatLng) {
+    // Se pretender limpar marcadores anteriores (opcional):
     this.markers.forEach(marker => this.map.removeLayer(marker));
     this.markers = [];
 
-    const marker = L.marker(position).addTo(this.map);
+    const marker = L.marker(position, { icon: redIcon }).addTo(this.map);
     marker.bindPopup(`
-      <b>Resumo da rota</b><br>
-      Distância: ${this.routeSummary?.distance ?? 'N/D'}<br>
-      Tempo: ${this.routeSummary?.duration ?? 'N/D'}
-    `).openPopup();
+    <b>Resumo da rota</b><br>
+    Distância: ${this.routeSummary?.distance ?? 'N/D'}<br>
+    Tempo: ${this.routeSummary?.duration ?? 'N/D'}
+  `).openPopup();
     this.markers.push(marker);
   }
+
 
   // Calcula a rota entre um ponto fixo de origem e o destino selecionado
   calculateRoute() {
