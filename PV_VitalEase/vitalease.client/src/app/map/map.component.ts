@@ -39,7 +39,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   map!: L.Map;
   markers: L.Marker[] = [];
-  routeLayer!: L.GeoJSON;
+  routeLayer: L.GeoJSON | null = null;
   routeSummary: { distance: string, duration: string } | null = null;
   selectedDestination: L.LatLng | null = null;
 
@@ -106,8 +106,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // Pesquisa locais (ex: "spa") e adiciona marcadores vermelhos para cada resultado
-  // Pesquisa locais (ex: "spa") e adiciona múltiplos marcadores vermelhos
   searchPlaces() {
     const query = this.searchInput.nativeElement.value;
     if (!query) {
@@ -115,25 +113,18 @@ export class MapComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    // Obter os limites atuais do mapa (Leaflet) e converter para google.maps.LatLngBounds
-    const bounds = this.map.getBounds();
-    const southWest = bounds.getSouthWest();
-    const northEast = bounds.getNorthEast();
-    const googleBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(southWest.lat, southWest.lng),
-      new google.maps.LatLng(northEast.lat, northEast.lng)
-    );
-
-    // Cria um serviço do Google Places
-    const service = new google.maps.places.PlacesService(document.createElement('div'));
+    // Use the current map center for the nearby search location.
+    const center = this.map.getCenter();
     const request = {
-      query: query,
-      bounds: googleBounds
+      location: new google.maps.LatLng(center.lat, center.lng),
+      radius: 5000,  // Radius in meters (adjust as needed)
+      type: query.toLowerCase()  // Interpret the query as a place type (e.g., "spa")
     };
 
-    service.textSearch(request, (results, status) => {
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+    service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        // Remover marcadores de pesquisa anteriores
+        // Remove existing markers
         this.markers.forEach(marker => this.map.removeLayer(marker));
         this.markers = [];
 
@@ -143,23 +134,27 @@ export class MapComponent implements OnInit, AfterViewInit {
           const lng = place.geometry.location.lng();
           const leafletLatLng = L.latLng(lat, lng);
 
+          // Create a red marker for each result
           const marker = L.marker(leafletLatLng, { icon: redIcon }).addTo(this.map);
           marker.bindPopup(`
           <b>${place.name}</b><br>
-          ${place.formatted_address || ''}<br>
+          ${place.vicinity || ''}<br>
           ${place.rating ? 'Avaliação: ' + place.rating : ''}
         `);
           this.markers.push(marker);
         });
 
-        // Opcional: Ajusta a vista do mapa para mostrar todos os marcadores
-        const group = new L.FeatureGroup(this.markers);
-        this.map.fitBounds(group.getBounds());
+        // Optionally, adjust the map to fit all markers.
+        if (this.markers.length > 0) {
+          const group = new L.FeatureGroup(this.markers);
+          this.map.fitBounds(group.getBounds());
+        }
       } else {
-        alert("Nenhum resultado foi encontrado!");
+        alert("Nenhum resultado foi encontrado para " + query);
       }
     });
   }
+
 
 
   // Verifica se o utilizador está autenticado
@@ -201,6 +196,19 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.markers = [];
 
     const marker = L.marker(position, { icon: redIcon }).addTo(this.map);
+
+    // Listen for the popup close event (triggered when "x" is clicked)
+    marker.on('popupclose', () => {
+      // Remove the blue route layer if it exists
+      if (this.routeLayer) {
+        this.map.removeLayer(this.routeLayer);
+        this.routeLayer = null;
+      }
+      // Remove the marker from the map
+      this.map.removeLayer(marker);
+      // Optionally, remove the marker from the markers array
+      this.markers = this.markers.filter(m => m !== marker);
+    });
     marker.bindPopup(`
     <b>Resumo da rota</b><br>
     Distância: ${this.routeSummary?.distance ?? 'N/D'}<br>
