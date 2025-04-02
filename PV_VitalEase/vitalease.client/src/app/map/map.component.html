@@ -13,7 +13,17 @@
 
 <!-- Container para o mapa -->
 <section>
-  <h3>Click on the map to choose a destination and calculate the route:</h3>
+  <div class="search-container">
+
+    <input #searchInput type="text" placeholder="Pesquisar (ex: gym ou spa)" (keydown.enter)="searchPlaces()" />
+    <div class="buttons">
+      <button (click)="searchPlaces()">Pesquisar</button>
+      <button (click)="goToUserLocation()">Go to start location 📍</button>
+   
+    </div>
+  </div>
+  <div #map style="width: 100%; height: 400px;"></div>
+
   <div #map id="map" style="height: 70vh; width: 100%;"></div>
 
   <!-- Pop-up que será exibido com o resumo da rota -->
@@ -24,12 +34,6 @@
     <button (click)="calculateRoute()">Recalculate</button>
   </div>
 </section>
-
-
-
-
-
-
 
 
 
