@@ -119,9 +119,10 @@ body {
 }
 
 .logo {
- width: 250px;
- height: 250px;
+  width: 250px;
+  height: 250px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .password-info {
@@ -144,6 +145,10 @@ body {
 
 .checkbox {
   margin-bottom: 2%;
+}
+
+footer p {
+  margin-left: 5%;
 }
 
 /* Responsividade para telas menores */

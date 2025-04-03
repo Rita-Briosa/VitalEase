@@ -17,6 +17,7 @@ export class EditCustomTrainingRoutineComponent {
 
   userInfo: any = null;
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   routineId: string | null = null;
   exercises: any[] = []; // Lista de exercícios
@@ -45,6 +46,13 @@ export class EditCustomTrainingRoutineComponent {
         (response: any) => {
           this.isLoggedIn = true;
           this.userInfo = response.user;
+
+          if (this.userInfo.type === 1) {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+
         },
         (error) => {
           this.authService.logout();
@@ -126,6 +134,10 @@ export class EditCustomTrainingRoutineComponent {
     this.activeModal = ''; // Fechar a modal
     this.errorMessage = '';
     this.successMessage = '';
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
 }

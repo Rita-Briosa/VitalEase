@@ -110,6 +110,10 @@ footer {
       text-decoration: underline;
     }
 
+  footer p {
+    margin-left: 5%;
+  }
+
 
 @media (max-width: 480px) {
 

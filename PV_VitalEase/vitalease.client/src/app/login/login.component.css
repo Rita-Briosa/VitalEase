@@ -24,6 +24,7 @@ body {
 
 .logo {
   width: 50%;
+  cursor: pointer;
 }
 
 h2 {
