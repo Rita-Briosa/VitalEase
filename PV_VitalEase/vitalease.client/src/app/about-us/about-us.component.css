@@ -74,9 +74,7 @@ body {
   .header a {
     text-decoration: none;
     color: black;
-    font-size: 1.7rem;
-    font-weight: bold;
-    font-family: Inter;
+    font-family: Arial, sans-serif;
     transition: background-color 0.3s;
   }
 
