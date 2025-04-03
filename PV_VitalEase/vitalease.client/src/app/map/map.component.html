@@ -1,19 +1,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <header>
-  <div class="header">
+
     <a [routerLink]="['/']">
       <img class="logo" src="assets/img/logo.png" alt="VitalEase Logo">
     </a>
 
 
-      <h2>Vital Ease - Your app focused on wellness and exercise</h2>
-
+      <h2 class="PrimaryText">Vital Ease - Your app focused on wellness and exercise</h2>
+      <h2 class="SecondaryText">Vital Ease</h2>
       <div class="auth-buttons">
         <button class="login-button" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
 
    
-    </div>
+  
   </div>
 </header>
 
@@ -22,7 +22,7 @@
 <div class="main-container">
   <div class="search-container">
     <input #searchInput type="text" placeholder="Search (ex: gym or spa)" (keydown.enter)="searchPlaces()" />
-    <button (click)="searchPlaces()">Search</button>
+    <button class="search-button" (click)="searchPlaces()">Search</button>
   </div>
   <div class="filter-container">
     <select (change)="onFilterChange($event)">
