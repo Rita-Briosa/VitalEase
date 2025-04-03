@@ -1,34 +1,43 @@
-<header>
-  <a [routerLink]="['/']">
-    <img src="assets/img/logo.png" alt="VitalEase Logo">
-  </a>
-  <div class="headText">
-    <h2>Vital Ease - Your app focused on wellness and exercise</h2>
-  </div>
-  <div class="auth-buttons">
-    <button class="login-button" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<header>
+  <div class="header">
+    <a [routerLink]="['/']">
+      <img class="logo" src="assets/img/logo.png" alt="VitalEase Logo">
+    </a>
+
+
+      <h2>Vital Ease - Your app focused on wellness and exercise</h2>
+
+      <div class="auth-buttons">
+        <button class="login-button" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+
+   
+    </div>
   </div>
 </header>
 
 
 
-<div class="search-container">
-  <input #searchInput type="text" placeholder="Search (ex: gym or spa)" (keydown.enter)="searchPlaces()" />
-  <select (change)="onFilterChange($event)">
-    <option value="">-- Select Filter --</option>
-    <option value="gym">Gym</option>
-    <option value="spa">Spa</option>
-    <option value="restaurant">Restaurant</option>
-    <option value="cafe">Cafe</option>
-  </select>
-  <button (click)="searchPlaces()">Search</button>
-   <button class="locationButton" (click)="goToUserLocation()">Go to My Location</button>
+<div class="main-container">
+  <div class="search-container">
+    <input #searchInput type="text" placeholder="Search (ex: gym or spa)" (keydown.enter)="searchPlaces()" />
+    <button (click)="searchPlaces()">Search</button>
+  </div>
+  <div class="filter-container">
+    <select (change)="onFilterChange($event)">
+      <option value="">-- Select Filter --</option>
+      <option value="gym">Gym</option>
+      <option value="spa">Spa</option>
+      <option value="restaurant">Restaurant</option>
+    </select>
+  </div>
+  <button class="locationButton" (click)="goToUserLocation()">Go to My Location 📍</button>
 </div>
 
 
 
-<div #map style="width: 100%; height: 400px;"></div>
+<div #map style="width: 100%; height: 70vh;"></div>
 
 <div class="favorites-container">
   <button (click)="toggleFavoritesList()">
