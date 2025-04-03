@@ -307,7 +307,7 @@
             try
             {
                 // Fetch all media from the database
-                var routines = await _context.Routines.Where(r => r.IsCustom == false).ToListAsync();
+                var routines = await _context.Routines.Where(r => r.IsCustom == false && r.UserId == null).ToListAsync();
 
 
                 if (routines.IsNullOrEmpty())
@@ -330,7 +330,7 @@
         {
             try
             {
-                var query = _context.Routines.AsQueryable();
+                var query = _context.Routines.Where(r => r.IsCustom == false).AsQueryable();
 
                 if (!string.IsNullOrEmpty(name))
                 {

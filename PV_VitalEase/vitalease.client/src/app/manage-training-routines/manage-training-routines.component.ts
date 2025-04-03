@@ -52,7 +52,6 @@ export class ManageTrainingRoutinesComponent implements OnInit {
           this.isLoggedIn = true;
           this.userInfo = response.user;
           this.getRoutines();
-          this.getExercises();
           if (this.userInfo.type === 1) {
             this.isAdmin = true;
           } else {
@@ -103,7 +102,7 @@ export class ManageTrainingRoutinesComponent implements OnInit {
   }
 
   getRoutines(): void {
-    this.trainingRoutinesService.getRoutines(this.userInfo.id).subscribe(
+    this.trainingRoutinesService.getRoutines().subscribe(
       (response: any) => {
         this.routines = response; // Armazena as routines na variável 'routines'
         console.log('Routines loaded successfully:', this.routines);
@@ -114,7 +113,6 @@ export class ManageTrainingRoutinesComponent implements OnInit {
       }
     );
 
-    this.getFilteredRoutines();
   }
 
   getTypeClass(type: string): string {
@@ -157,6 +155,7 @@ export class ManageTrainingRoutinesComponent implements OnInit {
 
   openAddRoutineModal(): void {
     this.activeModal = 'addRoutine';
+    this.getExercises();
   }
 
   closeModal() {
