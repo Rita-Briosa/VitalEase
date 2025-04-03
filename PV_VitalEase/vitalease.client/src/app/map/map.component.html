@@ -2,18 +2,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <header>
 
-    <a [routerLink]="['/']">
-      <img class="logo" src="assets/img/logo.png" alt="VitalEase Logo">
-    </a>
+  <a [routerLink]="['/']">
+    <img class="logo" src="assets/img/logo.png" alt="VitalEase Logo">
+  </a>
+
+  <a class="action-button" routerLink="/exercises">Exercises</a>
+  <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
+  <a class="action-button" routerLink="/map">Map</a>
+  <a class="action-button" routerLink="/aboutUs">About Us</a>
+
+  <div class="auth-buttons">
+    <button class="login-button" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
 
 
-      <h2 class="PrimaryText">Vital Ease - Your app focused on wellness and exercise</h2>
-      <h2 class="SecondaryText">Vital Ease</h2>
-      <div class="auth-buttons">
-        <button class="login-button" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
 
-   
-  
   </div>
 </header>
 
@@ -53,3 +55,8 @@
     </ul>
   </div>
 </div>
+
+<footer>
+  <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
+  <p>&copy; Vital Ease 2025</p>
+</footer>
