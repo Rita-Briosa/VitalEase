@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { TrainingRoutinesService } from '../services/training-routines.service';
+import { ExercisesService } from '../services/exercises.service';
 
 @Component({
   selector: 'app-edit-custom-training-routine',
@@ -20,7 +21,7 @@ export class EditCustomTrainingRoutineComponent {
   isLoggedIn: boolean = false;
 
   routineId: string | null = null;
-  exercises: any[] = []; // Lista de exercícios
+  routineExercises: any[] = []; // Lista de exercícios
   warmUpExercises: any[] = [];
   mainExercises: any[] = [];
   coolDownExercises: any[] = [];
@@ -33,7 +34,15 @@ export class EditCustomTrainingRoutineComponent {
   activeMediaIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
   media: any[] = []; // Array para armazenar os media
 
-  constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer,) { }
+  exercises: any[] = [];
+  sets: number = 0;
+  reps: number = 0;// Armazena a rotina selecionada
+  duration: number = 0;// Armazena a rotina selecionada
+  selectedModalExercise: any = null; // Armazena o exercício para a modal
+  selectedOption: string = 'duration';
+
+
+  constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private exercisesService: ExercisesService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer,) { }
 
   ngOnInit() {
     // Check if user is logged in by fetching the user info
@@ -63,20 +72,32 @@ export class EditCustomTrainingRoutineComponent {
       this.router.navigate(['/login']);
     }
 
+    this.getRoutineExercises();
     this.getExercises();
 
   }
 
   getExercises(): void {
+    this.exercisesService.getExercises().subscribe(
+      (response: any) => {
+        this.exercises = response;
+      },
+      (error: any) => {
+        console.error('Error loading Exercises', error);
+      }
+    );
+  }
+
+  getRoutineExercises(): void {
     if (!this.routineId) {
       return;
     }
 
     this.routinesService.getExercises(this.routineId).subscribe(
       (response: any) => {
-        this.exercises = response;
+        this.routineExercises = response;
 
-        this.exercises.forEach(e => {
+        this.routineExercises.forEach(e => {
           if (e.type === "Warm-up") {
             this.warmUpExercises.push(e);
           }
@@ -91,7 +112,7 @@ export class EditCustomTrainingRoutineComponent {
         console.log(this.warmUpExercises);
         console.log(this.mainExercises);
         console.log(this.coolDownExercises);
-        console.log('Exercises loaded successfully:', this.exercises);
+        console.log('Exercises loaded successfully:', this.routineExercises);
       },
       (error: any) => {
         console.error('Error loading exercises:', error);
@@ -136,7 +157,7 @@ export class EditCustomTrainingRoutineComponent {
 
   selectExercise(exerciseId: number) {
     this.selectedExerciseId = exerciseId;
-    this.selectedExercise = this.exercises.find(e => e.id === exerciseId);
+    this.selectedExercise = this.routineExercises.find(e => e.id === exerciseId);
     this.getExerciseRoutine(exerciseId);
     this.getExerciseMedia(exerciseId);
   }
@@ -145,6 +166,7 @@ export class EditCustomTrainingRoutineComponent {
     this.selectedExerciseId = 0;
     this.selectedExercise = null;
     this.shownRelation = null;
+    this.selectedModalExercise = null;
     this.media = [];
   }
 
@@ -204,6 +226,39 @@ export class EditCustomTrainingRoutineComponent {
       this.errorMessage = 'exercise Id doesn t exists';
     }
 
+  }
+
+  addExercise(): void {
+    if (!this.routineId || !this.selectedModalExercise) {
+      this.errorMessage = 'Please select an exercise before adding.';
+      return;
+    }
+
+    const modalExerciseId = this.selectedModalExercise.id;
+
+    console.log(`${this.routineId}/ ${modalExerciseId} / ${ this.reps } / ${ this.duration } / ${ this.sets }`)
+
+
+    this.exercisesService.addRoutine(parseInt(this.routineId), modalExerciseId, this.reps, this.duration, this.sets).subscribe(
+      (response: any) => {
+        this.successMessage = response.message;
+        this.errorMessage = '';
+        this.closeModal();
+        window.location.reload();
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message || 'An error occurred';
+        this.successMessage = '';
+      }
+    );
+
+    
+  }
+
+  openAddModal(): void {
+    this.unselectExercise();
+    console.log("add");
+    this.activeModal = 'add';
   }
 
 }

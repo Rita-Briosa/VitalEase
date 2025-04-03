@@ -27,7 +27,7 @@
 
   <div class="row">
 
-    <div class="exercises" *ngIf="exercises.length > 0">
+    <div class="exercises" *ngIf="routineExercises.length > 0">
 
       <div class="warm-up">
         <h3>Warm-up Exercises</h3>
@@ -120,12 +120,12 @@
 
   </div>
 
-  <div class="exercises" *ngIf="exercises.length === 0">
+  <div class="exercises" *ngIf="routineExercises.length === 0">
     There are no exercises in this custom training routine! Start by adding some!
   </div>
 
   <div class="add-exercise">
-    <button id="add">
+    <button id="add" (click)="openAddModal()">
       <img src="../../assets/img/plusIcon.png" alt="Add Routine" title="Add Routine" />
     </button>
   </div>
@@ -139,6 +139,62 @@
           <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div class="modal" [class.show]="activeModal === 'add'">
+    <div class="modal-content-two">
+      <h2> Add exercise to your routine</h2>
+      <p class="chooseExercise"> Choose an Exercise</p>
+
+      <div class="modalExerciseView" *ngIf="selectedModalExercise">
+        <div class="modal-media-container">
+          <button class="media-navigation prev" *ngIf="activeMediaIndex > 0" (click)="previousMedia()">&#8592;</button>
+
+          <div *ngIf="media[activeMediaIndex]?.type === 'Image'">
+            <img [src]="media[activeMediaIndex]?.url" alt="Exercise Image">
+          </div>
+          <div *ngIf="media[activeMediaIndex]?.type === 'Video'">
+            <iframe [src]="sanitizeUrl(media[activeMediaIndex]?.url)" frameborder="0" allowfullscreen></iframe>
+          </div>
+
+          <button class="media-navigation next" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">&#8594;</button>
+        </div>
+        <p>Description: {{ selectedModalExercise?.description }}</p>
+      </div>
+
+      <select [(ngModel)]="selectedModalExercise" (ngModelChange)="getExerciseMedia(selectedModalExercise?.id)">
+        <option [ngValue]="null" selected>Select an Exercise</option>
+        <option *ngFor="let exercise of exercises" [ngValue]="exercise">{{ exercise.name }}</option>
+      </select>
+
+      <div class="radio-container">
+        <label>
+          <input type="radio" name="option" value="duration" [(ngModel)]="selectedOption"> Duration
+        </label>
+        <label>
+          <input type="radio" name="option" value="reps" [(ngModel)]="selectedOption"> Reps
+        </label>
+      </div>
+
+      <div class="input-container-modal">
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" [(ngModel)]="duration" name="duration" required>
+        <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
+
+        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+
+        <div>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
+          <span class="setUnit">Sets</span>
+        </div>
+      </div><br />
+
+      <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+
+      <button class="modalButton" [disabled]="!selectedModalExercise" (click)="addExercise()">Add</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
     </div>
   </div>
 
