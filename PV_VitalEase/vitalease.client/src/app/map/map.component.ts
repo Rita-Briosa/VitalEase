@@ -33,7 +33,7 @@ const redIcon = L.icon({
 export class MapComponent implements OnInit, AfterViewInit {
     userInfo: any = null;
     isLoggedIn: boolean = false;
-
+    favoriteMarkers: L.Marker[] = [];
     // To store user's current location
     userLocation: L.LatLng | null = null;
 
@@ -246,29 +246,34 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
     // When a favorite is selected from the list, center the map on that location
-    showFavoriteOnMap(fav: { lat: number, lng: number, name: string }): void {
-        const latlng = L.latLng(fav.lat, fav.lng);
-        this.map.setView(latlng, 15);
-        // Create a marker with the common red icon at the favorite location
-        const marker = L.marker(latlng, { icon: redIcon }).addTo(this.map);
-        // Initial popup content with the favorite's details and a placeholder for the route summary
-        marker.bindPopup(
-            `<b>${fav.name}</b><br><br><b>Route Summary</b><br>` +
-            `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
-            `Time: ${this.routeSummary?.duration ?? 'N/D'}`
-        ).openPopup();
-        // Set the favorite as the selected destination
-        this.selectedDestination = latlng;
-        // Calculate the route (from the user's location to the favorite)
-        this.calculateRoute().then(() => {
-            marker.bindPopup(
-                `<b>${fav.name}</b><br><br><b>Route Summary</b><br>` +
-                `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
-                `Time: ${this.routeSummary?.duration ?? 'N/D'}`
-            ).openPopup();
-        });
+  showFavoriteOnMap(fav: { lat: number, lng: number, name: string }): void {
+    const latlng = L.latLng(fav.lat, fav.lng);
+    this.map.setView(latlng, 15);
+    // Check if a marker for this favorite is already present
+    let existingMarker = this.favoriteMarkers.find(m => {
+      const pos = m.getLatLng();
+      return pos.lat === fav.lat && pos.lng === fav.lng;
+    });
+    if (!existingMarker) {
+      const marker = L.marker(latlng, { icon: redIcon }).addTo(this.map);
+      marker.bindPopup(`<b>Favorite:</b> ${fav.name}`).openPopup();
+      this.favoriteMarkers.push(marker);
+      existingMarker = marker;
+    } else {
+      existingMarker.openPopup();
     }
-
+    // Set the favorite as the selected destination and update its popup with route details
+    this.selectedDestination = latlng;
+    this.calculateRoute().then(() => {
+      if (existingMarker) {
+        existingMarker.bindPopup(
+          `<b>Favorite:</b> ${fav.name}<br><br><b>Route Summary</b><br>` +
+          `Distance: ${this.routeSummary?.distance ?? 'N/D'}<br>` +
+          `Time: ${this.routeSummary?.duration ?? 'N/D'}`
+        ).openPopup();
+      }
+    });
+  }
 
     checkUserSession() {
         const token = this.authService.getSessionToken();
@@ -433,13 +438,26 @@ export class MapComponent implements OnInit, AfterViewInit {
         }
     }
 
-    deleteFavorite(fav: { lat: number, lng: number, name: string }): void {
-        this.favoriteLocations = this.favoriteLocations.filter(f =>
-            !(f.lat === fav.lat && f.lng === fav.lng && f.name === fav.name)
-        );
-        localStorage.setItem('favoriteLocations', JSON.stringify(this.favoriteLocations));
-        alert('Favorite location deleted.');
+  deleteFavorite(fav: { lat: number, lng: number, name: string }): void {
+    // Remove the favorite from the array and update local storage.
+    this.favoriteLocations = this.favoriteLocations.filter(f =>
+      !(f.lat === fav.lat && f.lng === fav.lng && f.name === fav.name)
+    );
+    localStorage.setItem('favoriteLocations', JSON.stringify(this.favoriteLocations));
+    alert('Favorite location deleted.');
+
+    // Find and remove the corresponding marker from the map.
+    const markerIndex = this.favoriteMarkers.findIndex(m => {
+      const pos = m.getLatLng();
+      return pos.lat === fav.lat && pos.lng === fav.lng;
+    });
+    if (markerIndex > -1) {
+      const marker = this.favoriteMarkers[markerIndex];
+      this.map.removeLayer(marker);
+      this.favoriteMarkers.splice(markerIndex, 1);
     }
+  }
+
 
     logout() {
         this.authService.logout();

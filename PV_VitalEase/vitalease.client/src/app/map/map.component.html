@@ -47,7 +47,7 @@
     <ul>
       <li *ngFor="let fav of favoriteLocations">
         {{ fav.name }}
-        <button (click)="showFavoriteOnMap(fav)">Show route</button>
+        <button (click)="showFavoriteOnMap(fav)">Show on Map</button>
         <button (click)="deleteFavorite(fav)">Delete</button>
       </li>
     </ul>
