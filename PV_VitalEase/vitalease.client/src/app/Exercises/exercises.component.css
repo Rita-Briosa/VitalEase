@@ -384,7 +384,17 @@ input[type="number"] {
   position: absolute;
   right: 7px;
   top: 52%;
-  transform: translateY(-51%);
+  transform: translateY(-100%);
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  pointer-events: none; /* Para evitar interação */
+}
+
+.setUnit {
+  position: absolute;
+  right: 7px;
+  top: 52%;
   font-size: 16px;
   font-weight: bold;
   color: black;

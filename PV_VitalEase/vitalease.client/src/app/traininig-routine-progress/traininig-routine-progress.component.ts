@@ -27,6 +27,9 @@ export class TraininigRoutineProgressComponent {
   activeMediaIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
   activeExerciseIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
   exerciseId: number = 0; // Índice para controlar qual mídia está sendo exibida
+
+  shownRelation: any = null;
+; // Indice para os sets e reps
   constructor(
     private trainingRoutinesService: TrainingRoutinesService,
     private authService: AuthService,
@@ -38,7 +41,6 @@ export class TraininigRoutineProgressComponent {
   ngOnInit() {
 
     this.routineId = this.route.snapshot.paramMap.get('id');
-
     const token = this.authService.getSessionToken();
 
     if (token) {
@@ -84,6 +86,7 @@ export class TraininigRoutineProgressComponent {
         this.exercises = response;
         console.log('Exercises loaded successfully:', this.exercises);
         this.getExerciseMedia();
+        this.getExerciseRoutine(this.exerciseId);
       },
       (error: any) => {
         this.errorMessage = 'Error fetching exercises from routine';
@@ -108,6 +111,7 @@ export class TraininigRoutineProgressComponent {
     if (this.activeExerciseIndex > 0) {
       this.activeExerciseIndex--;
       this.getExerciseMedia();
+      this.getExerciseRoutine(this.exercises[this.activeExerciseIndex].id);
       this.activeMediaIndex = 0;
     }
   }
@@ -116,6 +120,7 @@ export class TraininigRoutineProgressComponent {
     if (this.activeExerciseIndex < this.media.length - 1) {
       this.activeExerciseIndex++;
       this.getExerciseMedia();
+      this.getExerciseRoutine(this.exercises[this.activeExerciseIndex].id);
       this.activeMediaIndex = 0;
     }
   }
@@ -123,6 +128,7 @@ export class TraininigRoutineProgressComponent {
   skipExercises() {
     this.activeExerciseIndex = this.exercises.length - 1; // Salta para o último exercício
     this.getExerciseMedia();
+    this.getExerciseRoutine(this.exercises[this.activeExerciseIndex].id);
     this.activeMediaIndex = 0;
   }
 
@@ -159,6 +165,26 @@ export class TraininigRoutineProgressComponent {
         }
       );
 
+  }
+
+  getExerciseRoutine(exerciseId: number) {
+    if (!this.routineId) {
+      console.log("null");
+      return;
+    }
+
+    console.log(parseInt(this.routineId));
+    console.log(exerciseId);
+
+    this.trainingRoutinesService.getExerciseRoutine(parseInt(this.routineId), exerciseId).subscribe(
+      (response: any) => {
+        this.shownRelation = response;
+        console.log(response);
+      },
+      (error: any) => {
+        console.error('Error getting relation between exercise and routine', error);
+      }
+    )
   }
 
 }

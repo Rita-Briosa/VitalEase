@@ -14,5 +14,7 @@ namespace VitalEase.Server.ViewModel
         public int? reps { get; set; }
 
         public int? duration { get; set; }
+
+        public int? sets { get; set; }
     }
 }

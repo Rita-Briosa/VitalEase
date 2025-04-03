@@ -50,6 +50,7 @@ export class ExercisesComponent implements OnInit {
   newMediaName2: string = '';
   newMediaType2: string = '';
   newMediaUrl2: string = '';
+  sets: number = 0;
   reps: number = 0;// Armazena a rotina selecionada
   duration: number = 0;// Armazena a rotina selecionada
 
@@ -142,7 +143,7 @@ export class ExercisesComponent implements OnInit {
     const routineId = this.selectedRoutine;
 
 
-    this.exercisesService.addRoutine(routineId, exerciseId, this.reps, this.duration).subscribe(
+    this.exercisesService.addRoutine(routineId, exerciseId, this.reps, this.duration, this.sets).subscribe(
       (response: any) => {
         this.successMessage = response.message;
         this.errorMessage = '';

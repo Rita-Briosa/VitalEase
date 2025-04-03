@@ -13,6 +13,7 @@
     using Microsoft.IdentityModel.Tokens;
     using NuGet.Common;
     using VitalEase.Server.ViewModel;
+    using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
         public class ExercisesController : Controller
@@ -31,7 +32,7 @@
                 try
                 {
                     // Fetch all exercises from the database
-                    var exercises = await _context.Exercises.Where(e => e.Duration == 0 && e.Reps == 0).ToListAsync();
+                    var exercises = await _context.Exercises.ToListAsync();
 
 
                     if (exercises.IsNullOrEmpty())
@@ -48,8 +49,6 @@
                      DifficultyLevel = e.DifficultyLevel.ToString(),
                      MuscleGroup = e.MuscleGroup,
                      EquipmentNecessary = e.EquipmentNecessary,
-                     Reps = e.Reps,
-                     Duration = e.Duration,
                      // Converter Enum para String
                      }).ToList();
 
@@ -97,7 +96,7 @@
         {
             try
             {
-                var query = _context.Exercises.Where(e => e.Duration == 0 && e.Reps == 0).AsQueryable();
+                var query = _context.Exercises.AsQueryable();
 
                 if (!string.IsNullOrEmpty(type))
                 {
@@ -129,8 +128,7 @@
                     DifficultyLevel = e.DifficultyLevel.ToString(),
                     MuscleGroup = e.MuscleGroup,
                     EquipmentNecessary = e.EquipmentNecessary,
-                    Reps = e.Reps,
-                    Duration = e.Duration,
+                    ExerciseRoutine = e.ExerciseRoutine,
                     // Converter Enum para String
                 } ).ToListAsync();
 
@@ -169,7 +167,7 @@
         }
 
         [HttpPost("api/addRoutine")]
-        public async Task<IActionResult> AddRoutine([FromBody] AddRoutineFromExercisesViewModel model)
+        public async Task<IActionResult> AddToRoutine([FromBody] AddRoutineFromExercisesViewModel model)
         {
             try
             {
@@ -182,56 +180,25 @@
                     });
                 }
 
-                var existingExercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == model.ExerciseId);
+                var exercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == model.ExerciseId);
                 var routine = await _context.Routines.FirstOrDefaultAsync(r => r.Id == model.RoutineId);
-                var mediaList = await _context.ExerciseMedia.Where(em => em.ExerciseId == model.ExerciseId).ToListAsync();
 
-                if (existingExercise == null)
+                if (exercise == null)
                     return NotFound(new { message = "Exercise not found" });
 
                 if (routine == null)
                     return NotFound(new { message = "Routine not found" });
 
-                // Criando o novo exercício com base nos parâmetros fornecidos
-                var newExercise = new Exercise
-                {
-                    Name = existingExercise.Name,
-                    Description = existingExercise.Description,
-                    Type = existingExercise.Type,
-                    DifficultyLevel = existingExercise.DifficultyLevel,
-                    MuscleGroup = existingExercise.MuscleGroup,
-                    EquipmentNecessary = existingExercise.EquipmentNecessary,
-                    Reps = model.reps != null && model.reps > 0 ? model.reps.Value : 0,
-                    Duration = model.duration != null && model.duration > 0 ? model.duration.Value : 0
-                };
-
-                // Se nenhum dos valores for válido, definir um padrão
-                if (newExercise.Reps == 0 && newExercise.Duration == 0)
-                {
-                    newExercise.Reps = 10; // Valor padrão caso não seja informado
-                }
-
-                _context.Exercises.Add(newExercise);
-                await _context.SaveChangesAsync();
-
-                // Criar relações na tabela ExerciseMedia
-                if (mediaList.Any())
-                {
-                    var newExerciseMediaList = mediaList.Select(m => new ExerciseMedia
-                    {
-                        ExerciseId = newExercise.Id,
-                        MediaId = m.MediaId // Mantendo a relação correta com a mídia existente
-                    }).ToList();
-
-                    _context.ExerciseMedia.AddRange(newExerciseMediaList);
-                    await _context.SaveChangesAsync();
-                }
-
-                // Criar relação entre o novo exercício e a rotina
+                // Criar relação entre o exercício e a rotina
                 var exerciseRoutine = new ExerciseRoutine
                 {
-                    ExerciseId = newExercise.Id,
-                    RoutineId = routine.Id
+                    ExerciseId = exercise.Id,
+                    Exercise = exercise,
+                    RoutineId = routine.Id,
+                    Routine = routine,
+                    Duration = model.duration,
+                    Reps = model.reps,
+                    Sets = model.sets,
                 };
 
                 _context.ExerciseRoutines.Add(exerciseRoutine);
@@ -271,8 +238,6 @@
                     DifficultyLevel = difficultyLevel,
                     MuscleGroup = model.newMuscleGroup,
                     EquipmentNecessary = model.newEquipmentNecessary,
-                    Reps = 0,
-                    Duration = 0
                 };
 
                 _context.Exercises.Add(newExercise);

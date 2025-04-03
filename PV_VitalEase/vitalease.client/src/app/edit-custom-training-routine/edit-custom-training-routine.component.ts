@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { TrainingRoutinesService } from '../services/training-routines.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TrainingRoutinesService } from '../services/training-routines.service';
 
 @Component({
   selector: 'app-edit-custom-training-routine',
@@ -27,6 +27,9 @@ export class EditCustomTrainingRoutineComponent {
 
   selectedExerciseId: number = 0;
   selectedExercise: any = null;
+
+  shownRelation: any = null;
+
   activeMediaIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
   media: any[] = []; // Array para armazenar os media
 
@@ -96,6 +99,25 @@ export class EditCustomTrainingRoutineComponent {
     );
   }
 
+  getExerciseRoutine(exerciseId: number) {
+    if (!this.routineId) {
+      return;
+    }
+
+    console.log(parseInt(this.routineId));
+    console.log(exerciseId);
+
+    this.routinesService.getExerciseRoutine(parseInt(this.routineId), exerciseId).subscribe(
+      (response: any) => {
+        this.shownRelation = response;
+        console.log(response);
+      },
+      (error: any) => {
+        console.error('Error getting relation between exercise and routine', error);
+      }
+    )
+  }
+
   deleteExercise(exerciseId: number) {
     if (!this.routineId) {
       return;
@@ -114,13 +136,15 @@ export class EditCustomTrainingRoutineComponent {
 
   selectExercise(exerciseId: number) {
     this.selectedExerciseId = exerciseId;
-    this.selectedExercise = this.exercises.find(e => e.id === exerciseId)
+    this.selectedExercise = this.exercises.find(e => e.id === exerciseId);
+    this.getExerciseRoutine(exerciseId);
     this.getExerciseMedia(exerciseId);
   }
 
   unselectExercise() {
     this.selectedExerciseId = 0;
     this.selectedExercise = null;
+    this.shownRelation = null;
     this.media = [];
   }
 

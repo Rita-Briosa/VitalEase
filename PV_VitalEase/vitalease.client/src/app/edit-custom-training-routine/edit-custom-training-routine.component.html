@@ -111,9 +111,9 @@
         <button class="media-navigation next" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">&#8594;</button>
       </div>
       <p>Description: {{ selectedExercise.description}}</p>
-      <p *ngIf="selectedExercise.duration && selectedExercise.duration > 0">Duration: {{ selectedExercise.duration }}</p>
-      <p *ngIf="selectedExercise.reps && selectedExercise.reps > 0">Reps: {{ selectedExercise.reps }}</p>
-      <p *ngIf="selectedExercise.sets && selectedExercise.sets > 0">Sets: {{ selectedExercise.sets }}</p>
+      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.duration !== null && shownRelation.duration !== undefined && shownRelation.duration > 0">Duration: {{ shownRelation.duration }}</p>
+      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.reps !== null && shownRelation.reps !== undefined && shownRelation.reps > 0">Reps: {{ shownRelation.reps }}</p>
+      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.sets !== null && shownRelation.sets !== undefined && shownRelation.sets > 0">Sets: {{ shownRelation.sets }}</p>
     </div>
 
 

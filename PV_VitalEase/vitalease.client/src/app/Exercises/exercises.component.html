@@ -145,6 +145,12 @@
         <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
 
         <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+
+        <div>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
+          <span class="setUnit">Sets</span>
+        </div>
       </div><br /> 
 
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
