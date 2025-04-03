@@ -14,7 +14,7 @@ export class TrainingRoutinesService {
 
   constructor(private http: HttpClient) { }
 
-  getRoutines(userId: number): Observable<any> {
+  getRoutines(): Observable<any> {
     return this.http.get(`${this.apiUrl}/getRoutines`); 
   }
 
