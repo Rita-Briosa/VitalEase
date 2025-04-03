@@ -2,23 +2,27 @@
 
 <html>
 <body>
-  <header>
-    <a [routerLink]="['/']">
-      <img src="../../assets/img/logo.png" alt="VitalEase Logo">
-    </a>
-    <div class="headText">
-      <a class="action-button" routerLink="/exercises">Exercises</a>
-      <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
-      <a class="action-button" routerLink="/map">Map</a>
-      <a class="action-button" routerLink="/aboutUs">About Us</a>
+  <div class="container-header">
+    <div class="header">
+      <div class="row">
+        <img src="assets/img/logo.png" alt="Vital Ease Logo" routerLink="/">
+        <a class="action-button" routerLink="/exercises">Exercises</a>
+        <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
+        <a class="action-button" routerLink="/map">Map</a>
+        <a class="action-button" routerLink="/aboutUs">About Us</a>
+        <button class="Dashboard-button"
+                *ngIf="isAdmin"
+                (click)="goToDashboard()">
+          Dashboard
+        </button>
+        <div class="auth-buttons">
+          <!-- Mostrar botão de Login se o usuário não estiver logado -->
+          <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+          <a href="/myProfile" *ngIf="isLoggedIn" class="profile-icon">👤</a>
+        </div>
+      </div>
     </div>
-    <div class="auth-buttons">
-      <!-- Mostrar botão de Login se o usuário não estiver logado -->
-      <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-
-      <a href="/myProfile" class="profile-icon">👤</a>
-    </div>
-  </header>
+  </div>
 
   <h3 id="ExercisesTitle">
     <a routerLink="/manage-training-routines/custom-training-routines">◄</a>
@@ -118,6 +122,7 @@
 
   <footer>
     <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
+    <p>&copy; Vital Ease 2025</p>
   </footer>
 
 </body>

@@ -16,13 +16,7 @@ export class AboutUsComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    // Check if user is logged in by fetching the user info
-    /* this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
-     if (this.isLoggedIn) {
-       this.userInfo = this.authService.getUserInfo();  // Se estiver logado, pega as informações do usuário
-     }
-   }*/
-
+  
     const token = this.authService.getSessionToken();
 
     if (token) {

@@ -1,80 +1,84 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
       "PackagePath": "staticwebassets\\vitalease.client\\3rdpartylicenses.txt"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\arrow_right.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\dev1.jpeg"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\dev2.jpeg"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\dev3.jpeg"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\dev4.jpeg"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\garbage_can.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\logo.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\pencil-43.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\assets\\img\\plusIcon.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\index.html"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\main-LTSJLSFF.js"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\polyfills-FFHMD2TL.js"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
       "PackagePath": "staticwebassets\\vitalease.client\\browser\\styles-OPSORIUJ.css"
     },
     {
-      "Id": "C:\\Users\\joana\\OneDrive\\Ambiente de Trabalho\\Faculdade\\Aulas 24-25\\ESA\\projeto\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
+      "Id": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
       "PackagePath": "staticwebassets\\vitalease.client\\prerendered-routes.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VitalEase.Server.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VitalEase.Server.Microsoft.AspNetCore.StaticWebAssets.props",

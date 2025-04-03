@@ -2,7 +2,7 @@
 <div class="container">
   <div class="header">
     <div class="row">
-      <img src="assets/img/logo.png" alt="Vital Ease Logo">
+      <img src="assets/img/logo.png" alt="Vital Ease Logo" routerLink="/">
       <a class="action-button" routerLink="/exercises">Exercises</a>
       <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
       <a class="action-button" routerLink="/map">Map</a>
@@ -96,11 +96,10 @@
         {{ showOldPassword ? '🙈' : '👁️' }}
       </button>
     </div>
-    <div class="buttons">
-      <!-- Botão desativado até a checkbox ser marcada -->
-      <button (click)="confirmDeleteAccount()" [disabled]="!isConfirmed">Confirm</button>
-      <button (click)="closeModal()">Cancel</button>
-    </div>
+
+      <button class="modalButton" (click)="confirmDeleteAccount()" [disabled]="!isConfirmed">Confirm</button>
+      <button class="modalButton" (click)="closeModal()">Cancel</button>
+
   </div>
 </div>
 
@@ -307,8 +306,10 @@
   </div>
 </div>
 
+
 <footer>
   <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
+  <p>&copy; Vital Ease 2025</p>
 </footer>
 
 

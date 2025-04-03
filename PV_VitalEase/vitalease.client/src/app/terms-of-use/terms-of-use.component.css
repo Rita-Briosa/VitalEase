@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f8fbfd;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Garante que a row ocupe toda a largura */
+}
+
+.left {
+  flex: 1;
+}
+
+.center {
+  text-align: center;
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+  .header img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }
+
+  .header span {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .header button:hover {
+      background-color: #ddd;
+    }
+
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.7rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+.profile-icon {
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.container {
+  padding: 20px;
+}
+
+.termsOfUse{
+    margin-left: 43%;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #6C9C94;
+  margin-left: 40%;
+}
+
+  footer a {
+    color: #6C9C94;
+    text-decoration: none;
+  }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+  footer p {
+    margin-left: 5%;
+  }
+
+@media (max-width: 480px) {
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    margin-left: 5px;
+  }
+
+  .header img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header span {
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+
+  .header button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 0.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.5rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+  header h2 {
+    font-size: 0.5rem;
+  }
+
+  footer {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #6C9C94;
+    margin-left: 40%;
+  }
+}

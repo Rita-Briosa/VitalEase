@@ -52,6 +52,7 @@ body {
   .header span {
     font-size: 1.2rem;
     font-weight: bold;
+    cursor: pointer;
   }
 
   .header button {
@@ -240,6 +241,10 @@ footer {
       text-decoration: underline;
     }
 
+  footer p {
+    margin-left: 5%;
+  }
+
 @media (max-width: 768px) {
   h2 {
     font-size: 1rem;
@@ -260,17 +265,22 @@ footer {
     font-size: 0.5rem;
   }
 
+  .header img {
+    width: 50px;
+    height: 50px;
+  }
+
   .auth-buttons {
     justify-content: center;
   }
 
   .action-button {
-    padding: 7px 20px;
+    padding: 10px 15px;
     border: none;
     border-radius: 10px;
     background-color: #e0e0e0; 
     color: #333; 
-    font-size: 0.3rem; 
+    font-size: 0.4rem; 
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
