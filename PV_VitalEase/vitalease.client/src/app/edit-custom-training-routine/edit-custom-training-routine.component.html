@@ -2,108 +2,130 @@
 
 <html>
 <body>
-  <div class="container-header">
-    <div class="header">
-      <div class="row">
-        <img src="assets/img/logo.png" alt="Vital Ease Logo" routerLink="/">
-        <a class="action-button" routerLink="/exercises">Exercises</a>
-        <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
-        <a class="action-button" routerLink="/map">Map</a>
-        <a class="action-button" routerLink="/aboutUs">About Us</a>
-        <button class="Dashboard-button"
-                *ngIf="isAdmin"
-                (click)="goToDashboard()">
-          Dashboard
-        </button>
-        <div class="auth-buttons">
-          <!-- Mostrar botão de Login se o usuário não estiver logado -->
-          <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-          <a href="/myProfile" *ngIf="isLoggedIn" class="profile-icon">👤</a>
-        </div>
-      </div>
+  <header>
+    <a [routerLink]="['/']">
+      <img src="../../assets/img/logo.png" alt="VitalEase Logo">
+    </a>
+    <div class="headText">
+      <a class="action-button" routerLink="/exercises">Exercises</a>
+      <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
+      <a class="action-button" routerLink="/map">Map</a>
+      <a class="action-button" routerLink="/aboutUs">About Us</a>
     </div>
-  </div>
+    <div class="auth-buttons">
+      <!-- Mostrar botão de Login se o usuário não estiver logado -->
+      <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+
+      <a href="/myProfile" class="profile-icon">👤</a>
+    </div>
+  </header>
 
   <h3 id="ExercisesTitle">
     <a routerLink="/manage-training-routines/custom-training-routines">◄</a>
     Exercises
   </h3>
-  <div class="exercises" *ngIf="exercises.length > 0">
 
-    <div class="warm-up">
-      <h3>Warm-up Exercises</h3>
-      <div *ngIf="warmUpExercises.length > 0">
-        <div class="exercise-card" *ngFor="let exercise of warmUpExercises">
-          <div class="exercise-info">
-            <h4>{{ exercise.name }}</h4>
-            <p>{{ exercise.description }}</p>
+  <div class="row">
+
+    <div class="exercises" *ngIf="routineExercises.length > 0">
+
+      <div class="warm-up">
+        <h3>Warm-up Exercises</h3>
+        <div *ngIf="warmUpExercises.length > 0">
+          <div class="exercise-card" *ngFor="let exercise of warmUpExercises">
+            <div class="exercise-info">
+              <h4>{{ exercise.name }}</h4>
+              <p>{{ exercise.description }}</p>
+            </div>
+            <div class="exercise-actions">
+              <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+              <button class="details" (click)="selectExercise(exercise.id)">👁</button>
+              <button class="details" (click)="openEditExerciseModal(exercise.id)">✎</button>
+              <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
+            </div>
           </div>
-          <div class="exercise-actions">
-            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
-            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
-            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
-            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
-          </div>
+        </div>
+
+        <div *ngIf="warmUpExercises.length === 0">
+          No Warp-up exercises in this routine.
         </div>
       </div>
 
-      <div *ngIf="warmUpExercises.length === 0">
-        No Warp-up exercises in this routine.
-      </div>
-    </div>
+      <div class="main-exercises">
+        <h3>Main Exercises</h3>
+        <div *ngIf="mainExercises.length > 0">
+          <div class="exercise-card" *ngFor="let exercise of mainExercises">
+            <div class="exercise-info">
+              <h4>{{ exercise.name }}</h4>
+              <p>{{ exercise.description }}</p>
+            </div>
+            <div class="exercise-actions">
+              <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+              <button class="details" (click)="selectExercise(exercise.id)">👁</button>
+              <button class="details" (click)="openEditExerciseModal(exercise.id)">✎</button>
+              <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
+            </div>
+          </div>
+        </div>
 
-    <div class="main-exercises">
-      <h3>Main Exercises</h3>
-      <div *ngIf="mainExercises.length > 0">
-        <div class="exercise-card" *ngFor="let exercise of mainExercises">
-          <div class="exercise-info">
-            <h4>{{ exercise.name }}</h4>
-            <p>{{ exercise.description }}</p>
-          </div>
-          <div class="exercise-actions">
-            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
-            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
-            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
-            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
-          </div>
+        <div *ngIf="mainExercises.length === 0">
+          No Main exercises in this routine.
         </div>
       </div>
 
-      <div *ngIf="mainExercises.length === 0">
-        No Main exercises in this routine.
-      </div>
-    </div>
+      <div class="cool-down">
+        <h3>Cool-down Exercises</h3>
+        <div *ngIf="coolDownExercises.length > 0">
+          <div class="exercise-card" *ngFor="let exercise of coolDownExercises">
+            <div class="exercise-info">
+              <h4>{{ exercise.name }}</h4>
+              <p>{{ exercise.description }}</p>
+            </div>
+            <div class="exercise-actions">
+              <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
+              <button class="details" (click)="selectExercise(exercise.id)">👁</button>
+              <button class="details" (click)="openEditExerciseModal(exercise.id)">✎</button>
+              <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
+            </div>
+          </div>
+        </div>
 
-    <div class="cool-down">
-      <h3>Cool-down Exercises</h3>
-      <div *ngIf="coolDownExercises.length > 0">
-        <div class="exercise-card" *ngFor="let exercise of coolDownExercises">
-          <div class="exercise-info">
-            <h4>{{ exercise.name }}</h4>
-            <p>{{ exercise.description }}</p>
-          </div>
-          <div class="exercise-actions">
-            <!-- Botão para abrir o modal e exibir os detalhes do exercício -->
-            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">👁</button>
-            <button class="details" [routerLink]="['/training-routine-exercise-details', exercise.id]">✎</button>
-            <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
-          </div>
+        <div *ngIf="coolDownExercises.length === 0">
+          No Warp-up exercises in this routine.
         </div>
       </div>
 
-      <div *ngIf="coolDownExercises.length === 0">
-        No Warp-up exercises in this routine.
-      </div>
     </div>
+
+    <div class="exerciseView" *ngIf="selectedExercise">
+      <button (click)="unselectExercise()"><h3>X</h3></button>
+      <h3>{{selectedExercise.name}}</h3>
+      <div class="media-container">
+        <button class="media-navigation prev" *ngIf="activeMediaIndex > 0" (click)="previousMedia()">&#8592;</button>
+        <div *ngIf="media[activeMediaIndex].type === 'Image'">
+          <img [src]="media[activeMediaIndex].url" alt="Exercise Image">
+        </div>
+        <div *ngIf="media[activeMediaIndex].type === 'Video'">
+          <iframe [src]="sanitizeUrl(media[activeMediaIndex].url)" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <button class="media-navigation next" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">&#8594;</button>
+      </div>
+      <p>Description: {{ selectedExercise.description}}</p>
+      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.duration !== null && shownRelation.duration !== undefined && shownRelation.duration > 0">Duration: {{ shownRelation.duration }}</p>
+      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.reps !== null && shownRelation.reps !== undefined && shownRelation.reps > 0">Reps: {{ shownRelation.reps }}</p>
+      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.sets !== null && shownRelation.sets !== undefined && shownRelation.sets > 0">Sets: {{ shownRelation.sets }}</p>
+    </div>
+
+
 
   </div>
 
-  <div class="exercises" *ngIf="exercises.length === 0">
+  <div class="exercises" *ngIf="routineExercises.length === 0">
     There are no exercises in this custom training routine! Start by adding some!
   </div>
 
   <div class="add-exercise">
-    <button id="add">
+    <button id="add" (click)="openAddModal()">
       <img src="../../assets/img/plusIcon.png" alt="Add Routine" title="Add Routine" />
     </button>
   </div>
@@ -120,10 +142,96 @@
     </div>
   </div>
 
-  <footer>
-    <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
-    <p>&copy; Vital Ease 2025</p>
-  </footer>
+  <div class="modal" [class.show]="activeModal === 'add'">
+    <div class="modal-content-two">
+      <h2> Add exercise to your routine</h2>
+      <p class="chooseExercise"> Choose an Exercise</p>
+
+      <div class="modalExerciseView" *ngIf="selectedModalExercise">
+        <div class="modal-media-container">
+          <button class="media-navigation prev" *ngIf="activeMediaIndex > 0" (click)="previousMedia()">&#8592;</button>
+
+          <div *ngIf="media[activeMediaIndex]?.type === 'Image'">
+            <img [src]="media[activeMediaIndex]?.url" alt="Exercise Image">
+          </div>
+          <div *ngIf="media[activeMediaIndex]?.type === 'Video'">
+            <iframe [src]="sanitizeUrl(media[activeMediaIndex]?.url)" frameborder="0" allowfullscreen></iframe>
+          </div>
+
+          <button class="media-navigation next" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">&#8594;</button>
+        </div>
+        <p>Description: {{ selectedModalExercise?.description }}</p>
+      </div>
+
+      <select [(ngModel)]="selectedModalExercise" (ngModelChange)="getExerciseMedia(selectedModalExercise?.id)">
+        <option [ngValue]="null" selected>Select an Exercise</option>
+        <option *ngFor="let exercise of exercises" [ngValue]="exercise">{{ exercise.name }}</option>
+      </select>
+
+      <div class="radio-container">
+        <label>
+          <input type="radio" name="option" value="duration" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Duration
+        </label>
+        <label>
+          <input type="radio" name="option" value="reps" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Reps
+        </label>
+      </div>
+
+      <div class="input-container-modal">
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" [(ngModel)]="duration" name="duration" required>
+        <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
+
+        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+
+        <div>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
+          <span class="setUnit">Sets</span>
+        </div>
+      </div><br />
+
+      <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+
+      <button class="modalButton" [disabled]="!selectedModalExercise" (click)="addExercise()">Add</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" [class.show]="activeModal === 'edit'">
+    <div class="modal-content-two">
+      <h2> Edit Exercise</h2>
+
+      <div class="radio-container">
+        <label>
+          <input type="radio" name="selectedOption" value="duration" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Duration
+        </label>
+        <label>
+          <input type="radio" name="selectedOption" value="reps" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Reps
+        </label>
+      </div>
+
+      <div class="input-container-modal">
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" [(ngModel)]="duration" name="duration" required>
+        <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
+
+        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+
+        <div>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
+          <span class="setUnit">Sets</span>
+        </div>
+      </div>
+      <br />
+
+      <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+
+      <button class="modalButton" (click)="editExercise()">Edit</button>
+      <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
+    </div>
+  </div>
 
 </body>
 </html>

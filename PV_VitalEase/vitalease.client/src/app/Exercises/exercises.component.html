@@ -3,7 +3,7 @@
   <div class="container-header">
     <div class="header">
       <div class="row">
-        <img src="assets/img/logo.png" alt="Vital Ease Logo" routerLink="/">
+        <img src="assets/img/logo.png" alt="Vital Ease Logo">
         <a class="action-button" routerLink="/exercises">Exercises</a>
         <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
         <a class="action-button" routerLink="/map">Map</a>
@@ -133,10 +133,10 @@
 
       <div class="radio-container">
         <label>
-          <input type="radio" name="option" value="duration" [(ngModel)]="selectedOption"> Duration
+          <input type="radio" name="option" value="duration" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Duration
         </label>
         <label>
-          <input type="radio" name="option" value="reps" [(ngModel)]="selectedOption"> Reps
+          <input type="radio" name="option" value="reps" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Reps
         </label>
       </div>
 
@@ -145,10 +145,16 @@
         <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
 
         <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
-      </div><br />
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+
+        <div>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
+          <span class="setUnit">Sets</span>
+        </div>
+      </div><br /> 
 
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
-      <div *ngIf="addRoutineErrorMessage" class="alert-danger">{{ addRoutineErrorMessage }}</div>
+      <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
       <button class="modalButton" [disabled]="!selectedRoutine" (click)="addRoutine()">Add</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
@@ -224,7 +230,7 @@
         </div>
 
         <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
-        <div *ngIf="addErrorMessage" class="alert-danger">{{ addErrorMessage }}</div>
+        <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
         <div class="modal-buttons">
           <button type="button" class="modalButton" (click)="addExercise()">Add</button>
@@ -233,11 +239,6 @@
       </form>
     </div>
   </div>
-
-  <footer>
-    <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
-    <p>&copy; Vital Ease 2025</p>
-  </footer>
 
 </body>
 </html>

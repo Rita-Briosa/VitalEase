@@ -80,5 +80,21 @@ export class TrainingRoutinesService {
     return this.http.delete<any>(`${this.apiUrl}/deleteExerciseFromRoutine/${routineId}/${exerciseId}`, {params});
   }
 
-}
+  getExerciseRoutine(routineId: number, exerciseId: number): Observable<any> {
+    let params = new HttpParams()
+      .set('routineId', routineId)
+      .set('exerciseId', exerciseId);
 
+    return this.http.get<any>(`${this.apiUrl}/getExerciseRoutine/${routineId}`, { params });
+  }
+
+  editExerciseRoutine(routineId: number, exerciseId: number, reps: number, duration: number, sets: number): Observable<any> {
+    if (reps !== null && reps !== 0 && (duration === null || duration === 0) && (sets !== null && sets !== undefined && sets > 0)) {
+      return this.http.put<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { reps, sets });
+    } else if (duration !== null && duration !== 0 && (reps === null || reps === 0) && (sets !== null && sets !== undefined && sets > 0)) {
+      return this.http.post<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { duration, sets });
+    } else {
+      return this.http.post<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { });
+    }
+  }
+}
