@@ -446,6 +446,31 @@
             }
         }
 
+        [HttpPut("api/editExerciseRoutine/{exerciseId}/{routineId}")]
+        public async Task<IActionResult> EditExerciseRoutine(int exerciseId, int routineId, [FromBody] EditExerciseRoutineViewModel model)
+        {
+            try
+            {
+                var exerciseRoutine = await _context.ExerciseRoutines.Where(exr => exr.ExerciseId == exerciseId && exr.RoutineId == routineId).FirstOrDefaultAsync();
+
+                if(exerciseRoutine == null)
+                {
+                    return NotFound();
+                }
+
+                exerciseRoutine.Sets = model.sets;
+                exerciseRoutine.Reps = model.reps;
+                exerciseRoutine.Duration = model.duration;
+
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new { message = "Error editing Exercise Routine" });
+            }
+        }
+
         /* 
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllRoutines()

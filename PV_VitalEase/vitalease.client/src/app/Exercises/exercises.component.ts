@@ -316,6 +316,14 @@ export class ExercisesComponent implements OnInit {
     });
   }
 
+  onOptionChange() {
+    if (this.selectedOption === 'duration') {
+      this.reps = 0;
+    } else if (this.selectedOption === 'reps') {
+      this.duration = 0;
+    }
+  }
+
   /*// Check if user is logged in by fetching the user info
   this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
   if (this.isLoggedIn) {

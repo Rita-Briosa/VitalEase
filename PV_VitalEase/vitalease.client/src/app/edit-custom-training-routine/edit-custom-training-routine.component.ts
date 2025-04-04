@@ -251,14 +251,50 @@ export class EditCustomTrainingRoutineComponent {
         this.successMessage = '';
       }
     );
-
-    
   }
 
   openAddModal(): void {
     this.unselectExercise();
     console.log("add");
     this.activeModal = 'add';
+  }
+
+  editExercise(): void {
+    if (!this.routineId || !this.selectedExercise) {
+      this.errorMessage = 'Please select an exercise before adding.';
+      return;
+    }
+
+    const exerciseId = this.selectedExercise.id;
+
+    console.log(`${this.routineId}/ ${exerciseId} / ${this.reps} / ${this.duration} / ${this.sets}`)
+
+
+    this.routinesService.editExerciseRoutine(parseInt(this.routineId), exerciseId, this.sets, this.duration, this.reps).subscribe(
+      (response: any) => {
+        this.closeModal();
+        window.location.reload();
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message || 'An error occurred';
+        this.successMessage = '';
+      }
+    );
+  }
+
+  openEditExerciseModal(exerciseId: number): void {
+    this.unselectExercise();
+    this.selectExercise(exerciseId);
+    console.log("add");
+    this.activeModal = 'edit';
+  }
+
+  onOptionChange() {
+    if (this.selectedOption === 'duration') {
+      this.reps = 0;
+    } else if (this.selectedOption === 'reps') {
+      this.duration = 0;
+    }
   }
 
 }
