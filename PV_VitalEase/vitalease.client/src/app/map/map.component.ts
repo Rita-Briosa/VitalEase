@@ -33,6 +33,7 @@ const redIcon = L.icon({
 export class MapComponent implements OnInit, AfterViewInit {
     userInfo: any = null;
     isLoggedIn: boolean = false;
+    isAdmin: boolean = false;
     favoriteMarkers: L.Marker[] = [];
     // To store user's current location
     userLocation: L.LatLng | null = null;
@@ -70,7 +71,14 @@ export class MapComponent implements OnInit, AfterViewInit {
             this.authService.validateSessionToken().subscribe(
                 (response: any) => {
                     this.isLoggedIn = true;
-                    this.userInfo = response.user;
+                this.userInfo = response.user;
+
+                if (this.userInfo.type === 1) {
+                  this.isAdmin = true;
+                } else {
+                  this.isAdmin = false;
+                }
+
                 },
                 (error) => {
                     
@@ -85,7 +93,11 @@ export class MapComponent implements OnInit, AfterViewInit {
             return;
         }
 
-    }
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 
     ngAfterViewInit() {
         this.loadGoogleMapsAPI()
