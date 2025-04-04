@@ -111,9 +111,8 @@ p {
 
 footer {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 12px;
   color: #6C9C94;
-  margin-left: 40%;
 }
 
   footer a {
@@ -125,15 +124,5 @@ footer {
       text-decoration: underline;
     }
 
-  footer p {
-    margin-left: 5%;
-  }
-@media (max-width: 480px) {
 
-  footer {
-    margin-top: 10px;
-    font-size: 0.6rem;
-    color: #6C9C94;
-    margin-left: 40%;
-  }
-}
+
