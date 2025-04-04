@@ -40,12 +40,12 @@ export class ExercisesService {
     return this.http.get(`${this.apiUrl}/getRoutinesOnExercises/${userId}`); // Correto: agora o exerciseId é passado corretamente na URL
   }
 
-  addRoutine(routineId: number, exerciseId: number, reps?: number, duration?: number): Observable<any> {
+  addRoutine(routineId: number, exerciseId: number, reps?: number, duration?: number, sets?: number): Observable<any> {
 
-   if (reps !== null && reps !== 0 && (duration === null || duration === 0)) {
-      return this.http.post<any>(this.apiUrlAddRoutine, { routineId, exerciseId, reps });
-    } else if (duration !== null && duration !== 0 && (reps === null || reps === 0)) {
-      return this.http.post<any>(this.apiUrlAddRoutine, { routineId, exerciseId, duration });
+    if (reps !== null && reps !== 0 && (duration === null || duration === 0) && (sets !== null && sets !== undefined && sets > 0)) {
+      return this.http.post<any>(this.apiUrlAddRoutine, { routineId, exerciseId, reps, sets });
+    } else if (duration !== null && duration !== 0 && (reps === null || reps === 0) && (sets !== null && sets !== undefined && sets > 0)) {
+      return this.http.post<any>(this.apiUrlAddRoutine, { routineId, exerciseId, duration, sets });
     } else {
       return this.http.post<any>(this.apiUrlAddRoutine, { routineId, exerciseId });
     }

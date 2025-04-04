@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { TrainingRoutinesService } from '../services/training-routines.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TrainingRoutinesService } from '../services/training-routines.service';
+import { ExercisesService } from '../services/exercises.service';
 
 @Component({
   selector: 'app-edit-custom-training-routine',
@@ -17,17 +19,30 @@ export class EditCustomTrainingRoutineComponent {
 
   userInfo: any = null;
   isLoggedIn: boolean = false;
-  isAdmin: boolean = false;
 
   routineId: string | null = null;
-  exercises: any[] = []; // Lista de exercícios
+  routineExercises: any[] = []; // Lista de exercícios
   warmUpExercises: any[] = [];
   mainExercises: any[] = [];
   coolDownExercises: any[] = [];
 
   selectedExerciseId: number = 0;
+  selectedExercise: any = null;
 
-  constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router, private route: ActivatedRoute,) { }
+  shownRelation: any = null;
+
+  activeMediaIndex: number = 0; // Índice para controlar qual mídia está sendo exibida
+  media: any[] = []; // Array para armazenar os media
+
+  exercises: any[] = [];
+  sets: number = 0;
+  reps: number = 0;// Armazena a rotina selecionada
+  duration: number = 0;// Armazena a rotina selecionada
+  selectedModalExercise: any = null; // Armazena o exercício para a modal
+  selectedOption: string = 'duration';
+
+
+  constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private exercisesService: ExercisesService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer,) { }
 
   ngOnInit() {
     // Check if user is logged in by fetching the user info
@@ -46,13 +61,6 @@ export class EditCustomTrainingRoutineComponent {
         (response: any) => {
           this.isLoggedIn = true;
           this.userInfo = response.user;
-
-          if (this.userInfo.type === 1) {
-            this.isAdmin = true;
-          } else {
-            this.isAdmin = false;
-          }
-
         },
         (error) => {
           this.authService.logout();
@@ -64,20 +72,32 @@ export class EditCustomTrainingRoutineComponent {
       this.router.navigate(['/login']);
     }
 
+    this.getRoutineExercises();
     this.getExercises();
 
   }
 
   getExercises(): void {
+    this.exercisesService.getExercises().subscribe(
+      (response: any) => {
+        this.exercises = response;
+      },
+      (error: any) => {
+        console.error('Error loading Exercises', error);
+      }
+    );
+  }
+
+  getRoutineExercises(): void {
     if (!this.routineId) {
       return;
     }
 
     this.routinesService.getExercises(this.routineId).subscribe(
       (response: any) => {
-        this.exercises = response;
+        this.routineExercises = response;
 
-        this.exercises.forEach(e => {
+        this.routineExercises.forEach(e => {
           if (e.type === "Warm-up") {
             this.warmUpExercises.push(e);
           }
@@ -92,12 +112,31 @@ export class EditCustomTrainingRoutineComponent {
         console.log(this.warmUpExercises);
         console.log(this.mainExercises);
         console.log(this.coolDownExercises);
-        console.log('Exercises loaded successfully:', this.exercises);
+        console.log('Exercises loaded successfully:', this.routineExercises);
       },
       (error: any) => {
         console.error('Error loading exercises:', error);
       }
     );
+  }
+
+  getExerciseRoutine(exerciseId: number) {
+    if (!this.routineId) {
+      return;
+    }
+
+    console.log(parseInt(this.routineId));
+    console.log(exerciseId);
+
+    this.routinesService.getExerciseRoutine(parseInt(this.routineId), exerciseId).subscribe(
+      (response: any) => {
+        this.shownRelation = response;
+        console.log(response);
+      },
+      (error: any) => {
+        console.error('Error getting relation between exercise and routine', error);
+      }
+    )
   }
 
   deleteExercise(exerciseId: number) {
@@ -118,10 +157,17 @@ export class EditCustomTrainingRoutineComponent {
 
   selectExercise(exerciseId: number) {
     this.selectedExerciseId = exerciseId;
+    this.selectedExercise = this.routineExercises.find(e => e.id === exerciseId);
+    this.getExerciseRoutine(exerciseId);
+    this.getExerciseMedia(exerciseId);
   }
 
   unselectExercise() {
     this.selectedExerciseId = 0;
+    this.selectedExercise = null;
+    this.shownRelation = null;
+    this.selectedModalExercise = null;
+    this.media = [];
   }
 
   openDeleteExerciseModal(exerciseId: number): void {
@@ -136,8 +182,118 @@ export class EditCustomTrainingRoutineComponent {
     this.successMessage = '';
   }
 
-  goToDashboard() {
-    this.router.navigate(['/dashboard']);
+  previousMedia() {
+    if (this.activeMediaIndex > 0) {
+      this.activeMediaIndex--;
+    }
+  }
+
+  nextMedia() {
+    if (this.activeMediaIndex < this.media.length - 1) {
+      this.activeMediaIndex++;
+    }
+  }
+
+  convertToEmbedUrl(url: string): string {
+    const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S+?\?v=))([a-zA-Z0-9_-]{11})/;
+    const match = url.match(youtubeRegex);
+
+    if (match && match[1]) {
+      return `https://www.youtube.com/embed/${match[1]}`;
+    }
+    return url;  // Retorna a URL original se não for do YouTube
+  }
+
+  sanitizeUrl(url: string): SafeResourceUrl {
+    const embedUrl = this.convertToEmbedUrl(url);  // Converte a URL para embed, se necessário
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl); // Sanitiza a URL
+  }
+
+  getExerciseMedia(exerciseId: number): void {
+
+    if (exerciseId != null) {
+      this.routinesService.getMedia(exerciseId.toString()).subscribe(
+        (response: any) => {
+          this.media = response; // Armazena os media na variável 'media'
+          console.log('Exercise media loaded successfully:', this.media);
+        },
+        (error: any) => {
+          this.errorMessage = 'Error loading exercise media'; // Define a mensagem de erro se a requisição falhar
+          console.log('Error loading exercise media:', error);
+        }
+      );
+    } else {
+      this.errorMessage = 'exercise Id doesn t exists';
+    }
+
+  }
+
+  addExercise(): void {
+    if (!this.routineId || !this.selectedModalExercise) {
+      this.errorMessage = 'Please select an exercise before adding.';
+      return;
+    }
+
+    const modalExerciseId = this.selectedModalExercise.id;
+
+    console.log(`${this.routineId}/ ${modalExerciseId} / ${ this.reps } / ${ this.duration } / ${ this.sets }`)
+
+
+    this.exercisesService.addRoutine(parseInt(this.routineId), modalExerciseId, this.reps, this.duration, this.sets).subscribe(
+      (response: any) => {
+        this.successMessage = response.message;
+        this.errorMessage = '';
+        this.closeModal();
+        window.location.reload();
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message || 'An error occurred';
+        this.successMessage = '';
+      }
+    );
+  }
+
+  openAddModal(): void {
+    this.unselectExercise();
+    console.log("add");
+    this.activeModal = 'add';
+  }
+
+  editExercise(): void {
+    if (!this.routineId || !this.selectedExercise) {
+      this.errorMessage = 'Please select an exercise before adding.';
+      return;
+    }
+
+    const exerciseId = this.selectedExercise.id;
+
+    console.log(`${this.routineId}/ ${exerciseId} / ${this.reps} / ${this.duration} / ${this.sets}`)
+
+
+    this.routinesService.editExerciseRoutine(parseInt(this.routineId), exerciseId, this.sets, this.duration, this.reps).subscribe(
+      (response: any) => {
+        this.closeModal();
+        window.location.reload();
+      },
+      (error: any) => {
+        this.errorMessage = error.error?.message || 'An error occurred';
+        this.successMessage = '';
+      }
+    );
+  }
+
+  openEditExerciseModal(exerciseId: number): void {
+    this.unselectExercise();
+    this.selectExercise(exerciseId);
+    this.activeModal = 'edit';
+  }
+
+  onOptionChange() {
+    if (this.selectedOption === 'duration') {
+      this.reps = 0;
+    } else if (this.selectedOption === 'reps') {
+      this.duration = 0;
+    }
   }
 
 }

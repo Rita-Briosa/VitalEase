@@ -41,11 +41,17 @@
         <strong>Muscle Group:</strong> <span class="muscleGroup"> {{ exercises[activeExerciseIndex]?.muscleGroup }}</span> <br />
         <strong>Equipment Necessary:</strong> <span class="equipment"> {{ exercises[activeExerciseIndex]?.equipmentNecessary }}</span> <br />
 
-        <strong *ngIf="exercises[activeExerciseIndex]?.reps !== 0">Reps:</strong>
-        <span *ngIf="exercises[activeExerciseIndex]?.reps !== 0" class="reps"> {{ exercises[activeExerciseIndex]?.reps }}</span> <br *ngIf="exercises[activeExerciseIndex]?.reps !== 0">
+        <strong *ngIf="shownRelation?.reps !== 0 && shownRelation?.reps !== null && shownRelation?.reps !== undefined">Reps:</strong>
+        <span *ngIf="shownRelation?.reps !== 0 && shownRelation?.reps !== null && shownRelation?.reps !== undefined" class="reps"> {{ shownRelation?.reps }}</span>
+        <br *ngIf="shownRelation?.reps !== 0 && shownRelation?.reps !== null && shownRelation?.reps !== undefined">
 
-        <strong *ngIf="exercises[activeExerciseIndex]?.duration !== 0">Duration:</strong>
-        <span *ngIf="exercises[activeExerciseIndex]?.duration !== 0" class="duration"> {{ exercises[activeExerciseIndex]?.duration }}</span> <br *ngIf="exercises[activeExerciseIndex]?.duration !== 0">
+        <strong *ngIf="shownRelation?.duration !== 0 && shownRelation?.duration !== null && shownRelation?.duration !== undefined">Duration:</strong>
+        <span *ngIf="shownRelation?.duration !== 0 && shownRelation?.duration !== null && shownRelation?.duration !== undefined" class="duration"> {{ shownRelation?.duration }}</span>
+        <br *ngIf="shownRelation?.duration !== 0 && shownRelation?.duration !== null && shownRelation?.duration !== undefined">
+
+        <strong *ngIf="shownRelation?.sets !== 0 && shownRelation?.sets !== null && shownRelation?.sets !== undefined">Sets:</strong>
+        <span *ngIf="shownRelation?.sets !== 0 && shownRelation?.sets !== null && shownRelation?.sets !== undefined" class="sets"> {{ shownRelation?.sets }}</span>
+        <br *ngIf="shownRelation?.sets !== 0 && shownRelation?.sets !== null && shownRelation?.sets !== undefined">
       </div>
 
       <!-- Exibição de mídia (imagem ou vídeo) -->

@@ -58,9 +58,7 @@
                     Type = e.Type,
                     DifficultyLevel = e.DifficultyLevel.ToString(),
                     MuscleGroup = e.MuscleGroup,
-                    EquipmentNecessary = e.EquipmentNecessary,
-                    Reps = e.Reps,
-                    Duration = e.Duration
+                    EquipmentNecessary = e.EquipmentNecessary
                 }).ToList();
 
                 return Ok(exerciseDtos);
@@ -90,7 +88,7 @@
             }
             catch
             {
-                return BadRequest(new {message = "Error deleting exercise from routine"});
+                return BadRequest(new { message = "Error deleting exercise from routine" });
             }
         }
 
@@ -124,8 +122,6 @@
                     DifficultyLevel = exercise.DifficultyLevel.ToString(),
                     MuscleGroup = exercise.MuscleGroup,
                     EquipmentNecessary = exercise.EquipmentNecessary,
-                    Reps = exercise.Reps,
-                    Duration = exercise.Duration
                 };
 
                 return Ok(exerciseDto);
@@ -208,46 +204,29 @@
                     foreach (var exerciseId in model.Exercises)
                     {
                         // Buscar exercício original
-                        var originalExercise = await _context.Exercises.FindAsync(exerciseId);
-                        if (originalExercise == null) continue;
+                        var exercise = await _context.Exercises.FindAsync(exerciseId);
+                        if (exercise == null) continue;
 
-                        // Criar novo exercício baseado no original
-                        var newExercise = new Exercise
+                        // Criar a relaçao
+                        var newExerciseInRoutine = new ExerciseRoutine
                         {
-                            Name = originalExercise.Name,
-                            Description = originalExercise.Description,
-                            Type = originalExercise.Type,
-                            DifficultyLevel = originalExercise.DifficultyLevel,
-                            MuscleGroup = originalExercise.MuscleGroup,
-                            EquipmentNecessary = originalExercise.EquipmentNecessary,
-                            Reps = 12,
-                            Duration = originalExercise.Duration
+                            ExerciseId = exerciseId,
+                            RoutineId = newRoutine.Id,
+                            Sets = 1,
+                            Reps = 0,
+                            Duration = 0,
                         };
 
-                        _context.Exercises.Add(newExercise);
+                        // Guarda a relaçao
+                        _context.ExerciseRoutines.Add(newExerciseInRoutine);
                         await _context.SaveChangesAsync(); // Salva para gerar o ID do novo exercício
 
-                        // Criar associação na tabela ExerciseRoutine
-                        exerciseRoutines.Add(new ExerciseRoutine
-                        {
-                            RoutineId = newRoutine.Id,
-                            ExerciseId = newExercise.Id // Usando o novo exercício criado
-                        });
-
-                        // Reutilizar os mesmos IDs de mídia já existentes
-                        var mediaList = await _context.ExerciseMedia.Where(m => m.ExerciseId == exerciseId).ToListAsync();
-                        foreach (var media in mediaList)
-                        {
-                            exerciseMediaLinks.Add(new ExerciseMedia
-                            {
-                                ExerciseId = newExercise.Id, // Associa ao novo exercício
-                                MediaId = media.MediaId      // Usa o mesmo mediaId do exercício original
-                            });
-                        }
+                        // Guarda a relaçao na lista de relaçoes do exercicio
+                        await AddExerciseIdToRoutine(exercise.Id, newExerciseInRoutine);
                     }
 
                     // Adicionar todas as associações de exercícios de uma vez
-                    _context.ExerciseRoutines.AddRange(exerciseRoutines);
+                    //_context.ExerciseRoutines.AddRange(exerciseRoutines);
                     _context.ExerciseMedia.AddRange(exerciseMediaLinks);
                     await _context.SaveChangesAsync();
                 }
@@ -280,7 +259,7 @@
                 {
                     Name = model.newName,
                     UserId = userId,
-                    User =  await _context.Users.FindAsync(userId),
+                    User = await _context.Users.FindAsync(userId),
                     Description = model.newDescription,
                     Type = model.newType,
                     Level = routineLevel,
@@ -312,7 +291,7 @@
 
                 if (routines.IsNullOrEmpty())
                 {
-                    return BadRequest( new { message = "Dont exist Routines"});
+                    return BadRequest(new { message = "Dont exist Routines" });
                 }
 
                 // Return the logs in JSON format
@@ -413,7 +392,7 @@
             {
                 var routine = await _context.Routines.FindAsync(routineId);
 
-                if(routine == null)
+                if (routine == null)
                 {
                     return NotFound("Routine not Found");
                 }
@@ -426,6 +405,69 @@
             catch
             {
                 return BadRequest(new { message = "Error deleting Training Routine" });
+            }
+        }
+
+        [HttpGet("api/getExerciseRoutine/{routineId}")]
+        public async Task<IActionResult> getExerciseRoutine(int routineId, int exerciseId)
+        {
+            try
+            {
+                var exerciseRoutines = await _context.ExerciseRoutines.Where(exr => exr.RoutineId == routineId && exr.ExerciseId == exerciseId).FirstOrDefaultAsync();
+                return Ok(exerciseRoutines);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error fetching routines", error = ex.Message });
+            }
+        }
+
+        [HttpPut]
+        private async Task<IActionResult> AddExerciseIdToRoutine(int exerciseId, ExerciseRoutine exerciseRoutine)
+        {
+            var exercise = await _context.Exercises.Where(e => e.Id == exerciseId).FirstOrDefaultAsync();
+
+            try
+            {
+                if (exercise == null)
+                {
+                    return NotFound("Exercise not found");
+                }
+
+                exercise.ExerciseRoutine.Add(exerciseRoutine);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error adding relation", error = ex.Message });
+            }
+        }
+
+        [HttpPut("api/editExerciseRoutine/{exerciseId}/{routineId}")]
+        public async Task<IActionResult> EditExerciseRoutine(int exerciseId, int routineId, [FromBody] EditExerciseRoutineViewModel model)
+        {
+            try
+            {
+                var exerciseRoutine = await _context.ExerciseRoutines.Where(exr => exr.ExerciseId == exerciseId && exr.RoutineId == routineId).FirstOrDefaultAsync();
+
+                if(exerciseRoutine == null)
+                {
+                    return NotFound();
+                }
+
+                exerciseRoutine.Sets = model.sets;
+                exerciseRoutine.Reps = model.reps;
+                exerciseRoutine.Duration = model.duration;
+
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest(new { message = "Error editing Exercise Routine" });
             }
         }
 
