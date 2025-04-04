@@ -285,7 +285,6 @@ export class EditCustomTrainingRoutineComponent {
   openEditExerciseModal(exerciseId: number): void {
     this.unselectExercise();
     this.selectExercise(exerciseId);
-    console.log("add");
     this.activeModal = 'edit';
   }
 
