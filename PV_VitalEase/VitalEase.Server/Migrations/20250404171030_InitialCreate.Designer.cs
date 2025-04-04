@@ -12,8 +12,8 @@ using VitalEase.Server.Data;
 namespace VitalEase.Server.Migrations
 {
     [DbContext(typeof(VitalEaseServerContext))]
-    [Migration("20250401095852_initialCreate")]
-    partial class initialCreate
+    [Migration("20250404171030_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,9 +67,6 @@ namespace VitalEase.Server.Migrations
                     b.Property<int>("DifficultyLevel")
                         .HasColumnType("int");
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
-
                     b.Property<string>("EquipmentNecessary")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -81,9 +78,6 @@ namespace VitalEase.Server.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Reps")
-                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -115,6 +109,15 @@ namespace VitalEase.Server.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("RoutineId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Reps")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Sets")
                         .HasColumnType("int");
 
                     b.HasKey("ExerciseId", "RoutineId");

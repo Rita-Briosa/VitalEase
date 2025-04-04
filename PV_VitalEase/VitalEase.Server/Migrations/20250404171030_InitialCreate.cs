@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VitalEase.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class initialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,9 +38,7 @@ namespace VitalEase.Server.Migrations
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DifficultyLevel = table.Column<int>(type: "int", nullable: false),
                     MuscleGroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EquipmentNecessary = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Reps = table.Column<int>(type: "int", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false)
+                    EquipmentNecessary = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -208,7 +206,10 @@ namespace VitalEase.Server.Migrations
                 columns: table => new
                 {
                     ExerciseId = table.Column<int>(type: "int", nullable: false),
-                    RoutineId = table.Column<int>(type: "int", nullable: false)
+                    RoutineId = table.Column<int>(type: "int", nullable: false),
+                    Reps = table.Column<int>(type: "int", nullable: true),
+                    Sets = table.Column<int>(type: "int", nullable: true),
+                    Duration = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
