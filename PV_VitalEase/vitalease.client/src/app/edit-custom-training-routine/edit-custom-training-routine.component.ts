@@ -19,7 +19,7 @@ export class EditCustomTrainingRoutineComponent {
 
   userInfo: any = null;
   isLoggedIn: boolean = false;
-
+  isAdmin: boolean = false;
   routineId: string | null = null;
   routineExercises: any[] = []; // Lista de exercícios
   warmUpExercises: any[] = [];
@@ -61,6 +61,11 @@ export class EditCustomTrainingRoutineComponent {
         (response: any) => {
           this.isLoggedIn = true;
           this.userInfo = response.user;
+          if (this.userInfo.type === 1) {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
         },
         (error) => {
           this.authService.logout();
@@ -86,6 +91,10 @@ export class EditCustomTrainingRoutineComponent {
         console.error('Error loading Exercises', error);
       }
     );
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
   getRoutineExercises(): void {
