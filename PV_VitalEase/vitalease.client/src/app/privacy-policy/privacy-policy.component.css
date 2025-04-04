@@ -86,7 +86,11 @@ body {
 }
 
 .container {
-  padding: 20px;
+  padding: 6%;
+}
+
+section {
+  margin-bottom: 20px;
 }
 
 .privacyPolicy {
@@ -94,7 +98,7 @@ body {
 }
 
 footer {
-  margin-top: 20px;
+  margin-top: -5%;
   font-size: 20px;
   color: #6C9C94;
   margin-left: 40%;
@@ -115,8 +119,14 @@ footer {
 
 @media (max-width: 480px) {
 
-  h2 {
+  h1 {
     font-size: 1.2rem;
+    margin-bottom: 50px;
+    margin-left: 5px;
+  }
+
+  h2 {
+    font-size: 0.9rem;
     margin-bottom: 50px;
     margin-left: 5px;
   }
