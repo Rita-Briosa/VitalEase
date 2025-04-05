@@ -147,12 +147,17 @@ body {
   margin-bottom: 2%;
 }
 
+.acceptance {
+  max-width: 100%;
+  font-size: 0.9rem;
+}
+
 footer p {
   margin-left: 5%;
 }
 
 /* Responsividade para telas menores */
-@media (max-width: 768px) {
+@media (max-width: 780px) {
 
   /* Seção do título */
   .title {
@@ -264,6 +269,10 @@ footer p {
       text-align: left;
       font-size: 0.6rem;
       padding-left: 20px;
+    }
+
+    .acceptance{
+        font-size:0.6rem;
     }
 
   .checkbox {
@@ -402,16 +411,17 @@ footer p {
       height: 8px; /* Altura desejada */
       margin-right: 5px; /* Espaço entre checkbox e o texto */
     }
+
+    .acceptance{
+        font-size: 0.5rem;
+    }
 }
 
 .password-strength-container {
   margin: 15px 0;
 }
 
-.acceptance{
-    max-width:100%;
-    font-size:0.9rem;
-}
+
 .strength-indicator {
   width: 100%;
   height: 10px;

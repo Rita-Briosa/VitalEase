@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +26,74 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "edit-custom-training-routine.component.html",
-              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.html",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.html",
-              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.html",
-              "RelativeToolTip": "vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.html",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAABoAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-04-05T15:29:02.084Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "traininig-routine-progress.component.css",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.css",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.css",
+              "ViewState": "AgIAAJEBAAAAAAAAAAAwwPgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-05T16:43:40.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "training-routine-exercise-details.component.css",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.css",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\training-routine-exercise-details\\training-routine-exercise-details.component.css",
+              "ViewState": "AgIAAIsBAAAAAAAAAAAwwEQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-05T16:43:16.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "training-routine-details.component.css",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.css",
+              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.css",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.css",
+              "RelativeToolTip": "vitalease.client\\src\\app\\training-routine-details\\training-routine-details.component.css",
+              "ViewState": "AgIAALoAAAAAAAAAAAAAAOYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-05T16:42:42.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "edit-custom-training-routine.component.css",
               "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css",
               "RelativeDocumentMoniker": "vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css",
               "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css",
               "RelativeToolTip": "vitalease.client\\src\\app\\edit-custom-training-routine\\edit-custom-training-routine.component.css",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAHQAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAOABAAAAAAAAAAAIwOEBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-04-05T15:28:59.3Z",
+              "WhenOpened": "2025-04-05T16:32:40.022Z",
               "EditorCaption": ""
             }
           ]
