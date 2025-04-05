@@ -245,13 +245,9 @@ footer {
     margin-left: 5%;
   }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   h2 {
-    font-size: 1rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
+    font-size: 0.7rem;
   }
 
   .infoText p {
@@ -259,7 +255,43 @@ footer {
   }
 }
 
+@media (max-width: 780px) {
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    margin-left: 5px;
+  }
+
+  .header img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    background-color: #fff;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+ 
+  footer {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #6C9C94;
+    margin-left: 40%;
+  }
+}
+
 @media (max-width: 550px) {
+
+  h1{
+      font-size:0.7rem;
+  }
 
   header h2 {
     font-size: 0.5rem;

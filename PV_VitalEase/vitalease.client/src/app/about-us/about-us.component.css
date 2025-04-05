@@ -143,9 +143,6 @@ footer {
   }
 
 @media (max-width: 768px) {
-  header h2 {
-    font-size: 1rem;
-  }
 
   .infoText h1 {
     font-size: 1.5rem;
@@ -158,6 +155,51 @@ footer {
   .devImg {
     width: 125px;
     height: 150px;
+  }
+}
+
+@media (max-width: 780px) {
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    margin-left: 5px;
+  }
+
+  .header img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .header span {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+  .header button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    background-color: #fff;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  footer {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #6C9C94;
+    margin-left: 40%;
   }
 }
 
