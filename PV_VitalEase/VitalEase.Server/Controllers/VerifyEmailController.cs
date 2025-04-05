@@ -9,17 +9,53 @@ using VitalEase.Server.ViewModel;
 
 namespace VitalEase.Server.Controllers
 {
+    /// <summary>
+    /// Controlador responsável pela verificação de email dos utilizadores.
+    /// </summary>
     public class VerifyEmailController : Controller
     {
+        /// <summary>
+        /// Contexto da base de dados VitalEaseServerContext, utilizado para aceder aos dados da aplicação.
+        /// </summary>
         private readonly VitalEaseServerContext _context;
+
+        /// <summary>
+        /// Interface de configuração, utilizada para aceder às definições da aplicação.
+        /// </summary>
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Inicializa uma nova instância do controlador <see cref="VerifyEmailController"/>.
+        /// </summary>
+        /// <param name="context">
+        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso aos dados.
+        /// </param>
+        /// <param name="configuration">
+        /// A interface de configuração (<see cref="IConfiguration"/>) para aceder às definições da aplicação.
+        /// </param>
         public VerifyEmailController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Valida o token de verificação de email e atualiza o estado do email do utilizador se o token for válido.
+        /// </summary>
+        /// <param name="model">
+        /// Um objeto <see cref="VerifyEmailViewModel"/> que contém o token de verificação de email enviado na query string.
+        /// </param>
+        /// <returns>
+        /// Um <see cref="IActionResult"/> que contém:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Um resultado <c>Ok</c> com uma mensagem de sucesso e o email verificado, se o token for válido e o email ainda não tiver sido verificado.
+        ///   </item>
+        ///   <item>
+        ///     Um resultado <c>BadRequest</c> se o token estiver expirado ou se o email já tiver sido verificado.
+        ///   </item>
+        /// </list>
+        /// </returns>
         [HttpGet("api/ValidateVerifyEmailToken")]
         public IActionResult ValidateVerifyEmailToken([FromQuery] VerifyEmailViewModel model)
         {
@@ -49,10 +85,15 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Valida o token JWT.
+        /// Valida o token JWT e extrai o email contido nos seus claims.
         /// </summary>
-        /// <param name="token">Token a ser validado.</param>
-        /// <returns>Uma tupla com: se é válido, email e userId.</returns>
+        /// <param name="token">
+        /// O token JWT a ser validado.
+        /// </param>
+        /// <returns>
+        /// Uma tupla com um booleano indicando se o token é válido e, em caso afirmativo, o email extraído dos claims.
+        /// Se o token for inválido ou expirado, retorna (false, "").
+        /// </returns>
         private (bool IsValid, string Email) ValidateToken(string token)
         {
             var key = Encoding.UTF8.GetBytes("Chave_secreta_pertencente_a_vital_easee_e_impenetravel");
