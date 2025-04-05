@@ -13,17 +13,45 @@ using VitalEase.Server.Models;
 
 namespace VitalEase.Server.Controllers
 {
+    /// <summary>
+    /// Controlador responsável pela gestão dos pedidos de recuperação de palavra-passe.
+    /// </summary>
     public class ForgotPasswordController : Controller
     {
+        /// <summary>
+        /// Contexto da base de dados VitalEaseServerContext, utilizado para aceder aos registos da aplicação.
+        /// </summary>
         private readonly VitalEaseServerContext _context;
+
+        /// <summary>
+        /// Interface de configuração utilizada para aceder às definições da aplicação.
+        /// </summary>
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Inicializa uma nova instância do controlador <see cref="ForgotPasswordController"/>.
+        /// </summary>
+        /// <param name="context">
+        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso aos dados.
+        /// </param>
+        /// <param name="configuration">
+        /// A interface de configuração (<see cref="IConfiguration"/>) para aceder às definições da aplicação.
+        /// </param>
         public ForgotPasswordController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Processa o pedido de recuperação de palavra-passe, enviando um email com instruções de redefinição.
+        /// </summary>
+        /// <param name="model">
+        /// O modelo que contém o email do utilizador que pretende recuperar a palavra-passe.
+        /// </param>
+        /// <returns>
+        /// Um <see cref="IActionResult"/> que indica o sucesso ou a falha do processo, com uma mensagem informativa.
+        /// </returns>
         [HttpPost("api/forgotPassword")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordViewModel model)
         {
@@ -54,6 +82,13 @@ namespace VitalEase.Server.Controllers
             return Ok(new { message = "Password reset instructions have been sent to your email." });
         }
 
+        /// <summary>
+        /// Verifica se o endereço de email fornecido é válido.
+        /// </summary>
+        /// <param name="email">O endereço de email a ser validado.</param>
+        /// <returns>
+        /// Retorna <c>true</c> se o email for válido; caso contrário, <c>false</c>.
+        /// </returns>
         private bool IsValidEmail(string email)
         {
             try
@@ -67,6 +102,14 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Envia um email com o link de redefinição de palavra-passe para o endereço especificado.
+        /// </summary>
+        /// <param name="toEmail">O endereço de email do destinatário.</param>
+        /// <param name="resetLink">O link para redefinir a palavra-passe.</param>
+        /// <returns>
+        /// Uma <see cref="Task{bool}"/> que resulta em <c>true</c> se o email for enviado com sucesso; caso contrário, <c>false</c>.
+        /// </returns>
         private async Task<bool> SendPasswordResetEmail(string toEmail, string resetLink)
         {
             try
@@ -116,6 +159,17 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Gera um token JWT para a redefinição de palavra-passe e regista o token gerado na base de dados.
+        /// </summary>
+        /// <param name="email">O endereço de email do utilizador para o qual o token será gerado.</param>
+        /// <param name="userId">O identificador do utilizador.</param>
+        /// <returns>
+        /// Uma string representando o token JWT gerado, que expira 30 minutos após a sua criação.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// É lançada se a chave JWT ("Jwt:Key") não estiver configurada corretamente na aplicação.
+        /// </exception>
         public string GenerateToken(string email, int userId)
         {
 
