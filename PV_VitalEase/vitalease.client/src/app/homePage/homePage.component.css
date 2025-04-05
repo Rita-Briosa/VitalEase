@@ -175,11 +175,12 @@ footer {
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
-    header h2 {
+  header h2 {
     font-size: 0.5rem;
   }
+
   .auth-buttons {
     justify-content: center;
   }
@@ -222,7 +223,7 @@ footer {
     margin-left: 40%;
   }
 
-  footer p {
-      align-content:center;
-  }
+    footer p {
+      align-content: center;
+    }
 }

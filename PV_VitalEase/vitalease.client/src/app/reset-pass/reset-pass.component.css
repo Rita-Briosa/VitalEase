@@ -214,7 +214,7 @@ footer {
     margin-left: 5%;
   }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
   footer {
     margin-top: 10px;

@@ -268,7 +268,7 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
   h1 {
     color: black;
@@ -321,7 +321,6 @@ footer {
 
   .exercise-navigation {
     flex-direction: column;
-
     gap: 10px;
   }
 
@@ -352,7 +351,6 @@ footer {
     color: #6C9C94;
     margin-left: 40%;
   }
-
 }
 
 
