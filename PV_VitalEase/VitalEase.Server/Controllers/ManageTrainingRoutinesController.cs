@@ -271,7 +271,7 @@
                 await _context.SaveChangesAsync(); // Salva para gerar o ID da rotina
 
 
-                return Ok(new { message = "Routine and exercises added successfully!" });
+                return Ok(new { message = "Routine and exercises added successfully!", routineId = $"{newRoutine.Id}" });
             }
             catch (Exception ex)
             {
