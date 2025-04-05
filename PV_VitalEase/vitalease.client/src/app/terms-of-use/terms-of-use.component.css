@@ -121,7 +121,7 @@ footer {
     margin-left: 5%;
   }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
   h1 {
     font-size: 1.2rem;

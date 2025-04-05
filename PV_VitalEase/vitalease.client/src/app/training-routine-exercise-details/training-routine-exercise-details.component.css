@@ -231,7 +231,7 @@ footer {
   }
 
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
   h2 {
     font-size: 1.2rem;
@@ -285,7 +285,7 @@ footer {
     font-size: 0.5rem;
   }
 
-   
+
   .media-container {
     display: flex;
     align-items: center;
@@ -328,5 +328,4 @@ footer {
     color: #6C9C94;
     margin-left: 40%;
   }
-
 }

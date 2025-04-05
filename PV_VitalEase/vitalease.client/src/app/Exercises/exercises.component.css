@@ -424,7 +424,7 @@ footer {
   }
 
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
   h2 {
     font-size: 1.2rem;
@@ -489,7 +489,7 @@ footer {
     height: 100px;
     border-radius: 10px;
     position: relative;
-    margin-left:30%;
+    margin-left: 30%;
   }
 
     .media-container img {
@@ -513,7 +513,7 @@ footer {
   }
 
   .previous {
-      left: -45px;
+    left: -45px;
   }
 
   .addExercise-button {

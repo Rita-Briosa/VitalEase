@@ -24,12 +24,12 @@
     </div>
   </div>
 
-  <h3 id="ExercisesTitle">
+  <h3 class="exercisesTitle" id="ExercisesTitle">
     <a routerLink="/manage-training-routines/custom-training-routines">◄</a>
     Exercises
   </h3>
 
-  <div class="row">
+  <div class="row1">
 
     <div class="exercises" *ngIf="routineExercises.length > 0">
 
@@ -114,10 +114,10 @@
         </div>
         <button class="media-navigation next" *ngIf="activeMediaIndex < media.length - 1" (click)="nextMedia()">&#8594;</button>
       </div>
-      <p>Description: {{ selectedExercise.description}}</p>
-      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.duration !== null && shownRelation.duration !== undefined && shownRelation.duration > 0">Duration: {{ shownRelation.duration }}</p>
-      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.reps !== null && shownRelation.reps !== undefined && shownRelation.reps > 0">Reps: {{ shownRelation.reps }}</p>
-      <p *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.sets !== null && shownRelation.sets !== undefined && shownRelation.sets > 0">Sets: {{ shownRelation.sets }}</p>
+      <p class="description" >Description: {{ selectedExercise.description}}</p>
+      <p class="duration" *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.duration !== null && shownRelation.duration !== undefined && shownRelation.duration > 0">Duration: {{ shownRelation.duration }}</p>
+      <p class="reps" *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.reps !== null && shownRelation.reps !== undefined && shownRelation.reps > 0">Reps: {{ shownRelation.reps }}</p>
+      <p class="sets" *ngIf="shownRelation !== null && shownRelation !== undefined && shownRelation.sets !== null && shownRelation.sets !== undefined && shownRelation.sets > 0">Sets: {{ shownRelation.sets }}</p>
     </div>
 
 

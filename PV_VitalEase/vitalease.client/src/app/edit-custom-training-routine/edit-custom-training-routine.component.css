@@ -85,9 +85,13 @@ body {
   text-decoration: none;
 }
 
+.exercisesTitle{
+    padding: 3%;
+}
 
 .add-exercise {
   text-align: center;
+  margin-top:5%;
 }
 
   .add-exercise #add img {
@@ -97,7 +101,7 @@ body {
 
 .exercises {
   float: left;
-  width: 50%;
+  width: 40%;
 }
 
 .exerciseView {
@@ -110,8 +114,12 @@ body {
   border-radius: 8px;
 }
 
+.row1 {
+    padding-left: 5%;
+}
+
 /* Clear floats after the columns */
-.row:after {
+.row1:after {
   content: "";
   display: table;
   clear: both;
@@ -150,8 +158,13 @@ button {
     font-size: 25px;
 }
 
-.media-container button{
-    font-size: 55px;
+
+.next {
+  font-size: 55px;
+}
+
+.prev {
+  font-size: 55px;
 }
 
 button:focus {
@@ -176,8 +189,16 @@ button:hover {
     color: orange;
 }
 
+.main-exercises {
+  margin-top: 10%;
+}
+
 .main-exercises h3{
     color: darkred;
+}
+
+.cool-down {
+  margin-top: 10%;
 }
 
 .cool-down h3{
@@ -376,12 +397,109 @@ footer {
     margin-left: 5%;
   }
 
-@media (max-width: 480px) {
+@media (max-width: 780px) {
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    margin-left: 5px;
+  }
+
+  .header img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .header span {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
+  .header button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    background-color: #fff;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .media-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    position: relative;
+    margin-left: 30%;
+  }
+
+    .media-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+  .next {
+    right: -17px;
+  }
+
+  .prev {
+    left: -17px;
+  }
+
+  .media-navigation {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+
+  .media-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .media-container img,
+  .media-container iframe {
+    width: 175px; /* Ensures it does not exceed the container */
+    height: 90px;
+  }
+
+  footer {
+    margin-top: 10px;
+    font-size: 0.6rem;
+    color: #6C9C94;
+    margin-left: 40%;
+  }
+}
+
+@media (max-width: 550px) {
 
   h1 {
     font-size: 1.2rem;
     margin-bottom: 50px;
     margin-left: 5px;
+  }
+
+  h3{
+    font-size:0.7rem;
   }
 
   .header img {
@@ -394,6 +512,15 @@ footer {
     font-weight: bold;
   }
 
+  .header a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.5rem;
+    font-weight: bold;
+    font-family: Inter;
+    transition: background-color 0.3s;
+  }
+
   .header button {
     padding: 10px 15px;
     border: none;
@@ -404,16 +531,71 @@ footer {
     transition: background-color 0.3s;
   }
 
-
-  .header a {
-    text-decoration: none;
-    color: black;
-    font-size: 0.5rem;
-    font-weight: bold;
-    font-family: Inter;
-    transition: background-color 0.3s;
+  .media-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    width: 110px;
+    height: 110px;
+    border-radius: 10px;
+    position: relative;
+    margin-top:5%;
+    margin-bottom: 2%;
   }
 
+    .media-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+
+  .media-navigation {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .next {
+    right: -25px;
+  }
+
+  .prev {
+    left: -25px;
+  }
+
+  .media-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .media-container img,
+  .media-container iframe {
+    width: 100px; /* Ensures it does not exceed the container */
+    height: 100px;
+  }
+
+  .warm-up {
+    font-size: 0.9rem;
+  }
+
+  .main-exercises {
+    font-size: 0.9rem;
+  }
+
+  .cool-down {
+    font-size: 0.9rem;
+  }
+
+  .description, .reps, .duration, .sets {
+      margin-top:1%;
+      font-size: 0.7rem;
+  }
 
   footer {
     margin-top: 10px;

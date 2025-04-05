@@ -259,7 +259,7 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
   header h2 {
     font-size: 0.5rem;
@@ -278,9 +278,9 @@ footer {
     padding: 10px 15px;
     border: none;
     border-radius: 10px;
-    background-color: #e0e0e0; 
-    color: #333; 
-    font-size: 0.4rem; 
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 0.4rem;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;

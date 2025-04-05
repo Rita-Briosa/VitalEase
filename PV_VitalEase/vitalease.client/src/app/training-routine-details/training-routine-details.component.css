@@ -194,7 +194,7 @@ footer {
   }
 
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
 
   h1 {
     font-size: 1.2rem;
@@ -258,5 +258,4 @@ footer {
     color: #6C9C94;
     margin-left: 40%;
   }
-
 }
