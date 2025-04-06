@@ -15,17 +15,68 @@ using Org.BouncyCastle.Crypto.Generators;
 
 namespace VitalEase.Server.Controllers
 {
+    /// <summary>
+    /// Controller responsible for handling password reset operations.
+    /// </summary>
     public class ResetPasswordController : Controller
     {
+        /// <summary>
+        /// Gets the database context used to interact with the application's data.
+        /// </summary>
         private readonly VitalEaseServerContext _context;
+
+        /// <summary>
+        /// Gets the application configuration that provides access to settings such as JWT secrets, email settings, etc.
+        /// </summary>
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResetPasswordController"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The database context (<see cref="VitalEaseServerContext"/>) used for accessing and managing application data.
+        /// </param>
+        /// <param name="configuration">
+        /// The configuration interface (<see cref="IConfiguration"/>) used to retrieve application settings.
+        /// </param>
         public ResetPasswordController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Processa o pedido de redefinição de palavra-passe de um utilizador.
+        /// </summary>
+        /// <param name="model">
+        /// Um objeto do tipo <see cref="ResetPasswordViewModel"/> que contém o token de redefinição e a nova palavra-passe.
+        /// </param>
+        /// <returns>
+        /// Um <see cref="IActionResult"/> que indica o resultado da operação de redefinição de palavra-passe. 
+        /// Poderá retornar:
+        /// <list type="bullet">
+        ///   <item><c>Ok</c> – se a palavra-passe for redefinida com sucesso;</item>
+        ///   <item><c>BadRequest</c> – se os parâmetros forem inválidos, se o token for inválido ou expirado, se a nova palavra-passe for fraca ou igual à antiga;</item>
+        ///   <item><c>NotFound</c> – se o utilizador não for encontrado;</item>
+        ///   <item><c>StatusCode(500)</c> – em caso de erro ao atualizar a base de dados.</item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// Este método executa as seguintes operações:
+        /// <list type="bullet">
+        ///   <item>Verifica se o modelo e os parâmetros obrigatórios (token e nova palavra-passe) foram fornecidos; caso contrário, regista a acção e retorna um BadRequest.</item>
+        ///   <item>Valida o token utilizando o método <c>ValidateToken</c>, que retorna a validade do token, o email do utilizador, o userId e o tokenId.</item>
+        ///   <item>Se o token não for válido, regista a acção e retorna um BadRequest com a mensagem "Invalid or expired token."</item>
+        ///   <item>Procura o utilizador na base de dados com base no email extraído do token. Se o utilizador não for encontrado, retorna um NotFound.</item>
+        ///   <item>Verifica se a nova palavra-passe cumpre os critérios de complexidade através do método <c>IsPasswordValid</c>.</item>
+        ///   <item>Gera o hash da nova palavra-passe e assegura que este difere do hash da palavra-passe atual; se forem iguais, regista a acção e retorna um BadRequest.</item>
+        ///   <item>Atualiza a palavra-passe do utilizador, regista a data de alteração da palavra-passe e invalida o token de sessão atual.</item>
+        ///   <item>Marca o token de redefinição como utilizado, se o tokenId for válido.</item>
+        ///   <item>Envia uma notificação de alerta de redefinição de palavra-passe para o email do utilizador.</item>
+        ///   <item>Tenta guardar as alterações na base de dados; se a operação for bem-sucedida, regista a acção com sucesso e retorna um Ok com uma mensagem de sucesso.
+        ///       Em caso de erro, regista a acção como falhada e retorna um StatusCode(500) com os detalhes do erro.</item>
+        /// </list>
+        /// </remarks>
         [HttpPost("api/resetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordViewModel model)
         {
@@ -97,7 +148,6 @@ namespace VitalEase.Server.Controllers
                 return StatusCode(500, new { message = "An error occurred while updating the password.", details = ex.Message });
             }
         }
-
 
         /// <summary>
         /// Valida o token JWT.
@@ -212,6 +262,17 @@ namespace VitalEase.Server.Controllers
             return true;
         }
 
+        /// <summary>
+        /// Generates a SHA256 hash for the specified password.
+        /// </summary>
+        /// <param name="password">The plain text password to hash.</param>
+        /// <returns>
+        /// A hexadecimal string representation of the SHA256 hash of the provided password.
+        /// </returns>
+        /// <remarks>
+        /// This method converts the input password into a UTF8-encoded byte array, computes its SHA256 hash,
+        /// and then iterates through the resulting byte array to build a lowercase hexadecimal string representation.
+        /// </remarks>
         private string HashPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -229,6 +290,19 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Regista uma ação de auditoria no banco de dados.
+        /// </summary>
+        /// <param name="action">A ação que foi realizada.</param>
+        /// <param name="status">O estado ou resultado da ação.</param>
+        /// <param name="UserId">O identificador do utilizador associado à ação.</param>
+        /// <returns>
+        /// Uma <see cref="Task"/> que representa a operação assíncrona de registo da ação.
+        /// </returns>
+        /// <remarks>
+        /// Este método cria um novo registo de auditoria com a data e hora atuais, a ação, o status e o identificador do utilizador.
+        /// O registo é adicionado ao contexto da base de dados e as alterações são salvas de forma assíncrona.
+        /// </remarks>
         private async Task LogAction(string action, string status, int UserId)
         {
             var log = new AuditLog
@@ -244,6 +318,28 @@ namespace VitalEase.Server.Controllers
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Validates the access token provided in the query string.
+        /// </summary>
+        /// <param name="model">
+        /// A <see cref="ResetPasswordViewModel"/> containing the token to be validated.
+        /// </param>
+        /// <returns>
+        /// An <see cref="IActionResult"/> that returns:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <c>Ok</c> with a message, the associated email, and the user ID if the token is valid.
+        ///   </item>
+        ///   <item>
+        ///     <c>BadRequest</c> with an appropriate error message if the token is expired or invalid.
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// This method retrieves the token from the provided model and validates it using the <c>ValidateToken</c> method.
+        /// If the token is not valid (expired or otherwise), a <c>BadRequest</c> response is returned.
+        /// If the token is valid, the method returns an <c>Ok</c> response with a success message along with the user's email and ID.
+        /// </remarks>
         [HttpGet("api/validateTokenAtAccess")]
         public IActionResult ValidateTokenAtAccess([FromQuery] ResetPasswordViewModel model)
         {
@@ -262,6 +358,34 @@ namespace VitalEase.Server.Controllers
             return Ok(new { message = "Token is valid.", email, userId });
         }
 
+        /// <summary>
+        /// Envia um email de aviso de confirmação de redefinição de palavra-passe para o endereço especificado.
+        /// </summary>
+        /// <param name="toEmail">O endereço de email do destinatário.</param>
+        /// <returns>
+        /// Uma <see cref="Task{Boolean}"/> que indica se o email foi enviado com sucesso (true) ou não (false).
+        /// </returns>
+        /// <remarks>
+        /// Este método realiza as seguintes operações:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Obtém as configurações de email da aplicação, tais como o remetente, o servidor SMTP, a porta, e as credenciais.
+        ///   </item>
+        ///   <item>
+        ///     Verifica se o email do remetente está corretamente configurado e se a porta SMTP é um número válido.
+        ///   </item>
+        ///   <item>
+        ///     Cria uma mensagem de email HTML com o assunto "Password Reset Confirmation" e um corpo de email que informa o utilizador
+        ///     que a sua palavra-passe foi atualizada com sucesso, incluindo instruções para contactar o suporte se a alteração não for reconhecida.
+        ///   </item>
+        ///   <item>
+        ///     Envia o email de forma assíncrona utilizando um <see cref="SmtpClient"/> configurado para utilizar SSL para maior segurança.
+        ///   </item>
+        ///   <item>
+        ///     Se ocorrer um erro durante o envio, o erro é registado na consola e o método retorna false.
+        ///   </item>
+        /// </list>
+        /// </remarks>
         private async Task<bool> SendPasswordResetEmailWarning(string toEmail)
         {
             try
@@ -321,6 +445,19 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Determines whether the specified email address is valid.
+        /// </summary>
+        /// <param name="email">The email address to validate.</param>
+        /// <returns>
+        /// <c>true</c> if the email address is valid; otherwise, <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// This method attempts to create a new instance of the <see cref="System.Net.Mail.MailAddress"/> class
+        /// using the provided email address. If the instance is created successfully and the generated address
+        /// matches the input, the email is considered valid. If an exception occurs during this process, the method
+        /// returns <c>false</c>.
+        /// </remarks>
         private bool IsValidEmail(string email)
         {
             try
