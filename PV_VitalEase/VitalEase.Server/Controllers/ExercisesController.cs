@@ -16,20 +16,20 @@
     using static System.Runtime.InteropServices.JavaScript.JSType;
 
     /// <summary>
-    /// Controlador responsável pela gestão dos exercícios.
+    /// Controller responsible for managing exercises.
     /// </summary>
     public class ExercisesController : Controller
         {
         /// <summary>
-        /// Contexto da base de dados, utilizado para aceder aos dados da aplicação.
+        /// Database context, used to access the application data.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Inicializa uma nova instância do controlador <see cref="ExercisesController"/>.
+        /// Initializes a new instance of the controller. <see cref="ExercisesController"/>.
         /// </summary>
         /// <param name="context">
-        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso aos dados.
+        /// The database context (<see cref="VitalEaseServerContext"/>) that enables data access operations.
         /// </param>
         public ExercisesController(VitalEaseServerContext context)
             {
@@ -37,31 +37,39 @@
         }
 
         /// <summary>
-        /// Obtém todos os exercícios registados na base de dados e retorna-os num formato JSON.
+        /// Retrieves all exercises from the database and returns a list of exercise data transfer objects.
         /// </summary>
-        /// <remarks>
-        /// Este método realiza as seguintes operações:
-        /// <list type="bullet">
-        ///   <item>Recolhe todos os exercícios da base de dados utilizando o método assíncrono <c>ToListAsync()</c>.</item>
-        ///   <item>Verifica se a lista de exercícios está vazia e, se estiver, retorna um <c>BadRequest</c> com uma lista vazia.</item>
-        ///   <item>Mapeia cada exercício para um objeto anónimo (DTO) que contém as seguintes propriedades:
-        ///     <list type="bullet">
-        ///       <item><c>Id</c></item>
-        ///       <item><c>Name</c></item>
-        ///       <item><c>Description</c></item>
-        ///       <item><c>Type</c></item>
-        ///       <item><c>DifficultyLevel</c> (convertido para string)</item>
-        ///       <item><c>MuscleGroup</c></item>
-        ///       <item><c>EquipmentNecessary</c></item>
-        ///     </list>
-        ///   </item>
-        ///   <item>Retorna os exercícios mapeados num formato JSON.</item>
-        /// </list>
-        /// Em caso de erro, o método captura a exceção e retorna um <c>BadRequest</c> com uma mensagem de erro.
-        /// </remarks>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém a lista de exercícios em formato JSON ou uma mensagem de erro em caso de falha.
+        /// An <see cref="IActionResult"/> containing:
+        /// <list type="bullet">
+        ///   <item>
+        ///     an HTTP 200 (OK) response with a JSON array of exercise DTOs if exercises are found,
+        ///   </item>
+        ///   <item>
+        ///     an HTTP 400 (Bad Request) response with an empty list if no exercises are found,
+        ///     or with an error message if an exception occurs.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// This method performs the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Retrieves all exercise records from the database using <c>ToListAsync</c>.
+        ///   </item>
+        ///   <item>
+        ///     If no exercises are found (i.e., the retrieved list is empty), it returns a Bad Request with an empty list.
+        ///   </item>
+        ///   <item>
+        ///     Maps each exercise to an anonymous data transfer object (DTO) that includes properties such as Id, Name,
+        ///     Description, Type, DifficultyLevel (converted to a string), MuscleGroup, and EquipmentNecessary.
+        ///   </item>
+        ///   <item>
+        ///     Returns the list of DTOs in a JSON response.
+        ///   </item>
+        /// </list>
+        /// If an exception occurs during the process, the method catches it and returns a Bad Request with an appropriate error message.
+        /// </remarks>
         [HttpGet("api/getExercises")]
         public async Task<IActionResult> GetExercises()
             {
@@ -100,36 +108,39 @@
             }
 
         /// <summary>
-        /// Obtém a lista de mídia associada a um exercício específico.
+        /// Retrieves the media associated with a specific exercise.
         /// </summary>
         /// <param name="exerciseId">
-        /// O identificador do exercício para o qual se pretende obter a mídia.
+        /// The identifier of the exercise for which to fetch the associated media.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém:
+        /// An <see cref="IActionResult"/> that contains:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com a lista de mídia, se forem encontrados registos correspondentes.
+        ///     a 200 OK response with the list of media details in JSON format if media is found,
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>NotFound</c> se não for encontrada nenhuma mídia associada ao exercício.
+        ///     a 404 Not Found response with a message if no media is associated with the exercise,
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> com uma mensagem de erro, caso ocorra alguma exceção durante o processamento.
+        ///     a 400 Bad Request response with error details if an exception occurs during processing.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// This method performs the following steps:
         /// <list type="bullet">
         ///   <item>
-        ///     Procura na tabela <c>ExerciseMedia</c> os registos que associam a mídia ao exercício, recolhendo os respetivos IDs.
+        ///     It retrieves the media IDs linked to the given exercise from the <c>ExerciseMedia</c> table.
         ///   </item>
         ///   <item>
-        ///     Utiliza os IDs recolhidos para buscar os detalhes completos da mídia na tabela <c>Media</c>.
+        ///     It then queries the <c>Media</c> table using these IDs to obtain the full media details.
         ///   </item>
         ///   <item>
-        ///     Se não for encontrada nenhuma mídia, retorna um resultado <c>NotFound</c> com uma mensagem informativa.
+        ///     If the retrieved media list is empty, it returns a NotFound response with an appropriate message.
+        ///   </item>
+        ///   <item>
+        ///     If an exception occurs during the process, it catches the exception and returns a BadRequest response containing the error details.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -163,24 +174,54 @@
         }
 
         /// <summary>
-        /// Obtém uma lista de exercícios filtrados com base nos parâmetros facultativos fornecidos.
+        /// Retrieves a list of exercises from the database based on the provided optional filters.
         /// </summary>
         /// <param name="type">
-        /// Opcional. O tipo de exercício a filtrar. Se fornecido, serão retornados apenas os exercícios cujo campo <c>Type</c> corresponda ao valor fornecido.
+        /// An optional parameter specifying the type of exercise to filter by. 
+        /// Only exercises with a matching type will be included.
         /// </param>
         /// <param name="difficultyLevel">
-        /// Opcional. O nível de dificuldade a filtrar. É convertido para string e comparado com o valor fornecido.
+        /// An optional parameter specifying the difficulty level (as a string) to filter by. 
+        /// Only exercises whose difficulty level (converted to a string) matches this value will be included.
         /// </param>
         /// <param name="muscleGroup">
-        /// Opcional. O grupo muscular a filtrar. São retornados os exercícios cujo campo <c>MuscleGroup</c> contenha este valor.
+        /// An optional parameter specifying a muscle group. 
+        /// Only exercises that target a muscle group containing this string will be included.
         /// </param>
         /// <param name="equipmentNeeded">
-        /// Opcional. O equipamento necessário a filtrar. São retornados os exercícios cujo campo <c>EquipmentNecessary</c> contenha este valor.
+        /// An optional parameter specifying the required equipment. 
+        /// Only exercises whose required equipment contains this string will be included.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> contendo, em caso de sucesso, uma lista de exercícios filtrados em formato JSON.
-        /// Caso ocorra algum erro, retorna um <c>BadRequest</c> com uma mensagem de erro e os detalhes da exceção.
+        /// An <see cref="IActionResult"/> that returns:
+        /// <list type="bullet">
+        ///   <item>
+        ///     A 200 OK response with the filtered list of exercises in JSON format if the operation succeeds.
+        ///   </item>
+        ///   <item>
+        ///     A 400 Bad Request response with an error message if an exception occurs during processing.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// The method builds a query on the <c>Exercises</c> table using the provided filters:
+        /// <list type="bullet">
+        ///   <item>
+        ///     If a <c>type</c> is provided, the query includes only exercises with that type.
+        ///   </item>
+        ///   <item>
+        ///     If a <c>difficultyLevel</c> is provided, the query filters exercises by comparing the string representation of their difficulty level.
+        ///   </item>
+        ///   <item>
+        ///     If a <c>muscleGroup</c> is provided, the query includes exercises whose muscle group contains the specified substring.
+        ///   </item>
+        ///   <item>
+        ///     If an <c>equipmentNeeded</c> value is provided, the query includes exercises whose equipment requirements contain the specified substring.
+        ///   </item>
+        /// </list>
+        /// The query result is then projected into an anonymous object (acting as a data transfer object) that includes the exercise's basic properties.
+        /// Finally, the method returns the filtered list in JSON format.
+        /// </remarks>
         [HttpGet("api/getFilteredExercises")]
         public async Task<IActionResult> GetFilteredExercises(string? type, string? difficultyLevel, string? muscleGroup, string? equipmentNeeded)
         {
@@ -232,32 +273,24 @@
         }
 
         /// <summary>
-        /// Obtém as rotinas personalizadas associadas a um determinado utilizador.
+        /// Retrieves the custom training routines associated with a specific user.
         /// </summary>
-        /// <param name="userId">
-        /// O identificador do utilizador para o qual se pretende obter as rotinas personalizadas.
-        /// </param>
+        /// <param name="userId">The identifier of the user whose custom routines are to be retrieved.</param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém:
-        /// - Um objecto JSON com as rotinas, se forem encontradas;
-        /// - Um BadRequest com uma mensagem de erro se não existirem rotinas personalizadas ou se ocorrer um erro.
-        /// </returns>
-        /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// An <see cref="IActionResult"/> that returns:
         /// <list type="bullet">
         ///   <item>
-        ///     Procura na base de dados as rotinas (Routines) associadas ao utilizador cujo campo <c>IsCustom</c> é verdadeiro.
+        ///     a 200 OK response with a JSON array of custom routines if they are found,
         ///   </item>
         ///   <item>
-        ///     Se a lista de rotinas estiver vazia, retorna um BadRequest com a mensagem "Dont exist Custom Routines".
-        ///   </item>
-        ///   <item>
-        ///     Caso contrário, retorna as rotinas encontradas em formato JSON.
-        ///   </item>
-        ///   <item>
-        ///     Em caso de exceção, retorna um BadRequest com a mensagem de erro e os detalhes da exceção.
+        ///     a 400 Bad Request response with a message if no custom routines exist or if an error occurs.
         ///   </item>
         /// </list>
+        /// </returns>
+        /// <remarks>
+        /// This method queries the <c>Routines</c> table for routines that are marked as custom (<c>IsCustom == true</c>) and belong to the specified user (<c>UserId == userId</c>).
+        /// If the resulting list is empty, it returns a Bad Request with a message indicating that custom routines do not exist.
+        /// In case an exception occurs during the operation, the exception is caught and a Bad Request with an error message is returned.
         /// </remarks>
         [HttpGet("api/getRoutinesOnExercises/{userId}")]
         public async Task<IActionResult> GetRoutinesOnExercises(int userId)
@@ -285,18 +318,52 @@
         }
 
         /// <summary>
-        /// Adiciona um exercício a uma rotina especificada.
+        /// Adds an exercise to a specified routine based on the data provided in the view model.
         /// </summary>
         /// <param name="model">
-        /// O modelo que contém os dados necessários para adicionar o exercício à rotina, incluindo os identificadores do exercício e da rotina, 
-        /// bem como os parâmetros de duração, repetições e sets.
+        /// A <see cref="AddRoutineFromExercisesViewModel"/> containing the identifiers for the exercise and the routine,
+        /// along with the exercise parameters such as duration, repetitions, and sets.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que representa a resposta da operação:
-        /// - <c>Ok</c> se o exercício for adicionado com sucesso à rotina.
-        /// - <c>BadRequest</c> se os dados enviados forem inválidos ou se ocorrer um erro durante a operação.
-        /// - <c>NotFound</c> se o exercício ou a rotina especificada não for encontrada.
+        /// An <see cref="IActionResult"/> that returns:
+        /// <list type="bullet">
+        ///   <item>
+        ///     an HTTP 200 (OK) response with a success message if the exercise is successfully added to the routine,
+        ///   </item>
+        ///   <item>
+        ///     an HTTP 404 (Not Found) response if either the exercise or the routine is not found,
+        ///   </item>
+        ///   <item>
+        ///     an HTTP 400 (Bad Request) response with error details if the input data is invalid or if an exception occurs during processing.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// This method performs the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Validates the input model; if invalid, it returns a Bad Request response with the error messages.
+        ///   </item>
+        ///   <item>
+        ///     Retrieves the exercise from the database using the provided <c>ExerciseId</c>.
+        ///   </item>
+        ///   <item>
+        ///     Retrieves the routine from the database using the provided <c>RoutineId</c>.
+        ///   </item>
+        ///   <item>
+        ///     If either the exercise or the routine is not found, it returns a Not Found response with an appropriate message.
+        ///   </item>
+        ///   <item>
+        ///     Creates a new <see cref="ExerciseRoutine"/> association that links the exercise to the routine, including details such as duration, repetitions, and sets.
+        ///   </item>
+        ///   <item>
+        ///     Adds the association to the database and saves the changes asynchronously.
+        ///   </item>
+        ///   <item>
+        ///     Returns an OK response with a success message upon successful completion.
+        ///   </item>
+        /// </list>
+        /// </remarks>
         [HttpPost("api/addRoutine")]
         public async Task<IActionResult> AddToRoutine([FromBody] AddRoutineFromExercisesViewModel model)
         {
@@ -344,45 +411,42 @@
         }
 
         /// <summary>
-        /// Adiciona um novo exercício à base de dados, juntamente com as mídias associadas.
+        /// Adds a new exercise along with its associated media to the database.
         /// </summary>
         /// <param name="model">
-        /// O modelo que contém os detalhes do exercício a ser adicionado, tais como nome, descrição, tipo, nível de dificuldade,
-        /// grupo muscular, equipamento necessário, e informações sobre as mídias (nomes, URLs e tipos) associadas ao exercício.
+        /// An instance of <see cref="AddExercisesViewModel"/> containing the details for the new exercise, including:
+        /// - Basic exercise information such as name, description, type, difficulty level, muscle group, and necessary equipment.
+        /// - Media details, which include one or more media items (name, URL, and type) to be associated with the exercise.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica se o exercício foi adicionado com sucesso ou se ocorreu algum erro.
+        /// An <see cref="IActionResult"/> that returns:
+        ///   - A 200 OK response with a success message if the exercise and its media are added successfully.
+        ///   - A 400 Bad Request response with an error message if the provided data is invalid or if an exception occurs during processing.
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// The method performs the following steps:
         /// <list type="bullet">
         ///   <item>
-        ///     Valida o modelo recebido. Se o modelo for inválido, retorna um BadRequest com a mensagem "Invalid data".
+        ///     It validates the incoming model. If the model is invalid, it returns a Bad Request response with an appropriate message.
         ///   </item>
         ///   <item>
-        ///     Converte a string referente ao nível de dificuldade para o enum <see cref="RoutineLevel"/>. Caso a conversão falhe,
-        ///     retorna um BadRequest com a mensagem "Invalid difficulty level".
+        ///     It attempts to parse the provided difficulty level into the <see cref="RoutineLevel"/> enum. If parsing fails, a Bad Request is returned.
         ///   </item>
         ///   <item>
-        ///     Cria um novo objeto <see cref="Exercise"/> com os dados do modelo e o adiciona à base de dados, guardando as alterações.
+        ///     A new <see cref="Exercise"/> instance is created using the basic exercise information from the model, then added to the database.
         ///   </item>
         ///   <item>
-        ///     Cria uma lista de objetos <see cref="Media"/> com base nos dados de mídia fornecidos no modelo. Adiciona duas mídias obrigatórias
-        ///     e, opcionalmente, uma terceira, se as informações estiverem presentes.
+        ///     The method constructs a list of <see cref="Media"/> objects based on the media details provided in the model. 
+        ///     At least two media items are added, and an optional third is included if its details are provided.
         ///   </item>
         ///   <item>
-        ///     Adiciona os objetos de mídia à base de dados e guarda as alterações.
+        ///     These media objects are then added to the database and saved.
         ///   </item>
         ///   <item>
-        ///     Associa as mídias criadas ao exercício, criando objetos <see cref="ExerciseMedia"/> que estabelecem a relação entre o exercício
-        ///     e cada mídia, e guarda as alterações na base de dados.
+        ///     If media items exist, the method creates associations between the newly created exercise and each media item using the <see cref="ExerciseMedia"/> relationship.
         ///   </item>
         ///   <item>
-        ///     Retorna um Ok com uma mensagem de sucesso se todas as operações forem concluídas sem erros.
-        ///   </item>
-        ///   <item>
-        ///     Caso ocorra alguma exceção, o método captura o erro e retorna um BadRequest com a mensagem "Error adding exercise"
-        ///     e os detalhes da exceção.
+        ///     After all operations are completed, a success message is returned; otherwise, any exceptions are caught and a Bad Request response is generated with the error details.
         ///   </item>
         /// </list>
         /// </remarks>

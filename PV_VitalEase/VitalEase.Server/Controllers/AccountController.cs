@@ -16,25 +16,25 @@ namespace VitalEase.Server.Controllers
 {
 
     /// <summary>
-    /// Controlador responsável pelas operações relacionadas com as contas de utilizador.
+    /// Controller responsible for operations related to user accounts.
     /// </summary>
     public class AccountController : Controller
     {
         /// <summary>
-        /// Contexto da base de dados VitalEaseServerContext, utilizado para operações de acesso à base de dados.
+        /// Database context VitalEaseServerContext, used for database access operations.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Interface de configuração, utilizada para aceder às definições da aplicação.
+        /// Configuration interface, used to access the application settings.
         /// </summary>
         private readonly IConfiguration _configuration;
 
         /// <summary>
-        /// Inicializa uma nova instância do <see cref="AccountController"/>.
+        /// Initializes a new instance of <see cref="AccountController"/>.
         /// </summary>
-        /// <param name="context">O contexto da base de dados <see cref="VitalEaseServerContext"/>.</param>
-        /// <param name="configuration">A interface de configuração <see cref="IConfiguration"/> da aplicação.</param>
+        /// <param name="context">The database context <see cref="VitalEaseServerContext"/>.</param>
+        /// <param name="configuration">The configuration interface <see cref="IConfiguration"/> da aplicação.</param>
         public AccountController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;
@@ -42,15 +42,55 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Processa o pedido de login do utilizador.
+        /// Processes a login request by validating the user credentials, checking account status, and generating a JWT token for a successful login.
         /// </summary>
-        /// <param name="model">Modelo de dados de login contendo as credenciais do utilizador e a opção "Remember Me".</param>
+        /// <param name="model">
+        /// A <see cref="LoginViewModel"/> containing the user's email, password, and a flag indicating whether to remember the session.
+        /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que pode ser:
-        /// - <c>BadRequest</c> se os dados forem inválidos ou se o email não estiver verificado;
-        /// - <c>Unauthorized</c> se o email ou a password estiverem incorretos ou se a conta estiver bloqueada;
-        /// - <c>Ok</c> com os dados do utilizador e o token JWT, se o login for bem-sucedido.
+        /// An <see cref="IActionResult"/> that contains:
+        /// <list type="bullet">
+        ///   <item>
+        ///     An HTTP 200 OK response with a success message, the generated JWT token, and basic user information if the login is successful.
+        ///   </item>
+        ///   <item>
+        ///     An HTTP 400 Bad Request response if the input data is invalid or if the user does not meet certain conditions (e.g., email not verified).
+        ///   </item>
+        ///   <item>
+        ///     An HTTP 401 Unauthorized response if the email or password is incorrect or if the account is blocked due to multiple failed attempts.
+        ///   </item>
+        ///   <item>
+        ///     An HTTP 500 Internal Server Error if there is an issue sending necessary email notifications.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// The login process involves the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Validates the incoming model; if invalid, logs the attempt and returns a Bad Request.
+        ///   </item>
+        ///   <item>
+        ///     Searches for the user in the database by email; if not found, returns Unauthorized with a message indicating an incorrect email.
+        ///   </item>
+        ///   <item>
+        ///     Checks if the user's email has been verified; if not, logs the attempt and returns a Bad Request asking for email verification.
+        ///   </item>
+        ///   <item>
+        ///     Retrieves the user's login attempts from the audit logs and checks if the last five attempts have failed due to an incorrect password within the last 15 minutes.
+        ///     If so, it sends a blocked account notification email, logs the blocked attempt, and returns Unauthorized with a block message.
+        ///   </item>
+        ///   <item>
+        ///     Hashes the provided password and compares it with the stored password; if they do not match, logs the attempt and returns Unauthorized with a password incorrect message.
+        ///   </item>
+        ///   <item>
+        ///     Upon successful credential validation, logs the success, generates a JWT token (with an optional "Remember Me" feature), and updates the user's session token and creation timestamp.
+        ///   </item>
+        ///   <item>
+        ///     Constructs an anonymous object containing the user's ID, email, and type, then returns an OK response with a success message, the token, and the user information.
+        ///   </item>
+        /// </list>
+        /// </remarks>
         [HttpPost("api/login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
@@ -152,10 +192,16 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Calcula o hash SHA256 da palavra-passe fornecida.
+        /// Generates a SHA256 hash for the specified password.
         /// </summary>
-        /// <param name="password">A palavra-passe a encriptar.</param>
-        /// <returns>Uma string que representa o hash SHA256 da palavra-passe em formato hexadecimal.</returns>
+        /// <param name="password">The plain text password to be hashed.</param>
+        /// <returns>
+        /// A hexadecimal string representation of the SHA256 hash of the provided password.
+        /// </returns>
+        /// <remarks>
+        /// This method converts the input password into a UTF-8 encoded byte array, computes its SHA256 hash,
+        /// and then converts the resulting byte array into a lowercase hexadecimal string.
+        /// </remarks>
         private string HashPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -174,12 +220,18 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Regista uma acção de auditoria, gravando-a na base de dados.
+        /// Logs an action to the database by creating a new audit log entry.
         /// </summary>
-        /// <param name="action">A acção que foi realizada.</param>
-        /// <param name="status">O estado ou resultado da acção.</param>
-        /// <param name="UserId">O identificador do utilizador associado à acção.</param>
-        /// <returns>Uma Task que representa a operação assíncrona de gravação do log.</returns>
+        /// <param name="action">The description of the action performed.</param>
+        /// <param name="status">The status or outcome of the action.</param>
+        /// <param name="UserId">The identifier of the user associated with the action.</param>
+        /// <returns>
+        /// A <see cref="Task"/> representing the asynchronous operation of saving the log entry to the database.
+        /// </returns>
+        /// <remarks>
+        /// This method creates an instance of <see cref="AuditLog"/> with the current timestamp, action description,
+        /// status, and user identifier. It then adds this log entry to the database context and saves the changes asynchronously.
+        /// </remarks>
         private async Task LogAction(string action, string status, int UserId)
         {
             var log = new AuditLog
@@ -196,14 +248,34 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Gera um token JWT para o utilizador especificado.
+        /// Generates a JWT token for the specified user.
         /// </summary>
-        /// <param name="user">O objeto utilizador para o qual se pretende gerar o token.</param>
+        /// <param name="user">The <see cref="User"/> object for which the token is generated.</param>
         /// <param name="rememberMe">
-        /// Indica se a sessão deve ser prolongada (opção "Remember Me").
-        /// Se definido como true, o token expira após 30 dias; caso contrário, expira após 15 minutos.
+        /// A boolean value indicating whether a "Remember Me" session should be created. 
+        /// If <c>true</c>, the token will expire in 30 days; otherwise, it will expire in 15 minutes.
         /// </param>
-        /// <returns>Uma string contendo o token JWT gerado.</returns>
+        /// <returns>
+        /// A string representing the generated JWT token.
+        /// </returns>
+        /// <remarks>
+        /// This method constructs a token descriptor with the following claims:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <c>NameIdentifier</c>: The user's unique identifier.
+        ///   </item>
+        ///   <item>
+        ///     <c>Email</c>: The user's email address.
+        ///   </item>
+        ///   <item>
+        ///     <c>userType</c>: The type of the user as defined in <see cref="UserType"/>.
+        ///   </item>
+        ///   <item>
+        ///     <c>PasswordLastChanged</c>: The tick count of the last password change or "0" if not set.
+        ///   </item>
+        /// </list>
+        /// The token is signed using a symmetric security key derived from a secret, and its expiration is determined by the value of the <paramref name="rememberMe"/> parameter.
+        /// </remarks>
         private string GenerateJwtToken(User user, bool rememberMe)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -232,34 +304,46 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Valida a sessão do utilizador através do token JWT presente no cabeçalho Authorization.
+        /// Validates the current user's session by verifying the JWT token provided in the Authorization header.
         /// </summary>
-        /// <remarks>
-        /// Este método realiza os seguintes passos:
+        /// <returns>
+        /// An <see cref="IActionResult"/> that returns:
         /// <list type="bullet">
         ///   <item>
-        ///     Extrai o token do cabeçalho Authorization da requisição. Se o token não for fornecido, retorna Unauthorized.
+        ///     <c>Ok</c> with a success message and user details if the token is valid.
         ///   </item>
         ///   <item>
-        ///     Verifica na base de dados se existe um utilizador com o token de sessão correspondente. Se não encontrar, retorna Unauthorized.
+        ///     <c>Unauthorized</c> with an error message if the token is missing, invalid, or expired.
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// This method performs the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Extracts the token from the Authorization header of the incoming HTTP request.
         ///   </item>
         ///   <item>
-        ///     Valida o token utilizando o <see cref="JwtSecurityTokenHandler"/> e parâmetros de validação, sem permitir margem de erro (ClockSkew zero).
+        ///     Returns an Unauthorized response if no token is provided.
         ///   </item>
         ///   <item>
-        ///     Se o token for válido, retorna um objeto Ok com os dados do utilizador.
+        ///     Searches for a user in the database whose <c>SessionToken</c> matches the extracted token.
         ///   </item>
         ///   <item>
-        ///     Se o token tiver expirado (lançando <see cref="SecurityTokenExpiredException"/>), invalida a sessão na base de dados e retorna Unauthorized.
+        ///     Uses a <see cref="JwtSecurityTokenHandler"/> with a symmetric security key to validate the token.
         ///   </item>
         ///   <item>
-        ///     Em caso de qualquer outra exceção, retorna Unauthorized indicando um token inválido.
+        ///     If the token is expired, clears the user's session token and its creation timestamp, updates the database,
+        ///     and returns an Unauthorized response with a "Token expired" message.
+        ///   </item>
+        ///   <item>
+        ///     If the token is valid, returns an Ok response with a success message and the user's basic details (Id, Email, and Type).
+        ///   </item>
+        ///   <item>
+        ///     If any other exception occurs during token validation, returns an Unauthorized response with a generic "Invalid token" message.
         ///   </item>
         /// </list>
         /// </remarks>
-        /// <returns>
-        /// Um <see cref="IActionResult"/> que indica se a sessão é válida ou não, juntamente com os dados do utilizador em caso afirmativo.
-        /// </returns>
         [HttpGet("api/login/validate-session")]
         public IActionResult ValidateSession()
         {
@@ -323,12 +407,20 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Envia um email informativo ao utilizador, avisando que a sua conta está bloqueada.
+        /// Sends an email notification to inform the recipient that their account is blocked.
         /// </summary>
-        /// <param name="toEmail">O endereço de email do destinatário.</param>
+        /// <param name="toEmail">The email address of the recipient.</param>
         /// <returns>
-        /// Um <see cref="Task{bool}"/> que resulta em <c>true</c> se o email for enviado com sucesso; caso contrário, <c>false</c>.
+        /// A <see cref="Task{Boolean}"/> that represents the asynchronous operation. 
+        /// Returns <c>true</c> if the email was sent successfully; otherwise, <c>false</c>.
         /// </returns>
+        /// <remarks>
+        /// This method retrieves email settings (such as the sender's email, SMTP server, port, and credentials) from the configuration.
+        /// It validates that the sender's email is correctly configured and that the SMTP port is a valid number.
+        /// An email message is then constructed with the subject "Account Blocked" and a body notifying the recipient
+        /// that their account is blocked for 15 minutes. The message is sent securely using SSL via an <see cref="SmtpClient"/>.
+        /// Any exceptions during the process are caught, the error is logged to the console, and the method returns <c>false</c>.
+        /// </remarks>
         private async Task<bool> SendBlockedInformationEmail(string toEmail)
         {
             try
@@ -379,12 +471,18 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Verifica se o endereço de email fornecido é válido.
+        /// Determines whether the specified email address is valid.
         /// </summary>
-        /// <param name="email">O endereço de email a ser validado.</param>
+        /// <param name="email">The email address to validate.</param>
         /// <returns>
-        /// Retorna <c>true</c> se o email for válido; caso contrário, <c>false</c>.
+        /// <c>true</c> if the email address is valid; otherwise, <c>false</c>.
         /// </returns>
+        /// <remarks>
+        /// This method attempts to create a new instance of the <see cref="System.Net.Mail.MailAddress"/> class
+        /// using the provided email address. If the instance is created successfully and the generated address
+        /// matches the input, the email is considered valid. If an exception occurs during this process,
+        /// the method returns <c>false</c>.
+        /// </remarks>
         private bool IsValidEmail(string email)
         {
             try

@@ -13,20 +13,20 @@ using VitalEase.Server.Models;
 namespace VitalEase.Server.Controllers
 {
     /// <summary>
-    /// Controlador responsável pela gestão dos logs de auditoria.
+    /// Controller responsible for managing audit logs.
     /// </summary>
     public class AuditLogsController : Controller
     {
         /// <summary>
-        /// Contexto da base de dados utilizado para operações relativas aos logs de auditoria.
+        /// Database context used for operations related to audit logs.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Inicializa uma nova instância do <see cref="AuditLogsController"/>.
+        /// Initializes a new instance of <see cref="AuditLogsController"/>.
         /// </summary>
         /// <param name="context">
-        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) injetado para efetuar operações de acesso à base de dados.
+        /// The database context (<see cref="VitalEaseServerContext"/>) injected to perform database access operations.
         /// </param>
         public AuditLogsController(VitalEaseServerContext context)
         {
@@ -34,17 +34,25 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Obtém todos os logs de auditoria da base de dados.
+        /// Retrieves all audit logs from the database after removing outdated entries.
         /// </summary>
-        /// <remarks>
-        /// Antes de recolher os logs, invoca o método <see cref="DeleteLogs"/> para eliminar logs desnecessários ou antigos.
-        /// Em seguida, tenta recolher todos os logs disponíveis na base de dados. Caso a lista de logs esteja vazia, 
-        /// retorna um BadRequest com uma lista vazia. Se os logs forem recolhidos com sucesso, são retornados em formato JSON.
-        /// Se ocorrer alguma exceção durante o processo, retorna um BadRequest com uma mensagem de erro e os detalhes da exceção.
-        /// </remarks>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém os logs de auditoria ou uma mensagem de erro.
+        /// An <see cref="IActionResult"/> that returns:
+        /// <list type="bullet">
+        ///   <item>
+        ///     An HTTP 200 (OK) response with the list of audit logs in JSON format if logs are found.
+        ///   </item>
+        ///   <item>
+        ///     An HTTP 400 (Bad Request) response with an empty list or error details if no logs are found or an error occurs.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// This method first calls the <see cref="DeleteLogs"/> method to remove outdated audit logs from the database.
+        /// It then retrieves all remaining logs using <c>ToListAsync</c>. If the resulting list is empty,
+        /// a BadRequest response is returned; otherwise, the logs are returned in a JSON format.
+        /// If any exception occurs during the process, it is caught and returned as a BadRequest with an error message.
+        /// </remarks>
         [HttpGet("api/getLogs")]
         public async Task<IActionResult> GetLogs()
         {
@@ -70,30 +78,57 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Obtém os logs de auditoria filtrados com base nos parâmetros facultativos fornecidos.
+        /// Retrieves audit logs from the database based on various optional filters.
         /// </summary>
         /// <param name="userId">
-        /// Opcional. O identificador do utilizador para filtrar os logs. Se fornecido, apenas os logs correspondentes a esse utilizador serão incluídos.
+        /// An optional user identifier to filter logs for a specific user.
         /// </param>
         /// <param name="userEmail">
-        /// Opcional. O email do utilizador. Se fornecido, o método procura o identificador do utilizador associado a esse email e filtra os logs por esse ID.
+        /// An optional user email to filter logs based on the email associated with the user.
         /// </param>
         /// <param name="dateFrom">
-        /// Opcional. A data de início para filtrar os logs. Apenas serão incluídos os logs com o <c>Timestamp</c> igual ou superior a esta data.
+        /// An optional starting date to filter logs that have a timestamp on or after this date.
         /// </param>
         /// <param name="dateTo">
-        /// Opcional. A data de fim para filtrar os logs. Apenas serão incluídos os logs com o <c>Timestamp</c> inferior ou igual a esta data.
+        /// An optional ending date to filter logs that have a timestamp on or before this date.
         /// </param>
         /// <param name="actionType">
-        /// Opcional. Um filtro por tipo de acção. Apenas serão incluídos os logs cuja propriedade <c>Action</c> contenha este valor.
+        /// An optional string to filter logs whose action contains the specified substring.
         /// </param>
         /// <param name="status">
-        /// Opcional. Um filtro pelo estado. Apenas serão incluídos os logs cuja propriedade <c>Status</c> contenha este valor.
+        /// An optional string to filter logs whose status contains the specified substring.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém, em caso de sucesso, uma lista de logs filtrados em formato JSON. 
-        /// Se ocorrer um erro, retorna um BadRequest com uma mensagem de erro.
+        /// An <see cref="IActionResult"/> containing:
+        /// <list type="bullet">
+        ///   <item>
+        ///     an HTTP 200 (OK) response with the filtered list of audit logs in JSON format if the operation is successful,
+        ///   </item>
+        ///   <item>
+        ///     an HTTP 400 (Bad Request) response with an error message if an exception occurs.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// This method first calls the <c>DeleteLogs</c> method to remove outdated logs from the database.
+        /// It then builds a query on the <c>AuditLogs</c> table applying various optional filters:
+        /// <list type="bullet">
+        ///   <item>
+        ///     If a valid <paramref name="userId"/> is provided, only logs for that user are included.
+        ///   </item>
+        ///   <item>
+        ///     If a <paramref name="userEmail"/> is provided, the method retrieves the corresponding user ID and filters logs accordingly.
+        ///   </item>
+        ///   <item>
+        ///     If <paramref name="dateFrom"/> or <paramref name="dateTo"/> are provided, the logs are filtered based on their timestamp.
+        ///   </item>
+        ///   <item>
+        ///     If <paramref name="actionType"/> or <paramref name="status"/> are provided, the logs are filtered based on whether their action or status contains the specified substring.
+        ///   </item>
+        /// </list>
+        /// Finally, the filtered logs are returned as a JSON response. If an error occurs during processing,
+        /// the exception is caught and a Bad Request response is returned with an appropriate error message.
+        /// </remarks>
         [HttpGet("api/getLogsFilter")]
         public async Task<IActionResult> GetLogs(int? userId, string? userEmail, DateTime? dateFrom, DateTime? dateTo, string? actionType, string? status)
         {
@@ -146,22 +181,40 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Elimina os registos de auditoria que tenham sido criados há mais de 6 meses.
+        /// Deletes audit logs that are older than 6 months.
         /// </summary>
-        /// <remarks>
-        /// Este método faz o seguinte:
-        /// <list type="bullet">
-        ///   <item>Obtém a data e hora atual.</item>
-        ///   <item>Seleciona todos os registos de auditoria com um Timestamp anterior ou igual à data atual menos 6 meses.</item>
-        ///   <item>Se não existirem registos a eliminar, retorna um BadRequest com uma lista vazia.</item>
-        ///   <item>Se existirem, elimina os registos selecionados e guarda as alterações na base de dados.</item>
-        ///   <item>Retorna os registos eliminados com uma resposta OK.</item>
-        ///   <item>Em caso de erro, retorna um BadRequest com uma mensagem de erro.</item>
-        /// </list>
-        /// </remarks>
         /// <returns>
-        /// Um <see cref="IActionResult"/> contendo os registos eliminados ou uma mensagem de erro em caso de falha.
+        /// An <see cref="IActionResult"/> that returns:
+        /// <list type="bullet">
+        ///   <item>
+        ///     an HTTP 200 (OK) response with the list of deleted audit logs if logs older than 6 months exist,
+        ///   </item>
+        ///   <item>
+        ///     an HTTP 400 (Bad Request) response with an empty list if no logs are found,
+        ///   </item>
+        ///   <item>
+        ///     an HTTP 400 (Bad Request) response with an error message if an exception occurs.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// This method performs the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     It calculates the current date and time, and retrieves all audit logs with a timestamp older than 6 months from now.
+        ///   </item>
+        ///   <item>
+        ///     If no such logs are found, it returns a Bad Request response with an empty list.
+        ///   </item>
+        ///   <item>
+        ///     Otherwise, it removes all the retrieved logs from the database and saves the changes.
+        ///   </item>
+        ///   <item>
+        ///     Finally, it returns an OK response containing the list of deleted logs.
+        ///   </item>
+        /// </list>
+        /// If an exception occurs during the process, it is caught and a Bad Request response with an error message is returned.
+        /// </remarks>
         [HttpDelete]
         private async Task <IActionResult> DeleteLogs()
         {
