@@ -117,7 +117,7 @@ footer {
     margin-left: 5%;
   }
 
-@media (max-width: 780px) {
+@media (max-width: 990px) {
 
   h1 {
     font-size: 2rem;
@@ -154,10 +154,15 @@ footer {
     transition: background-color 0.3s;
   }
 
+  section p,
+  section ul,
+  section li {
+    font-size: 0.8rem; /* aplica-se ao parágrafo e itens da lista */
+  }
 
   footer {
     margin-top: 10px;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: #6C9C94;
     margin-left: 40%;
   }
@@ -183,7 +188,7 @@ footer {
   }
 
   .header span {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     font-weight: bold;
   }
 
@@ -197,6 +202,7 @@ footer {
     transition: background-color 0.3s;
   }
 
+  
 
   .header a {
     text-decoration: none;
@@ -208,7 +214,13 @@ footer {
   }
 
   header h2 {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  section p,
+  section ul,
+  section li {
+    font-size: 0.6rem; /* aplica-se ao parágrafo e itens da lista */
   }
 
   footer {

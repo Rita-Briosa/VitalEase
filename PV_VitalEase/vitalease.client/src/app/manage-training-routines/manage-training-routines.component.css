@@ -83,63 +83,6 @@ body {
   padding: 20px;
 }
 
-/*
-.routine-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.routine-card {
-  background: #d9d9d9;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.routine-actions {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.edit, .delete {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-  .edit:hover {
-    color: #5c8a80;
-  }
-
-  .delete:hover {
-    color: red;
-  }
-
-.add-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #5c8a80;
-  color: white;
-  font-size: 24px;
-  padding: 15px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-  .add-button:hover {
-    background: #476e66;
-  }
-*/
-
 .routine-header {
   display: flex;
   justify-content: flex-end; /* Move os elementos para a direita */
@@ -362,7 +305,7 @@ footer {
   }
 
 
-@media (max-width: 780px) {
+@media (max-width: 990px) {
 
   h1 {
     font-size: 2rem;

@@ -255,7 +255,7 @@ footer {
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 990px) {
 
   h1 {
     font-size: 1.5rem;
@@ -278,7 +278,7 @@ footer {
     transition: background-color 0.3s;
   }
 
- 
+
   footer {
     margin-top: 10px;
     font-size: 0.6rem;

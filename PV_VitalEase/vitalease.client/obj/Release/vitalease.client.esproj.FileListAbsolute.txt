@@ -1,2 +1,2 @@
-C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\vitalease.client\obj\Release\vitalease.client.esproj.CoreCompileInputs.cache
 C:\VitalEase\PV_VitalEase\vitalease.client\obj\Release\vitalease.client.esproj.CoreCompileInputs.cache
+C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\vitalease.client\obj\Release\vitalease.client.esproj.CoreCompileInputs.cache

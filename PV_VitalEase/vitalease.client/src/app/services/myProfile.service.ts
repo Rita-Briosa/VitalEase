@@ -21,6 +21,10 @@ export class MyProfileService {
 
   private apiUrlDeleteAcc = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/deleteAccount';
   private apiUrlValidatePassword = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/validatePassword';
+
+  private apiUrlDeleteAccountResquest = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/deleteAccountRequest';
+  private apiUrlDeleteAccountCancellation = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/deleteAccountCancellation';
+  private apiUrlValidateDeleteAccountToken = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/ValidateDeleteAccountToken';
   constructor(private http: HttpClient) { }
 
   getProfileInfo(email: string): Observable<any> {
@@ -32,11 +36,26 @@ export class MyProfileService {
     return this.http.post<any>(this.apiUrlValidatePassword, { email, password });
   }
 
-  deleteUserAcc(email: string): Observable<any> {
-    return this.http.delete(`${this.apiUrlDeleteAcc}/${email}`);
+  deleteAccountRequest(email: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlDeleteAccountResquest, {email});
+  }
+
+  deleteAccountCancellation(token: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlDeleteAccountCancellation, { token });
+  }
+
+  deleteUserAcc(email: string, token: string): Observable<any> {
+    return this.http.delete<any>(this.apiUrlDeleteAcc, {
+      body: { email, token }
+    });
   }
   ///////////////////////////////
 
+  validateToken(token: string): Observable<any> {
+
+    const url = `${this.apiUrlValidateDeleteAccountToken}?token=${token}`; // Adiciona o token como query parameter
+    return this.http.get<any>(url); // Chamada para o endpoint com GET
+  }
 
 
   changeBirthDate(birthDate: string, email: string): Observable<any> {

@@ -49,6 +49,32 @@ namespace VitalEase.Server.Migrations
                     b.ToTable("AuditLogs");
                 });
 
+            modelBuilder.Entity("VitalEase.Server.Models.DeleteAccountTokens", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TokenId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeleteAccountTokens");
+                });
+
             modelBuilder.Entity("VitalEase.Server.Models.Exercise", b =>
                 {
                     b.Property<int>("Id")

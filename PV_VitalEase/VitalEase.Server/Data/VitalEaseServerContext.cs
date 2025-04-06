@@ -24,6 +24,8 @@ namespace VitalEase.Server.Data
 
         public DbSet<ResetEmailTokens> ResetEmailTokens { get; set; }
 
+        public DbSet<DeleteAccountTokens> DeleteAccountTokens { get; set; }
+
         public DbSet<ExerciseRoutine> ExerciseRoutines { get; set; }
 
         public DbSet<ExerciseMedia> ExerciseMedia { get; set; }
