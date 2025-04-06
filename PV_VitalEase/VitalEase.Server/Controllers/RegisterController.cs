@@ -14,18 +14,92 @@ using Microsoft.EntityFrameworkCore;
 
 namespace VitalEase.Server.Controllers
 {
+    /// <summary>
+    /// Controlador responsável pelo registo de novos utilizadores.
+    /// </summary>
     public class RegisterController : Controller
     {
-
+        /// <summary>
+        /// Contexto da base de dados utilizado para operações de acesso e manipulação dos registos.
+        /// </summary>
         private readonly VitalEaseServerContext _context;
+
+        /// <summary>
+        /// Configuração da aplicação, que permite aceder às definições e parâmetros relevantes.
+        /// </summary>
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Inicializa uma nova instância do <see cref="RegisterController"/>.
+        /// </summary>
+        /// <param name="context">
+        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite operações de armazenamento e acesso aos dados.
+        /// </param>
+        /// <param name="configuration">
+        /// A configuração da aplicação (<see cref="IConfiguration"/>) para aceder a definições e parâmetros de configuração.
+        /// </param>
         public RegisterController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Regista um novo utilizador, criando o respetivo perfil e armazenando os dados na base de dados.
+        /// </summary>
+        /// <param name="model">
+        /// Um objeto do tipo <see cref="RegisterViewModel"/> que contém os dados necessários para o registo, incluindo:
+        /// email, palavra-passe, data de nascimento, username, altura, peso, género e indicação de problemas cardíacos.
+        /// </param>
+        /// <returns>
+        /// Um <see cref="IActionResult"/> que indica o resultado do registo:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <c>BadRequest</c> se os dados enviados forem inválidos, se o utilizador já existir, se o username já existir,
+        ///     se a idade for inferior a 16 anos, se a palavra-passe for fraca, ou se ocorrer algum erro no processo.
+        ///   </item>
+        ///   <item>
+        ///     <c>Ok</c> com uma mensagem de sucesso, o token JWT gerado e os dados do utilizador se o registo for bem-sucedido.
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// O método executa as seguintes operações:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Verifica se o modelo recebido é válido; caso não o seja, regista a tentativa de registo e retorna um erro 400.
+        ///   </item>
+        ///   <item>
+        ///     Verifica se o utilizador tem pelo menos 16 anos de idade, com base na data de nascimento; se não, regista a tentativa e retorna um erro.
+        ///   </item>
+        ///   <item>
+        ///     Procura se já existe um utilizador com o mesmo email; se existir, regista a tentativa e retorna um erro.
+        ///   </item>
+        ///   <item>
+        ///     Procura se já existe um perfil com o mesmo username; se existir, regista a tentativa e retorna um erro.
+        ///   </item>
+        ///   <item>
+        ///     Cria um novo perfil com os dados fornecidos e guarda-o na base de dados.
+        ///   </item>
+        ///   <item>
+        ///     Valida a robustez da palavra-passe; se a palavra-passe não cumprir os critérios exigidos, regista a tentativa e retorna um erro.
+        ///   </item>
+        ///   <item>
+        ///     Cria um novo utilizador associando o perfil criado, a palavra-passe hasheada, o email, o tipo de utilizador padrão
+        ///     e define o estado de verificação do email como falso, guardando estes dados na base de dados.
+        ///   </item>
+        ///   <item>
+        ///     Gera um token JWT para o novo utilizador; se ocorrer erro na geração, regista a tentativa e retorna um erro.
+        ///   </item>
+        ///   <item>
+        ///     Cria um link de confirmação de email utilizando o token gerado e envia um email de confirmação para o utilizador;
+        ///     se o envio falhar, retorna um erro 500.
+        ///   </item>
+        ///   <item>
+        ///     Regista a operação de registo com sucesso e retorna um resultado <c>Ok</c> com uma mensagem de sucesso, o token gerado e os dados do utilizador.
+        ///   </item>
+        /// </list>
+        /// </remarks>
         [HttpPost("api/register")]
         public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
         {
@@ -178,6 +252,29 @@ namespace VitalEase.Server.Controllers
             return true;
         }
 
+        /// <summary>
+        /// Sends an email confirmation message to the specified recipient.
+        /// </summary>
+        /// <param name="toEmail">The recipient's email address.</param>
+        /// <param name="emailConfirmationLink">
+        /// The confirmation link to be included in the email body, which the recipient must click to confirm their email address.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task{Boolean}"/> representing the asynchronous operation, returning <c>true</c> if the email was sent successfully,
+        /// or <c>false</c> if an error occurred.
+        /// </returns>
+        /// <remarks>
+        /// This method retrieves email configuration settings from the application's configuration, including:
+        /// <list type="bullet">
+        ///   <item>The sender's email address (<c>EmailSettings:FromEmail</c>).</item>
+        ///   <item>The SMTP server address (<c>EmailSettings:SmtpServer</c>).</item>
+        ///   <item>The SMTP port (<c>EmailSettings:SmtpPort</c>), which is validated to ensure it's a valid number.</item>
+        ///   <item>The SMTP username and password for authentication (<c>EmailSettings:SmtpUsername</c> and <c>EmailSettings:SmtpPassword</c>).</item>
+        /// </list>
+        /// It then constructs an HTML email message with the subject "Register email" and a body containing the confirmation link.
+        /// The email is sent using an <see cref="SmtpClient"/> configured with SSL enabled for secure transmission.
+        /// If an error occurs during the process, the exception is logged to the console and the method returns <c>false</c>.
+        /// </remarks>
         private async Task<bool> SendEmailConfirmation(string toEmail, string emailConfirmationLink)
         {
             try
@@ -227,6 +324,18 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Determines whether the specified email address is valid.
+        /// </summary>
+        /// <param name="email">The email address to validate.</param>
+        /// <returns>
+        /// <c>true</c> if the email address is valid; otherwise, <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// This method attempts to create a new instance of the <see cref="System.Net.Mail.MailAddress"/> class using the provided email.
+        /// If the creation is successful and the generated address matches the input, the email is considered valid.
+        /// If an exception occurs during this process, the method returns <c>false</c>.
+        /// </remarks>
         private bool IsValidEmail(string email)
         {
             try
@@ -240,6 +349,17 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Generates a SHA256 hash for the specified password.
+        /// </summary>
+        /// <param name="password">The plain text password to be hashed.</param>
+        /// <returns>
+        /// A hexadecimal string representation of the SHA256 hash of the provided password.
+        /// </returns>
+        /// <remarks>
+        /// This method converts the input password to a UTF-8 encoded byte array, computes its SHA256 hash,
+        /// and then converts the resulting byte array into a lowercase hexadecimal string.
+        /// </remarks>
         private string HashPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -257,6 +377,19 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Regista uma acção de auditoria, gravando-a na base de dados.
+        /// </summary>
+        /// <param name="action">A acção que foi realizada.</param>
+        /// <param name="status">O estado ou resultado da acção.</param>
+        /// <param name="UserId">O identificador do utilizador associado à acção.</param>
+        /// <returns>
+        /// Uma <see cref="Task"/> que representa a operação assíncrona de registo do log.
+        /// </returns>
+        /// <remarks>
+        /// Este método cria um objeto <see cref="AuditLog"/> com a hora atual, a acção, o status e o ID do utilizador.
+        /// O log é então adicionado ao contexto da base de dados e as alterações são salvas de forma assíncrona.
+        /// </remarks>
         private async Task LogAction(string action, string status, int UserId)
         {
             var log = new AuditLog
@@ -272,6 +405,18 @@ namespace VitalEase.Server.Controllers
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Generates a JWT token for the specified user.
+        /// </summary>
+        /// <param name="user">The <see cref="User"/> object for which the token is generated. It must contain a valid email address.</param>
+        /// <returns>
+        /// A string representing the generated JWT token.
+        /// </returns>
+        /// <remarks>
+        /// This method creates a JWT token using a symmetric security key derived from a secret configured in the application.
+        /// It sets up a token descriptor that includes the user's email as a claim and specifies an expiration time of one hour from the current UTC time.
+        /// The token is then created using the <see cref="JwtSecurityTokenHandler"/> and returned as a string.
+        /// </remarks>
         private string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
