@@ -117,7 +117,7 @@ export class TraininigRoutineProgressComponent {
   }
 
   nextExercise() {
-    if (this.activeExerciseIndex < this.media.length - 1) {
+    if (this.activeExerciseIndex < this.media.length ) {
       this.activeExerciseIndex++;
       this.getExerciseMedia();
       this.getExerciseRoutine(this.exercises[this.activeExerciseIndex].id);
