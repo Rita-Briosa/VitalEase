@@ -34,6 +34,7 @@ import { CustomTrainingRoutinesComponent } from './custom-training-routines/cust
 import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routine/edit-custom-training-routine.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+import { DeleteAccountConfirmationComponent } from './delete-account-confirmation/delete-account-confirmation.component';
 
 
 
@@ -44,7 +45,7 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     RegisterComponent, VerifyEmailComponent, MyProfileComponent, ConfirmNewEmailComponent, ConfirmOldEmailComponent,
     ChangeEmailConfirmationComponent, ChangeEmailCancellationComponent, ExercisesComponent, ManageTrainingRoutinesComponent, TrainingRoutineDetailsComponent,
     TrainingRoutineExerciseDetailsComponent, TraininigRoutineProgressComponent, CustomTrainingRoutinesComponent, EditCustomTrainingRoutineComponent,
-    PrivacyPolicyComponent, TermsOfUseComponent,
+    PrivacyPolicyComponent, TermsOfUseComponent, DeleteAccountConfirmationComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule, RouterModule, CommonModule, MapComponent,

@@ -23,6 +23,7 @@ import { CustomTrainingRoutinesComponent } from './custom-training-routines/cust
 import { EditCustomTrainingRoutineComponent } from './edit-custom-training-routine/edit-custom-training-routine.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+import { DeleteAccountConfirmationComponent } from './delete-account-confirmation/delete-account-confirmation.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'manage-training-routines/custom-training-routines', component: CustomTrainingRoutinesComponent },
   { path: 'termsOfUse', component: TermsOfUseComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
+  { path: 'deleteAccountConfirmation', component: DeleteAccountConfirmationComponent },
   { path: '**', redirectTo: '' }]
 
 

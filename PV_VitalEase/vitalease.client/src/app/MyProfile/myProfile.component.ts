@@ -132,7 +132,7 @@ export class MyProfileComponent {
         this.errorMessage = '';
 
         // If password validation is successful, delete the account
-        this.deleteAccount();
+        this.deleteAccountRequest();
       },
       (error: any) => {
         this.errorMessage = error.error?.message;
@@ -141,20 +141,21 @@ export class MyProfileComponent {
     );
   }
 
+  deleteAccountRequest(): void {
 
-  deleteAccount() {
-    this.profileService.deleteUserAcc(this.email).subscribe({ // Agora elimina a conta usando o email
-      next: (response) => {
-        console.log('Account deleted:', response);
-        alert('Conta eliminada com sucesso!');
-      },
-      error: (error) => {
-        console.error('Error deleting account:', error);
-        alert('Erro ao eliminar conta!');
-      }
-    });
+    this.profileService.deleteAccountRequest(this.email).subscribe(
+      (response: any) => {
+        this.successMessage = response.message;
+        this.errorMessage = '';
+        setTimeout(() => {
+          this.closeModal(); // Redireciona após 2 segundos
+        }, 2000);
+        alert("Has been sent an email to complete the deletion of your account");
+      }, (error: any) => {
+        this.errorMessage = error.error?.message;
+        this.successMessage = '';
+      });
   }
-
 
   ////////////////////////////////////////////////
   changeUsername(username: string): void {

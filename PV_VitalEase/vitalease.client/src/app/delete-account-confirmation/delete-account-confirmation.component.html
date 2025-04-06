@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account Confirmation</title>
+</head>
+<body>
+  <div class="delete-account-card">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <h2>Delete Account Confirmation!</h2>
+    <p>Click confirm to delete your account and all your data.</p>
+
+    <button class="btn-primary" (click)="ConfirmDeleteAccount()">Confirm</button>
+    <button class="btn-primary" (click)="CancelAccountDeletion()">Cancel</button>
+
+    <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
+
+    <footer>
+      <a href="/termsOfUse">Terms of Use</a> | <a href="/privacyPolicy">Privacy Policy</a>
+      <p>&copy; Vital Ease 2025</p>
+    </footer>
+  </div>
+
+  <!-- Modal for error messages -->
+  <div class="modal" [class.show]="showModal">
+    <div class="modal-content">
+      <div class="modal-header">{{modalInfo}}</div>
+      <div class="modal-body">
+        <p>{{ modalMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
+

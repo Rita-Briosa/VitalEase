@@ -230,7 +230,7 @@ footer {
     margin-left: 5%;
   }
 
-@media (max-width: 780px) {
+@media (max-width: 990px) {
 
   h1 {
     font-size: 2rem;

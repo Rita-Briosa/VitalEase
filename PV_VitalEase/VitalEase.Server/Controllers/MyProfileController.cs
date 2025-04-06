@@ -12,6 +12,7 @@ using VitalEase.Server.Models;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace VitalEase.Server.Controllers
 {
@@ -91,17 +92,28 @@ namespace VitalEase.Server.Controllers
         ///   </item>
         /// </list>
         /// </remarks>
-        [HttpDelete("api/deleteAccount/{email}")]
-        public async Task<IActionResult> DeleteAccount(string email)
+        [HttpDelete("api/deleteAccount")]
+        public async Task<IActionResult> DeleteAccount([FromBody] DeleteAccountConfirmationViewModel model)
         {
             try
             {
-                if (string.IsNullOrEmpty(email))
+
+                var (isValid, email, userId, tokenId) = ValidateDeleteAccountToken(model.Token);
+
+                if (!isValid)
                 {
-                    return BadRequest(new { message = "Email is required" });
+                    await LogAction("Email change Attempt", "Failed - Error changing Email.", 0);
+                    return BadRequest(new { message = "Token expired." });
                 }
 
-                email = Uri.UnescapeDataString(email);
+                if (!ModelState.IsValid)
+                {
+                    // Registrar log de erro (dados inválidos)
+                    await LogAction("Delete Account Attempt", "Failed - Invalid Data", 0);
+                    return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
+                }
+
+                email = Uri.UnescapeDataString(model.Email);
 
                 var user = await _context.Users
                     .Include(u => u.Profile) // Garante que o perfil também é carregado
@@ -110,6 +122,20 @@ namespace VitalEase.Server.Controllers
                 if (user == null)
                 {
                     return NotFound(new { message = "User not found" });
+                }
+
+                var deleteAccountToken = await _context.DeleteAccountTokens.FirstOrDefaultAsync(u => u.TokenId == tokenId);
+
+                if (deleteAccountToken != null && deleteAccountToken.IsUsed == false)
+                {
+
+                    deleteAccountToken.IsUsed = true;
+                    _context.DeleteAccountTokens.Remove(deleteAccountToken);
+                }
+                else
+                {
+                    await LogAction("Delete Account Attempt", "Failed - Delete Account token is null.", userId);
+                    return BadRequest(new { message = "Delete Account token is null." });
                 }
 
                 var deleteAccountNotification = await
@@ -137,7 +163,132 @@ namespace VitalEase.Server.Controllers
             }
             catch (Exception ex)
             {
+                await LogAction("Delete Account Attempt", "Failed - Error deleting account", 0);
                 return BadRequest(new { message = "Error deleting account", error = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Cancels the new email change request by removing the associated reset email token 
+        /// and sending a cancellation notification to the user's old email address.
+        /// </summary>
+        /// <param name="model">
+        /// A <see cref="ConfirmNewEmailViewModel"/> containing the token used for validating 
+        /// the email change request.
+        /// </param>
+        /// <returns>
+        /// An <see cref="IActionResult"/> that indicates:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <c>Ok</c> with a success message and the new email if the cancellation is successful.
+        ///   </item>
+        ///   <item>
+        ///     <c>BadRequest</c> if the token is expired or if there is an error sending the cancellation notification.
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// The method performs the following operations:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Validates the token using the <c>ValidateToken</c> method, which returns a tuple containing the validity,
+        ///     the old email, the new email, the user ID, and the token ID.
+        ///   </item>
+        ///   <item>
+        ///     If the token is not valid, logs the attempt and returns a <c>BadRequest</c> with the message "Token expired."
+        ///   </item>
+        ///   <item>
+        ///     Retrieves the reset email token from the database using the token ID, and if found, removes it.
+        ///   </item>
+        ///   <item>
+        ///     Sends a cancellation notification email to the old email address.
+        ///   </item>
+        ///   <item>
+        ///     Logs the cancellation of the email change attempt, saves changes to the database,
+        ///     and returns an <c>Ok</c> response with a success message and the new email.
+        ///   </item>
+        /// </list>
+        /// </remarks>
+        [HttpPost("api/deleteAccountCancellation")]
+        public async Task<IActionResult> DeleteAccountCancellation([FromBody] DeleteAccountCancellationViewModel model)
+        {
+            var (isValid, email, userId, tokenId) = ValidateDeleteAccountToken(model.Token);
+
+            if (!isValid)
+            {
+                await LogAction("Delete Account Attempt", "Failed - Token Expired.", 0);
+                return BadRequest(new { message = "Token expired." });
+            }
+
+            var deleteAccountToken = await _context.DeleteAccountTokens.FirstOrDefaultAsync(u => u.TokenId == tokenId);
+
+            if (deleteAccountToken != null)
+            {
+                _context.DeleteAccountTokens.Remove(deleteAccountToken);
+            }
+
+
+            var cancelNotification = await
+                SendEmail(
+                    email,
+                    "VitalEase - Delete Account Request",
+                    "The delete account request has been canceled."
+                );
+
+            if (!cancelNotification)
+            {
+                await LogAction("Delete Account Attempt", "Failed - Delete Account canceled email has not been sended.", userId);
+                return StatusCode(500, new { message = "Failed to send cancel notification email to email." });
+            }
+
+            await LogAction("Delete Account Attempt", "Success - Delete account successfully canceled.", userId);
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Delete account successfully canceled." });
+        }
+
+        [HttpPost("api/deleteAccountRequest")]
+        public async Task<IActionResult> DeleteAccountResquest([FromBody] DeleteAccountRequestViewModel model)
+        {
+            try
+            {
+
+                if (!ModelState.IsValid)
+                {
+                    // Registrar log de erro (dados inválidos)
+                    await LogAction("Email change Attempt", "Failed - Invalid Data", 0);
+                    return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
+                }
+
+
+                var user = await _context.Users
+                   .FirstOrDefaultAsync(u => u.Email == model.Email);
+
+
+                if (user == null)
+                {
+                    await LogAction("Delete Account Attempt", "Failed - No user found", 0);
+                    return Unauthorized(new { message = "No user found" });
+                }
+
+                var token = GenerateDeleteAccountToken(user.Email, user.Id);
+
+                var deleteAccountLink = $"https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/deleteAccountConfirmation?token={Uri.EscapeDataString(token)}";
+
+                var emailSent = await SendDeleteAccountLink(model.Email, deleteAccountLink);
+                if (!emailSent)
+                {
+                    await LogAction("Delete Account Attempt", "Failed - Failed to send delete account request to email.", user.Id);
+                    return StatusCode(500, new { message = "Failed to send delete account request to email." });
+                }
+
+
+                await LogAction("Delete Account Attempt", "Success - Email to delete your account has been sent to your email.", user.Id);
+                return Ok(new { message = "Email to delete your account has been sent to your email." });
+            }
+            catch (Exception ex)
+            {
+                await LogAction("Delete Account Attempt", "Failed - Error requesting delete account.", 0);
+                return BadRequest(new { message = "Error requesting delete account", error = ex.Message });
             }
         }
 
@@ -1475,6 +1626,53 @@ namespace VitalEase.Server.Controllers
             return Ok(new { message = "Change email successfully canceled.", newEmail });
         }
 
+
+        /// <summary>
+        /// Valida o token para confirmação do novo email e, se for válido, confirma a alteração.
+        /// </summary>
+        /// <param name="model">
+        /// Um objeto do tipo <see cref="ConfirmNewEmailViewModel"/> que contém o token enviado na query string.
+        /// </param>
+        /// <returns>
+        /// Um <see cref="IActionResult"/> que indica:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <c>Ok</c> com uma mensagem de sucesso e o novo email, se o token for válido.
+        ///   </item>
+        ///   <item>
+        ///     <c>BadRequest</c> se o token estiver expirado ou for inválido, registar o erro e retornar uma mensagem apropriada.
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// Este método executa as seguintes operações:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Valida o token utilizando o método <c>ValidateToken</c>, que retorna uma tupla contendo a validade, o email antigo, o novo email, o ID do utilizador e o tokenId.
+        ///   </item>
+        ///   <item>
+        ///     Se o token não for válido, regista a tentativa de alteração e retorna um <c>BadRequest</c> com a mensagem "Token expired."
+        ///   </item>
+        ///   <item>
+        ///     Se o token for válido, guarda as alterações (se houver) na base de dados e retorna um <c>Ok</c> com uma mensagem de sucesso e o novo email.
+        ///   </item>
+        /// </list>
+        /// </remarks>
+        [HttpGet("api/ValidateDeleteAccountToken")]
+        public async Task<IActionResult> ConfirmDeleteAccountToken([FromQuery] DeleteAccountTokenViewModel model)
+        {
+            var (isValid, email, userId, tokenId) = ValidateDeleteAccountToken(model.Token);
+
+            if (!isValid)
+            {
+                await LogAction("Delete Account Attempt", "Failed - Token expired.", userId);
+                return BadRequest(new { message = "Token expired." });
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Token is valid.", email });
+        }
+
         /// <summary>
         /// Sends an email with the specified subject and body to the given email address.
         /// </summary>
@@ -1584,6 +1782,72 @@ namespace VitalEase.Server.Controllers
                     From = new MailAddress(fromEmail), // Definindo o endereço de 'from' corretamente
                     Subject = "Change email request",
                     Body = $"Click the following link to confirm your email change: <a href='{emailLink}'>Change email link</a>",
+                    IsBodyHtml = true
+                };
+
+                message.To.Add(toEmail); // Adicionando o destinatário do e-mail
+
+                using (var client = new SmtpClient(smtpServer, smtpPort))
+                {
+                    client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                    client.EnableSsl = true; // Garantir que o envio seja seguro via SSL
+                    await client.SendMailAsync(message);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Para fins de depuração, vamos logar a mensagem de erro
+                Console.WriteLine($"Error occurred while sending email: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Sends an email containing a delete account link to confirm an delete account request.
+        /// </summary>
+        /// <param name="toEmail">The recipient's email address.</param>
+        /// <param name="emailLink">The URL that the recipient must click to confirm the email change.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation, returning <c>true</c> if the email was sent successfully,
+        /// or <c>false</c> if an error occurred.
+        /// </returns>
+        /// <remarks>
+        /// This method retrieves the necessary email configuration settings (e.g., sender's email, SMTP server details, port, and credentials)
+        /// from the configuration. It first validates that the sender's email is properly configured and is in a valid format,
+        /// and that the SMTP port is a valid number. It then constructs an HTML email with the subject "Delete Accouont request"
+        /// and an HTML anchor tag embedding the provided <paramref name="emailLink"/>. The email is sent using an SMTP client
+        /// configured to use SSL for secure transmission. Any exceptions encountered during the email sending process are logged,
+        /// and the method returns <c>false</c>.
+        /// </remarks>
+        private async Task<bool> SendDeleteAccountLink(string toEmail, string emailLink)
+        {
+            try
+            {
+                var fromEmail = _configuration["EmailSettings:FromEmail"];
+                var smtpServer = _configuration["EmailSettings:SmtpServer"];
+                var smtpPortString = _configuration["EmailSettings:SmtpPort"];
+                var smtpUsername = _configuration["EmailSettings:SmtpUsername"];
+                var smtpPassword = _configuration["EmailSettings:SmtpPassword"];
+
+                // Verificar se o fromEmail está configurado corretamente
+                if (string.IsNullOrEmpty(fromEmail) || !IsValidEmail(fromEmail))
+                {
+                    throw new Exception("From email is not valid or not configured.");
+                }
+
+                // Verificar se o smtpPort é um número válido
+                if (!int.TryParse(smtpPortString, out var smtpPort))
+                {
+                    throw new Exception("SMTP port is not a valid number.");
+                }
+
+                var message = new MailMessage
+                {
+                    From = new MailAddress(fromEmail), // Definindo o endereço de 'from' corretamente
+                    Subject = "Delete Account request",
+                    Body = $"Click the following link to confirm your account deletion: <a href='{emailLink}'>Delete account request link</a>",
                     IsBodyHtml = true
                 };
 
@@ -1893,6 +2157,121 @@ namespace VitalEase.Server.Controllers
                 // Outros erros ao validar
                 Console.WriteLine($"Error during token validation: {ex.Message}");
                 return (false, "", "", 0, "");
+            }
+        }
+
+        public string GenerateDeleteAccountToken(string email, int userId)
+        {
+
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new ArgumentNullException("Jwt:Key", "A chave JWT não está configurada corretamente.");
+            }
+
+            var tokenId = Guid.NewGuid().ToString();
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var expiresAt = DateTime.Now.AddHours(24);
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: new[]
+                {
+                    new Claim(ClaimTypes.Email, email),
+                    new Claim("userId", userId.ToString()),
+                    new Claim("tokenId", tokenId)
+                },
+                expires: expiresAt, // Define o tempo de expiração do token (1 hora, por exemplo)
+                signingCredentials: creds
+            );
+
+            var deleteAccountToken = new DeleteAccountTokens
+            {
+                TokenId = tokenId,         // Usando o tokenId gerado
+                CreatedAt = DateTime.Now,
+                ExpiresAt = expiresAt,
+                IsUsed = false,
+            };
+
+            _context.DeleteAccountTokens.Add(deleteAccountToken);
+            _context.SaveChanges();
+
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private (bool IsValid, string email, int UserId, string idToken) ValidateDeleteAccountToken(string token)
+        {
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new ArgumentNullException("Jwt:Key", "A chave JWT não está configurada corretamente.");
+            }
+            var key = Encoding.UTF8.GetBytes(jwtKey);
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            try
+            {
+                // Tente validar o token com os parâmetros necessários.
+                var claimsPrincipal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true, // Validar a chave de assinatura
+                    IssuerSigningKey = new SymmetricSecurityKey(key), // Usar a chave para validação
+                    ValidateIssuer = true, // Validar o emissor
+                    ValidateAudience = true, // Validar o público
+                    ValidIssuer = _configuration["Jwt:Issuer"], // Emissor configurado
+                    ValidAudience = _configuration["Jwt:Audience"], // Público configurado
+                    ClockSkew = TimeSpan.FromMinutes(5) // Permitir uma margem de 5 minutos para a expiração
+                }, out _);
+
+                // Obter o email e userId do token
+                var email = claimsPrincipal.FindAll(ClaimTypes.Email)?.ToList()[0].Value;
+                var userIdClaim = claimsPrincipal.FindFirst("userId");
+                var userId = userIdClaim != null ? int.Parse(userIdClaim.Value) : 0;
+                var tokenIdClaim = claimsPrincipal.FindFirst("tokenId");
+                var tokenId = tokenIdClaim != null ? tokenIdClaim.Value : "";
+
+                if (string.IsNullOrEmpty(email) || userId == 0)
+                {
+                    return (false, "", 0, tokenId);
+                }
+
+                var tokenRecord = _context.DeleteAccountTokens
+              .FirstOrDefault(l => l.TokenId == tokenId);
+
+                if (tokenRecord == null)
+                {
+                    // Token não encontrado na base de dados
+                    return (false, email, userId, tokenId);
+                }
+
+                if (tokenRecord.IsUsed)
+                {
+                    // Se o token já foi usado, retorna falso
+                    return (false, email, userId, tokenId);
+                }
+
+                // Se chegou até aqui, o token é válido
+                return (true,email, userId, tokenId);
+            }
+            catch (SecurityTokenExpiredException)
+            {
+                // Token expirado
+                return (false, "", 0, "");
+            }
+            catch (SecurityTokenException)
+            {
+                // Token inválido, mas não expirado
+                return (false, "", 0, "");
+            }
+            catch (Exception ex)
+            {
+                // Outros erros ao validar
+                Console.WriteLine($"Error during token validation: {ex.Message}");
+                return (false, "", 0, "");
             }
         }
 
