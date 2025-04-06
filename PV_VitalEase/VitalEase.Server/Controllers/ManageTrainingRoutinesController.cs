@@ -12,24 +12,24 @@
     using VitalEase.Server.ViewModel;
 
     /// <summary>
-    /// Controlador responsável pela gestão das rotinas de treino.
+    /// Controller responsible for managing training routines within the application.
     /// </summary>
     /// <remarks>
-    /// Este controlador permite gerir as rotinas de treino, facilitando operações de criação, edição, eliminação e consulta de rotinas.
-    /// Está baseado no contexto da base de dados <see cref="VitalEaseServerContext"/> para aceder aos registos necessários.
+    /// This controller provides endpoints for operations related to training routines management,
+    /// such as creating, updating, and deleting routines, and interacts with the database through the provided context.
     /// </remarks>
     public class ManageTrainingRoutinesController : ControllerBase
     {
         /// <summary>
-        /// Contexto da base de dados utilizado para operações relacionadas com as rotinas de treino.
+        /// Gets the database context used for accessing and managing training routines data.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Inicializa uma nova instância do <see cref="ManageTrainingRoutinesController"/>.
+        /// Initializes a new instance of the <see cref="ManageTrainingRoutinesController"/> class.
         /// </summary>
         /// <param name="context">
-        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso e manipulação dos dados.
+        /// The <see cref="VitalEaseServerContext"/> instance used to interact with the application's database.
         /// </param>
         public ManageTrainingRoutinesController(VitalEaseServerContext context)
         {
@@ -37,38 +37,51 @@
         }
 
         /// <summary>
-        /// Obtém os exercícios associados a uma determinada rotina de treino.
+        /// Retrieves the list of exercises associated with a specific training routine.
         /// </summary>
         /// <param name="routineId">
-        /// O identificador da rotina de treino (em formato string) para a qual se pretende obter os exercícios.
+        /// A string representing the identifier of the routine. This value will be parsed into an integer.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém, em caso de sucesso, uma lista de exercícios (em formato DTO) associados à rotina especificada.
-        /// Caso contrário, retorna uma mensagem de erro adequada.
-        /// </returns>
-        /// <remarks>
-        /// O método realiza as seguintes operações:
+        /// An <see cref="IActionResult"/> that contains:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se o parâmetro <c>routineId</c> pode ser convertido para um inteiro. Se não, retorna um BadRequest.
+        ///     a 200 OK response with a JSON array of exercise data transfer objects (DTOs) if exercises are found,
         ///   </item>
         ///   <item>
-        ///     Procura na tabela <c>ExerciseRoutines</c> os registos que associam exercícios à rotina especificada.
+        ///     a 400 Bad Request response if the routineId is invalid,
         ///   </item>
         ///   <item>
-        ///     Se não existirem registos na relação, retorna um NotFound com uma mensagem informativa.
+        ///     a 404 Not Found response if no exercise relations exist for the specified routine,
         ///   </item>
         ///   <item>
-        ///     Recolhe os IDs dos exercícios associados e, com base neles, busca os exercícios completos na tabela <c>Exercises</c>.
-        ///   </item>
-        ///   <item>
-        ///     Mapeia os exercícios para um DTO para evitar expor entidades diretamente, convertendo o nível de dificuldade para string.
-        ///   </item>
-        ///   <item>
-        ///     Retorna os exercícios em formato JSON.
+        ///     a 400 Bad Request response with error details if an exception occurs during processing.
         ///   </item>
         /// </list>
-        /// Em caso de exceção, retorna um BadRequest com uma mensagem de erro e os detalhes da exceção.
+        /// </returns>
+        /// <remarks>
+        /// The method executes the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     It first attempts to parse the provided routineId into an integer. If parsing fails, a Bad Request response is returned.
+        ///   </item>
+        ///   <item>
+        ///     It then queries the <c>ExerciseRoutines</c> table to fetch all records where the RoutineId matches the parsed value.
+        ///   </item>
+        ///   <item>
+        ///     If no matching exercise routine records are found, a Not Found response is returned with an appropriate message.
+        ///   </item>
+        ///   <item>
+        ///     Otherwise, the method collects the ExerciseIds from the retrieved records and queries the <c>Exercises</c> table
+        ///     to fetch the full details of those exercises.
+        ///   </item>
+        ///   <item>
+        ///     The exercise details are then mapped into a data transfer object (DTO) format to avoid exposing the entire entity directly.
+        ///   </item>
+        ///   <item>
+        ///     Finally, the method returns an OK response with the list of exercise DTOs in JSON format.
+        ///   </item>
+        /// </list>
         /// </remarks>
         [HttpGet("api/getExercisesFromRoutine/{routineId}")]
         public async Task<IActionResult> GetExercisesFromRoutine(string routineId)
@@ -120,16 +133,30 @@
         }
 
         /// <summary>
-        /// Remove um exercício de uma rotina de treino específica.
+        /// Deletes the association between a specified exercise and routine.
         /// </summary>
-        /// <param name="routineId">O identificador da rotina da qual o exercício deve ser removido.</param>
-        /// <param name="exerciseId">O identificador do exercício a remover.</param>
+        /// <param name="routineId">The identifier of the routine from which the exercise should be removed.</param>
+        /// <param name="exerciseId">The identifier of the exercise to be removed from the routine.</param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
-        /// - <c>NoContent</c> se a remoção for bem-sucedida;
-        /// - <c>NotFound</c> se a relação entre a rotina e o exercício não for encontrada;
-        /// - <c>BadRequest</c> em caso de erro.
+        /// An <see cref="IActionResult"/> that indicates:
+        /// <list type="bullet">
+        ///   <item>
+        ///     a 204 No Content response if the association is successfully deleted,
+        ///   </item>
+        ///   <item>
+        ///     a 404 Not Found response if no matching exercise routine association is found,
+        ///   </item>
+        ///   <item>
+        ///     a 400 Bad Request response if an error occurs during the deletion process.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// The method attempts to locate the exercise-routine association by filtering the <c>ExerciseRoutines</c> table using the provided
+        /// routineId and exerciseId. If the association is not found, it returns a 404 Not Found response with a corresponding message.
+        /// If the association is found, it is removed from the database context and the changes are saved. On successful deletion, a 204 No Content response is returned.
+        /// If an exception occurs during the process, the method catches it and returns a 400 Bad Request response with an error message.
+        /// </remarks>
         [HttpDelete("api/deleteExerciseFromRoutine/{routineId}/{exerciseId}")]
         public async Task<IActionResult> deleteExerciseFromRoutine(int routineId, int exerciseId)
         {
@@ -154,29 +181,46 @@
         }
 
         /// <summary>
-        /// Obtém os detalhes de um exercício específico a partir do seu identificador.
+        /// Retrieves detailed information about a specific exercise based on the provided exercise ID.
         /// </summary>
         /// <param name="exerciseId">
-        /// O identificador do exercício, passado como string, que será convertido para inteiro.
+        /// A string representing the exercise identifier. This value is expected to be convertible to an integer.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> contendo, em caso de sucesso, os detalhes do exercício em formato DTO; 
-        /// caso contrário, uma mensagem de erro apropriada.
-        /// </returns>
-        /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// An <see cref="IActionResult"/> containing:
         /// <list type="bullet">
         ///   <item>
-        ///     Converte o parâmetro <c>exerciseId</c> de string para inteiro. Se a conversão falhar, retorna um <c>BadRequest</c> com uma mensagem de "Invalid exercise ID".
+        ///     a 200 OK response with the exercise details (mapped to a DTO) if the exercise is found,
         ///   </item>
         ///   <item>
-        ///     Procura o exercício na tabela <c>Exercises</c> com base no ID convertido. Se o exercício não for encontrado, retorna um <c>BadRequest</c> com a mensagem "Exercise don't found".
+        ///     a 400 Bad Request response with an error message if the exercise ID is invalid or if an error occurs,
         ///   </item>
         ///   <item>
-        ///     Se o exercício for encontrado, mapeia os seus dados para um objeto DTO, convertendo o nível de dificuldade para string, e retorna esse objeto no formato JSON.
+        ///     a 400 Bad Request response with a message if the exercise is not found.
         ///   </item>
         /// </list>
-        /// Em caso de exceção, retorna um <c>BadRequest</c> com a mensagem "Error fetching exercise" e os detalhes da exceção.
+        /// </returns>
+        /// <remarks>
+        /// The method performs the following operations:
+        /// <list type="bullet">
+        ///   <item>
+        ///     It first attempts to parse the <paramref name="exerciseId"/> string to an integer. If parsing fails,
+        ///     a Bad Request response is returned indicating an "Invalid exercise ID".
+        ///   </item>
+        ///   <item>
+        ///     It then queries the <c>Exercises</c> table in the database to retrieve the exercise that matches the parsed ID.
+        ///   </item>
+        ///   <item>
+        ///     If no exercise is found, a Bad Request response is returned with the message "Exercise don't found".
+        ///   </item>
+        ///   <item>
+        ///     If the exercise is found, its details are mapped to a data transfer object (DTO) to avoid exposing the entire entity.
+        ///   </item>
+        ///   <item>
+        ///     Finally, the method returns an OK response containing the exercise DTO in JSON format.
+        ///   </item>
+        /// </list>
+        /// If any exceptions occur during processing, they are caught and a Bad Request response is returned with the error details.
         /// </remarks>
         [HttpGet("api/getExerciseDetailsFromRoutine/{exerciseId}")]
         public async Task<IActionResult> GetExerciseDetailsFromRoutine(string exerciseId)
@@ -219,45 +263,48 @@
         }
 
         /// <summary>
-        /// Obtém a lista de mídia associada a um exercício específico.
+        /// Retrieves the media items associated with a specific exercise.
         /// </summary>
         /// <param name="exerciseId">
-        /// O identificador do exercício, passado como string, que será convertido para inteiro.
+        /// A string representing the identifier of the exercise, which will be parsed into an integer.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> contendo:
+        /// An <see cref="IActionResult"/> that contains:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com a lista de mídia, se forem encontrados registos correspondentes.
+        ///     a 200 OK response with a JSON array of media items if the media are successfully retrieved,
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>NotFound</c> se não for encontrada nenhuma mídia associada ao exercício.
+        ///     a 404 Not Found response if no media items are associated with the specified exercise,
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> com uma mensagem de erro, caso ocorra alguma exceção ou se o ID for inválido.
+        ///     a 400 Bad Request response if the exerciseId is invalid or if an error occurs during processing.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// This method performs the following steps:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se o parâmetro <c>exerciseId</c> pode ser convertido para um inteiro. Se não puder, retorna um BadRequest com a mensagem "Invalid exercise ID".
+        ///     Validates that the provided <paramref name="exerciseId"/> can be parsed into an integer.
+        ///     If parsing fails, it returns a Bad Request response indicating an invalid exercise ID.
         ///   </item>
         ///   <item>
-        ///     Busca na tabela <c>ExerciseMedia</c> os registos que associam mídia ao exercício com base no ID convertido e recolhe os respetivos IDs de mídia.
+        ///     Queries the <c>ExerciseMedia</c> table to retrieve all media IDs associated with the given exercise.
         ///   </item>
         ///   <item>
-        ///     Utiliza os IDs recolhidos para buscar os detalhes completos da mídia na tabela <c>Media</c>.
+        ///     Uses the retrieved media IDs to fetch the corresponding media details from the <c>Media</c> table.
         ///   </item>
         ///   <item>
-        ///     Se a lista de mídia estiver vazia, retorna um resultado <c>NotFound</c> com uma mensagem informativa.
+        ///     If no media items are found, returns a Not Found response with a corresponding message.
         ///   </item>
         ///   <item>
-        ///     Em caso de sucesso, retorna a lista de mídia em formato JSON.
+        ///     If media items are found, returns an OK response with the list of media items in JSON format.
+        ///   </item>
+        ///   <item>
+        ///     Any exceptions encountered during the process are caught and result in a Bad Request response with error details.
         ///   </item>
         /// </list>
-        /// Em caso de exceção, retorna um <c>BadRequest</c> com uma mensagem de erro e os detalhes da exceção.
         /// </remarks>
         [HttpGet("api/getExerciseMediaFromRoutine/{exerciseId}")]
         public async Task<IActionResult> GetExerciseMedia(string exerciseId)
@@ -294,59 +341,59 @@
         }
 
         /// <summary>
-        /// Adiciona uma nova rotina de treino e associa exercícios a ela.
+        /// Adds a new training routine and associates exercises with it.
         /// </summary>
         /// <param name="model">
-        /// O modelo que contém os dados necessários para criar a nova rotina, incluindo o nome, descrição, tipo, nível, necessidades e a lista de exercícios a associar.
+        /// The model containing the necessary data to create the new routine, including the name, description, type, level, requirements, and the list of exercises to associate.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso se a rotina e os exercícios forem adicionados corretamente.
+        ///     <c>Ok</c> with a success message if the routine and exercises are added successfully,
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados forem inválidos ou ocorrer algum erro durante o processo.
+        ///     <c>BadRequest</c> if the data is invalid or an error occurs during the process.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// The method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Valida o modelo recebido. Caso os dados sejam inválidos, retorna um <c>BadRequest</c> com a mensagem "Invalid data".
+        ///     Validates the received model. If the data is invalid, it returns a <c>BadRequest</c> with the message "Invalid data".
         ///   </item>
         ///   <item>
-        ///     Converte o nível de dificuldade da rotina para o enum <see cref="RoutineLevel"/>. Se a conversão falhar, retorna um <c>BadRequest</c> com a mensagem "Invalid difficulty level".
+        ///     Converts the routine's difficulty level to the <see cref="RoutineLevel"/> enum. If the conversion fails, it returns a <c>BadRequest</c> with the message "Invalid difficulty level".
         ///   </item>
         ///   <item>
-        ///     Cria um novo objeto <see cref="Routine"/> com os dados fornecidos e o adiciona à base de dados. A rotina é definida como não customizada (<c>IsCustom = false</c>).
+        ///     Creates a new <see cref="Routine"/> object with the provided data and adds it to the database. The routine is marked as non-custom (<c>IsCustom = false</c>).
         ///   </item>
         ///   <item>
-        ///     Se existir uma lista de exercícios no modelo, o método itera sobre cada ID de exercício:
+        ///     If a list of exercises is provided in the model, the method iterates over each exercise ID:
         ///     <list type="bullet">
         ///       <item>
-        ///         Procura o exercício original na base de dados.
+        ///         It retrieves the original exercise from the database.
         ///       </item>
         ///       <item>
-        ///         Cria uma nova associação (<see cref="ExerciseRoutine"/>) entre o exercício e a rotina, definindo valores padrão para <c>Sets</c>, <c>Reps</c> e <c>Duration</c>.
+        ///         Creates a new association (<see cref="ExerciseRoutine"/>) between the exercise and the routine, setting default values for <c>Sets</c>, <c>Reps</c>, and <c>Duration</c>.
         ///       </item>
         ///       <item>
-        ///         Adiciona essa associação à base de dados e guarda as alterações para gerar o ID da associação.
+        ///         Adds this association to the database and saves the changes to generate the association's ID.
         ///       </item>
         ///       <item>
-        ///         Invoca o método <c>AddExerciseIdToRoutine</c> para guardar a associação do exercício à rotina.
+        ///         Invokes the <c>AddExerciseIdToRoutine</c> method to store the association between the exercise and the routine.
         ///       </item>
         ///     </list>
         ///   </item>
         ///   <item>
-        ///     Adiciona, em bloco, as associações de mídia relacionadas aos exercícios (se houver) e guarda as alterações na base de dados.
+        ///     Adds, in bulk, any media associations related to the exercises (if present) and saves the changes to the database.
         ///   </item>
         ///   <item>
-        ///     Retorna um <c>Ok</c> com uma mensagem de sucesso se todas as operações forem realizadas sem erros.
+        ///     Returns an <c>Ok</c> response with a success message if all operations are completed without errors.
         ///   </item>
         ///   <item>
-        ///     Em caso de exceção, retorna um <c>BadRequest</c> com uma mensagem de erro e os detalhes da exceção.
+        ///     In case of an exception, returns a <c>BadRequest</c> with an error message and the exception details.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -424,46 +471,46 @@
         }
 
         /// <summary>
-        /// Adiciona uma nova rotina personalizada para um utilizador específico.
+        /// Adds a new custom training routine for a specific user.
         /// </summary>
         /// <param name="userId">
-        /// O identificador do utilizador para o qual a rotina personalizada será criada.
+        /// The identifier of the user for whom the custom routine will be created.
         /// </param>
         /// <param name="model">
-        /// O modelo que contém os dados necessários para criar a rotina, incluindo nome, descrição, tipo, nível de dificuldade e necessidades.
+        /// The model containing the necessary data to create the routine, including name, description, type, difficulty level, and requirements.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso e o identificador da nova rotina, se a operação for bem-sucedida.
+        ///     <c>Ok</c> with a success message and the identifier of the new routine if the operation is successful.
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> com uma mensagem de erro, se os dados forem inválidos ou se ocorrer alguma exceção.
+        ///     <c>BadRequest</c> with an error message if the data is invalid or if an exception occurs.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método realiza as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Valida o modelo recebido. Caso o modelo seja inválido, retorna um BadRequest com a mensagem "Invalid data".
+        ///     Validates the received model. If the model is invalid, it returns a BadRequest with the message "Invalid data."
         ///   </item>
         ///   <item>
-        ///     Converte a string do nível de dificuldade para o enum <see cref="RoutineLevel"/>. Se a conversão falhar, retorna um BadRequest com a mensagem "Invalid difficulty level".
+        ///     Converts the difficulty level string to the <see cref="RoutineLevel"/> enum. If the conversion fails, it returns a BadRequest with the message "Invalid difficulty level."
         ///   </item>
         ///   <item>
-        ///     Cria um novo objeto <see cref="Routine"/> associando-o ao utilizador identificado pelo parâmetro <c>userId</c>,
-        ///     define a rotina como personalizada (<c>IsCustom = true</c>) e preenche os restantes campos com os valores do modelo.
+        ///     Creates a new <see cref="Routine"/> object associated with the user identified by the <paramref name="userId"/>,
+        ///     marks the routine as custom (<c>IsCustom = true</c>), and populates the other fields with the values from the model.
         ///   </item>
         ///   <item>
-        ///     Adiciona a nova rotina à base de dados e guarda as alterações para gerar o identificador da rotina.
+        ///     Adds the new routine to the database and saves the changes to generate the routine's identifier.
         ///   </item>
         ///   <item>
-        ///     Retorna um <c>Ok</c> com uma mensagem de sucesso e o identificador da nova rotina.
+        ///     Returns an Ok response with a success message and the identifier of the new routine.
         ///   </item>
         ///   <item>
-        ///     Em caso de exceção, retorna um <c>BadRequest</c> com a mensagem "Error adding routine" e os detalhes da exceção.
+        ///     In case of an exception, returns a BadRequest with the message "Error adding routine" and the exception details.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -508,34 +555,33 @@
         }
 
         /// <summary>
-        /// Obtém todas as rotinas globais (não personalizadas) que não estão associadas a nenhum utilizador.
+        /// Retrieves all global (non-custom) routines that are not associated with any user.
         /// </summary>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém:
+        /// An <see cref="IActionResult"/> that contains:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com a lista de rotinas em formato JSON, se forem encontradas rotinas globais.
+        ///     an <c>Ok</c> result with the list of routines in JSON format if global routines are found,
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> com uma mensagem informativa se não existirem rotinas ou se ocorrer algum erro.
+        ///     a <c>BadRequest</c> result with an informative message if no routines exist or if an error occurs.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Recolhe todas as rotinas da base de dados onde <c>IsCustom</c> é falso e <c>UserId</c> é nulo, o que indica que
-        ///     são rotinas globais (não associadas a um utilizador específico).
+        ///     Retrieves all routines from the database where <c>IsCustom</c> is false and <c>UserId</c> is null, indicating that they are global routines (not associated with a specific user).
         ///   </item>
         ///   <item>
-        ///     Se a lista de rotinas estiver vazia, retorna um <c>BadRequest</c> com uma mensagem a indicar que não existem rotinas.
+        ///     If the list of routines is empty, it returns a <c>BadRequest</c> with a message indicating that no routines exist.
         ///   </item>
         ///   <item>
-        ///     Caso contrário, retorna as rotinas recolhidas num resultado <c>Ok</c>.
+        ///     Otherwise, it returns the retrieved routines in an <c>Ok</c> result.
         ///   </item>
         ///   <item>
-        ///     Em caso de exceção, retorna um <c>BadRequest</c> com a mensagem "Error fetching routines" e os detalhes da exceção.
+        ///     In case of an exception, it returns a <c>BadRequest</c> with the message "Error fetching routines" and the exception details.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -565,44 +611,44 @@
         }
 
         /// <summary>
-        /// Obtém uma lista de rotinas globais (não personalizadas) filtradas com base nos parâmetros facultativos fornecidos.
+        /// Retrieves a list of global (non-custom) routines filtered based on the provided optional parameters.
         /// </summary>
         /// <param name="name">
-        /// Opcional. O nome da rotina a filtrar. A comparação é feita de forma case-insensitive.
+        /// Optional. The name of the routine to filter by. The comparison is case-insensitive.
         /// </param>
         /// <param name="type">
-        /// Opcional. O tipo de rotina a filtrar. A comparação é feita de forma case-insensitive.
+        /// Optional. The type of routine to filter by. The comparison is case-insensitive.
         /// </param>
         /// <param name="difficultyLevel">
-        /// Opcional. O nível de dificuldade da rotina a filtrar. A comparação é feita convertendo o enum para string em minúsculas.
+        /// Optional. The difficulty level of the routine to filter by. The comparison is performed by converting the enum to a lowercase string.
         /// </param>
         /// <param name="numberOfExercises">
-        /// Opcional. O número exato de exercícios associados à rotina. Se fornecido, apenas rotinas com este número de exercícios serão retornadas.
+        /// Optional. The exact number of exercises associated with the routine. If provided, only routines with this exact number of exercises will be returned.
         /// </param>
         /// <param name="equipmentNeeded">
-        /// Opcional. O equipamento necessário, filtrando rotinas cujo valor em <c>Needs</c> corresponda (case-insensitive) ao fornecido.
+        /// Optional. The required equipment, filtering routines whose <c>Needs</c> value matches the provided string in a case-insensitive manner.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que, em caso de sucesso, contém uma lista de rotinas filtradas com o respetivo número de exercícios associados.
-        /// Caso ocorra alguma exceção, retorna um <c>BadRequest</c> com a mensagem de erro e detalhes da exceção.
+        /// An <see cref="IActionResult"/> that, if successful, contains a list of filtered routines along with the respective number of associated exercises.
+        /// In case of an exception, it returns a <c>BadRequest</c> with an error message and details of the exception.
         /// </returns>
         /// <remarks>
-        /// O método realiza as seguintes operações:
+        /// The method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Inicializa uma query para obter as rotinas onde <c>IsCustom</c> é falso.
+        ///     It initializes a query to retrieve routines where <c>IsCustom</c> is false.
         ///   </item>
         ///   <item>
-        ///     Aplica filtros opcionais para o nome, tipo, nível de dificuldade e necessidades da rotina.
+        ///     It applies optional filters for the routine's name, type, difficulty level, and equipment requirements.
         ///   </item>
         ///   <item>
-        ///     Seleciona para cada rotina o respetivo número de exercícios associados (contando os registos em <c>ExerciseRoutines</c>).
+        ///     For each routine, it selects the associated number of exercises by counting the records in <c>ExerciseRoutines</c>.
         ///   </item>
         ///   <item>
-        ///     Se o parâmetro <c>numberOfExercises</c> for fornecido, filtra as rotinas para incluir apenas aquelas com o número exato de exercícios especificado.
+        ///     If the <c>numberOfExercises</c> parameter is provided, it filters the routines to include only those with the exact specified number of exercises.
         ///   </item>
         ///   <item>
-        ///     Mapeia o resultado para um objeto que inclui os detalhes da rotina e o número de exercícios, e retorna essa lista em formato JSON.
+        ///     Finally, it maps the result to an object that includes the routine details and the exercise count, and returns this list in JSON format.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -668,36 +714,37 @@
         }
 
         /// <summary>
-        /// Obtém as rotinas de treino personalizadas associadas a um utilizador específico.
+        /// Retrieves the custom training routines associated with a specific user.
         /// </summary>
         /// <param name="userId">
-        /// O identificador do utilizador para o qual se pretendem obter as rotinas personalizadas.
+        /// The identifier of the user for whom custom routines are to be retrieved.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém:
+        /// An <see cref="IActionResult"/> that contains:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com a lista de rotinas personalizadas em formato JSON, se forem encontradas.
+        ///     an Ok response with a JSON array of custom routines if any are found,
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>NotFound</c> com uma mensagem informativa, se nenhuma rotina personalizada for encontrada para o utilizador.
+        ///     a NotFound response with an informative message if no custom routines are found for the user,
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> em caso de erro durante o processamento.
+        ///     a BadRequest response if an error occurs during processing.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Filtra a tabela de rotinas (<c>Routines</c>) para obter apenas as rotinas personalizadas (<c>IsCustom == true</c>) que estejam associadas ao utilizador identificado pelo <c>userId</c>.
+        ///     It filters the Routines table to retrieve only those routines marked as custom (<c>IsCustom == true</c>)
+        ///     that are associated with the specified user (i.e., where <c>UserId</c> equals the provided <paramref name="userId"/>).
         ///   </item>
         ///   <item>
-        ///     Se a lista resultante estiver vazia, retorna um <c>NotFound</c> com a mensagem "Couldn't find custom routines for the user".
+        ///     If the resulting list is empty, it returns a NotFound response with the message "Couldn't find custom routines for the user."
         ///   </item>
         ///   <item>
-        ///     Caso contrário, retorna as rotinas encontradas num resultado <c>Ok</c>.
+        ///     Otherwise, it returns an Ok response containing the list of custom routines in JSON format.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -722,17 +769,22 @@
         }
 
         /// <summary>
-        /// Elimina uma rotina de treino com base no seu identificador.
+        /// Deletes a training routine based on its identifier.
         /// </summary>
         /// <param name="routineId">
-        /// O identificador da rotina a eliminar.
+        /// The identifier of the routine to delete.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que representa:
+        /// An <see cref="IActionResult"/> that represents:
         /// <list type="bullet">
-        ///   <item><c>NoContent</c> se a eliminação for bem-sucedida;</item>
-        ///   <item><c>NotFound</c> se a rotina não for encontrada;</item>
-        ///   <item><c>BadRequest</c> em caso de erro durante a operação.
+        ///   <item>
+        ///     <c>NoContent</c> if the deletion is successful;
+        ///   </item>
+        ///   <item>
+        ///     <c>NotFound</c> if the routine is not found;
+        ///   </item>
+        ///   <item>
+        ///     <c>BadRequest</c> in case of an error during the operation.
         ///   </item>
         /// </list>
         /// </returns>
@@ -760,22 +812,22 @@
         }
 
         /// <summary>
-        /// Obtém a relação entre um exercício e uma rotina específica.
+        /// Retrieves the association between a specific exercise and a training routine.
         /// </summary>
         /// <param name="routineId">
-        /// O identificador da rotina.
+        /// The identifier of the routine.
         /// </param>
         /// <param name="exerciseId">
-        /// O identificador do exercício.
+        /// The identifier of the exercise.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém:
+        /// An <see cref="IActionResult"/> that contains:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com os detalhes da relação entre o exercício e a rotina, se encontrada.
+        ///     an Ok response with the details of the association between the exercise and the routine, if found;
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> em caso de erro, com uma mensagem e os detalhes da exceção.
+        ///     a BadRequest response in case of an error, including an error message and exception details.
         ///   </item>
         /// </list>
         /// </returns>
@@ -794,25 +846,25 @@
         }
 
         /// <summary>
-        /// Adiciona uma relação entre um exercício e uma rotina, associando o objeto <see cref="ExerciseRoutine"/> ao exercício especificado.
+        /// Adds an association between an exercise and a routine by linking the specified <see cref="ExerciseRoutine"/> object to the exercise.
         /// </summary>
         /// <param name="exerciseId">
-        /// O identificador do exercício ao qual se pretende adicionar a relação.
+        /// The identifier of the exercise to which the association should be added.
         /// </param>
         /// <param name="exerciseRoutine">
-        /// O objeto que representa a relação a ser adicionada, contendo os dados relativos à rotina e aos parâmetros associados (ex.: sets, reps, duração).
+        /// The object representing the association to be added, containing the routine data and related parameters (e.g., sets, reps, duration).
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> indicating:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>NoContent</c> se a relação for adicionada com sucesso;
+        ///     <c>NoContent</c> if the association is added successfully;
         ///   </item>
         ///   <item>
-        ///     <c>NotFound</c> se o exercício não for encontrado;
+        ///     <c>NotFound</c> if the exercise is not found;
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se ocorrer algum erro durante a operação, retornando os detalhes da exceção.
+        ///     <c>BadRequest</c> if an error occurs during the operation, returning the exception details.
         ///   </item>
         /// </list>
         /// </returns>

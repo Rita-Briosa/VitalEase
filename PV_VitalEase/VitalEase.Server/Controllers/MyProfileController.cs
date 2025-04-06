@@ -784,45 +784,45 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Altera o estado de "tem problemas cardíacos" registado no perfil de um utilizador.
+        /// Changes the "HasHeartProblems" status registered in a user's profile.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangeHasHeartProblemsViewModel"/> que contém o email do utilizador e o novo valor para "HasHeartProblems".
+        /// An object of type <see cref="ChangeHasHeartProblemsViewModel"/> that contains the user's email and the new value for "HasHeartProblems".
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso se o valor for alterado com êxito;
+        ///     an <c>Ok</c> response with a success message if the value is updated successfully;
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados forem inválidos ou se ocorrer algum erro durante o processamento;
+        ///     a <c>BadRequest</c> response if the provided data is invalid or an error occurs during processing;
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se nenhum utilizador for encontrado com o email fornecido;
+        ///     an <c>Unauthorized</c> response if no user is found with the provided email;
         ///   </item>
         ///   <item>
-        ///     <c>NotFound</c> se o perfil do utilizador não for encontrado.
+        ///     a <c>NotFound</c> response if the user's profile is not found.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// The method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Valida os dados enviados. Se os dados forem inválidos, regista a tentativa e retorna um <c>BadRequest</c>.
+        ///     It validates the submitted data. If the data is invalid, it logs the attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Procura o utilizador na base de dados pelo email fornecido, incluindo o seu perfil associado (usando <c>Include(u => u.Profile)</c>).
+        ///     It searches the database for a user using the provided email, including the associated profile (using <c>Include(u => u.Profile)</c>).
         ///   </item>
         ///   <item>
-        ///     Se o utilizador ou o seu perfil não forem encontrados, regista a tentativa e retorna a resposta adequada.
+        ///     If the user or their profile is not found, it logs the attempt and returns the appropriate response.
         ///   </item>
         ///   <item>
-        ///     Atualiza o valor de <c>HasHeartProblems</c> no perfil com o valor fornecido no modelo e guarda as alterações na base de dados.
+        ///     It updates the <c>HasHeartProblems</c> value in the profile with the value provided in the model and saves the changes to the database.
         ///   </item>
         ///   <item>
-        ///     Regista a operação com sucesso e retorna um <c>Ok</c> com a mensagem de sucesso.
+        ///     It logs the successful operation and returns an <c>Ok</c> response with a success message.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -868,45 +868,45 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Altera o nome de utilizador (username) registado no perfil de um utilizador.
+        /// Changes the username registered in a user's profile.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangeUsernameViewModel"/> que contém o email do utilizador e o novo username desejado.
+        /// An object of type <see cref="ChangeUsernameViewModel"/> that contains the user's email and the desired new username.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso se o username for alterado com êxito;
+        ///     an <c>Ok</c> response with a success message if the username is changed successfully;
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados enviados forem inválidos ou se ocorrer algum erro durante o processamento;
+        ///     a <c>BadRequest</c> response if the provided data is invalid or an error occurs during processing;
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se nenhum utilizador for encontrado com o email fornecido;
+        ///     an <c>Unauthorized</c> response if no user is found with the provided email;
         ///   </item>
         ///   <item>
-        ///     <c>NotFound</c> se o perfil do utilizador não for encontrado ou se o novo username já existir.
+        ///     a <c>NotFound</c> response if the user's profile is not found or if the new username already exists.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se os dados enviados são válidos. Caso contrário, regista a tentativa e retorna um <c>BadRequest</c>.
+        ///     It validates the provided data. If the data is invalid, it logs the attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Procura o utilizador na base de dados pelo email fornecido, incluindo o seu perfil associado (usando <c>Include(u => u.Profile)</c>).
+        ///     It searches the database for a user by the provided email, including their associated profile (using <c>Include(u => u.Profile)</c>).
         ///   </item>
         ///   <item>
-        ///     Se o utilizador ou o seu perfil não forem encontrados, regista a tentativa e retorna a resposta apropriada.
+        ///     If the user or their profile is not found, it logs the attempt and returns the appropriate response.
         ///   </item>
         ///   <item>
-        ///     Verifica se o novo username já existe na base de dados. Se existir, regista a tentativa e retorna um <c>NotFound</c> com a mensagem "Username Already Exists".
+        ///     It checks if the new username already exists in the database. If it does, it logs the attempt and returns a <c>NotFound</c> response with the message "Username Already Exists".
         ///   </item>
         ///   <item>
-        ///     Se o username for único, atualiza o campo <c>Username</c> no perfil com o novo valor, guarda as alterações e regista a operação com sucesso.
+        ///     If the username is unique, it updates the <c>Username</c> field in the profile with the new value, saves the changes, and logs the successful operation.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -960,48 +960,49 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Altera a palavra-passe de um utilizador após validar a palavra-passe antiga e enviar uma notificação por email.
+        /// Changes a user's password after validating the old password and sending a notification email.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangePasswordViewModel"/> que contém o email do utilizador, a palavra-passe antiga e a nova palavra-passe.
+        /// A <see cref="ChangePasswordViewModel"/> object that contains the user's email, old password, and new password.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso se a palavra-passe for alterada corretamente.
+        ///     an <c>Ok</c> response with a success message if the password is changed successfully;
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados enviados forem inválidos ou se ocorrer um erro durante o processamento.
+        ///     a <c>BadRequest</c> response if the provided data is invalid or if an error occurs during processing;
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se não for encontrado o utilizador com as credenciais fornecidas ou se a nova palavra-passe não for válida.
+        ///     an <c>Unauthorized</c> response if the user is not found with the provided credentials or if the new password does not meet the required criteria.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se o modelo recebido é válido. Caso não o seja, regista a tentativa e retorna um BadRequest.
+        ///     It validates the incoming model. If the model is invalid, it logs the attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Hasheia a palavra-passe antiga e procura o utilizador com base no email e no hash da palavra-passe antiga.
+        ///     It hashes the old password and searches for a user in the database whose email and hashed old password match the provided values.
         ///   </item>
         ///   <item>
-        ///     Se o utilizador não for encontrado, regista a tentativa e retorna um Unauthorized.
+        ///     If the user is not found, it logs the attempt and returns an <c>Unauthorized</c> response.
         ///   </item>
         ///   <item>
-        ///     Verifica se a nova palavra-passe cumpre os critérios de validade. Se não for válida, regista a tentativa e retorna um Unauthorized.
+        ///     It checks if the new password meets the required criteria. If not, it logs the attempt and returns an <c>Unauthorized</c> response.
         ///   </item>
         ///   <item>
-        ///     Envia uma notificação por email ao utilizador informando que a palavra-passe foi alterada. Se o envio falhar, regista a tentativa e retorna um erro de servidor.
+        ///     It sends a notification email to the user indicating that the password has been changed. If the email fails to send, it logs the attempt and returns a server error.
         ///   </item>
         ///   <item>
-        ///     Gera o hash da nova palavra-passe e verifica se é diferente do hash da palavra-passe antiga. Se forem iguais, regista a tentativa e retorna um Unauthorized.
+        ///     It generates a hash for the new password and ensures that it is different from the hash of the old password. If they are the same, it logs the attempt and returns an <c>Unauthorized</c> response.
         ///   </item>
         ///   <item>
-        ///     Atualiza a palavra-passe do utilizador com o novo hash, guarda as alterações na base de dados e regista a operação com sucesso.
+        ///     It updates the user's password with the new hash, records the time of the password change, invalidates the current session token,
+        ///     saves the changes to the database, and logs the operation as successful.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -1071,51 +1072,52 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Processa o pedido de alteração de email de um utilizador.
+        /// Processes a user's email change request.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangeEmailViewModel"/> que contém o email atual, a nova email e a palavra-passe do utilizador para verificação.
+        /// An object of type <see cref="ChangeEmailViewModel"/> that contains the user's current email, the new email, and the user's password for verification.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso se o pedido for processado e os emails de verificação forem enviados com êxito.
+        ///     <c>Ok</c> with a success message if the request is processed and the verification emails are successfully sent.
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados enviados forem inválidos ou se ocorrer um erro durante o processamento.
+        ///     <c>BadRequest</c> if the provided data is invalid or an error occurs during processing.
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se o utilizador não for encontrado ou se a palavra-passe estiver incorreta, ou se o novo email já existir.
+        ///     <c>Unauthorized</c> if the user is not found, the password is incorrect, or the new email already exists.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se os dados enviados são válidos; se não forem, regista a tentativa de alteração e retorna um BadRequest.
+        ///     Validates the incoming data; if the data is invalid, it logs the change attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Hasheia a palavra-passe fornecida e procura um utilizador na base de dados cujo email e palavra-passe correspondam.
+        ///     Hashes the provided password and searches the database for a user whose current email and password match the provided values.
         ///   </item>
         ///   <item>
-        ///     Se o utilizador não for encontrado, regista a tentativa e retorna um Unauthorized.
+        ///     If the user is not found, it logs the attempt and returns an <c>Unauthorized</c> response.
         ///   </item>
         ///   <item>
-        ///     Verifica se o novo email já existe na base de dados; se existir, regista a tentativa e retorna um Unauthorized com a mensagem "Email already exists".
+        ///     Checks if the new email already exists in the database; if it does, it logs the attempt and returns an <c>Unauthorized</c> response with the message "Email already exists".
         ///   </item>
         ///   <item>
-        ///     Gera um token para verificação de alteração de email, usando o email atual, o novo email e o ID do utilizador.
+        ///     Generates a token for verifying the email change, using the current email, the new email, and the user's ID.
         ///   </item>
         ///   <item>
-        ///     Cria dois links de verificação: um para o novo email e outro para o email antigo, escapando o token para integridade do URL.
+        ///     Creates two verification links: one for the new email and another for the current (old) email, ensuring the token is URL-escaped.
         ///   </item>
         ///   <item>
-        ///     Envia os links de verificação por email para ambos os endereços. Se o envio falhar para qualquer um, regista a tentativa e retorna um erro de servidor.
+        ///     Sends the verification links via email to both the old and new email addresses. If sending fails for either address,
+        ///     it logs the attempt and returns a server error.
         ///   </item>
         ///   <item>
-        ///     Regista a operação como bem-sucedida e retorna um Ok com uma mensagem de sucesso.
+        ///     Logs the operation as successful and returns an <c>Ok</c> response with a success message.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -1184,33 +1186,33 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Valida o token para confirmação do novo email e, se for válido, confirma a alteração.
+        /// Validates the token for confirming the new email and, if valid, confirms the change.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ConfirmNewEmailViewModel"/> que contém o token enviado na query string.
+        /// An object of type <see cref="ConfirmNewEmailViewModel"/> that contains the token provided in the query string.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso e o novo email, se o token for válido.
+        ///     an <c>Ok</c> response with a success message and the new email if the token is valid,
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se o token estiver expirado ou for inválido, registar o erro e retornar uma mensagem apropriada.
+        ///     a <c>BadRequest</c> response if the token is expired or invalid, logging the error and returning an appropriate message.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// Este método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Valida o token utilizando o método <c>ValidateToken</c>, que retorna uma tupla contendo a validade, o email antigo, o novo email, o ID do utilizador e o tokenId.
+        ///     It validates the token using the <c>ValidateToken</c> method, which returns a tuple containing the validity status, the old email, the new email, the user ID, and the tokenId.
         ///   </item>
         ///   <item>
-        ///     Se o token não for válido, regista a tentativa de alteração e retorna um <c>BadRequest</c> com a mensagem "Token expired."
+        ///     If the token is not valid, it logs the change attempt and returns a <c>BadRequest</c> with the message "Token expired."
         ///   </item>
         ///   <item>
-        ///     Se o token for válido, guarda as alterações (se houver) na base de dados e retorna um <c>Ok</c> com uma mensagem de sucesso e o novo email.
+        ///     If the token is valid, it saves any pending changes to the database and returns an <c>Ok</c> response with a success message and the new email.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -1628,33 +1630,34 @@ namespace VitalEase.Server.Controllers
 
 
         /// <summary>
-        /// Valida o token para confirmação do novo email e, se for válido, confirma a alteração.
+        /// Validates the token for confirming the new email and, if valid, confirms the change.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ConfirmNewEmailViewModel"/> que contém o token enviado na query string.
+        /// An object of type <see cref="ConfirmNewEmailViewModel"/> that contains the token provided in the query string.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso e o novo email, se o token for válido.
+        ///     an <c>Ok</c> response with a success message and the new email if the token is valid,
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se o token estiver expirado ou for inválido, registar o erro e retornar uma mensagem apropriada.
+        ///     a <c>BadRequest</c> response if the token is expired or invalid, logging the error and returning an appropriate message.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// Este método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Valida o token utilizando o método <c>ValidateToken</c>, que retorna uma tupla contendo a validade, o email antigo, o novo email, o ID do utilizador e o tokenId.
+        ///     It validates the token using the <c>ValidateToken</c> method, which returns a tuple containing the validity,
+        ///     the old email, the new email, the user ID, and the tokenId.
         ///   </item>
         ///   <item>
-        ///     Se o token não for válido, regista a tentativa de alteração e retorna um <c>BadRequest</c> com a mensagem "Token expired."
+        ///     If the token is not valid, it logs the attempt and returns a <c>BadRequest</c> with the message "Token expired."
         ///   </item>
         ///   <item>
-        ///     Se o token for válido, guarda as alterações (se houver) na base de dados e retorna um <c>Ok</c> com uma mensagem de sucesso e o novo email.
+        ///     If the token is valid, it saves any pending changes to the database and returns an <c>Ok</c> response with a success message and the new email.
         ///   </item>
         /// </list>
         /// </remarks>

@@ -14,28 +14,28 @@ using VitalEase.Server.Models;
 namespace VitalEase.Server.Controllers
 {
     /// <summary>
-    /// Controlador responsável pela gestão dos pedidos de recuperação de palavra-passe.
+    /// Controller responsible for managing password recovery requests.
     /// </summary>
     public class ForgotPasswordController : Controller
     {
         /// <summary>
-        /// Contexto da base de dados VitalEaseServerContext, utilizado para aceder aos registos da aplicação.
+        /// Database context VitalEaseServerContext, used to access the application records.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Interface de configuração utilizada para aceder às definições da aplicação.
+        /// Configuration interface used to access the application settings.
         /// </summary>
         private readonly IConfiguration _configuration;
 
         /// <summary>
-        /// Inicializa uma nova instância do controlador <see cref="ForgotPasswordController"/>.
+        /// Initializes a new instance of the controller <see cref="ForgotPasswordController"/>.
         /// </summary>
         /// <param name="context">
-        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso aos dados.
+        /// The database context (<see cref="VitalEaseServerContext"/>) that enables data access operations.
         /// </param>
         /// <param name="configuration">
-        /// A interface de configuração (<see cref="IConfiguration"/>) para aceder às definições da aplicação.
+        /// The configuration interface (<see cref="IConfiguration"/>) to access the application settings.
         /// </param>
         public ForgotPasswordController(VitalEaseServerContext context, IConfiguration configuration)
         {
@@ -44,14 +44,52 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Processa o pedido de recuperação de palavra-passe, enviando um email com instruções de redefinição.
+        /// Initiates the password reset process for a user by validating the provided email, generating a reset token and link,
+        /// and sending password reset instructions via email.
         /// </summary>
         /// <param name="model">
-        /// O modelo que contém o email do utilizador que pretende recuperar a palavra-passe.
+        /// A <see cref="ForgotPasswordViewModel"/> containing the email address of the user who wishes to reset their password.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica o sucesso ou a falha do processo, com uma mensagem informativa.
+        /// An <see cref="IActionResult"/> that returns:
+        /// <list type="bullet">
+        ///   <item>
+        ///     a 200 OK response with a message if the password reset instructions were sent successfully;
+        ///   </item>
+        ///   <item>
+        ///     a 400 Bad Request response if the email is missing or in an invalid format;
+        ///   </item>
+        ///   <item>
+        ///     a 404 Not Found response if no user with the specified email is found;
+        ///   </item>
+        ///   <item>
+        ///     a 500 Internal Server Error response if the email fails to send.
+        ///   </item>
+        /// </list>
         /// </returns>
+        /// <remarks>
+        /// The method performs the following operations:
+        /// <list type="bullet">
+        ///   <item>
+        ///     It validates that the email provided in the <paramref name="model"/> is not null and is in a valid format using the <see cref="IsValidEmail"/> method.
+        ///   </item>
+        ///   <item>
+        ///     It searches for the user in the database using the email address. If no user is found, a NotFound response is returned.
+        ///   </item>
+        ///   <item>
+        ///     A password reset token is generated using the <see cref="GenerateToken(string, int)"/> method with the user's email and ID.
+        ///   </item>
+        ///   <item>
+        ///     A reset password link is constructed by embedding the token into a predefined URL.
+        ///   </item>
+        ///   <item>
+        ///     The reset password email is sent to the user's email address via the <see cref="SendPasswordResetEmail(string, string)"/> method.
+        ///   </item>
+        ///   <item>
+        ///     If the email is sent successfully, an OK response is returned with a success message; otherwise, an error response is returned.
+        ///   </item>
+        /// </list>
+        /// </remarks>
         [HttpPost("api/forgotPassword")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordViewModel model)
         {
@@ -83,12 +121,17 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Verifica se o endereço de email fornecido é válido.
+        /// Determines whether the specified email address is valid.
         /// </summary>
-        /// <param name="email">O endereço de email a ser validado.</param>
+        /// <param name="email">The email address to validate.</param>
         /// <returns>
-        /// Retorna <c>true</c> se o email for válido; caso contrário, <c>false</c>.
+        /// <c>true</c> if the email address is valid; otherwise, <c>false</c>.
         /// </returns>
+        /// <remarks>
+        /// This method attempts to create an instance of <see cref="System.Net.Mail.MailAddress"/> using the provided email.
+        /// If the email address is correctly formatted and no exception is thrown, the method returns <c>true</c>;
+        /// otherwise, if an exception is thrown, it returns <c>false</c>.
+        /// </remarks>
         private bool IsValidEmail(string email)
         {
             try
@@ -103,13 +146,21 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Envia um email com o link de redefinição de palavra-passe para o endereço especificado.
+        /// Sends a password reset email to the specified recipient.
         /// </summary>
-        /// <param name="toEmail">O endereço de email do destinatário.</param>
-        /// <param name="resetLink">O link para redefinir a palavra-passe.</param>
+        /// <param name="toEmail">The email address of the recipient.</param>
+        /// <param name="resetLink">The URL link that the recipient must click to reset their password.</param>
         /// <returns>
-        /// Uma <see cref="Task{bool}"/> que resulta em <c>true</c> se o email for enviado com sucesso; caso contrário, <c>false</c>.
+        /// A <see cref="Task{Boolean}"/> representing the asynchronous operation, which returns <c>true</c>
+        /// if the email was sent successfully, or <c>false</c> if an error occurred.
         /// </returns>
+        /// <remarks>
+        /// This method retrieves the necessary email configuration settings (sender's email, SMTP server, port, username, and password)
+        /// from the application's configuration. It first validates that the sender's email is correctly configured and that the SMTP port
+        /// is a valid number. An HTML email message is then constructed with the subject "Password Reset Request" and a body that includes the
+        /// provided reset link. The email is sent securely via an <see cref="SmtpClient"/> with SSL enabled. If an exception occurs during
+        /// the sending process, the error is logged to the console, and the method returns <c>false</c>.
+        /// </remarks>
         private async Task<bool> SendPasswordResetEmail(string toEmail, string resetLink)
         {
             try
@@ -160,16 +211,41 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Gera um token JWT para a redefinição de palavra-passe e regista o token gerado na base de dados.
+        /// Generates a JWT token for password reset purposes for a specified user.
         /// </summary>
-        /// <param name="email">O endereço de email do utilizador para o qual o token será gerado.</param>
-        /// <param name="userId">O identificador do utilizador.</param>
+        /// <param name="email">The email address of the user requesting the token.</param>
+        /// <param name="userId">The unique identifier of the user.</param>
         /// <returns>
-        /// Uma string representando o token JWT gerado, que expira 30 minutos após a sua criação.
+        /// A string representing the generated JWT token.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// É lançada se a chave JWT ("Jwt:Key") não estiver configurada corretamente na aplicação.
+        /// Thrown if the JWT key is not configured properly in the application settings.
         /// </exception>
+        /// <remarks>
+        /// This method performs the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     It retrieves the JWT secret key from the configuration and verifies that it is not null or empty.
+        ///   </item>
+        ///   <item>
+        ///     A unique token identifier (tokenId) is generated using <c>Guid.NewGuid()</c>.
+        ///   </item>
+        ///   <item>
+        ///     A symmetric security key is created using the secret key, and signing credentials are set up with the HMAC SHA256 algorithm.
+        ///   </item>
+        ///   <item>
+        ///     A JWT token is then created with the specified issuer, audience, and a set of claims including the user's email, userId, and tokenId. 
+        ///     The token is configured to expire 30 minutes from the time of generation.
+        ///   </item>
+        ///   <item>
+        ///     A corresponding <see cref="ResetPasswordTokens"/> record is created with the token details and is saved in the database.
+        ///   </item>
+        ///   <item>
+        ///     Finally, the method returns the JWT token as a string.
+        ///   </item>
+        /// </list>
+        /// Note that the token record is saved synchronously using <c>_context.SaveChanges()</c>.
+        /// </remarks>
         public string GenerateToken(string email, int userId)
         {
 
