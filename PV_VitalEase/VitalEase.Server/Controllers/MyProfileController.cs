@@ -15,10 +15,30 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 
 namespace VitalEase.Server.Controllers
 {
+    /// <summary>
+    /// Controlador responsável pela gestão do perfil do utilizador.
+    /// </summary>
     public class MyProfileController : Controller
     {
+        /// <summary>
+        /// Contexto da base de dados VitalEaseServerContext, utilizado para aceder aos dados da aplicação.
+        /// </summary>
         private readonly VitalEaseServerContext _context;
+
+        /// <summary>
+        /// Interface de configuração, utilizada para aceder às definições da aplicação.
+        /// </summary>
         private readonly IConfiguration _configuration;
+
+        /// <summary>
+        /// Inicializa uma nova instância do controlador <see cref="MyProfileController"/>.
+        /// </summary>
+        /// <param name="context">
+        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso aos dados.
+        /// </param>
+        /// <param name="configuration">
+        /// A interface de configuração (<see cref="IConfiguration"/>) para aceder às definições da aplicação.
+        /// </param>
         public MyProfileController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;

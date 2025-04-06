@@ -86,8 +86,9 @@ export class CustomTrainingRoutinesComponent {
     this.routinesService.addCustomRoutine(this.userInfo.id, this.newName, this.newDescription, this.newType, this.newRoutineLevel, this.newNeeds).subscribe(
       (response: any) => {
         console.log(response.message);
+        console.log(response);
         this.closeModal();
-        window.location.reload();
+        this.router.navigate([`/edit-custom-training-routine/${response.routineId}`]);
       },
       (error: any) => {
         console.log(error.error?.message);
