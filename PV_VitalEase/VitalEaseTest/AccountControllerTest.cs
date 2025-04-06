@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Drawing.Printing;
 using Newtonsoft.Json.Linq;
+using System.Net.Http.Json;
+
 
 namespace VitalEaseTest
 {
@@ -39,12 +41,89 @@ namespace VitalEaseTest
                     Password = "13004d8331d779808a2336d46b3553d1594229e2bb696a8e9e14554d82a648da", // Use a senha "hasheada" aqui, pois o código de produção verifica o hash
                     Type = UserType.Admin // Altere conforme o tipo de usuário desejado
                 };
-               
+
                 _context.Users.Add(user);
                 _context.Users.Add(user1);
                 _context.SaveChanges();
             }
         }
+
+        // Teste de Carga
+        [Fact]
+        public async Task Login_LoadTest_SuccessfulLogin_ReturnsOkWithToken()
+        {
+            // Número de utilizadores virtuais (VUs) para simular no teste de carga
+            int vus = 50;  // Ajuste para o número desejado de utilizadores virtuais
+            int durationInSeconds = 30;  // Duração do teste de carga em segundos
+
+            var tasks = new List<Task>();
+
+            using (var client = new HttpClient())
+            {
+                for (int i = 0; i < vus; i++)
+                {
+                    tasks.Add(SimulateLoginRequest(client));
+                }
+
+                // Aguardar todas as tarefas (requisições) serem completadas
+                await Task.WhenAll(tasks);
+            }
+
+            Console.WriteLine("Teste de carga concluído.");
+        }
+
+        // Função para simular uma requisição de login de utilizador
+        private async Task SimulateLoginRequest(HttpClient client)
+        {
+            // Simulando login com email e senha válidos
+            var model = new LoginViewModel { Email = "user@example.com", Password = "Password123!" };
+
+            var response = await client.PostAsJsonAsync("https://localhost:7180/api/account/login", model); // Ajuste a URL conforme necessário
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                var responseJson = JObject.Parse(responseBody);
+                var message = responseJson["message"].ToString();
+                Console.WriteLine($"Login bem-sucedido: {message}");
+            }
+            else
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Resposta bruta: " + responseBody);
+
+                if (!string.IsNullOrWhiteSpace(responseBody) && responseBody.Trim().StartsWith("{"))
+                {
+                    try
+                    {
+                        var responseJson = JObject.Parse(responseBody);
+                        var message = responseJson["message"]?.ToString();
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            Console.WriteLine($"✅ Login bem-sucedido: {message}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"❌ Falha no login: {message}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Erro ao fazer parse do JSON: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("⚠️ A resposta não é um JSON válido ou está vazia.");
+                }
+
+            }
+
+            // Espera de 1 segundo entre as requisições
+            await Task.Delay(1000);
+        }
+
 
 
         [Fact]
@@ -64,17 +143,17 @@ namespace VitalEaseTest
             // O valor de UnauthorizedObjectResult é um objeto simples, não um JsonResult
             var response = unauthorizedResult.Value; // A resposta é um dicionário
 
-            
+
             Assert.NotNull(response); // Verifique se a resposta não é nula
 
             var message = response.GetType().GetProperty("message")?.GetValue(response)?.ToString();
 
-            // Verifique se a chave "message" existe e se o valor é o esperado
+            // Verifique se o valor da chave "message" é o esperado
             Assert.NotNull(message); // Verifique se o valor da chave "message" não é nulo
             Assert.Equal("Email is incorrect", message); // Compare com a string correta
         }
 
-        
+
         [Fact]
         public async Task Login_IncorrectPassword_ReturnsUnauthorized()
         {
@@ -99,7 +178,7 @@ namespace VitalEaseTest
             Assert.Equal("Password is incorrect", message);
         }
 
-        
+
         [Fact]
         public async Task Login_AccountBlocked_ReturnsUnauthorized()
         {
@@ -136,7 +215,7 @@ namespace VitalEaseTest
             await _context.SaveChangesAsync();
         }
 
-        
+
         [Fact]
         public async Task Login_Success_ReturnsOkWithToken()
         {
@@ -163,4 +242,3 @@ namespace VitalEaseTest
         }
     }
 }
-

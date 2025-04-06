@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj": {}
+    "C:\\Users\\patin\\Source\\Repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj": {
+    "C:\\Users\\patin\\Source\\Repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
+        "projectUniqueName": "C:\\Users\\patin\\Source\\Repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
         "projectName": "VitalEase.Server",
-        "projectPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
-        "packagesPath": "C:\\Users\\zluci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\obj\\",
+        "projectPath": "C:\\Users\\patin\\Source\\Repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEase.Server\\VitalEase.Server.csproj",
+        "packagesPath": "C:\\Users\\patin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\patin\\Source\\Repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEase.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\zluci\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\patin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -109,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
