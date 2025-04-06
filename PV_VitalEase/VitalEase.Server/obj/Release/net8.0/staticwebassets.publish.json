@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cWDKJIPWCTItnHYZZ8gxQ32yknvb52duLow8XRZ56aM=",
+  "Hash": "hg7hA/vuFtApHsmZef72/q3Twiidq1+3NsorEBCgTNg=",
   "Source": "VitalEase.Server",
   "BasePath": "_content/VitalEase.Server",
   "Mode": "Default",
@@ -253,19 +253,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "omvih2vncm",
-      "Integrity": "oBkFjZ31DX0pt+Ot3WyIHwYrnVEd4y382bbM1XXHoBQ=",
+      "Fingerprint": "k4c06aisse",
+      "Integrity": "nHSJdlBmAQOQIx/79g3eHPuET9h5AhrfX4hCNQyvZLg=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\index.html"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\main-J5AY7EGI.js",
+      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\main-6HXRPCRD.js",
       "SourceId": "vitalease.client",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\",
       "BasePath": "/",
-      "RelativePath": "main-J5AY7EGI.js",
+      "RelativePath": "main-6HXRPCRD.js",
       "AssetKind": "Publish",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -274,11 +274,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "swb5nk748m",
-      "Integrity": "dH2nSaLhz4KsiHaKABOoC5loj8zVwk2DcyTaWVrkN+Q=",
+      "Fingerprint": "dwyxgxiccd",
+      "Integrity": "7YI74AAAPRM5X/9Wm0f7kQDhyT7mmGJeoCR+/+uSgE4=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\main-J5AY7EGI.js"
+      "OriginalItemSpec": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\main-6HXRPCRD.js"
     },
     {
       "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
@@ -1175,11 +1175,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"oBkFjZ31DX0pt+Ot3WyIHwYrnVEd4y382bbM1XXHoBQ=\""
+          "Value": "\"nHSJdlBmAQOQIx/79g3eHPuET9h5AhrfX4hCNQyvZLg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 05 Apr 2025 16:29:27 GMT"
+          "Value": "Sun, 06 Apr 2025 02:42:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1189,13 +1189,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oBkFjZ31DX0pt+Ot3WyIHwYrnVEd4y382bbM1XXHoBQ="
+          "Value": "sha256-nHSJdlBmAQOQIx/79g3eHPuET9h5AhrfX4hCNQyvZLg="
         }
       ]
     },
     {
-      "Route": "main-J5AY7EGI.js",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\main-J5AY7EGI.js",
+      "Route": "main-6HXRPCRD.js",
+      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\dist\\vitalease.client\\browser\\main-6HXRPCRD.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1204,7 +1204,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "757723"
+          "Value": "768464"
         },
         {
           "Name": "Content-Type",
@@ -1212,11 +1212,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dH2nSaLhz4KsiHaKABOoC5loj8zVwk2DcyTaWVrkN+Q=\""
+          "Value": "\"7YI74AAAPRM5X/9Wm0f7kQDhyT7mmGJeoCR+/+uSgE4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 05 Apr 2025 16:29:27 GMT"
+          "Value": "Sun, 06 Apr 2025 02:42:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1226,7 +1226,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dH2nSaLhz4KsiHaKABOoC5loj8zVwk2DcyTaWVrkN+Q="
+          "Value": "sha256-7YI74AAAPRM5X/9Wm0f7kQDhyT7mmGJeoCR+/+uSgE4="
         }
       ]
     },
@@ -1253,7 +1253,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 05 Apr 2025 16:29:27 GMT"
+          "Value": "Sun, 06 Apr 2025 02:42:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1290,7 +1290,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 05 Apr 2025 16:29:27 GMT"
+          "Value": "Sun, 06 Apr 2025 02:42:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1327,7 +1327,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 05 Apr 2025 16:29:27 GMT"
+          "Value": "Sun, 06 Apr 2025 02:42:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1364,7 +1364,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 05 Apr 2025 16:29:27 GMT"
+          "Value": "Sun, 06 Apr 2025 02:42:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1401,7 +1401,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 05 Apr 2025 16:29:27 GMT"
+          "Value": "Sun, 06 Apr 2025 02:42:27 GMT"
         },
         {
           "Name": "Cache-Control",
