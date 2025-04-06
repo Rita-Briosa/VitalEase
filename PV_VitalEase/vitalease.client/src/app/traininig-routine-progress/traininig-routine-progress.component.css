@@ -250,9 +250,11 @@ footer {
 @media (max-width: 780px) {
 
   h1 {
-    font-size: 2rem;
-    margin-bottom: 50px;
-    margin-left: 5px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
   }
 
   .header img {
@@ -284,17 +286,17 @@ footer {
     transition: background-color 0.3s;
   }
 
-  .media-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #eee;
-    width: 200px;
-    height: 100px;
-    border-radius: 10px;
-    position: relative;
-    margin-left: 30%;
+  .content-wrapper {
+    flex-direction: column;
+    gap: 20px;
   }
+
+  .text-content,
+  .media-container {
+    width: 100%;
+    font-size: 0.7rem;
+  }
+
 
     .media-container img {
       width: 100%;

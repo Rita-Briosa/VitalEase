@@ -17,17 +17,20 @@
             </div>
             <div class="form-row">
               <div class="form-group half-width">
+                <label class="height" for="height">Height:</label>
                 <input type="number" [(ngModel)]="height" name="height" min="90" max="300" placeholder="Height" required />
               </div>
               <div class="form-group half-width">
-                <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight" min="30" max="300" required />
+                <label class="weight" for="weight">Weight:</label>
+                <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight" min="30" max="400" required />
               </div>
             </div>
             <div class="form-group">
-              <input type="text" [(ngModel)]="gender" name="gender" placeholder="Gender" required pattern="^(Male|Female)$" #genderInput="ngModel" />
-              <div *ngIf="genderInput.invalid && genderInput.touched" class="error-message">
-                Gender must be 'Male' or 'Female'.
-              </div>
+              <select [(ngModel)]="gender" name="gender" required>
+                <option value="" selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
             </div>
             <div class="form-group password-field">
               <input type="password" [(ngModel)]="password" name="password"  (input)="calculatePasswordStrength(password)" placeholder="Password" required />

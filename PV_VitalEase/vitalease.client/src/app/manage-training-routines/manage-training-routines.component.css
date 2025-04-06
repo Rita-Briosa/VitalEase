@@ -153,25 +153,22 @@ body {
   font-weight: bold;
 }
 
-/* Lista de rotinas */
-.routine-list {
-  list-style: none;
-  background-color: #d9d9d9;
-  padding: 20px;
-  border-radius: 10px;
-}
+
 
 .routine-item {
   display: flex; /* Permite alinhamento lado a lado */
   justify-content: space-between; /* Empurra os elementos para os extremos */
   align-items: center; /* Centraliza verticalmente */
   padding: 3%;
+  border-radius: 10px;
+  background-color: #d9d9d9;
   border-bottom: 1px solid #ddd;
+  margin-bottom: 15px; /* Aqui está o espaço entre os itens */
   transition: background 0.2s;
 }
 
   .routine-item:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
   }
 
 .routine-name {

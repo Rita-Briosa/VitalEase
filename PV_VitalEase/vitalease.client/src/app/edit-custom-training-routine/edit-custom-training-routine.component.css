@@ -377,6 +377,15 @@ input[type="number"] {
   pointer-events: none; /* Para evitar interação */
 }
 
+select {
+  width: 100%;
+  font-size: 16px;
+  height: 40px;
+  border: 2px solid #ccc;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
 footer {
   margin-top: 20px;
   font-size: 20px;
