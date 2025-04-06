@@ -62,22 +62,6 @@ namespace VitalEase.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FavoriteLocations",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Latitude = table.Column<double>(type: "float", nullable: false),
-                    Longitude = table.Column<double>(type: "float", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FavoriteLocations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Media",
                 columns: table => new
                 {
@@ -306,9 +290,6 @@ namespace VitalEase.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "ExerciseRoutines");
-
-            migrationBuilder.DropTable(
-                name: "FavoriteLocations");
 
             migrationBuilder.DropTable(
                 name: "ResetEmailTokens");

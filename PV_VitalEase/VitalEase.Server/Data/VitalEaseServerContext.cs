@@ -14,7 +14,6 @@ namespace VitalEase.Server.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
-        public DbSet<FavoriteLocation> FavoriteLocations { get; set; }
         public DbSet<Media> Media { get; set; }
         public DbSet<Routine> Routines { get; set; }
         public DbSet<ScheduledRoutine> ScheduledRoutines { get; set; }

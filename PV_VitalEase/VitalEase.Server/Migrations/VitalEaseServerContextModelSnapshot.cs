@@ -150,33 +150,6 @@ namespace VitalEase.Server.Migrations
                     b.ToTable("ExerciseRoutines");
                 });
 
-            modelBuilder.Entity("VitalEase.Server.Models.FavoriteLocation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FavoriteLocations");
-                });
-
             modelBuilder.Entity("VitalEase.Server.Models.Media", b =>
                 {
                     b.Property<int>("Id")
