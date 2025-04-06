@@ -67,6 +67,19 @@ namespace VitalEase.Server.Controllers
                     return NotFound(new { message = "User not found" });
                 }
 
+                var deleteAccountNotification = await
+                SendEmail(
+                 user.Email,
+                 "VitalEase - Delete account Notification",
+                 "All your data has been successfully deleted. Thank you for using our App."
+               );
+
+                if (!deleteAccountNotification)
+                {
+                    await LogAction("Delete Account Attempt", "Failed - Failed to send delete account notification", user.Id);
+                    return StatusCode(500, new { message = "Failed to send delete account notification to email." });
+                }
+
                 if (user.Profile != null)
                 {
                     _context.Profiles.Remove(user.Profile); // Remove o perfil corretamente
@@ -449,8 +462,21 @@ namespace VitalEase.Server.Controllers
 
                 if (!IsPasswordValid(model.NewPassword))
                 {
-                    await LogAction("Password change Attempt", "Failed - Password is not valid", 0);
+                    await LogAction("Password change Attempt", "Failed - Password is not valid", user.Id);
                     return Unauthorized(new { message = "Password is not valid" });
+                }
+
+                var passwordChangeNotification = await
+                 SendEmail(
+                  user.Email,
+                  "VitalEase - Email Password Change",
+                  "The Password has been updated successfully."
+                );
+
+                if (!passwordChangeNotification)
+                {
+                    await LogAction("Password change Attempt", "Failed - Failed to send password change notification", user.Id);
+                    return StatusCode(500, new { message = "Failed to send password change notification to email." });
                 }
 
                 var newHashedPassword = HashPassword(model.NewPassword);
@@ -465,6 +491,7 @@ namespace VitalEase.Server.Controllers
                 user.Password = newHashedPassword;
                 await _context.SaveChangesAsync();
 
+               
                 await LogAction("Password change Attempt", "Success - Password changed successfully.", 0);
                 return Ok(new { message = "Password changed successfully!!" });
             }
