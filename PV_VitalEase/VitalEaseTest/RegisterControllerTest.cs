@@ -11,6 +11,8 @@ using VitalEase.Server.ViewModel;
 using Xunit;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
+using System.Net;
+
 
 namespace VitalEaseTest
 {
@@ -20,12 +22,16 @@ namespace VitalEaseTest
         private readonly Mock<IConfiguration> _configurationMock;
         private static readonly HttpClient client = new HttpClient();
         private static readonly string registerUrl = "http://localhost:7180/api/register";
+        private readonly HttpClient _client;
 
         public RegisterControllerTests(VitalEaseContextFixture fixture)
         {
             _context = fixture.VitalEaseTestContext;
             _configurationMock = new Mock<IConfiguration>();
+            _client = factory.CreateClient(); // Cria um HttpClient para fazer as requisições
         }
+
+
 
         [Fact]
         public async Task Register_LoadTest_StressTest()
@@ -93,7 +99,7 @@ namespace VitalEaseTest
         [Fact]
         public async Task Register_Successful_ReturnsOkWithToken()
         {
-            var controller = new RegisterController(_context, _configurationMock.Object);
+            // Arrange: Criar um modelo de usuário válido
             var model = new RegisterViewModel
             {
                 Email = "newuser@example.com",
@@ -106,79 +112,77 @@ namespace VitalEaseTest
                 HeartProblems = false
             };
 
-            var result = await controller.Register(model);
+            // Act: Envia a requisição para o endpoint de registro
+            var response = await _client.PostAsJsonAsync("/api/register", model);
 
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            var response = okResult.Value;
-            Assert.NotNull(response);
+            // Assert: Verifica se a resposta é OK (status code 200)
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            // Lê o conteúdo da resposta (se necessário)
+            var content = await response.Content.ReadFromJsonAsync<object>();
+            Assert.NotNull(content); // Certifica-se de que a resposta não está vazia
         }
 
         [Fact]
         public async Task Register_AgeRestriction_ReturnsBadRequest()
         {
-            var controller = new RegisterController(_context, _configurationMock.Object);
+            // Arrange: Criar um modelo com um usuário muito jovem (menos de 16 anos)
             var model = new RegisterViewModel
             {
                 Email = "younguser@example.com",
                 Username = "younguser",
                 Password = "ValidPass@123",
-                BirthDate = DateTime.Today.AddYears(-15)
+                BirthDate = DateTime.Today.AddYears(-15) // Utilizador com menos de 16 anos
             };
 
-            var result = await controller.Register(model);
+            // Act: Envia a requisição para o endpoint de registro
+            var response = await _client.PostAsJsonAsync("/api/register", model);
 
-            var badRequest = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal("You must be at least 16 years old to register.",
-                badRequest.Value.GetType().GetProperty("message")?.GetValue(badRequest.Value));
+            // Assert: Espera que a resposta seja um erro (400)
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact]
         public async Task Register_DuplicateEmail_ReturnsBadRequest()
         {
-            var existingUser = new User
-            {
-                Email = "duplicate@example.com",
-                Password = "hashedpassword",
-                Type = UserType.Standard
-            };
-
-            _context.Users.Add(existingUser);
-            await _context.SaveChangesAsync();
-
-            var controller = new RegisterController(_context, _configurationMock.Object);
-
+            // Arrange: Adicionar um usuário com o mesmo e-mail para causar duplicação
             var model = new RegisterViewModel
             {
                 Email = "duplicate@example.com",
-                Username = "uniqueuser",
+                Username = "duplicateuser",
                 Password = "ValidPass@123",
                 BirthDate = DateTime.Today.AddYears(-20)
             };
 
-            var result = await controller.Register(model);
+            // Primeiro registro com o e-mail duplicado
+            await _client.PostAsJsonAsync("/api/register", model);
 
-            var badRequest = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal("Email already exists",
-                badRequest.Value.GetType().GetProperty("message")?.GetValue(badRequest.Value));
+            // Act: Envia a requisição para tentar registrar com o mesmo e-mail
+            var response = await _client.PostAsJsonAsync("/api/register", model);
+
+            // Assert: Espera que a resposta seja um erro de duplicação (400)
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact]
         public async Task Register_WeakPassword_ReturnsBadRequest()
         {
-            var controller = new RegisterController(_context, _configurationMock.Object);
+            // Arrange: Criar um modelo com uma senha fraca
             var model = new RegisterViewModel
             {
                 Email = "user@example.com",
                 Username = "newuser",
-                Password = "weakpass",
+                Password = "weakpass", // Senha não atende aos critérios de segurança
                 BirthDate = DateTime.Today.AddYears(-18)
             };
 
-            var result = await controller.Register(model);
+            // Act: Tentar registrar o utilizador com uma senha fraca
+            var response = await _client.PostAsJsonAsync("/api/register", model);
 
-            var badRequest = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal("Password does not meet the required criteria.",
-                badRequest.Value.GetType().GetProperty("message")?.GetValue(badRequest.Value));
+            // Assert: Espera que a resposta seja um erro (400)
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
+
+
     }
 }

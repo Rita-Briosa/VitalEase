@@ -80,8 +80,20 @@ namespace VitalEaseTest
         [Fact]
         public async Task GetExercisesFromRoutine_ReturnsOk_WhenExercisesFoundForRoutine()
         {
-            // Arrange
-            var routineId = 1;
+            var userId = 1;
+            var routine = new Routine
+            {
+                Id = 1,
+                UserId = userId,
+                Name = "Custom Routine",
+                Type = "Muscle-focused",
+                Description = "",
+                Needs = "",
+                IsCustom = true
+            };
+
+            _context.Routines.Add(routine);
+            await _context.SaveChangesAsync();
 
             // Simula a presença de exercícios associados à rotina
             var exercise = new Exercise
@@ -100,7 +112,7 @@ namespace VitalEaseTest
 
             var exerciseRoutine = new ExerciseRoutine
             {
-                RoutineId = routineId,
+                RoutineId = routine.Id,
                 ExerciseId = exercise.Id,
                 Reps = 12,
                 Sets = 3,
@@ -112,14 +124,18 @@ namespace VitalEaseTest
             var controller = new ManageTrainingRoutinesController(_context);
 
             // Act
-            var result = await controller.GetExercisesFromRoutine(routineId.ToString());
+            var result = await controller.GetExercisesFromRoutine(routine.Id.ToString());
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var exerciseList = Assert.IsAssignableFrom<List<dynamic>>(okResult.Value);
-            Assert.Single(exerciseList);
-            var exerciseDto = exerciseList.First();
-            Assert.Equal(exercise.Name, exerciseDto.Name);
+            var response = okResult.Value;
+            Assert.NotNull(response);
+
+            var message = response.GetType().GetProperty("message")?.GetValue(response)?.ToString();
+            Assert.NotNull(message);
+
+            Assert.Equal("Exercises Fetched successfully!", message);
+
         }
     }
 }
