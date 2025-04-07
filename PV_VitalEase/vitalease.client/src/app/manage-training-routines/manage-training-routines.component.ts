@@ -4,6 +4,24 @@ import { TrainingRoutinesService } from '../services/training-routines.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+/**
+ * @component ManageTrainingRoutinesComponent
+ * @description
+ * The ManageTrainingRoutinesComponent is used for managing training routines within the application.
+ * It allows administrators to view, filter, sort, add, and navigate routines. The component also enables
+ * the selection of exercises to be added to a routine, and provides user feedback through error and success messages.
+ *
+ * @dependencies
+ * - TrainingRoutinesService: Provides methods for fetching, adding, and filtering routines, as well as retrieving available exercises.
+ * - AuthService: Validates the user's session token and provides user information.
+ * - Router: Facilitates navigation to different routes.
+ * - HttpClient: Used for making HTTP requests when needed.
+ *
+ * @usage
+ * This component is not standalone and uses external templates and styles:
+ *   - Template: './manage-training-routines.component.html'
+ *   - Styles: ['./manage-training-routines.component.css']
+ */
 @Component({
   selector: 'app-manage-training-routines',
   templateUrl: './manage-training-routines.component.html',
@@ -42,6 +60,13 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     private router: Router,
     private http: HttpClient) { }
 
+  /**
+ * @method ngOnInit
+ * @description
+ * Lifecycle hook that is executed upon component initialization.
+ * It validates the user's session token, retrieves user information, and loads training routines.
+ * If the token is invalid or missing, the user is redirected to the login page.
+ */
   ngOnInit() {
 
     const token = this.authService.getSessionToken();
@@ -70,10 +95,21 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     }
   }
 
+  /**
+   * @method goToDashboard
+   * @description Navigates the user to the dashboard page.
+   */
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
 
+  /**
+ * @method toggleExerciseSelection
+ * @description
+ * Adds or removes an exercise from the selectedExercises array based on whether it is already selected.
+ *
+ * @param exerciseId - The ID of the exercise to toggle.
+ */
   toggleExerciseSelection(exerciseId: number) {
     const index = this.selectedExercises.indexOf(exerciseId);
     if (index === -1) {
@@ -83,11 +119,24 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     }
   }
 
+  /**
+   * @method exerciseSelected
+   * @description
+   * Checks if an exercise is selected based on its ID.
+   *
+   * @param exerciseId - The ID of the exercise.
+   * @returns A boolean indicating whether the exercise is selected.
+   */
   exerciseSelected(exerciseId: number): boolean {
     const exercise = this.exercises.find(ex => ex.id === exerciseId);
     return exercise ? exercise.selected : false;
   }
 
+  /**
+   * @method getExercises
+   * @description
+   * Retrieves the list of exercises available to add to a routine by calling the TrainingRoutinesService.
+   */
   getExercises(): void {
     this.trainingRoutinesService.getExercisesToAddToRoutine().subscribe(
       (response: any) => {
@@ -101,6 +150,11 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     );
   }
 
+  /**
+   * @method getRoutines
+   * @description
+   * Retrieves the list of training routines by calling the TrainingRoutinesService.
+   */
   getRoutines(): void {
     this.trainingRoutinesService.getRoutines().subscribe(
       (response: any) => {
@@ -115,6 +169,14 @@ export class ManageTrainingRoutinesComponent implements OnInit {
 
   }
 
+  /**
+   * @method getTypeClass
+   * @description
+   * Returns a CSS class based on the routine type.
+   *
+   * @param type - The routine type.
+   * @returns A string containing the corresponding CSS class.
+   */
   getTypeClass(type: string): string {
     switch (type.toLowerCase()) {
       case 'warm-up':
@@ -130,6 +192,14 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     }
   }
 
+  /**
+   * @method getTypeStyle
+   * @description
+   * Returns an inline style object based on the routine type.
+   *
+   * @param type - The routine type.
+   * @returns An object with CSS style properties.
+   */
   getTypeStyle(type: string): any {
     switch (type.toLowerCase()) {
       case 'warm-up':
@@ -145,19 +215,39 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     }
   }
 
+  /**
+   * @method navigateToRoutine
+   * @description Navigates to the routine details page.
+   *
+   * @param routineId - The ID of the routine.
+   */
   navigateToRoutine(routineId: number) {
     this.router.navigate(['/training-routine-details', routineId]);
   }
 
+  /**
+   * @method navigateToRoutineProgress
+   * @description Navigates to the routine progress page.
+   *
+   * @param routineId - The ID of the routine.
+   */
   navigateToRoutineProgress(routineId: number) {
     this.router.navigate(['/training-routine-progress', routineId]);
   }
 
+  /**
+   * @method openAddRoutineModal
+   * @description Opens the modal dialog for adding a new routine and loads available exercises.
+   */
   openAddRoutineModal(): void {
     this.activeModal = 'addRoutine';
     this.getExercises();
   }
 
+  /**
+   * @method closeModal
+   * @description Closes the active modal and resets error and success messages.
+   */
   closeModal() {
     this.activeModal = ''; // Fechar a modal
     this.errorMessage = '';
@@ -165,6 +255,12 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     this.addRoutineErrorMessage = '';
   }
 
+  /**
+   * @method addRoutine
+   * @description
+   * Adds a new training routine by calling the TrainingRoutinesService with the provided details and selected exercises.
+   * On success, a success message is displayed and the page is reloaded.
+   */
   addRoutine(): void {
 
     this.trainingRoutinesService.addRoutine(this.newName, this.newDescription, this.newType, this.newRoutineLevel, this.newNeeds, this.selectedExercises)
@@ -185,6 +281,11 @@ export class ManageTrainingRoutinesComponent implements OnInit {
       );
   }
 
+  /**
+   * @method getFilteredRoutines
+   * @description
+   * Retrieves routines that match the filter criteria by calling the TrainingRoutinesService.
+   */
   getFilteredRoutines(): void {
 
     this.trainingRoutinesService.getFilteredRoutines(this.filters).subscribe(
@@ -199,11 +300,25 @@ export class ManageTrainingRoutinesComponent implements OnInit {
     )
   }
 
+  /**
+   * @method sortRoutines
+   * @description
+   * Sorts the current list of routines based on the selected sort option.
+   */
   sortRoutines(): void {
     this.routines = this.getSortedRoutines(this.selectedSortOption, this.routines);
     console.log('Exercises sorted successfully:', this.routines);
   }
 
+  /**
+   * @method getSortedRoutines
+   * @description
+   * Returns a sorted array of routines based on the provided sort option.
+   *
+   * @param sortOption - The sorting option (e.g., 'name-asc', 'difficulty-asc').
+   * @param routines - The array of routines to sort.
+   * @returns A sorted array of routines.
+   */
   getSortedRoutines(sortOption: string, routines: any[]): any[] {
     if (!sortOption || !routines || routines.length === 0) {
       return routines; // Se não houver opção de ordenação ou exercícios, retorna a lista original
@@ -233,13 +348,6 @@ export class ManageTrainingRoutinesComponent implements OnInit {
       }
     });
   }
-
-  /*// Check if user is logged in by fetching the user info
-  this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
-  if (this.isLoggedIn) {
-    this.userInfo = this.authService.getUserInfo();  // Se estiver logado, pega as informações do usuário
-  }
-}*/
 
   title = 'vitalease.client';
 }

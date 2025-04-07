@@ -4,6 +4,28 @@ import { TrainingRoutinesService } from '../services/training-routines.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+/**
+ * @component TrainingRoutineDetailsComponent
+ * @description
+ * The TrainingRoutineDetailsComponent displays the details of a specific training routine, including the list of exercises 
+ * associated with the routine. Upon initialization, it retrieves the routine ID from the route parameters, validates the user’s 
+ * session token via the AuthService, and loads the exercises for the routine using the TrainingRoutinesService.
+ *
+ * If the routine ID is missing or the user is not authenticated, appropriate error messages are set and the user is redirected 
+ * to the login page.
+ *
+ * @dependencies
+ * - TrainingRoutinesService: Provides methods to retrieve exercises associated with a specific training routine.
+ * - AuthService: Handles session token retrieval, validation, and user authentication.
+ * - ActivatedRoute: Extracts parameters from the current route (used here to get the routine ID).
+ * - Router: Facilitates navigation between routes.
+ * - HttpClient: Used for HTTP operations if needed.
+ *
+ * @usage
+ * This component is not standalone and uses external templates and styles:
+ *   - Template: './training-routine-details.component.html'
+ *   - Styles: ['./training-routine-details.component.css']
+ */
 @Component({
   selector: 'app-training-routine-details',
   templateUrl: './training-routine-details.component.html',
@@ -27,6 +49,13 @@ export class TrainingRoutineDetailsComponent {
     private http: HttpClient
   ) { }
 
+  /**
+   * @method ngOnInit
+   * @description
+   * Lifecycle hook that initializes the component. It extracts the routine ID from the route parameters, validates the 
+   * user's session token, and retrieves the list of exercises for the routine. If the routine ID is not provided or the token 
+   * is invalid, the component sets an error message and redirects the user as necessary.
+   */
   ngOnInit() {
     this.routineId = this.route.snapshot.paramMap.get('id');
 
@@ -56,10 +85,20 @@ export class TrainingRoutineDetailsComponent {
     }
   }
 
+  /**
+   * @method goToDashboard
+   * @description Navigates the user to the dashboard page.
+   */
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
 
+  /**
+   * @method getExercises
+   * @description
+   * Retrieves the list of exercises associated with the training routine by calling the TrainingRoutinesService.
+   * If the routine ID is missing, it sets an appropriate error message.
+   */
   getExercises(): void {
     if (!this.routineId) {
       this.errorMessage = "Routine ID is missing.";

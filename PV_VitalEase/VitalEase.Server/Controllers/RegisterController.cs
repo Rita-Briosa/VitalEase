@@ -15,28 +15,28 @@ using Microsoft.EntityFrameworkCore;
 namespace VitalEase.Server.Controllers
 {
     /// <summary>
-    /// Controlador responsável pelo registo de novos utilizadores.
+    /// Controller responsible for registering new users.
     /// </summary>
     public class RegisterController : Controller
     {
         /// <summary>
-        /// Contexto da base de dados utilizado para operações de acesso e manipulação dos registos.
+        /// Database context used for accessing and manipulating records.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Configuração da aplicação, que permite aceder às definições e parâmetros relevantes.
+        /// Application configuration that provides access to relevant settings and parameters.
         /// </summary>
         private readonly IConfiguration _configuration;
 
         /// <summary>
-        /// Inicializa uma nova instância do <see cref="RegisterController"/>.
+        /// Initializes a new instance of the <see cref="RegisterController"/> class.
         /// </summary>
         /// <param name="context">
-        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite operações de armazenamento e acesso aos dados.
+        /// The database context (<see cref="VitalEaseServerContext"/>) that enables data storage and access operations.
         /// </param>
         /// <param name="configuration">
-        /// A configuração da aplicação (<see cref="IConfiguration"/>) para aceder a definições e parâmetros de configuração.
+        /// The application configuration (<see cref="IConfiguration"/>) used to access settings and configuration parameters.
         /// </param>
         public RegisterController(VitalEaseServerContext context, IConfiguration configuration)
         {
@@ -45,58 +45,58 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Regista um novo utilizador, criando o respetivo perfil e armazenando os dados na base de dados.
+        /// Registers a new user by creating the corresponding profile and storing the data in the database.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="RegisterViewModel"/> que contém os dados necessários para o registo, incluindo:
-        /// email, palavra-passe, data de nascimento, username, altura, peso, género e indicação de problemas cardíacos.
+        /// An instance of <see cref="RegisterViewModel"/> that contains the necessary registration data, including:
+        /// email, password, birthdate, username, height, weight, gender, and an indication of cardiac issues.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica o resultado do registo:
+        /// An <see cref="IActionResult"/> indicating the result of the registration:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>BadRequest</c> se os dados enviados forem inválidos, se o utilizador já existir, se o username já existir,
-        ///     se a idade for inferior a 16 anos, se a palavra-passe for fraca, ou se ocorrer algum erro no processo.
+        ///     <c>BadRequest</c> if the provided data is invalid, if the user already exists, if the username already exists,
+        ///     if the user is under 16 years old, if the password is weak, or if any error occurs during the process.
         ///   </item>
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso, o token JWT gerado e os dados do utilizador se o registo for bem-sucedido.
+        ///     <c>Ok</c> with a success message, the generated JWT token, and the user's data if the registration is successful.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se o modelo recebido é válido; caso não o seja, regista a tentativa de registo e retorna um erro 400.
+        ///     Validates the received model; if the model is invalid, it logs the registration attempt and returns a 400 error with the message "Invalid data."
         ///   </item>
         ///   <item>
-        ///     Verifica se o utilizador tem pelo menos 16 anos de idade, com base na data de nascimento; se não, regista a tentativa e retorna um erro.
+        ///     Checks whether the user is at least 16 years old based on the provided birthdate; if not, it logs the attempt and returns an error.
         ///   </item>
         ///   <item>
-        ///     Procura se já existe um utilizador com o mesmo email; se existir, regista a tentativa e retorna um erro.
+        ///     Determines if a user with the same email already exists; if so, it logs the attempt and returns an error.
         ///   </item>
         ///   <item>
-        ///     Procura se já existe um perfil com o mesmo username; se existir, regista a tentativa e retorna um erro.
+        ///     Determines if a profile with the same username already exists; if so, it logs the attempt and returns an error.
         ///   </item>
         ///   <item>
-        ///     Cria um novo perfil com os dados fornecidos e guarda-o na base de dados.
+        ///     Creates a new profile with the provided data and saves it to the database.
         ///   </item>
         ///   <item>
-        ///     Valida a robustez da palavra-passe; se a palavra-passe não cumprir os critérios exigidos, regista a tentativa e retorna um erro.
+        ///     Validates the strength of the password; if the password does not meet the required criteria, it logs the attempt and returns an error.
         ///   </item>
         ///   <item>
-        ///     Cria um novo utilizador associando o perfil criado, a palavra-passe hasheada, o email, o tipo de utilizador padrão
-        ///     e define o estado de verificação do email como falso, guardando estes dados na base de dados.
+        ///     Creates a new user by associating the newly created profile, the hashed password, the email, and the default user type,
+        ///     while setting the email verification status to false, and stores these details in the database.
         ///   </item>
         ///   <item>
-        ///     Gera um token JWT para o novo utilizador; se ocorrer erro na geração, regista a tentativa e retorna um erro.
+        ///     Generates a JWT token for the new user; if token generation fails, it logs the attempt and returns an error.
         ///   </item>
         ///   <item>
-        ///     Cria um link de confirmação de email utilizando o token gerado e envia um email de confirmação para o utilizador;
-        ///     se o envio falhar, retorna um erro 500.
+        ///     Constructs an email confirmation link using the generated token and sends a confirmation email to the user;
+        ///     if sending the email fails, it returns a 500 error.
         ///   </item>
         ///   <item>
-        ///     Regista a operação de registo com sucesso e retorna um resultado <c>Ok</c> com uma mensagem de sucesso, o token gerado e os dados do utilizador.
+        ///     Logs the successful registration operation and returns an Ok response with a success message, the generated token, and the user's data.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -218,10 +218,12 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Método para validar se a senha atende aos critérios de segurança.
+        /// Validates whether the password meets the security criteria.
         /// </summary>
-        /// <param name="password">Senha a ser validada.</param>
-        /// <returns>True se a senha for válida, false caso contrário.</returns>
+        /// <param name="password">The password to be validated.</param>
+        /// <returns>
+        /// <c>true</c> if the password is valid; otherwise, <c>false</c>.
+        /// </returns>
         private bool IsPasswordValid(string password)
         {
             // Verificar se a senha tem pelo menos 12 caracteres
@@ -378,17 +380,17 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Regista uma acção de auditoria, gravando-a na base de dados.
+        /// Logs an audit action by recording it in the database.
         /// </summary>
-        /// <param name="action">A acção que foi realizada.</param>
-        /// <param name="status">O estado ou resultado da acção.</param>
-        /// <param name="UserId">O identificador do utilizador associado à acção.</param>
+        /// <param name="action">The action that was performed.</param>
+        /// <param name="status">The status or outcome of the action.</param>
+        /// <param name="UserId">The identifier of the user associated with the action.</param>
         /// <returns>
-        /// Uma <see cref="Task"/> que representa a operação assíncrona de registo do log.
+        /// A <see cref="Task"/> that represents the asynchronous operation of logging the action.
         /// </returns>
         /// <remarks>
-        /// Este método cria um objeto <see cref="AuditLog"/> com a hora atual, a acção, o status e o ID do utilizador.
-        /// O log é então adicionado ao contexto da base de dados e as alterações são salvas de forma assíncrona.
+        /// This method creates an <see cref="AuditLog"/> object with the current timestamp, the specified action,
+        /// status, and user ID. The log is then added to the database context and the changes are saved asynchronously.
         /// </remarks>
         private async Task LogAction(string action, string status, int UserId)
         {
