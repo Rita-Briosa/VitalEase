@@ -73,7 +73,7 @@ namespace VitalEaseTest
 
 
             Assert.NotNull(message);
-            Assert.Equal("Invalid parameters.Token and Password are required.", message);
+            Assert.Equal("Invalid parameters. Token and Password are required.", message);
         }
 
         [Fact]
@@ -214,7 +214,7 @@ namespace VitalEaseTest
             var model = new ResetPasswordViewModel
             {
                 Token = validToken,
-                NewPassword = "Password1234!"
+                NewPassword = "Password123!"
             };
 
             var controller = new ResetPasswordController(_context, _mockConfiguration.Object);
@@ -258,7 +258,7 @@ namespace VitalEaseTest
 
 
             Assert.NotNull(message);
-            Assert.Equal("Your password has been reset successfully.", message);
+            Assert.Equal("Password reset successfully. Please log in again.", message);
         }
     }
 }
