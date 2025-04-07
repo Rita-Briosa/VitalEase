@@ -1,22 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\",
+  "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\patin\\source\\repos\\vitaleasepartfinal\\pv_vitalease\\vitaleasetest\\registercontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\registercontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\exercisecontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\exercisecontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\patin\\source\\repos\\vitaleasepartfinal\\pv_vitalease\\vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\patin\\source\\repos\\vitaleasepartfinal\\pv_vitalease\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|c:\\users\\patin\\source\\repos\\vitaleasepartfinal\\pv_vitalease\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{803AC46C-C4AF-4CE0-BA0C-A2FA66376BAA}|vitalease.client\\vitalease.client.esproj|solutionrelative:vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +22,12 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -38,61 +38,49 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RegisterControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEaseTest\\RegisterControllerTest.cs",
-              "RelativeDocumentMoniker": "VitalEaseTest\\RegisterControllerTest.cs",
-              "ToolTip": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEaseTest\\RegisterControllerTest.cs",
-              "RelativeToolTip": "VitalEaseTest\\RegisterControllerTest.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T23:43:02.75Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AccountControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
-              "RelativeDocumentMoniker": "VitalEaseTest\\AccountControllerTest.cs",
-              "ToolTip": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
-              "RelativeToolTip": "VitalEaseTest\\AccountControllerTest.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAcwPMAAAABAAAAAAAAAA==",
+              "Title": "ExercisesController.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ExercisesController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\ExercisesController.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\ExercisesController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\ExercisesController.cs",
+              "ViewState": "AgIAAPUBAAAAAAAAAAAAAAICAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T23:40:41.833Z",
+              "WhenOpened": "2025-04-07T00:34:10.463Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "traininig-routine-progress.component.html",
-              "DocumentMoniker": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
-              "ToolTip": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
-              "RelativeToolTip": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-04-06T22:57:00.186Z"
+              "DocumentIndex": 0,
+              "Title": "ExerciseControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\ExerciseControllerTest.cs",
+              "RelativeDocumentMoniker": "VitalEaseTest\\ExerciseControllerTest.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\ExerciseControllerTest.cs",
+              "RelativeToolTip": "VitalEaseTest\\ExerciseControllerTest.cs",
+              "ViewState": "AgIAAFABAAAAAAAAAAAAAF0BAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T00:31:56.723Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "traininig-routine-progress.component.ts",
-              "DocumentMoniker": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.ts",
-              "RelativeDocumentMoniker": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.ts",
-              "ToolTip": "C:\\Users\\patin\\source\\repos\\VitalEasePartFinal\\PV_VitalEase\\vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.ts",
-              "RelativeToolTip": "vitalease.client\\src\\app\\traininig-routine-progress\\traininig-routine-progress.component.ts",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAHcAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-04-06T22:56:54.953Z",
+              "Title": "AccountControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
+              "RelativeDocumentMoniker": "VitalEaseTest\\AccountControllerTest.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
+              "RelativeToolTip": "VitalEaseTest\\AccountControllerTest.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAAwLAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T23:22:05.337Z",
               "EditorCaption": ""
             }
           ]
