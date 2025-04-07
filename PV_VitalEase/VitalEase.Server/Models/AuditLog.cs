@@ -1,40 +1,40 @@
 ﻿namespace VitalEase.Server.Models
 {
     /// <summary>
-    /// Representa um registo de auditoria que contém informações sobre uma ação realizada por um utilizador.
+    /// Represents an audit log entry containing information about an action performed by a user.
     /// </summary>
     public class AuditLog
     {
         /// <summary>
-        /// Obtém ou define o identificador único do registo de auditoria.
+        /// Gets or sets the unique identifier of the audit log entry.
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Obtém ou define o carimbo de data/hora em que a ação foi registada.
+        /// Gets or sets the timestamp when the action was logged.
         /// </summary>
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Obtém ou define a descrição da ação realizada.
+        /// Gets or sets the description of the performed action.
         /// </summary>
         public string Action { get; set; }
 
         /// <summary>
-        /// Obtém ou define o estado ou resultado da ação.
+        /// Gets or sets the status or outcome of the action.
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
-        /// Obtém ou define o identificador do utilizador associado à ação.
+        /// Gets or sets the identifier of the user associated with the action.
         /// </summary>
         public int UserId { get; set; }
 
         /// <summary>
-        /// Regista a ação atual, definindo a descrição, o estado e atualizando o carimbo de data/hora para o momento atual.
+        /// Logs the current action by setting the description, the status, and updating the timestamp to the current moment.
         /// </summary>
-        /// <param name="action">A descrição da ação a registar.</param>
-        /// <param name="status">O estado ou resultado da ação.</param>
+        /// <param name="action">The description of the action to log.</param>
+        /// <param name="status">The status or outcome of the action.</param>
         public void LogAction(string action, string status)
         {
             Action = action;
@@ -43,12 +43,12 @@
         }
 
         /// <summary>
-        /// Filtra uma lista de registos de auditoria, retornando apenas aqueles cujo valor da propriedade <c>Action</c> corresponda ao valor especificado.
+        /// Filters a list of audit logs, returning only those whose <c>Action</c> property matches the specified value.
         /// </summary>
-        /// <param name="action">A ação pela qual filtrar os registos.</param>
-        /// <param name="logs">A lista de registos de auditoria a ser filtrada.</param>
+        /// <param name="action">The action by which to filter the logs.</param>
+        /// <param name="logs">The list of audit logs to be filtered.</param>
         /// <returns>
-        /// Uma lista de registos de auditoria que possuem o valor especificado na propriedade <c>Action</c>.
+        /// A list of audit logs that have the specified value in the <c>Action</c> property.
         /// </returns>
         public static List<AuditLog> FilterLogsByAction(string action, List<AuditLog> logs)
         {
@@ -56,13 +56,13 @@
         }
 
         /// <summary>
-        /// Obtém todos os registos de auditoria.
+        /// Retrieves all audit logs.
         /// </summary>
         /// <returns>
-        /// Uma lista contendo todos os registos de auditoria.
+        /// A list containing all audit logs.
         /// </returns>
         /// <remarks>
-        /// Este método está atualmente sem implementação completa e retorna uma nova lista vazia.
+        /// This method is currently not fully implemented and returns a new empty list.
         /// </remarks>
         public static List<AuditLog> GetAllLogs()
         {
