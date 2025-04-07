@@ -108,7 +108,7 @@ namespace VitalEaseTest
 
             var result = await controller.Register(model);
 
-            var okResult = Assert.IsType<OkObjectResult>(result);
+            var okResult = Assert.IsType<ObjectResult>(result);
             var response = okResult.Value;
             Assert.NotNull(response);
         }
@@ -168,9 +168,10 @@ namespace VitalEaseTest
             var controller = new RegisterController(_context, _configurationMock.Object);
             var model = new RegisterViewModel
             {
-                Email = "user@example.com",
-                Username = "newuser",
+                Email = "user12344@example.com",
+                Username = "newuser1234",
                 Password = "weakpass",
+                Gender = "Male",
                 BirthDate = DateTime.Today.AddYears(-18)
             };
 

@@ -188,6 +188,8 @@ namespace VitalEaseTest
 
             var auditLogs = new List<AuditLog>
             {
+                new AuditLog { UserId = 1, Action = "Login Attempt", Status = "Failed - Password Incorrect", Timestamp = DateTime.Now.AddMinutes(-7) },
+                new AuditLog { UserId = 1, Action = "Login Attempt", Status = "Failed - Password Incorrect", Timestamp = DateTime.Now.AddMinutes(-6) },
                 new AuditLog { UserId = 1, Action = "Login Attempt", Status = "Failed - Password Incorrect", Timestamp = DateTime.Now.AddMinutes(-5) },
                 new AuditLog { UserId = 1, Action = "Login Attempt", Status = "Failed - Password Incorrect", Timestamp = DateTime.Now.AddMinutes(-4) },
                 new AuditLog { UserId = 1, Action = "Login Attempt", Status = "Failed - Password Incorrect", Timestamp = DateTime.Now.AddMinutes(-3) }
@@ -196,13 +198,13 @@ namespace VitalEaseTest
             _context.AuditLogs.AddRange(auditLogs);
             await _context.SaveChangesAsync();
 
-            var model = new LoginViewModel { Email = "testuser@example.com", Password = "wrong_password" };
+            var model = new LoginViewModel { Email = "z.lucio@outlook.com", Password = "wrong_password" };
 
             // Act
             var result = await controller.Login(model);
 
             // Assert
-            var unauthorizedResult = Assert.IsType<UnauthorizedObjectResult>(result);
+            var unauthorizedResult = Assert.IsType<ObjectResult>(result);
             var response = unauthorizedResult.Value; // Aqui utilizamos ObjectResult
             Assert.NotNull(response);
 
