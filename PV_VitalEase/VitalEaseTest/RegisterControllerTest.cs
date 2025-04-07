@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using VitalEase.Server.Controllers;
 using VitalEase.Server.Data;
@@ -9,66 +10,123 @@ using VitalEase.Server.Models;
 using VitalEase.Server.ViewModel;
 using Xunit;
 using Microsoft.Extensions.Configuration;
+using System.Net.Http.Json;
 
 namespace VitalEaseTest
 {
-    // Classe de testes para o RegisterController
     public class RegisterControllerTests : IClassFixture<VitalEaseContextFixture>
     {
         private readonly VitalEaseServerContext _context;
         private readonly Mock<IConfiguration> _configurationMock;
+        private static readonly HttpClient client = new HttpClient();
+        private static readonly string registerUrl = "http://localhost:7180/api/register";
 
-        // Construtor que recebe um fixture para reutilizar o contexto da base de dados em memória
         public RegisterControllerTests(VitalEaseContextFixture fixture)
         {
             _context = fixture.VitalEaseTestContext;
-            _configurationMock = new Mock<IConfiguration>(); // Mock do IConfiguration
+            _configurationMock = new Mock<IConfiguration>();
+        }
+
+        [Fact]
+        public async Task Register_LoadTest_StressTest()
+        {
+            // Arrange
+            var tasks = new List<Task>();
+            var numRequests = 10;
+            var semaphore = new SemaphoreSlim(5); // Limitar a 5 requisições simultâneas
+
+            for (int i = 0; i < numRequests; i++)
+            {
+                var model = new RegisterViewModel
+                {
+                    Email = $"newuser{i}@example.com",
+                    Username = $"newuser{i}",
+                    Password = "StrongPassword@123",
+                    BirthDate = DateTime.Today.AddYears(-18),
+                    Height = 175,
+                    Weight = 70,
+                    Gender = "Male",
+                    HeartProblems = false
+                };
+
+                await semaphore.WaitAsync();
+
+                var task = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await RegisterUserAsync(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Erro ao registrar {model.Email}: {ex.Message}");
+                    }
+                    finally
+                    {
+                        semaphore.Release();
+                    }
+                });
+
+                tasks.Add(task);
+            }
+
+            // Act
+            await Task.WhenAll(tasks);
+
+            // Assert
+            Assert.True(tasks.Count == numRequests);
+        }
+
+        private async Task RegisterUserAsync(RegisterViewModel model)
+        {
+            try
+            {
+                var response = await client.PostAsJsonAsync(registerUrl, model);
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro na requisição de {model.Email}: {ex.Message}");
+            }
         }
 
         [Fact]
         public async Task Register_Successful_ReturnsOkWithToken()
         {
-            // Arrange: Criar o controlador e um modelo de utilizador válido
             var controller = new RegisterController(_context, _configurationMock.Object);
             var model = new RegisterViewModel
             {
                 Email = "newuser@example.com",
                 Username = "newuser",
                 Password = "StrongPassword@123",
-                BirthDate = DateTime.Today.AddYears(-18), // utilizador tem idade válida
+                BirthDate = DateTime.Today.AddYears(-18),
                 Height = 175,
                 Weight = 70,
                 Gender = "Male",
                 HeartProblems = false
             };
 
-            // Act: Chamar o método Register
             var result = await controller.Register(model);
 
-            // Assert: Verificar se o retorno é um código 200 (Ok)
             var okResult = Assert.IsType<OkObjectResult>(result);
             var response = okResult.Value;
-
-            Assert.NotNull(response); // O resultado não deve ser nulo
+            Assert.NotNull(response);
         }
 
         [Fact]
         public async Task Register_AgeRestriction_ReturnsBadRequest()
         {
-            // Arrange: Criar o controlador e um modelo com idade inválida (< 16 anos)
             var controller = new RegisterController(_context, _configurationMock.Object);
             var model = new RegisterViewModel
             {
                 Email = "younguser@example.com",
                 Username = "younguser",
                 Password = "ValidPass@123",
-                BirthDate = DateTime.Today.AddYears(-15) // Utilizador tem menos de 16 anos
+                BirthDate = DateTime.Today.AddYears(-15)
             };
 
-            // Act: Chamar o método Register
             var result = await controller.Register(model);
 
-            // Assert: Deve retornar erro 400 (BadRequest)
             var badRequest = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("You must be at least 16 years old to register.",
                 badRequest.Value.GetType().GetProperty("message")?.GetValue(badRequest.Value));
@@ -77,7 +135,6 @@ namespace VitalEaseTest
         [Fact]
         public async Task Register_DuplicateEmail_ReturnsBadRequest()
         {
-            // Arrange: Criar um utilizador existente na base de dados
             var existingUser = new User
             {
                 Email = "duplicate@example.com",
@@ -90,19 +147,16 @@ namespace VitalEaseTest
 
             var controller = new RegisterController(_context, _configurationMock.Object);
 
-            // Criar um novo utilizador com o mesmo email
             var model = new RegisterViewModel
             {
-                Email = "duplicate@example.com", // Mesmo email já com login
+                Email = "duplicate@example.com",
                 Username = "uniqueuser",
                 Password = "ValidPass@123",
                 BirthDate = DateTime.Today.AddYears(-20)
             };
 
-            // Act: Tentar registrar um utilizador com email duplicado
             var result = await controller.Register(model);
 
-            // Assert: Deve retornar erro 400 (BadRequest) com a mensagem apropriada
             var badRequest = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Email already exists",
                 badRequest.Value.GetType().GetProperty("message")?.GetValue(badRequest.Value));
@@ -111,20 +165,17 @@ namespace VitalEaseTest
         [Fact]
         public async Task Register_WeakPassword_ReturnsBadRequest()
         {
-            // Arrange: Criar o controlador e um modelo com uma senha fraca
             var controller = new RegisterController(_context, _configurationMock.Object);
             var model = new RegisterViewModel
             {
                 Email = "user@example.com",
                 Username = "newuser",
-                Password = "weakpass", // Senha não atende aos critérios de segurança
+                Password = "weakpass",
                 BirthDate = DateTime.Today.AddYears(-18)
             };
 
-            // Act: Tentar registrar o utilizador com uma senha fraca
             var result = await controller.Register(model);
 
-            // Assert: Deve retornar erro 400 (BadRequest) com a mensagem apropriada
             var badRequest = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Password does not meet the required criteria.",
                 badRequest.Value.GetType().GetProperty("message")?.GetValue(badRequest.Value));
