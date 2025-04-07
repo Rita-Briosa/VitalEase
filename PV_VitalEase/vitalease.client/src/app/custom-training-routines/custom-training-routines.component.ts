@@ -3,6 +3,23 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { TrainingRoutinesService } from '../services/training-routines.service';
 
+/**
+ * @component CustomTrainingRoutinesComponent
+ * @description
+ * The CustomTrainingRoutinesComponent manages the custom training routines of the user.
+ * It handles displaying the user's custom routines, adding new routines, and deleting existing ones.
+ * The component also checks for user authentication via a session token and redirects to the login page if necessary.
+ *
+ * @dependencies
+ * - AuthService: Provides methods for session token retrieval, validation, and logout.
+ * - TrainingRoutinesService: Provides methods for fetching, adding, and deleting custom training routines.
+ * - Router: Facilitates navigation between application routes.
+ *
+ * @usage
+ * This component is not standalone and uses external templates and styles:
+ * - Template: './custom-training-routines.component.html'
+ * - Styles: './custom-training-routines.component.css'
+ */
 @Component({
   selector: 'app-custom-training-routines',
   standalone: false,
@@ -31,6 +48,13 @@ export class CustomTrainingRoutinesComponent {
 
   constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private router: Router) { }
 
+  /**
+ * @method ngOnInit
+ * @description
+ * Lifecycle hook that initializes the component. It validates the user session using the session token.
+ * If the token is valid, it retrieves the user information and custom training routines.
+ * If the token is missing or invalid, the user is redirected to the login page.
+ */
   ngOnInit() {
     // Check if user is logged in by fetching the user info
     /* this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
@@ -67,6 +91,12 @@ export class CustomTrainingRoutinesComponent {
 
   }
 
+  /**
+ * @method getRoutines
+ * @description
+ * Fetches the custom training routines for the logged-in user using the TrainingRoutinesService.
+ * On success, the routines array is updated; on failure, an error message is stored.
+ */
   getRoutines() {
     this.routinesService.getCustomTrainingRoutines(this.userInfo.id).subscribe(
       (response: any) => {
@@ -79,7 +109,13 @@ export class CustomTrainingRoutinesComponent {
       }
     );
   }
-  
+
+  /**
+ * @method addCustomRoutine
+ * @description
+ * Adds a new custom training routine by calling the TrainingRoutinesService.
+ * Upon a successful response, the modal is closed and the user is redirected to edit the newly created routine.
+ */
   addCustomRoutine() {
     console.log(this.userInfo.id);
 
@@ -96,6 +132,14 @@ export class CustomTrainingRoutinesComponent {
     );
   }
 
+  /**
+ * @method deleteCustomRoutine
+ * @description
+ * Deletes an existing custom training routine based on its identifier by calling the TrainingRoutinesService.
+ * After deletion, it unselects the routine and refreshes the page.
+ *
+ * @param routineId - The unique identifier of the routine to be deleted.
+ */
   deleteCustomRoutine(routineId: number) {
     this.routinesService.deleteRoutine(routineId).subscribe(
       (response: any) => {
@@ -110,27 +154,55 @@ export class CustomTrainingRoutinesComponent {
     )
   }
 
+  /**
+ * @method goToDashboard
+ * @description Navigates the user to the dashboard page.
+ */
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
 
+  /**
+ * @method selectRoutine
+ * @description Marks a routine as selected based on its identifier.
+ *
+ * @param routineId - The unique identifier of the routine to be selected.
+ */
   selectRoutine(routineId: number) {
     this.selectedRoutineId = routineId;
   }
 
+  /**
+ * @method unselectRoutine
+ * @description Clears the selection of a routine.
+ */
   unselectRoutine() {
     this.selectedRoutineId = 0;
   }
 
+  /**
+  * @method openAddRoutineModal
+  * @description Opens the modal dialog for adding a new custom training routine.
+  */
   openAddRoutineModal(): void {
     this.activeModal = 'addRoutine';
   }
 
+  /**
+   * @method openDeleteRoutineModal
+   * @description Opens the modal dialog for deleting a routine by first selecting the routine.
+   *
+   * @param routineId - The unique identifier of the routine to be deleted.
+   */
   openDeleteRoutineModal(routineId: number): void {
     this.selectRoutine(routineId);
     this.activeModal = 'deleteRoutine';
   }
 
+  /**
+ * @method closeModal
+ * @description Closes any open modal dialogs, resets the selected routine, and clears messages.
+ */
   closeModal() {
     this.unselectRoutine();
     this.activeModal = ''; // Fechar a modal
@@ -138,8 +210,10 @@ export class CustomTrainingRoutinesComponent {
     this.successMessage = '';
   }
 
-
-
+  /**
+ * @method logout
+ * @description Logs out the current user by clearing the session and navigates to the homepage.
+ */
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;

@@ -3,6 +3,31 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ResetService } from '../services/reset-pass.service';
 
+/**
+ * @component ResetPassComponent
+ * @description
+ * The ResetPassComponent handles the password reset process for users who have forgotten their password.
+ * It retrieves a JWT token from the URL query parameters, validates the token via the ResetService,
+ * and then allows the user to set a new password if the token is valid.
+ * The component also calculates and displays password strength feedback.
+ *
+ * On form submission, it verifies that the new password and confirm password fields match,
+ * and then sends the new password along with the token to the backend. Upon success, a success message
+ * is displayed and the user is redirected to the login page after a brief delay.
+ *
+ * If errors occur (e.g. token expiration, mismatched passwords, or server errors), appropriate error
+ * messages are displayed and a modal is used to provide further feedback.
+ *
+ * @dependencies
+ * - ActivatedRoute: To extract query parameters (i.e., the token) from the URL.
+ * - Router: To navigate between routes (e.g., redirecting to the login page).
+ * - ResetService: Provides methods for validating the reset token and resetting the user's password.
+ *
+ * @usage
+ * This component is not standalone and relies on external templates and styles:
+ *   - Template: './reset-pass.component.html'
+ *   - Styles: ['./reset-pass.component.css']
+ */
 @Component({
   selector: 'app-reset-pass',
   templateUrl: './reset-pass.component.html',
@@ -27,6 +52,14 @@ export class ResetPassComponent implements OnInit {
     private ResetService: ResetService
   ) { }
 
+  /**
+   * @method ngOnInit
+   * @description
+   * Lifecycle hook that is called after the component has been initialized.
+   * It subscribes to the route query parameters to capture the reset token.
+   * If a token is found, it validates the token. If no token is provided, an error message is shown
+   * and the user is redirected to the home page.
+   */
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.token = params['token']; // Captura o token JWT enviado via URL
@@ -41,6 +74,15 @@ export class ResetPassComponent implements OnInit {
     });
   }
 
+  /**
+   * @method onSubmit
+   * @description
+   * Called when the user submits the new password form. It first clears any previous error or success messages,
+   * then checks if the new password and confirmation password match.
+   * If they match, it calls the ResetService to reset the password using the token and new password.
+   * On success, a success message is displayed and the user is redirected to the login page after a delay.
+   * If an error occurs, an appropriate error message is displayed.
+   */
   onSubmit(): void {
     // Limpa mensagens anteriores
     this.errorMessage = '';
@@ -81,11 +123,26 @@ export class ResetPassComponent implements OnInit {
     }
   }
 
+  /**
+   * @method calculatePasswordStrength
+   * @description
+   * Calculates the strength of the given password and sets the numeric strength score and corresponding textual feedback.
+   *
+   * @param password - The password to evaluate.
+   */
   calculatePasswordStrength(password: string): void {
     this.passwordStrength = this.getStrengthScore(password);
     this.passwordFeedback = this.getStrengthFeedback(this.passwordStrength);
   }
 
+  /**
+   * @method getStrengthScore
+   * @description
+   * Computes a numeric score for the given password based on length and the presence of lowercase, uppercase, and special characters.
+   *
+   * @param password - The password to evaluate.
+   * @returns A numeric score representing the password's strength.
+   */
   private getStrengthScore(password: string): number {
     let score = 0;
 
@@ -99,13 +156,28 @@ export class ResetPassComponent implements OnInit {
     return score;
   }
 
-  // Retorna feedback textual baseado na força
+  /**
+   * @method getStrengthFeedback
+   * @description
+   * Returns textual feedback based on the computed password strength score.
+   *
+   * @param score - The numeric strength score.
+   * @returns A string indicating if the password is Weak, Moderate, or Strong.
+   */
   private getStrengthFeedback(score: number): string {
     if (score < 50) return 'Weak';
     if (score < 75) return 'Moderate';
    return 'Strong'
   }
 
+  /**
+   * @method validateToken
+   * @description
+   * Validates the reset token by calling the ResetService. If the token is invalid or expired,
+   * an error modal is displayed with an appropriate message.
+   *
+   * @param token - The JWT token to validate.
+   */
   validateToken(token: string): void {
     this.ResetService.validateToken(token).subscribe(
       (response) => {
@@ -121,11 +193,22 @@ export class ResetPassComponent implements OnInit {
     );
   }
 
+  /**
+   * @method showErrorModal
+   * @description
+   * Displays a modal dialog with the provided error message.
+   *
+   * @param message - The message to display in the modal.
+   */
   showErrorModal(message: string): void {
     this.modalMessage = message;
     this.showModal = true;
   }
 
+  /**
+   * @method closeModal
+   * @description Closes the modal dialog and navigates to the home page.
+   */
   closeModal(): void {
     this.showModal = false;
     this.router.navigate(['/']);

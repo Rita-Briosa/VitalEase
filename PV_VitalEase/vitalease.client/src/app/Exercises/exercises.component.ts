@@ -5,6 +5,25 @@ import { ExercisesService } from '../services/exercises.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+/**
+ * @component ExercisesComponent
+ * @description
+ * The ExercisesComponent is responsible for managing and displaying the list of exercises and routines available in the application.
+ * It allows users to filter and sort exercises based on various criteria, view exercise media, and add exercises to selected routines.
+ * Additionally, it supports administrative functionalities such as adding new exercises.
+ *
+ * The component interacts with the following services:
+ * - ExercisesService: Handles API requests for fetching exercises, routines, media, and applying filters.
+ * - AuthService: Validates user authentication by verifying session tokens.
+ * - Router: Enables navigation between routes.
+ * - DomSanitizer: Sanitizes media URLs for safe embedding in the template.
+ * - HttpClient: Facilitates HTTP requests.
+ *
+ * @usage
+ * This component is not standalone and uses external templates and styles:
+ * - Template: './exercises.component.html'
+ * - Styles: './exercises.component.css'
+ */
 @Component({
   selector: 'app-exercises',
   templateUrl: './exercises.component.html',
@@ -63,6 +82,12 @@ export class ExercisesComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private http: HttpClient) { }
 
+  /**
+* @method ngOnInit
+* @description
+* Lifecycle hook that initializes the component. It validates the user's session token via AuthService.
+* If validation is successful, it loads the exercises list. Otherwise, the user is redirected to the login page.
+*/
   ngOnInit() {
 
     const token = this.authService.getSessionToken();
@@ -91,11 +116,19 @@ export class ExercisesComponent implements OnInit {
     }
   }
 
+  /**
+ * @method goToDashboard
+ * @description Navigates the user to the dashboard.
+ */
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
 
-  // Função para obter os logs
+  /**
+ * @method getExercises
+ * @description
+ * Retrieves the list of exercises from the ExercisesService and stores them in the 'exercises' array.
+ */
   getExercises(): void {
     this.exercisesService.getExercises().subscribe(
       (response: any) => {
@@ -109,6 +142,11 @@ export class ExercisesComponent implements OnInit {
     );
   }
 
+  /**
+ * @method getRoutines
+ * @description
+ * Retrieves the list of routines for the current user from the ExercisesService.
+ */
   getRoutines(): void {
     this.exercisesService.getRoutines(this.userInfo.id).subscribe(
       (response: any) => {
@@ -122,6 +160,11 @@ export class ExercisesComponent implements OnInit {
     );
   }
 
+  /**
+ * @method getModalExerciseMedia
+ * @description
+ * Retrieves media associated with the exercise currently selected in the modal.
+ */
   getModalExerciseMedia(): void {
     this.exercisesService.getMedia(this.modalExercise.id).subscribe(
       (response: any) => {
@@ -135,6 +178,12 @@ export class ExercisesComponent implements OnInit {
     );
   }
 
+  /**
+ * @method addRoutine
+ * @description
+ * Adds the selected exercise to a routine using the ExercisesService.
+ * Requires a selected routine and a modal exercise. On success, a success message is shown.
+ */
   addRoutine(): void {
     if (!this.selectedRoutine || !this.modalExercise) {
       this.addErrorMessage = 'Please select a routine before adding.';
@@ -161,6 +210,12 @@ export class ExercisesComponent implements OnInit {
     );
   }
 
+  /**
+ * @method addExercise
+ * @description
+ * Adds a new exercise by calling the ExercisesService with the new exercise details.
+ * On success, the modal is closed, the page is reloaded, and a success message is displayed.
+ */
   addExercise(): void {
 
 
@@ -183,6 +238,15 @@ export class ExercisesComponent implements OnInit {
     );
   }
 
+  /**
+ * @method convertToEmbedUrl
+ * @description
+ * Converts a given YouTube URL into an embeddable URL. If the URL does not match the YouTube pattern,
+ * the original URL is returned.
+ *
+ * @param url - The original URL.
+ * @returns The embeddable URL.
+ */
   convertToEmbedUrl(url: string): string {
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S+?\?v=))([a-zA-Z0-9_-]{11})/;
     const match = url.match(youtubeRegex);
@@ -199,6 +263,14 @@ export class ExercisesComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl); // Sanitiza a URL
   }
 
+  /**
+ * @method getTypeClass
+ * @description
+ * Returns a CSS class based on the exercise type.
+ *
+ * @param type - The exercise type.
+ * @returns The corresponding CSS class.
+ */
   getTypeClass(type: string): string {
     switch (type.toLowerCase()) {
       case 'warm-up':
@@ -214,6 +286,14 @@ export class ExercisesComponent implements OnInit {
     }
   }
 
+  /**
+ * @method getTypeStyle
+ * @description
+ * Returns an inline style object based on the exercise type.
+ *
+ * @param type - The exercise type.
+ * @returns An object with CSS style properties.
+ */
   getTypeStyle(type: string): any {
     switch (type.toLowerCase()) {
       case 'warm-up':
@@ -229,13 +309,26 @@ export class ExercisesComponent implements OnInit {
     }
   }
 
-  // Função para abrir o modal e passar o exercício selecionado
+  /**
+ * @method openModal
+ * @description
+ * Opens a modal dialog for the specified modal type and sets the modalExercise.
+ * Also retrieves media for the selected exercise.
+ *
+ * @param modalType - The type of modal to open.
+ * @param exercise - The exercise to display in the modal.
+ */
   openModal(modalType: string, exercise: any): void {
     this.activeModal = modalType; // Define que a modal 'details' será exibida
     this.modalExercise = exercise; // Define o exercício selecionado para ser exibido na modal
     this.getModalExerciseMedia();
   }
 
+  /**
+ * @method closeModal
+ * @description
+ * Closes the active modal and resets related state variables.
+ */
   closeModal() {
     this.activeModal = ''; // Fechar a modal
     this.modalExercise = null; // Limpa o exercício selecionado
@@ -247,28 +340,53 @@ export class ExercisesComponent implements OnInit {
     this.addRoutineErrorMessage = '';
   }
 
+  /**
+ * @method openAddModal
+ * @description Opens the modal for adding an exercise to a routine.
+ *
+ * @param exercise - The exercise to add.
+ */
   openAddModal(exercise: any): void {
     this.activeModal = 'add';
     this.modalExercise = exercise;
     this.getRoutines();
   }
 
+  /**
+ * @method openAddExerciseModal
+ * @description Opens the modal for adding a new exercise.
+ */
   openAddExerciseModal(): void {
     this.activeModal = 'addExercise';
   }
 
+  /**
+ * @method previousMedia
+ * @description
+ * Navigates to the previous media item in the media array.
+ */
   previousMedia() {
     if (this.activeMediaIndex > 0) {
       this.activeMediaIndex--;
     }
   }
 
+  /**
+ * @method nextMedia
+ * @description
+ * Navigates to the next media item in the media array.
+ */
   nextMedia() {
     if (this.activeMediaIndex < this.media.length - 1) {
       this.activeMediaIndex++;
     }
   }
 
+  /**
+ * @method getFilteredExercises
+ * @description
+ * Retrieves exercises that match the filter criteria using the ExercisesService.
+ */
   getFilteredExercises(): void {
 
     this.exercisesService.getFilteredExercises(this.filters).subscribe(
@@ -283,11 +401,25 @@ export class ExercisesComponent implements OnInit {
     )
   }
 
+  /**
+ * @method sortExercises
+ * @description
+ * Sorts the current list of exercises based on the selected sorted option.
+ */
   sortExercises(): void {
     this.exercises = this.getSortedExercises(this.selectedSortedOption, this.exercises);
     console.log('Exercises sorted successfully:', this.exercises);
   }
 
+  /**
+ * @method getSortedExercises
+ * @description
+ * Returns a sorted array of exercises based on the provided sorted option.
+ *
+ * @param sortedOption - The option to sort by (e.g., 'name-asc', 'difficulty-asc').
+ * @param exercises - The array of exercises to sort.
+ * @returns A sorted array of exercises.
+ */
   getSortedExercises(sortedOption: string, exercises: any[]): any[] {
     if (!sortedOption || !exercises || exercises.length === 0) {
       return exercises; // Se não houver opção de ordenação ou exercícios, retorna a lista original
@@ -320,6 +452,12 @@ export class ExercisesComponent implements OnInit {
     });
   }
 
+  /**
+ * @method onOptionChange
+ * @description
+ * Handler that resets certain exercise parameters when the selected option changes.
+ * If the selected option is 'duration', reps are reset to 0, and vice versa.
+ */
   onOptionChange() {
     if (this.selectedOption === 'duration') {
       this.reps = 0;
@@ -328,12 +466,6 @@ export class ExercisesComponent implements OnInit {
     }
   }
 
-  /*// Check if user is logged in by fetching the user info
-  this.isLoggedIn = this.authService.isLoggedIn();  // A verificação da sessão agora é feita com o método isLoggedIn()
-  if (this.isLoggedIn) {
-    this.userInfo = this.authService.getUserInfo();  // Se estiver logado, pega as informações do usuário
-  }
-}*/
 
   title = 'vitalease.client';
 }

@@ -5,7 +5,27 @@ import { TrainingRoutinesService } from '../services/training-routines.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-
+/**
+ * @component TrainingRoutineExerciseDetailsComponent
+ * @description
+ * The TrainingRoutineExerciseDetailsComponent displays detailed information for a specific exercise within a training routine.
+ * It retrieves the exercise ID from the route parameters and validates the user's session via the AuthService. If the session is valid,
+ * the component fetches the exercise details and its associated media (e.g., videos) using the TrainingRoutinesService.
+ * It also provides helper methods to convert and sanitize media URLs for safe embedding and to apply styling based on the exercise type.
+ *
+ * @dependencies
+ * - TrainingRoutinesService: Provides methods to retrieve exercise details and associated media.
+ * - AuthService: Validates the user's session token and provides user authentication data.
+ * - ActivatedRoute: Extracts the exercise ID from the current route.
+ * - Router: Enables navigation between different application routes.
+ * - DomSanitizer: Sanitizes URLs for safe embedding in the template.
+ * - HttpClient: Used for HTTP requests when necessary.
+ *
+ * @usage
+ * This component is not standalone and uses external templates and styles:
+ *   - Template: './training-routine-exercise-details.component.html'
+ *   - Styles: './training-routine-exercise-details.component.css'
+ */
 @Component({
   selector: 'app-training-routine-exercise-details',
   standalone: false,
@@ -32,6 +52,13 @@ export class TrainingRoutineExerciseDetailsComponent {
     private sanitizer: DomSanitizer,
     private http: HttpClient) { }
 
+  /**
+ * @method ngOnInit
+ * @description
+ * Lifecycle hook that initializes the component. It extracts the exercise ID from the route parameters,
+ * validates the user's session token, and then fetches the exercise details and associated media.
+ * If the session token is invalid or missing, the user is redirected to the login page.
+ */
   ngOnInit() {
 
     this.exerciseId = this.route.snapshot.paramMap.get('id');
@@ -63,10 +90,23 @@ export class TrainingRoutineExerciseDetailsComponent {
     }
   }
 
+  /**
+   * @method goToDashboard
+   * @description Navigates the user to the dashboard page.
+   */
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
 
+  /**
+   * @method convertToEmbedUrl
+   * @description
+   * Converts a standard YouTube URL into an embeddable URL using a regex pattern. 
+   * If the URL is not a YouTube URL, it returns the original URL.
+   *
+   * @param url - The original media URL.
+   * @returns A string representing the embeddable URL.
+   */
   convertToEmbedUrl(url: string): string {
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S+?\?v=))([a-zA-Z0-9_-]{11})/;
     const match = url.match(youtubeRegex);
@@ -77,12 +117,27 @@ export class TrainingRoutineExerciseDetailsComponent {
     return url;  // Retorna a URL original se não for do YouTube
   }
 
-  // Função para sanitizar a URL do vídeo
+  /**
+   * @method sanitizeUrl
+   * @description
+   * Sanitizes a media URL for safe embedding in the component's template by converting it to an embeddable URL and bypassing Angular's security.
+   *
+   * @param url - The media URL to sanitize.
+   * @returns A SafeResourceUrl that can be used in the template.
+   */
   sanitizeUrl(url: string): SafeResourceUrl {
     const embedUrl = this.convertToEmbedUrl(url);  // Converte a URL para embed, se necessário
     return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl); // Sanitiza a URL
   }
 
+  /**
+   * @method getTypeClass
+   * @description
+   * Returns a CSS class based on the exercise type for styling purposes.
+   *
+   * @param type - The exercise type.
+   * @returns A string representing the corresponding CSS class.
+   */
   getTypeClass(type: string): string {
     switch (type.toLowerCase()) {
       case 'warm-up':
@@ -98,6 +153,14 @@ export class TrainingRoutineExerciseDetailsComponent {
     }
   }
 
+  /**
+   * @method getTypeStyle
+   * @description
+   * Returns an inline style object based on the exercise type.
+   *
+   * @param type - The exercise type.
+   * @returns An object containing CSS style properties.
+   */
   getTypeStyle(type: string): any {
     switch (type.toLowerCase()) {
       case 'warm-up':
@@ -113,18 +176,32 @@ export class TrainingRoutineExerciseDetailsComponent {
     }
   }
 
+  /**
+   * @method previousMedia
+   * @description Navigates to the previous media item in the media array.
+   */
   previousMedia() {
     if (this.activeMediaIndex > 0) {
       this.activeMediaIndex--;
     }
   }
 
+  /**
+   * @method nextMedia
+   * @description Navigates to the next media item in the media array.
+   */
   nextMedia() {
     if (this.activeMediaIndex < this.media.length - 1) {
       this.activeMediaIndex++;
     }
   }
 
+  /**
+   * @method getExercise
+   * @description
+   * Fetches the exercise details for the given exercise ID using the TrainingRoutinesService.
+   * The retrieved exercise is stored in the component's exercise property.
+   */
   getExercise(): void {
 
     if (this.exerciseId != null) {
@@ -144,6 +221,12 @@ export class TrainingRoutineExerciseDetailsComponent {
    
   }
 
+  /**
+   * @method getExerciseMedia
+   * @description
+   * Fetches media associated with the exercise using the TrainingRoutinesService.
+   * The retrieved media items are stored in the component's media array.
+   */
   getExerciseMedia(): void {
 
     if (this.exerciseId != null) {
