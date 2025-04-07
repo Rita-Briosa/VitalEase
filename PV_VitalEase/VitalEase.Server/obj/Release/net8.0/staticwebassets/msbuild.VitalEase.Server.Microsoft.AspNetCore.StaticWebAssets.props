@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>0ovjqutc8j</Fingerprint>
-      <Integrity>EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=</Integrity>
+      <Fingerprint>73nkoqwz6f</Fingerprint>
+      <Integrity>Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\3rdpartylicenses.txt'))</OriginalItemSpec>
@@ -228,8 +228,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>2hb9rw3r9u</Fingerprint>
-      <Integrity>Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=</Integrity>
+      <Fingerprint>1hlq1hyqac</Fingerprint>
+      <Integrity>y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\main-LTSJLSFF.js'))</OriginalItemSpec>
@@ -300,8 +300,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>gv9nnx918d</Fingerprint>
-      <Integrity>vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=</Integrity>
+      <Fingerprint>39tegmrjtp</Fingerprint>
+      <Integrity>adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\polyfills-FFHMD2TL.js'))</OriginalItemSpec>
@@ -318,8 +318,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>o4nxuez1vo</Fingerprint>
-      <Integrity>qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc=</Integrity>
+      <Fingerprint>h1uvasrz41</Fingerprint>
+      <Integrity>K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\styles-OPSORIUJ.css'))</OriginalItemSpec>
@@ -336,8 +336,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>bdlfngeg9h</Fingerprint>
-      <Integrity>EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ=</Integrity>
+      <Fingerprint>tvy3j3n584</Fingerprint>
+      <Integrity>p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\prerendered-routes.json'))</OriginalItemSpec>
