@@ -15,8 +15,7 @@ using Xunit;
 using Moq;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Json;
-using Microsoft.AspNetCore.Http.HttpResults;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
+
 
 namespace VitalEaseTest
 {
