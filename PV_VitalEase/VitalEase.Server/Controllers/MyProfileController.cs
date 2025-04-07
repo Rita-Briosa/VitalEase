@@ -17,28 +17,28 @@ using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext
 namespace VitalEase.Server.Controllers
 {
     /// <summary>
-    /// Controlador responsável pela gestão do perfil do utilizador.
+    /// Controller responsible for managing the user's profile.
     /// </summary>
     public class MyProfileController : Controller
     {
         /// <summary>
-        /// Contexto da base de dados VitalEaseServerContext, utilizado para aceder aos dados da aplicação.
+        /// VitalEaseServerContext database context, used to access the application's data.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Interface de configuração, utilizada para aceder às definições da aplicação.
+        /// Configuration interface, used to access the application's settings.
         /// </summary>
         private readonly IConfiguration _configuration;
 
         /// <summary>
-        /// Inicializa uma nova instância do controlador <see cref="MyProfileController"/>.
+        /// Initializes a new instance of the <see cref="MyProfileController"/> controller.
         /// </summary>
         /// <param name="context">
-        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso aos dados.
+        /// The database context (<see cref="VitalEaseServerContext"/>) that enables data access operations.
         /// </param>
         /// <param name="configuration">
-        /// A interface de configuração (<see cref="IConfiguration"/>) para aceder às definições da aplicação.
+        /// The configuration interface (<see cref="IConfiguration"/>) used to access the application's settings.
         /// </param>
         public MyProfileController(VitalEaseServerContext context, IConfiguration configuration)
         {
@@ -47,48 +47,48 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Elimina a conta de um utilizador com base no email fornecido.
+        /// Deletes a user's account based on the provided email.
         /// </summary>
         /// <param name="email">
-        /// O endereço de email do utilizador cuja conta deve ser eliminada.
+        /// The email address of the user whose account is to be deleted.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> indicating:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com uma mensagem de sucesso, se a conta for eliminada com sucesso.
+        ///     An <c>Ok</c> result with a success message if the account is successfully deleted.
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> se o email não for fornecido ou se ocorrer algum erro durante o processo.
+        ///     A <c>BadRequest</c> result if the email is not provided or if an error occurs during the process.
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>NotFound</c> se não for encontrado nenhum utilizador com o email especificado.
+        ///     A <c>NotFound</c> result if no user is found with the specified email.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se o email foi fornecido; caso contrário, retorna um <c>BadRequest</c> com uma mensagem apropriada.
+        ///     Checks if the email has been provided; if not, it returns a <c>BadRequest</c> with an appropriate message.
         ///   </item>
         ///   <item>
-        ///     Utiliza <c>Uri.UnescapeDataString</c> para garantir que o email está corretamente decodificado.
+        ///     Uses <c>Uri.UnescapeDataString</c> to ensure that the email is correctly decoded.
         ///   </item>
         ///   <item>
-        ///     Procura na base de dados um utilizador com o email fornecido, incluindo o seu perfil associado.
+        ///     Searches the database for a user with the provided email, including their associated profile.
         ///   </item>
         ///   <item>
-        ///     Se o utilizador não for encontrado, retorna um <c>NotFound</c> com a mensagem "User not found".
+        ///     If the user is not found, it returns a <c>NotFound</c> with the message "User not found".
         ///   </item>
         ///   <item>
-        ///     Envia uma notificação por email informando que a conta foi eliminada; se o envio falhar, regista a ação e retorna um erro de servidor.
+        ///     Sends an email notification informing that the account has been deleted; if the sending fails, logs the action and returns a server error.
         ///   </item>
         ///   <item>
-        ///     Caso o utilizador possua um perfil associado, este é removido antes da remoção do próprio utilizador.
+        ///     If the user has an associated profile, it is removed before the user itself is deleted.
         ///   </item>
         ///   <item>
-        ///     Finalmente, remove o utilizador e guarda as alterações na base de dados, retornando um <c>Ok</c> com uma mensagem de sucesso.
+        ///     Finally, deletes the user and saves the changes to the database, returning an <c>Ok</c> result with a success message.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -246,6 +246,82 @@ namespace VitalEase.Server.Controllers
             return Ok(new { message = "Delete account successfully canceled." });
         }
 
+        /// <summary>
+        /// Processes a request to delete a user account by sending an email containing a confirmation link.
+        /// </summary>
+        /// <param name="model">
+        /// An instance of <see cref="DeleteAccountRequestViewModel"/> containing the email address of the user requesting account deletion.
+        /// </param>
+        /// <returns>
+        /// An <see cref="IActionResult"/> indicating the outcome of the operation, which may be:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <description>
+        ///       <c>Ok</c> – A confirmation email for account deletion has been successfully sent.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       <c>BadRequest</c> – The provided data is invalid, or an error occurred during processing.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       <c>Unauthorized</c> – No user was found matching the provided email address.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       <c>StatusCode(500)</c> – The email containing the deletion link could not be sent.
+        ///     </description>
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// This method performs the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     <description>
+        ///       Validates the input data; if the model state is invalid, logs the error and returns a <c>BadRequest</c>.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       Searches the database for a user with the provided email address.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       If no user is found, logs the attempt and returns an <c>Unauthorized</c> result.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       If a user is found, generates an account deletion token using the user's email and ID.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       Constructs a confirmation link that includes the generated token as a query parameter.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       Sends an email containing the delete account confirmation link to the user's email address.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       If the email fails to send, logs the error and returns a server error (<c>StatusCode(500)</c>).
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       If the email is successfully sent, logs the successful operation and returns an <c>Ok</c> result with a success message.
+        ///     </description>
+        ///   </item>
+        /// </list>
+        /// </remarks>
         [HttpPost("api/deleteAccountRequest")]
         public async Task<IActionResult> DeleteAccountResquest([FromBody] DeleteAccountRequestViewModel model)
         {
@@ -293,42 +369,42 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Valida a palavra-passe fornecida para um determinado utilizador.
+        /// Validates the provided password for a given user.
         /// </summary>
         /// <param name="request">
-        /// Um objeto <see cref="PasswordValidationRequest"/> que contém o email e a palavra-passe a validar.
+        /// An object of type <see cref="PasswordValidationRequest"/> that contains the email and the password to be validated.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> indicating:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso se a palavra-passe for válida.
+        ///     <c>Ok</c> with a success message if the password is valid.
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se o email ou a palavra-passe não forem fornecidos.
+        ///     <c>BadRequest</c> if the email or password is not provided.
         ///   </item>
         ///   <item>
-        ///     <c>NotFound</c> se o utilizador não for encontrado.
+        ///     <c>NotFound</c> if the user is not found.
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se a palavra-passe for inválida.
+        ///     <c>Unauthorized</c> if the password is invalid.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método realiza as seguintes operações:
+        /// The method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se o email e a palavra-passe foram fornecidos.
+        ///     Checks if the email and password have been provided.
         ///   </item>
         ///   <item>
-        ///     Procura o utilizador na base de dados com base no email.
+        ///     Searches for the user in the database based on the email.
         ///   </item>
         ///   <item>
-        ///     Valida a palavra-passe utilizando o método <c>VerifyPassword</c> para comparar a palavra-passe fornecida com a armazenada (normalmente, utilizando hash).
+        ///     Validates the password using the <c>VerifyPassword</c> method to compare the provided password with the stored one (typically using a hash).
         ///   </item>
         ///   <item>
-        ///     Retorna um <c>Ok</c> com uma mensagem se a validação for bem-sucedida ou o respectivo erro caso contrário.
+        ///     Returns an <c>Ok</c> with a message if the validation is successful, or the corresponding error otherwise.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -358,60 +434,52 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Verifica se a palavra-passe fornecida corresponde ao hash da palavra-passe armazenado.
+        /// Checks whether the provided password matches the stored password hash.
         /// </summary>
-        /// <param name="password">A palavra-passe em texto simples a ser verificada.</param>
-        /// <param name="hashedPassword">O hash da palavra-passe que se pretende comparar.</param>
+        /// <param name="password">The plain text password to be verified.</param>
+        /// <param name="hashedPassword">The password hash to be compared against.</param>
         /// <returns>
-        /// Retorna <c>true</c> se a palavra-passe, depois de ser hasheada, corresponder ao hash armazenado; caso contrário, <c>false</c>.
+        /// Returns <c>true</c> if the password, once hashed, matches the stored hash; otherwise, <c>false</c>.
         /// </returns>
-        /// <remarks>
-        /// Nesta implementação, a verificação é efetuada comparando o resultado da função <c>HashPassword</c> com o hash armazenado.
-        /// Se estiver a utilizar ASP.NET Identity, poderá recorrer à classe <c>PasswordHasher</c> para uma verificação mais robusta.
-        /// </remarks>
         private bool VerifyPassword(string password, string hashedPassword)
         {
-            // Here you would implement the password hashing verification
-            // If you're using ASP.NET Identity, you can use PasswordHasher
-
             return HashPassword(password) == hashedPassword ? true : false;
         }
 
         /// <summary>
-        /// Obtém as informações do perfil de um utilizador com base no email fornecido.
+        /// Retrieves the profile information for a user based on the provided email.
         /// </summary>
         /// <param name="email">
-        /// O endereço de email do utilizador cujo perfil se pretende obter.
+        /// The email address of the user whose profile information is to be retrieved.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém:
+        /// An <see cref="IActionResult"/> that contains:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com os dados do perfil (username, data de nascimento, peso, altura, género e indicação de problemas cardíacos),
-        ///     se o utilizador e o perfil forem encontrados.
+        ///     an <c>Ok</c> result with the profile data (username, birthdate, weight, height, gender, and indication of heart problems) if the user and profile are found;
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> se o email não for fornecido ou se ocorrer algum erro durante o processamento.
+        ///     a <c>BadRequest</c> result if the email is not provided or if an error occurs during processing;
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>NotFound</c> se o utilizador ou o perfil não forem encontrados.
+        ///     a <c>NotFound</c> result if the user or profile is not found.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método realiza as seguintes operações:
+        /// The method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se o email foi fornecido e o decodifica, se necessário.
+        ///     Checks whether the email is provided and decodes it if necessary.
         ///   </item>
         ///   <item>
-        ///     Procura o utilizador na base de dados pelo email, incluindo o seu perfil associado (utilizando <c>Include(u => u.Profile)</c>).
+        ///     Searches the database for the user by email, including the associated profile (using <c>Include(u => u.Profile)</c>).
         ///   </item>
         ///   <item>
-        ///     Se o utilizador ou o perfil não forem encontrados, retorna um <c>NotFound</c> com a mensagem apropriada.
+        ///     If the user or profile is not found, it returns a <c>NotFound</c> result with an appropriate message.
         ///   </item>
         ///   <item>
-        ///     Se encontrados, mapeia os dados do perfil para um objeto anónimo e retorna-o num resultado <c>Ok</c>.
+        ///     If found, it maps the profile data to an anonymous object and returns it in an <c>Ok</c> result.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -461,45 +529,45 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Altera a data de nascimento do perfil de um utilizador.
+        /// Changes the birthdate registered in a user's profile.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangeBirthDateViewModel"/> que contém o email do utilizador e a nova data de nascimento.
+        /// An object of type <see cref="ChangeBirthDateViewModel"/> that contains the user's email and the new birthdate.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso, se a data de nascimento for alterada com êxito.
+        ///     an <c>Ok</c> response with a success message if the birthdate is changed successfully;
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados enviados forem inválidos ou se o utilizador tiver menos de 16 anos.
+        ///     a <c>BadRequest</c> response if the submitted data is invalid or if the user is younger than 16 years old;
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se o utilizador não for encontrado.
+        ///     an <c>Unauthorized</c> response if the user is not found;
         ///   </item>
         ///   <item>
-        ///     <c>NotFound</c> se o perfil do utilizador não for encontrado.
+        ///     a <c>NotFound</c> response if the user's profile is not found.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método realiza as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se os dados enviados são válidos. Caso contrário, regista a tentativa de alteração e retorna um <c>BadRequest</c>.
+        ///     It validates the submitted data. If the data is invalid, it logs the attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Procura o utilizador com base no email fornecido, incluindo o seu perfil (usando <c>Include(u => u.Profile)</c>).
+        ///     It searches for the user based on the provided email, including the associated profile (using <c>Include(u => u.Profile)</c>).
         ///   </item>
         ///   <item>
-        ///     Se o utilizador ou o seu perfil não forem encontrados, regista a tentativa e retorna um erro (<c>Unauthorized</c> ou <c>NotFound</c>).
+        ///     If the user or their profile is not found, it logs the attempt and returns an error (<c>Unauthorized</c> or <c>NotFound</c>).
         ///   </item>
         ///   <item>
-        ///     Verifica se a nova data de nascimento indica que o utilizador tem pelo menos 16 anos. Se não cumprir, regista a tentativa e retorna um <c>BadRequest</c>.
+        ///     It checks whether the new birthdate indicates that the user is at least 16 years old. If not, it logs the attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Se todas as validações forem satisfeitas, atualiza a data de nascimento no perfil, guarda as alterações e regista a operação com sucesso.
+        ///     If all validations are satisfied, it updates the birthdate in the user's profile, saves the changes, and logs the successful operation.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -549,28 +617,46 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Altera o peso registado no perfil de um utilizador.
+        /// Changes the weight registered in a user's profile.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangeWeightViewModel"/> que contém o email do utilizador e o novo peso.
+        /// An object of type <see cref="ChangeWeightViewModel"/> that contains the user's email and the new weight.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
-        ///   <item><c>Ok</c> com uma mensagem de sucesso, se o peso for alterado corretamente;</item>
-        ///   <item><c>BadRequest</c> se os dados forem inválidos ou se ocorrer um erro durante o processamento;</item>
-        ///   <item><c>Unauthorized</c> se nenhum utilizador for encontrado com o email fornecido;</item>
-        ///   <item><c>NotFound</c> se o perfil do utilizador não for encontrado.</item>
+        ///   <item>
+        ///     an <c>Ok</c> response with a success message if the weight is updated successfully;
+        ///   </item>
+        ///   <item>
+        ///     a <c>BadRequest</c> response if the submitted data is invalid or if an error occurs during processing;
+        ///   </item>
+        ///   <item>
+        ///     an <c>Unauthorized</c> response if no user is found with the provided email;
+        ///   </item>
+        ///   <item>
+        ///     a <c>NotFound</c> response if the user's profile is not found.
+        ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método realiza as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
-        ///   <item>Verifica se os dados enviados são válidos. Caso não o sejam, regista a tentativa e retorna um BadRequest.</item>
-        ///   <item>Procura o utilizador na base de dados pelo email fornecido, incluindo o perfil associado.</item>
-        ///   <item>Se o utilizador ou o seu perfil não forem encontrados, regista a tentativa e retorna a resposta adequada.</item>
-        ///   <item>Atualiza o campo de peso no perfil com o valor fornecido e guarda as alterações na base de dados.</item>
-        ///   <item>Regista a operação com sucesso e retorna uma resposta Ok com a mensagem de sucesso.</item>
+        ///   <item>
+        ///     Validates the submitted data. If the data is invalid, it logs the update attempt and returns a <c>BadRequest</c>.
+        ///   </item>
+        ///   <item>
+        ///     Searches the database for a user using the provided email, including their associated profile.
+        ///   </item>
+        ///   <item>
+        ///     If the user or the user's profile is not found, it logs the attempt and returns the appropriate response.
+        ///   </item>
+        ///   <item>
+        ///     Updates the weight field in the user's profile with the new value and saves the changes to the database.
+        ///   </item>
+        ///   <item>
+        ///     Logs the successful operation and returns an <c>Ok</c> response with a success message.
+        ///   </item>
         /// </list>
         /// </remarks>
         [HttpPost("api/changeWeight")]
@@ -615,45 +701,45 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Altera a altura registada no perfil de um utilizador.
+        /// Changes the height registered in a user's profile.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangeHeightViewModel"/> que contém o email do utilizador e a nova altura.
+        /// An object of type <see cref="ChangeHeightViewModel"/> that contains the user's email and the new height.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso, se a altura for alterada com êxito;
+        ///     an <c>Ok</c> response with a success message if the height is updated successfully;
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados enviados forem inválidos ou se ocorrer um erro durante o processamento;
+        ///     a <c>BadRequest</c> response if the submitted data is invalid or if an error occurs during processing;
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se nenhum utilizador for encontrado com o email fornecido;
+        ///     an <c>Unauthorized</c> response if no user is found with the provided email;
         ///   </item>
         ///   <item>
-        ///     <c>NotFound</c> se o perfil do utilizador não for encontrado.
+        ///     a <c>NotFound</c> response if the user's profile is not found.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Verifica se os dados enviados são válidos. Se não forem, regista a tentativa de alteração e retorna um BadRequest.
+        ///     Validates the submitted data. If the data is invalid, it logs the update attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Procura o utilizador na base de dados pelo email, incluindo o seu perfil associado (usando <c>Include(u => u.Profile)</c>).
+        ///     Searches the database for a user using the provided email, including their associated profile (using <c>Include(u => u.Profile)</c>).
         ///   </item>
         ///   <item>
-        ///     Se o utilizador ou o perfil não forem encontrados, regista a tentativa e retorna a resposta apropriada.
+        ///     If the user or their profile is not found, it logs the attempt and returns the appropriate response.
         ///   </item>
         ///   <item>
-        ///     Atualiza o campo de altura no perfil com o valor fornecido e guarda as alterações na base de dados.
+        ///     Updates the height field in the user's profile with the provided value and saves the changes to the database.
         ///   </item>
         ///   <item>
-        ///     Regista a operação com sucesso e retorna uma resposta <c>Ok</c> com a mensagem de sucesso.
+        ///     Logs the successful operation and returns an <c>Ok</c> response with a success message.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -699,45 +785,45 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Altera o género registado no perfil de um utilizador.
+        /// Changes the gender registered in a user's profile.
         /// </summary>
         /// <param name="model">
-        /// Um objeto do tipo <see cref="ChangeGenderViewModel"/> que contém o email do utilizador e o novo género.
+        /// An object of type <see cref="ChangeGenderViewModel"/> that contains the user's email and the new gender.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que indica:
+        /// An <see cref="IActionResult"/> that indicates:
         /// <list type="bullet">
         ///   <item>
-        ///     <c>Ok</c> com uma mensagem de sucesso se o género for alterado com êxito;
+        ///     an <c>Ok</c> response with a success message if the gender is changed successfully;
         ///   </item>
         ///   <item>
-        ///     <c>BadRequest</c> se os dados enviados forem inválidos ou se ocorrer algum erro durante o processamento;
+        ///     a <c>BadRequest</c> response if the provided data is invalid or if an error occurs during processing;
         ///   </item>
         ///   <item>
-        ///     <c>Unauthorized</c> se nenhum utilizador for encontrado com o email fornecido;
+        ///     an <c>Unauthorized</c> response if no user is found with the provided email;
         ///   </item>
         ///   <item>
-        ///     <c>NotFound</c> se o perfil do utilizador não for encontrado.
+        ///     a <c>NotFound</c> response if the user's profile is not found.
         ///   </item>
         /// </list>
         /// </returns>
         /// <remarks>
-        /// O método executa as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Valida os dados enviados. Caso os dados sejam inválidos, regista a tentativa e retorna um <c>BadRequest</c>.
+        ///     Validates the submitted data. If the data is invalid, it logs the attempt and returns a <c>BadRequest</c>.
         ///   </item>
         ///   <item>
-        ///     Procura o utilizador na base de dados pelo email fornecido, incluindo o seu perfil associado.
+        ///     Searches the database for a user with the provided email, including their associated profile.
         ///   </item>
         ///   <item>
-        ///     Se o utilizador ou o seu perfil não forem encontrados, regista a tentativa e retorna a resposta adequada.
+        ///     If the user or the user's profile is not found, it logs the attempt and returns the appropriate response.
         ///   </item>
         ///   <item>
-        ///     Atualiza o campo de género no perfil com o novo valor e guarda as alterações na base de dados.
+        ///     Updates the gender field in the profile with the new value and saves the changes to the database.
         ///   </item>
         ///   <item>
-        ///     Regista a operação com sucesso e retorna um <c>Ok</c> com a mensagem de sucesso.
+        ///     Logs the successful operation and returns an <c>Ok</c> response with a success message.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -1899,17 +1985,17 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Regista uma acção de auditoria, gravando-a na base de dados.
+        /// Logs an audit action by recording it in the database.
         /// </summary>
-        /// <param name="action">A acção que foi realizada.</param>
-        /// <param name="status">O estado ou resultado da acção.</param>
-        /// <param name="UserId">O identificador do utilizador associado à acção.</param>
+        /// <param name="action">The action that was performed.</param>
+        /// <param name="status">The status or outcome of the action.</param>
+        /// <param name="UserId">The identifier of the user associated with the action.</param>
         /// <returns>
-        /// Uma <see cref="Task"/> que representa a operação assíncrona de registo do log.
+        /// A <see cref="Task"/> representing the asynchronous operation of logging the action.
         /// </returns>
         /// <remarks>
-        /// Este método cria um objeto <see cref="AuditLog"/> com a hora actual, a acção, o estado e o ID do utilizador,
-        /// adiciona-o ao contexto da base de dados e guarda as alterações de forma assíncrona.
+        /// This method creates an <see cref="AuditLog"/> object with the current time, the specified action, status, and user ID,
+        /// adds it to the database context, and saves the changes asynchronously.
         /// </remarks>
         private async Task LogAction(string action, string status, int UserId)
         {
@@ -2001,43 +2087,43 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Gera um token JWT para a alteração de email, incorporando o email antigo, o novo email, o ID do utilizador e um identificador único para o token.
+        /// Generates a JWT token for changing the email address, incorporating the old email, the new email, the user ID, and a unique token identifier.
         /// </summary>
-        /// <param name="oldEmail">O email atual do utilizador.</param>
-        /// <param name="newEmail">O novo email a ser configurado para o utilizador.</param>
-        /// <param name="userId">O identificador do utilizador.</param>
+        /// <param name="oldEmail">The user's current email address.</param>
+        /// <param name="newEmail">The new email address to be set for the user.</param>
+        /// <param name="userId">The identifier of the user.</param>
         /// <returns>
-        /// Uma string que representa o token JWT gerado, com validade de 60 minutos.
+        /// A string representing the generated JWT token, valid for 60 minutes.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// É lançada se a chave JWT não estiver configurada corretamente na aplicação.
+        /// Thrown if the JWT key is not properly configured in the application.
         /// </exception>
         /// <remarks>
-        /// Este método realiza as seguintes operações:
+        /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Obtém a chave JWT a partir das configurações da aplicação e valida a sua existência.
+        ///     Retrieves the JWT key from the application settings and verifies its existence.
         ///   </item>
         ///   <item>
-        ///     Gera um identificador único (tokenId) para o token.
+        ///     Generates a unique token identifier (tokenId).
         ///   </item>
         ///   <item>
-        ///     Cria um token JWT com os seguintes claims:
+        ///     Creates a JWT token with the following claims:
         ///     <list type="bullet">
-        ///       <item>O email antigo.</item>
-        ///       <item>O novo email.</item>
-        ///       <item>O identificador do utilizador.</item>
-        ///       <item>O tokenId.</item>
+        ///       <item>The old email.</item>
+        ///       <item>The new email.</item>
+        ///       <item>The user's identifier.</item>
+        ///       <item>The tokenId.</item>
         ///     </list>
         ///   </item>
         ///   <item>
-        ///     Define a expiração do token para 60 minutos a partir da criação, utilizando uma chave simétrica e o algoritmo HMAC SHA256 para assinatura.
+        ///     Sets the token's expiration to 60 minutes from creation, using a symmetric key and the HMAC SHA256 algorithm for signing.
         ///   </item>
         ///   <item>
-        ///     Cria um registo de token em <see cref="ResetEmailTokens"/> com o tokenId, data de criação, data de expiração, e flags de utilização inicialmente definidas como <c>false</c>.
+        ///     Creates a record in <see cref="ResetEmailTokens"/> with the tokenId, creation date, expiration date, and usage flags initially set to <c>false</c>.
         ///   </item>
         ///   <item>
-        ///     Adiciona o registo à base de dados, guarda as alterações e retorna o token JWT gerado.
+        ///     Adds the token record to the database, saves the changes, and returns the generated JWT token.
         ///   </item>
         /// </list>
         /// </remarks>
@@ -2086,10 +2172,12 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Valida o token JWT.
+        /// Validates the JWT token.
         /// </summary>
-        /// <param name="token">Token a ser validado.</param>
-        /// <returns>Uma tupla com: se é válido, email e userId.</returns>
+        /// <param name="token">The token to be validated.</param>
+        /// <returns>
+        /// A tuple containing: whether the token is valid, the email, and the userId.
+        /// </returns>
         private (bool IsValid, string oldEmail, string newEmail, int UserId, string idToken) ValidateToken(string token)
         {
             var jwtKey = _configuration["Jwt:Key"];
@@ -2163,6 +2251,40 @@ namespace VitalEase.Server.Controllers
             }
         }
 
+        /// <summary>
+        /// Generates a JWT token for deleting an account and records the token details in the database.
+        /// </summary>
+        /// <param name="email">The email address associated with the account to be deleted.</param>
+        /// <param name="userId">The identifier of the user requesting account deletion.</param>
+        /// <returns>
+        /// A string representing the generated JWT token.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown if the JWT key is not properly configured.
+        /// </exception>
+        /// <remarks>
+        /// This method performs the following steps:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Retrieves the JWT secret key from the configuration and ensures it is not empty. If empty, an exception is thrown.
+        ///   </item>
+        ///   <item>
+        ///     Generates a unique token identifier (tokenId) using <c>Guid.NewGuid()</c>.
+        ///   </item>
+        ///   <item>
+        ///     Creates a symmetric security key using the secret key and defines signing credentials with the HMAC SHA256 algorithm.
+        ///   </item>
+        ///   <item>
+        ///     Generates a JWT token with claims for the user's email, userId, and tokenId, and sets its expiration to 24 hours from the current time.
+        ///   </item>
+        ///   <item>
+        ///     Creates a new <see cref="DeleteAccountTokens"/> record with the generated token details (tokenId, creation time, expiration time, and usage status) and adds it to the database.
+        ///   </item>
+        ///   <item>
+        ///     Saves the changes to the database and returns the JWT token as a string.
+        ///   </item>
+        /// </list>
+        /// </remarks>
         public string GenerateDeleteAccountToken(string email, int userId)
         {
 
@@ -2206,6 +2328,51 @@ namespace VitalEase.Server.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        /// <summary>
+        /// Validates the JWT token used for deleting an account and extracts related information.
+        /// </summary>
+        /// <param name="token">The JWT token to validate.</param>
+        /// <returns>
+        /// A tuple containing:
+        /// <list type="bullet">
+        ///   <item><c>true</c> if the token is valid; otherwise, <c>false</c>.</item>
+        ///   <item>The email extracted from the token.</item>
+        ///   <item>The user ID extracted from the token.</item>
+        ///   <item>The token identifier (tokenId) extracted from the token.</item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// This method performs the following operations:
+        /// <list type="bullet">
+        ///   <item>
+        ///     Retrieves the JWT secret key from the configuration and validates that it is properly set. 
+        ///     If the key is missing or empty, an <see cref="ArgumentNullException"/> is thrown.
+        ///   </item>
+        ///   <item>
+        ///     Creates a symmetric security key from the secret and validates the provided token using the specified token validation parameters,
+        ///     including issuer, audience, and a clock skew of 5 minutes.
+        ///   </item>
+        ///   <item>
+        ///     Extracts the email, user ID, and token ID from the token's claims.
+        ///   </item>
+        ///   <item>
+        ///     Checks if the extracted email is empty or if the user ID is 0, and returns <c>false</c> if so.
+        ///   </item>
+        ///   <item>
+        ///     Queries the database to find the corresponding delete account token record using the token ID.
+        ///   </item>
+        ///   <item>
+        ///     Returns <c>false</c> if the token record is not found or if it has already been used.
+        ///   </item>
+        ///   <item>
+        ///     Returns <c>true</c> along with the extracted email, user ID, and token ID if the token is valid and has not been used.
+        ///   </item>
+        ///   <item>
+        ///     Catches and handles specific exceptions such as <see cref="SecurityTokenExpiredException"/> and <see cref="SecurityTokenException"/>,
+        ///     returning <c>false</c> if the token is expired or invalid, and logging any other exceptions.
+        ///   </item>
+        /// </list>
+        /// </remarks>
         private (bool IsValid, string email, int UserId, string idToken) ValidateDeleteAccountToken(string token)
         {
             var jwtKey = _configuration["Jwt:Key"];
@@ -2279,10 +2446,23 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Valida o token JWT.
+        /// Validates the JWT token.
         /// </summary>
-        /// <param name="token">Token a ser validado.</param>
-        /// <returns>Uma tupla com: se é válido, email e userId.</returns>
+        /// <param name="token">The token to be validated.</param>
+        /// <returns>
+        /// A tuple containing:
+        /// <list type="bullet">
+        ///   <item>
+        ///     a boolean indicating whether the token is valid,
+        ///   </item>
+        ///   <item>
+        ///     the email associated with the token,
+        ///   </item>
+        ///   <item>
+        ///     and the userId extracted from the token.
+        ///   </item>
+        /// </list>
+        /// </returns>
         private (bool IsValid, string oldEmail, string newEmail ,int UserId, string idToken) ValidateTokenOnOldEmail(string token)
         {
             var jwtKey = _configuration["Jwt:Key"];

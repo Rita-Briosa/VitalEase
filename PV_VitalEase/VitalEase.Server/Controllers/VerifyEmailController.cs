@@ -10,49 +10,48 @@ using VitalEase.Server.ViewModel;
 namespace VitalEase.Server.Controllers
 {
     /// <summary>
-    /// Controlador responsável pela verificação de email dos utilizadores.
+    /// Controller responsible for verifying users' email addresses.
     /// </summary>
     public class VerifyEmailController : Controller
     {
         /// <summary>
-        /// Contexto da base de dados VitalEaseServerContext, utilizado para aceder aos dados da aplicação.
+        /// VitalEaseServerContext database context, used to access the application's data.
         /// </summary>
         private readonly VitalEaseServerContext _context;
 
         /// <summary>
-        /// Interface de configuração, utilizada para aceder às definições da aplicação.
+        /// Configuration interface, used to access the application's settings.
         /// </summary>
         private readonly IConfiguration _configuration;
 
         /// <summary>
-        /// Inicializa uma nova instância do controlador <see cref="VerifyEmailController"/>.
+        /// Initializes a new instance of the <see cref="VerifyEmailController"/> controller.
         /// </summary>
         /// <param name="context">
-        /// O contexto da base de dados (<see cref="VitalEaseServerContext"/>) que permite efetuar operações de acesso aos dados.
+        /// The database context (<see cref="VitalEaseServerContext"/>) that enables data access operations.
         /// </param>
         /// <param name="configuration">
-        /// A interface de configuração (<see cref="IConfiguration"/>) para aceder às definições da aplicação.
+        /// The configuration interface (<see cref="IConfiguration"/>) used to access the application's settings.
         /// </param>
         public VerifyEmailController(VitalEaseServerContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
-
         /// <summary>
-        /// Valida o token de verificação de email e atualiza o estado do email do utilizador se o token for válido.
+        /// Validates the email verification token and updates the user's email status if the token is valid.
         /// </summary>
         /// <param name="model">
-        /// Um objeto <see cref="VerifyEmailViewModel"/> que contém o token de verificação de email enviado na query string.
+        /// An object of type <see cref="VerifyEmailViewModel"/> that contains the email verification token sent in the query string.
         /// </param>
         /// <returns>
-        /// Um <see cref="IActionResult"/> que contém:
+        /// An <see cref="IActionResult"/> containing:
         /// <list type="bullet">
         ///   <item>
-        ///     Um resultado <c>Ok</c> com uma mensagem de sucesso e o email verificado, se o token for válido e o email ainda não tiver sido verificado.
+        ///     An <c>Ok</c> result with a success message and the verified email, if the token is valid and the email has not yet been verified.
         ///   </item>
         ///   <item>
-        ///     Um resultado <c>BadRequest</c> se o token estiver expirado ou se o email já tiver sido verificado.
+        ///     A <c>BadRequest</c> result if the token has expired or if the email has already been verified.
         ///   </item>
         /// </list>
         /// </returns>
@@ -85,14 +84,14 @@ namespace VitalEase.Server.Controllers
         }
 
         /// <summary>
-        /// Valida o token JWT e extrai o email contido nos seus claims.
+        /// Validates the JWT token and extracts the email contained in its claims.
         /// </summary>
         /// <param name="token">
-        /// O token JWT a ser validado.
+        /// The JWT token to be validated.
         /// </param>
         /// <returns>
-        /// Uma tupla com um booleano indicando se o token é válido e, em caso afirmativo, o email extraído dos claims.
-        /// Se o token for inválido ou expirado, retorna (false, "").
+        /// A tuple with a boolean indicating whether the token is valid and, if so, the email extracted from the claims.
+        /// If the token is invalid or expired, returns (false, "").
         /// </returns>
         private (bool IsValid, string Email) ValidateToken(string token)
         {
