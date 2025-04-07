@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "t7ToYAX8RHQEF4GWRgxAl03xiUrIYqyGmlRVr+a2rHU=",
+  "Hash": "xUO4k5BNyFLO9DhnZu2q+Hu8hbVcrPUmo0+58Olha60=",
   "Source": "VitalEase.Server",
   "BasePath": "_content/VitalEase.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\vitalease.client\\vitalease.client.esproj",
       "Version": 2,
       "Source": "vitalease.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
@@ -22,17 +22,17 @@
     {
       "Name": "VitalEase.Server\\wwwroot",
       "Source": "VitalEase.Server",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/3rdpartylicenses#[.{fingerprint}]?.txt",
       "AssetKind": "All",
@@ -43,17 +43,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "73nkoqwz6f",
-      "Integrity": "Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=",
+      "Fingerprint": "0ovjqutc8j",
+      "Integrity": "EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\vitalease.client\\3rdpartylicenses.txt"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/arrow_right#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -71,10 +71,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/dev1#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
@@ -92,10 +92,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/dev2#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
@@ -113,10 +113,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/dev3#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
@@ -134,10 +134,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/dev4#[.{fingerprint}]?.jpeg",
       "AssetKind": "All",
@@ -155,10 +155,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/fitness-illustration#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -176,10 +176,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/garbage_can#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -197,10 +197,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/logo#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -218,10 +218,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/pencil-43#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -239,10 +239,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/assets/img/plusIcon#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -260,10 +260,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/index#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -281,10 +281,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\index.html"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/main-LTSJLSFF#[.{fingerprint}]?.js",
       "AssetKind": "All",
@@ -295,17 +295,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "1hlq1hyqac",
-      "Integrity": "y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=",
+      "Fingerprint": "2hb9rw3r9u",
+      "Integrity": "Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/media/layers-2x-TBM42ERR#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/media/layers-55W3Q4RM#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -344,10 +344,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/media/marker-icon-2V3QKKVC#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -365,10 +365,10 @@
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/polyfills-FFHMD2TL#[.{fingerprint}]?.js",
       "AssetKind": "All",
@@ -379,17 +379,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "39tegmrjtp",
-      "Integrity": "adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=",
+      "Fingerprint": "gv9nnx918d",
+      "Integrity": "vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/browser/styles-OPSORIUJ#[.{fingerprint}]?.css",
       "AssetKind": "All",
@@ -400,17 +400,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "h1uvasrz41",
-      "Integrity": "K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=",
+      "Fingerprint": "o4nxuez1vo",
+      "Integrity": "qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css"
     },
     {
-      "Identity": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
+      "Identity": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
       "SourceId": "VitalEase.Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\",
       "BasePath": "_content/VitalEase.Server",
       "RelativePath": "vitalease.client/prerendered-routes#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -421,8 +421,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "tvy3j3n584",
-      "Integrity": "p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=",
+      "Fingerprint": "bdlfngeg9h",
+      "Integrity": "EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\vitalease.client\\prerendered-routes.json"
@@ -430,8 +430,8 @@
   ],
   "Endpoints": [
     {
-      "Route": "vitalease.client/3rdpartylicenses.73nkoqwz6f.txt",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
+      "Route": "vitalease.client/3rdpartylicenses.0ovjqutc8j.txt",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -440,7 +440,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20919"
+          "Value": "21294"
         },
         {
           "Name": "Content-Type",
@@ -448,11 +448,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
+          "Value": "\"EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -462,7 +462,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "73nkoqwz6f"
+          "Value": "0ovjqutc8j"
         },
         {
           "Name": "label",
@@ -470,13 +470,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
+          "Value": "sha256-EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek="
         }
       ]
     },
     {
       "Route": "vitalease.client/3rdpartylicenses.txt",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\3rdpartylicenses.txt",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -485,7 +485,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20919"
+          "Value": "21294"
         },
         {
           "Name": "Content-Type",
@@ -493,11 +493,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
+          "Value": "\"EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -507,13 +507,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
+          "Value": "sha256-EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek="
         }
       ]
     },
     {
       "Route": "vitalease.client/browser/assets/img/arrow_right.nydkq4sg7f.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -534,7 +534,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -558,7 +558,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/arrow_right.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\arrow_right.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -579,7 +579,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -595,7 +595,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev1.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -616,7 +616,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -632,7 +632,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev1.usgvsvujzf.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev1.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -653,7 +653,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -677,7 +677,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev2.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -698,7 +698,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -714,7 +714,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev2.yxd8d5a0ys.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev2.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -735,7 +735,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -759,7 +759,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev3.5ma6kiswi0.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -780,7 +780,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -804,7 +804,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev3.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev3.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -825,7 +825,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -841,7 +841,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev4.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -862,7 +862,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -878,7 +878,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/dev4.kte9kpxwfu.jpeg",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\dev4.jpeg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -899,7 +899,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -923,7 +923,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/fitness-illustration.1q355k7c7h.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -944,7 +944,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -968,7 +968,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/fitness-illustration.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\fitness-illustration.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -989,7 +989,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1005,7 +1005,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/garbage_can.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1026,7 +1026,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1042,7 +1042,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/garbage_can.qb0j2xyvmx.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\garbage_can.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1063,7 +1063,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1087,7 +1087,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/logo.omupm3b1xx.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1108,7 +1108,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1132,7 +1132,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/logo.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\logo.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1153,7 +1153,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1169,7 +1169,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/pencil-43.54zdg5nori.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1190,7 +1190,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1214,7 +1214,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/pencil-43.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\pencil-43.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1235,7 +1235,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1251,7 +1251,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/plusIcon.le7skris2l.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1272,7 +1272,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1296,7 +1296,7 @@
     },
     {
       "Route": "vitalease.client/browser/assets/img/plusIcon.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\assets\\img\\plusIcon.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1317,7 +1317,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1333,7 +1333,7 @@
     },
     {
       "Route": "vitalease.client/browser/index.aytwbm6qv9.html",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1354,7 +1354,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1378,7 +1378,7 @@
     },
     {
       "Route": "vitalease.client/browser/index.html",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1399,7 +1399,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1414,8 +1414,8 @@
       ]
     },
     {
-      "Route": "vitalease.client/browser/main-LTSJLSFF.1hlq1hyqac.js",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
+      "Route": "vitalease.client/browser/main-LTSJLSFF.2hb9rw3r9u.js",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1424,7 +1424,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "684989"
+          "Value": "685001"
         },
         {
           "Name": "Content-Type",
@@ -1432,11 +1432,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
+          "Value": "\"Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1446,7 +1446,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "1hlq1hyqac"
+          "Value": "2hb9rw3r9u"
         },
         {
           "Name": "label",
@@ -1454,13 +1454,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
+          "Value": "sha256-Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk="
         }
       ]
     },
     {
       "Route": "vitalease.client/browser/main-LTSJLSFF.js",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\main-LTSJLSFF.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1469,7 +1469,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "684989"
+          "Value": "685001"
         },
         {
           "Name": "Content-Type",
@@ -1477,11 +1477,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
+          "Value": "\"Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1491,13 +1491,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
+          "Value": "sha256-Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk="
         }
       ]
     },
     {
       "Route": "vitalease.client/browser/media/layers-2x-TBM42ERR.ef5uc09gvw.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1518,7 +1518,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1542,7 +1542,7 @@
     },
     {
       "Route": "vitalease.client/browser/media/layers-2x-TBM42ERR.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-2x-TBM42ERR.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1563,7 +1563,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1579,7 +1579,7 @@
     },
     {
       "Route": "vitalease.client/browser/media/layers-55W3Q4RM.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1600,7 +1600,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1616,7 +1616,7 @@
     },
     {
       "Route": "vitalease.client/browser/media/layers-55W3Q4RM.ptvguihtoq.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\layers-55W3Q4RM.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1637,7 +1637,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1661,7 +1661,7 @@
     },
     {
       "Route": "vitalease.client/browser/media/marker-icon-2V3QKKVC.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1682,7 +1682,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1698,7 +1698,7 @@
     },
     {
       "Route": "vitalease.client/browser/media/marker-icon-2V3QKKVC.vq9wvlav5t.png",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\media\\marker-icon-2V3QKKVC.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1719,7 +1719,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1742,8 +1742,8 @@
       ]
     },
     {
-      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.39tegmrjtp.js",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
+      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.gv9nnx918d.js",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1752,7 +1752,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "34519"
+          "Value": "34521"
         },
         {
           "Name": "Content-Type",
@@ -1760,11 +1760,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
+          "Value": "\"vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1774,7 +1774,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "39tegmrjtp"
+          "Value": "gv9nnx918d"
         },
         {
           "Name": "label",
@@ -1782,13 +1782,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
+          "Value": "sha256-vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA="
         }
       ]
     },
     {
       "Route": "vitalease.client/browser/polyfills-FFHMD2TL.js",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\polyfills-FFHMD2TL.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1797,7 +1797,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "34519"
+          "Value": "34521"
         },
         {
           "Name": "Content-Type",
@@ -1805,11 +1805,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
+          "Value": "\"vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1819,13 +1819,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
+          "Value": "sha256-vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA="
         }
       ]
     },
     {
       "Route": "vitalease.client/browser/styles-OPSORIUJ.css",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1834,7 +1834,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11072"
+          "Value": "11073"
         },
         {
           "Name": "Content-Type",
@@ -1842,11 +1842,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
+          "Value": "\"qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1856,13 +1856,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
+          "Value": "sha256-qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc="
         }
       ]
     },
     {
-      "Route": "vitalease.client/browser/styles-OPSORIUJ.h1uvasrz41.css",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
+      "Route": "vitalease.client/browser/styles-OPSORIUJ.o4nxuez1vo.css",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\browser\\styles-OPSORIUJ.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1871,7 +1871,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11072"
+          "Value": "11073"
         },
         {
           "Name": "Content-Type",
@@ -1879,11 +1879,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
+          "Value": "\"qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1893,7 +1893,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "h1uvasrz41"
+          "Value": "o4nxuez1vo"
         },
         {
           "Name": "label",
@@ -1901,13 +1901,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
+          "Value": "sha256-qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc="
         }
       ]
     },
     {
-      "Route": "vitalease.client/prerendered-routes.json",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
+      "Route": "vitalease.client/prerendered-routes.bdlfngeg9h.json",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1916,7 +1916,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "18"
+          "Value": "20"
         },
         {
           "Name": "Content-Type",
@@ -1924,48 +1924,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
+          "Value": "\"EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
-        }
-      ]
-    },
-    {
-      "Route": "vitalease.client/prerendered-routes.tvy3j3n584.json",
-      "AssetFile": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "18"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/json"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1975,7 +1938,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "tvy3j3n584"
+          "Value": "bdlfngeg9h"
         },
         {
           "Name": "label",
@@ -1983,7 +1946,44 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
+          "Value": "sha256-EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/prerendered-routes.json",
+      "AssetFile": "C:\\Users\\patin\\Source\\Repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEase.Server\\wwwroot\\vitalease.client\\prerendered-routes.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ="
         }
       ]
     }
