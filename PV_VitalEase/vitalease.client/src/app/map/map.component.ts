@@ -6,18 +6,6 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-/**
- * Define o ícone padrão para os marcadores de cliques no mapa.
- *
- * Esta configuração substitui o ícone padrão dos objetos L.Marker, atribuindo-lhes um novo ícone criado com L.icon.
- *
- * As propriedades configuradas são:
- * - iconUrl: Especifica o URL da imagem a utilizar como ícone. Neste caso, utiliza a imagem oficial do Leaflet.
- * - iconSize: Define as dimensões do ícone (largura e altura, em píxeis).
- * - iconAnchor: Determina o ponto do ícone que será colocado na coordenada exata do marcador.
- * - popupAnchor: Define o deslocamento do pop-up relativamente ao ponto de ancoragem do ícone.
- * - shadowUrl: Indica o URL da imagem da sombra; aqui encontra-se vazio, o que significa que não é utilizada sombra.
- */
 L.Marker.prototype.options.icon = L.icon({
     iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
     iconSize: [25, 41],
@@ -26,15 +14,6 @@ L.Marker.prototype.options.icon = L.icon({
     shadowUrl: ''
 });
 
-/**
- * Define um ícone vermelho personalizado para utilização em marcadores no mapa.
- *
- * Este ícone é criado através da função L.icon do Leaflet e configura as seguintes propriedades:
- * - iconUrl: Especifica o URL da imagem a utilizar para o ícone; neste caso, é uma imagem de um ponto vermelho proveniente do Google Maps.
- * - iconSize: Define as dimensões do ícone (largura e altura, em píxeis).
- * - iconAnchor: Determina o ponto de ancoragem do ícone, ou seja, a parte da imagem que será alinhada à localização do marcador.
- * - popupAnchor: Define a posição relativa ao iconAnchor onde o popup será exibido.
- */
 const redIcon = L.icon({
     iconUrl: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
     iconSize: [32, 32],
@@ -42,6 +21,30 @@ const redIcon = L.icon({
     popupAnchor: [0, -32]
 });
 
+/**
+ * @component MapComponent
+ * @description
+ * The MapComponent is responsible for displaying an interactive map using Leaflet, integrating with the Google Maps API for place search and autocomplete,
+ * and providing routing functionality via the OSRM service. It also manages user authentication, session validation, and the handling of favorite locations.
+ *
+ * The component supports the following functionalities:
+ * - Initialization of the Leaflet map with a default or user geolocation.
+ * - Integration with the Google Maps API to provide an autocomplete search for places.
+ * - Displaying markers on the map for searched places, user location, and favorites.
+ * - Calculating routes from the user's location to a selected destination using OSRM.
+ * - Managing a list of favorite locations with add, display, and delete operations.
+ * - User session validation and redirection based on authentication status.
+ *
+ * @dependencies
+ * - AuthService: Handles authentication operations, such as session token retrieval, validation, and logout.
+ * - Router: Provides navigation between application routes.
+ * - ChangeDetectorRef: Triggers change detection for dynamic updates, particularly after route calculations.
+ * - Leaflet: The mapping library used for map rendering, marker management, and layer control.
+ * - Google Maps API: Used for places autocomplete and nearby search.
+ *
+ * @usage
+ * This component is declared as standalone and imports necessary modules (CommonModule, RouterModule) for template and routing functionalities.
+ */
 @Component({
     selector: 'app-map',
     standalone: true,
@@ -69,24 +72,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     constructor(private authService: AuthService, private router: Router, private cdr: ChangeDetectorRef) { }
 
   /**
-* Método executado durante a inicialização do componente (lifecycle hook ngOnInit).
-*
-* Este método realiza as seguintes operações:
-* 
-* 1. Inicializa o mapa chamando o método initMap().
-* 2. Verifica a sessão do utilizador através do método checkUserSession().
-* 3. Adiciona um ouvinte de eventos para o evento personalizado "addFavorite" emitido pelos popups:
-*    - Quando o evento é detetado, extrai as coordenadas (lat e lng) e o nome do local a partir de event.detail.
-*    - Invoca o método addFavorite() passando um objeto LatLng (criado com L.latLng(lat, lng)) e o nome do local.
-* 4. Carrega as localizações favoritas utilizando o método loadFavoriteLocations().
-* 5. Obtém o token de sessão através de authService.getSessionToken():
-*    - Se existir um token, valida-o com validateSessionToken(). Ao obter uma resposta:
-*      - Define isLoggedIn como verdadeiro.
-*      - Atribui os dados do utilizador à propriedade userInfo.
-*      - Determina se o utilizador é administrador (userInfo.type === 1); caso afirmativo, define isAdmin como verdadeiro, caso contrário, falso.
-*    - Em caso de erro durante a validação do token, a secção de tratamento de erros é acionada (implementação pendente).
-* 6. Se não for encontrado nenhum token, o comentário indica que o redirecionamento para a página de login deverá ser implementado.
-* 7. Verifica se o utilizador está autenticado através de authService.isAuthenticated(); se não estiver, o método termina a execução.
+* @method ngOnInit
+* @description
+* Lifecycle hook that is called after data-bound properties are initialized.
+* It initializes the map, validates the user session, loads favorite locations,
+* and sets up an event listener for adding favorites from marker popups.
 */
     ngOnInit() {
         this.initMap();
@@ -128,23 +118,19 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   /**
- * Redireciona o utilizador para o dashboard.
- *
- * Este método utiliza o router para navegar até à rota '/dashboard',
- * permitindo o acesso à interface principal ou à área de gestão da aplicação.
- */
+* @method goToDashboard
+* @description
+* Redirects the user back to the app's dashboard.
+*/
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }
 
   /**
- * Lifecycle hook executado após a visualização ter sido inicializada (ngAfterViewInit).
- *
- * Este método é responsável por:
- * - Carregar a API do Google Maps através do método loadGoogleMapsAPI().
- * - Após a carga bem-sucedida, invocar o método initializeGoogleAutocomplete() para
- *   configurar a funcionalidade de autocompletar.
- * - Caso ocorra algum erro durante o carregamento da API, este é registado no console.
+ * @method ngAfterViewInit
+ * @description
+ * Lifecycle hook that is called after the component's view has been fully initialized.
+ * It loads the Google Maps API and initializes the autocomplete feature for place search.
  */
   ngAfterViewInit() {
         this.loadGoogleMapsAPI()
@@ -155,19 +141,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-   * Carrega a API do Google Maps de forma assíncrona e retorna uma Promise.
-   *
-   * Se a API do Google Maps já estiver disponível (verificando se window.google e window.google.maps estão definidos),
-   * a Promise é imediatamente resolvida.
-   *
-   * Caso contrário, o método cria dinamicamente um elemento <script> para carregar a API com a chave e a biblioteca "places".
-   * As propriedades async e defer são definidas para que o carregamento do script não bloqueie o parsing da página.
-   *
-   * Quando o script é carregado com sucesso, a Promise é resolvida; se ocorrer um erro durante o carregamento,
-   * a Promise é rejeitada com o erro correspondente.
-   *
-   * @returns {Promise<void>} Uma Promise que se resolve quando a API do Google Maps é carregada com sucesso ou já está disponível.
-   */
+* @method loadGoogleMapsAPI
+* @returns {Promise<void>}
+* @description
+* Dynamically loads the Google Maps JavaScript API if it is not already loaded.
+* Resolves the promise when the API has been successfully loaded.
+*/
   loadGoogleMapsAPI(): Promise<void> {
         return new Promise((resolve, reject) => {
             if ((window as any).google && (window as any).google.maps) {
@@ -185,20 +164,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
- * Inicializa a funcionalidade de autocompletar da Google para o campo de pesquisa.
- *
- * Este método realiza as seguintes operações:
- * - Verifica se o elemento de pesquisa (searchInput) está definido; caso contrário, regista um erro no console e termina a execução.
- * - Instancia um objeto google.maps.places.Autocomplete, utilizando o elemento nativo de searchInput e restringindo os resultados a endereços (types: ['geocode']).
- * - Adiciona um ouvinte para o evento 'place_changed', que:
- *   - Obtém o local selecionado através de googleAutocomplete.getPlace().
- *   - Verifica se o local possui dados de geometria e localização; se não, exibe um alerta informando que nenhum resultado foi encontrado.
- *   - Extrai a latitude e longitude do local, convertendo-os para um objeto Leaflet LatLng.
- *   - Define uma string de detalhes padrão para o marcador.
- *   - Atualiza a propriedade selectedDestination com a localização obtida.
- *   - Adiciona um marcador no mapa com a localização e os detalhes através do método addMarker().
- *   - Reposiciona a vista do mapa para a nova localização com um nível de zoom de 15.
- *   - Invoca o método calculateRoute() para calcular a rota a partir do local seleccionado.
+ * @method initializeGoogleAutocomplete
+ * @description
+ * Initializes the Google Places Autocomplete service on the search input element.
+ * Configures the autocomplete to restrict results to geocoding (address) type.
+ * When a place is selected, a marker is added to the map and a route is calculated.
  */
   initializeGoogleAutocomplete() {
         if (!this.searchInput) {
@@ -227,16 +197,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-  * Executa a pesquisa de locais com base no valor inserido no campo de pesquisa.
-  *
-  * Este método realiza as seguintes operações:
-  * 1. Obtém o valor do campo de pesquisa através de this.searchInput.nativeElement.value.
-  * 2. Verifica se o termo de pesquisa (query) está vazio. Se estiver:
-  *    - Exibe um alerta informando o utilizador de que é necessário escrever algo.
-  *    - Termina a execução do método.
-  * 3. Caso o termo de pesquisa não esteja vazio, invoca o método searchPlacesFilter()
-  *    passando o termo de pesquisa, para proceder à filtragem dos locais.
-  */
+* @method searchPlaces
+* @description
+* Retrieves the query from the search input and triggers a filtered search for places.
+* Alerts the user if the search query is empty.
+*/
   searchPlaces(): void {
         const query = this.searchInput.nativeElement.value;
         if (!query) {
@@ -247,37 +212,13 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-   * Realiza uma pesquisa de locais próximos com base num filtro especificado e atualiza o mapa com os resultados.
-   *
-   * Este método executa as seguintes operações:
-   * 1. Obtém o centro atual do mapa.
-   * 2. Cria um objeto de pedido (request) para a API do Google Places, utilizando:
-   *    - A localização central do mapa.
-   *    - Um raio de 5000 metros.
-   *    - O tipo de local, derivado do filtro (convertido para minúsculas).
-   * 3. Inicializa um serviço de Places (google.maps.places.PlacesService) associado a um elemento <div> fictício.
-   * 4. Executa a pesquisa de locais próximos (nearbySearch) com o pedido criado.
-   * 5. Se a pesquisa for bem-sucedida (status OK):
-   *    - Remove todos os marcadores existentes do mapa.
-   *    - Para cada local retornado:
-   *      - Verifica se o local possui dados de geometria e localização; caso contrário, ignora o local.
-   *      - Extrai a latitude e longitude da localização do local.
-   *      - Cria um objeto LatLng do Leaflet.
-   *      - Define o nome do local ou utiliza 'No name' se este não estiver disponível.
-   *      - Cria uma string com detalhes do local (nome, proximidade e avaliação, se disponível).
-   *      - Constrói o conteúdo inicial do popup, incluindo um botão "Add to Favorites" que emite um evento personalizado.
-   *      - Adiciona um marcador ao mapa utilizando um ícone vermelho (redIcon) e associa o popup inicial.
-   *      - Regista um ouvinte de clique no marcador que:
-   *          a) Actualiza a localização seleccionada e centra o mapa.
-   *          b) Reconstroi o popup inicial.
-   *          c) Invoca a função calculateRoute() para calcular a rota e, após a sua conclusão,
-   *             actualiza o popup com um sumário da rota (distância e tempo).
-   *      - Adiciona o marcador à lista de marcadores.
-   *    - Se existirem marcadores, ajusta os limites do mapa para englobá-los.
-   * 6. Se nenhum resultado for encontrado ou se a pesquisa falhar, exibe um alerta informativo.
-   *
-   * @param {string} filter - O filtro a utilizar na pesquisa dos tipos de locais.
-   */
+  * @method searchPlacesFilter
+  * @description
+  * Searches for places near the center of the map that match the provided filter.
+  * Clears existing markers and adds new markers based on the search results.
+  * Each marker includes a popup with details, an "Add to Favorites" button, and route summary information.
+  * @param filter - The search filter to apply (e.g., type of place).
+  */
   searchPlacesFilter(filter: string): void {
         const center = this.map.getCenter();
         const request = {
@@ -360,17 +301,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-   * Trata a alteração do filtro de pesquisa.
-   *
-   * Este método é invocado quando o utilizador altera a seleção num elemento HTML (por exemplo, num menu dropdown).
-   * As operações efectuadas são as seguintes:
-   * 1. Obtém o valor do filtro a partir do elemento que disparou o evento.
-   * 2. Verifica se o filtro está vazio; se estiver, exibe um alerta a pedir que seleccione um filtro e termina a execução.
-   * 3. Se o filtro for válido, exibe um alerta a informar que o filtro foi actualizado.
-   * 4. Invoca o método searchPlacesFilter passando o filtro seleccionado, de forma a proceder à pesquisa dos locais.
-   *
-   * @param event - O evento que contém a nova seleção do filtro.
-   */
+* @method onFilterChange
+* @description
+* Handles changes in the filter selection for place search.
+* Triggers a new search based on the selected filter value.
+* @param event - The filter change event.
+*/
   onFilterChange(event: Event): void {
         const filter = (event.target as HTMLSelectElement).value;
         if (!filter) {
@@ -382,31 +318,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-  * Alterna a visibilidade da lista de favoritos.
-  *
-  * Este método inverte o valor da propriedade `favoritesVisible`, determinando se a lista de locais favoritos
-  * será exibida ou oculta.
-  */
-  toggleFavoritesList(): void {
-        this.favoritesVisible = !this.favoritesVisible;
-    }
-
-  /**
-  * Exibe o local favorito no mapa.
-  *
-  * Este método realiza as seguintes operações:
-  * 1. Converte as coordenadas do objeto favorito num objeto LatLng do Leaflet.
-  * 2. Centra o mapa na localização do favorito com um nível de zoom de 15.
-  * 3. Verifica se já existe um marcador para este favorito na coleção de marcadores favoritos:
-  *    - Se existir, abre o popup associado.
-  *    - Caso contrário, cria um novo marcador com o ícone vermelho, adiciona-o ao mapa,
-  *      associa um popup com o nome do favorito e regista-o na lista de marcadores.
-  * 4. Define o favorito como a destinação seleccionada para o cálculo da rota.
-  * 5. Invoca o método calculateRoute() e, quando a rota estiver calculada, atualiza o popup
-  *    do marcador com o sumário da rota, incluindo a distância e o tempo estimado.
-  *
-  * @param fav Objeto contendo as propriedades lat, lng e name do local favorito.
-  */
+* @method showFavoriteOnMap
+* @description
+* Centers the map on a favorite location, displays its marker and recalculates the route to it.
+* @param fav - The favorite location containing latitude, longitude, and name.
+*/
   showFavoriteOnMap(fav: { lat: number, lng: number, name: string }): void {
     const latlng = L.latLng(fav.lat, fav.lng);
     this.map.setView(latlng, 15);
@@ -435,13 +351,12 @@ export class MapComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
   /**
-   * Verifica a sessão do utilizador.
-   *
-   * Este método obtém o token de sessão através do serviço de autenticação. Caso um token seja encontrado, procede à sua validação.
-   * Se a validação for bem-sucedida, o estado do utilizador é atualizado para "autenticado" e as informações do utilizador são armazenadas.
-   * Em caso de falha na validação, o método efetua o logout do utilizador e redireciona-o para a página de login.
+   * @method checkUserSession
+   * @description
+   * Validates the current user session by checking for a session token.
+   * If a token exists, it validates the token and updates the login status and user information.
+   * Otherwise, it triggers a logout and redirects to the login page.
    */
   checkUserSession() {
         const token = this.authService.getSessionToken();
@@ -460,26 +375,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-  * Inicializa o mapa e configura a visualização e interacção com o mesmo.
-  *
-  * Este método executa as seguintes operações:
-  * 1. Define uma localização predefinida (defaultLocation) que será utilizada caso não seja possível obter a localização actual do utilizador.
-  * 2. Cria um mapa Leaflet utilizando o elemento DOM referenciado por this.mapElement e define a vista inicial com defaultLocation e um nível de zoom de 15.
-  * 3. Adiciona uma camada de tiles do OpenStreetMap com os créditos adequados.
-  * 4. Define a função addUserMarker, que:
-  *    - Actualiza a propriedade userLocation com as coordenadas fornecidas.
-  *    - Adiciona um marcador ao mapa na posição indicada com o ícone vermelho (redIcon).
-  *    - Liga um popup ao marcador com a mensagem "You are here.".
-  * 5. Se o navegador suportar geolocalização:
-  *    - Tenta obter a localização actual do utilizador.
-  *    - Em caso de sucesso, actualiza a vista do mapa para a localização do utilizador e adiciona um marcador.
-  *    - Em caso de erro, regista o erro no console e utiliza a localização predefinida para adicionar o marcador.
-  * 6. Se a geolocalização não for suportada pelo navegador, regista uma mensagem de erro e utiliza a localização predefinida.
-  * 7. Regista um ouvinte de eventos no mapa para detetar cliques:
-  *    - Quando o mapa é clicado, actualiza a propriedade selectedDestination com as coordenadas do clique.
-  *    - Adiciona um marcador na posição seleccionada com um popup a exibir "Selected Location".
-  *    - Invoca o método calculateRoute para calcular uma rota com base na destinação seleccionada.
-  */
+* @method initMap
+* @description
+* Initializes the Leaflet map with a default location and sets up the tile layer.
+* It attempts to obtain the user's current geolocation to center the map.
+* If geolocation is not available or fails, it uses the default location.
+*/
   initMap() {
         const defaultLocation: [number, number] = [38.521877, -8.839083];
         this.map = L.map(this.mapElement.nativeElement).setView(defaultLocation, 15);
@@ -522,41 +423,27 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-  * Focaliza o mapa na localização do utilizador.
-  *
-  * Este método verifica se a localização do utilizador (armazenada em `this.userLocation`) está disponível:
-  * - Se estiver, o mapa centra-se nessa localização com um nível de zoom de 15.
-  * - Caso contrário, exibe um alerta a informar que a localização do utilizador não está disponível.
-  */
+    * @method goToUserLocation
+    * @description
+    * Centers the map on the user's current location.
+    * Alerts the user if the location is not available.
+    */
   goToUserLocation(): void {
         if (this.userLocation) {
             this.map.setView(this.userLocation, 15);
         } else {
             alert('User location not available.');
         }
-    }
+  }
 
   /**
-   * Adiciona um marcador ao mapa e configura o seu popup com detalhes e ações associadas.
-   *
-   * Este método executa as seguintes operações:
-   * 1. Remove todos os marcadores existentes do mapa e limpa a lista de marcadores.
-   * 2. Cria um novo marcador na posição especificada, utilizando o ícone vermelho (redIcon), e adiciona-o ao mapa.
-   * 3. Determina o nome do marcador a partir da primeira linha do parâmetro 'details', removendo as tags <b> e </b>,
-   *    ou utiliza "Selected Location" caso os detalhes não sejam fornecidos.
-   * 4. Constrói o conteúdo do popup, que inclui:
-   *    - Os detalhes fornecidos ou uma mensagem por omissão.
-   *    - Um botão "Add to Favorites" que, quando clicado, despacha um evento personalizado 'addFavorite'
-   *      com a latitude, longitude e nome do marcador.
-   *    - Um sumário da rota que exibe a distância e o tempo (usando valores de this.routeSummary ou "N/D" se não disponíveis).
-   * 5. Liga o popup ao marcador e abre-o imediatamente.
-   * 6. Regista um ouvinte para o evento 'popupclose', que remove o marcador do mapa e da lista, e,
-   *    se existir, remove também a camada da rota (this.routeLayer).
-   * 7. Adiciona o marcador recém-criado à lista de marcadores.
-   *
-   * @param position - A posição (objeto L.LatLng) onde o marcador será adicionado.
-   * @param details - Opcional. Uma string com os detalhes a exibir no popup do marcador.
-   */
+* @method addMarker
+* @description
+* Adds a marker to the map at the specified position with a popup displaying details.
+* The popup includes an "Add to Favorites" button and route summary information.
+* @param position - The geographic location for the marker.
+* @param details - Optional HTML string containing details to display in the popup.
+*/
   addMarker(position: L.LatLng, details?: string) {
         // Remove existing markers if desired
         this.markers.forEach(marker => this.map.removeLayer(marker));
@@ -591,28 +478,13 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-   * Calcula a rota entre a localização do utilizador e a destinação seleccionada.
-   *
-   * Este método utiliza a API OSRM para obter uma rota entre dois pontos:
-   * - A localização do utilizador (this.userLocation).
-   * - A destinação seleccionada (this.selectedDestination).
-   *
-   * Funcionalidade:
-   * 1. Se a localização do utilizador ou a destinação seleccionada não estiverem definidas, a Promise é resolvida imediatamente.
-   * 2. Constrói as coordenadas de início e fim no formato "lng,lat".
-   * 3. Cria a URL para a chamada à API OSRM com o perfil "driving", pedindo uma visão completa (overview=full)
-   *    com geometrias no formato GeoJSON e alternativas possíveis.
-   * 4. Efetua uma chamada fetch à URL criada:
-   *    - Se a resposta contiver rotas válidas, seleciona a rota com a menor distância.
-   *    - Remove, se existir, a camada de rota anterior (this.routeLayer) do mapa.
-   *    - Adiciona uma nova camada GeoJSON ao mapa com a geometria da melhor rota, estilizada em vermelho (weight 5).
-   *    - Atualiza this.routeSummary com a distância (em km) e a duração (em minutos) formatadas com duas casas decimais.
-   *    - Invoca detectChanges() para actualizar a vista.
-   * 5. Se não forem encontradas rotas ou ocorrer algum erro na chamada fetch, exibe uma mensagem de alerta
-   *    ou regista o erro e, em ambos os casos, resolve a Promise.
-   *
-   * @returns {Promise<void>} Uma Promise que se resolve após o cálculo (ou tentativa) da rota.
-   */
+* @method calculateRoute
+* @returns {Promise<void>}
+* @description
+* Calculates the driving route from the user's current location to the selected destination using the OSRM API.
+* If a valid route is found, it adds a GeoJSON layer to the map to display the route and updates the route summary.
+* In case of an error or if no route is found, appropriate alerts or error messages are logged.
+*/
   calculateRoute(): Promise<void> {
         return new Promise((resolve, reject) => {
             if (!this.userLocation || !this.selectedDestination) {
@@ -657,17 +529,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-  * Adiciona uma localização aos favoritos.
-  *
-  * Este método realiza as seguintes operações:
-  * 1. Cria um objeto contendo a latitude, longitude e o nome da localização.
-  * 2. Acrescenta a localização à lista de locais favoritos (favoriteLocations).
-  * 3. Actualiza o localStorage, armazenando a lista de favoritos em formato JSON.
-  * 4. Exibe um alerta a confirmar que a localização foi adicionada aos favoritos.
-  *
-  * @param location - A localização (L.LatLng) a adicionar.
-  * @param name - O nome associado à localização.
-  */
+* @method addFavorite
+* @description
+* Adds a location to the list of favorite locations and saves the updated list to local storage.
+* @param location - The geographic coordinates of the favorite location.
+* @param name - The name of the favorite location.
+*/
   addFavorite(location: L.LatLng, name: string): void {
         const fav = { lat: location.lat, lng: location.lng, name };
         this.favoriteLocations.push(fav);
@@ -676,11 +543,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-  * Carrega as localizações favoritas a partir do localStorage.
-  *
-  * Este método verifica se existe um item guardado com a chave 'favoriteLocations'
-  * no localStorage. Se existir, converte o valor JSON armazenado num array de objetos
-  * e atribui-o à propriedade favoriteLocations.
+  * @method loadFavoriteLocations
+  * @description
+  * Loads the favorite locations from local storage and populates the favoriteLocations array.
   */
   loadFavoriteLocations(): void {
         const favs = localStorage.getItem('favoriteLocations');
@@ -690,16 +555,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
 
   /**
-   * Remove uma localização dos favoritos, atualiza o localStorage e remove o marcador correspondente do mapa.
-   *
-   * Este método executa as seguintes operações:
-   * 1. Filtra a lista de favoritos, removendo o favorito que corresponda à latitude, longitude e nome fornecidos.
-   * 2. Actualiza o localStorage com a lista de favoritos actualizada, convertida para JSON.
-   * 3. Exibe um alerta para confirmar que o favorito foi eliminado.
-   * 4. Procura na lista de marcadores do mapa o marcador que corresponda à localização do favorito:
-   *    - Se encontrar, remove esse marcador do mapa e da lista de marcadores.
-   *
-   * @param fav - Objeto que representa o favorito, contendo as propriedades lat, lng e name.
+   * @method deleteFavorite
+   * @description
+   * Deletes a specified favorite location from the list and updates local storage.
+   * It also removes the corresponding marker from the map if it exists.
+   * @param fav - The favorite location to delete.
    */
   deleteFavorite(fav: { lat: number, lng: number, name: string }): void {
     // Remove the favorite from the array and update local storage.
@@ -722,13 +582,10 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Efetua o logout do utilizador e redirecciona para a página inicial.
-   *
-   * Este método realiza as seguintes operações:
-   * 1. Invoca o método logout() do serviço de autenticação para invalidar a sessão do utilizador.
-   * 2. Atualiza o estado interno, definindo isLoggedIn como false.
-   * 3. Redirecciona o utilizador para a rota base ('/').
-   */
+ * @method logout
+ * @description
+ * Logs out the current user by clearing the session and navigates to the homepage.
+ */
   logout() {
         this.authService.logout();
         this.isLoggedIn = false;
