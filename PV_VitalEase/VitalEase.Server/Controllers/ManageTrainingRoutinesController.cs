@@ -124,7 +124,7 @@
                     EquipmentNecessary = e.EquipmentNecessary
                 }).ToList();
 
-                return Ok(exerciseDtos);
+                return Ok(new { message = "Exercises Fetched successfully!", exerciseDtos });
             }
             catch (Exception ex)
             {
