@@ -4,7 +4,19 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
-
+/**
+ * @service AuthService
+ * @description
+ * The AuthService handles user authentication and session management.
+ * It provides methods to log in users, store and retrieve session tokens, validate tokens with the backend,
+ * and perform logout operations.
+ *
+ * The service uses localStorage to persist the session token and includes the token in the HTTP headers for protected API calls.
+ *
+ * @dependencies
+ * - HttpClient: Performs HTTP requests to the backend.
+ * - Router: Navigates between routes, particularly for logout redirection.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -16,42 +28,27 @@ export class AuthService {
   private storageKey = 'sessionToken'; 
   constructor(private http: HttpClient, private router: Router) { }
 
+  /**
+   * @method login
+   * @description
+   * Sends a login request to the backend with the user's email, password, and a flag indicating whether the user wants to be remembered.
+   * 
+   * @param email - The user's email address.
+   * @param password - The user's password.
+   * @param rememberMe - Boolean flag indicating whether the user should remain logged in between sessions.
+   * @returns An Observable that emits the server response.
+   */
   login(email: string, password: string, rememberMe: boolean): Observable<any> {
     return this.http.post(`${this.apiUrl}`, { email, password, rememberMe });
   }
 
-  // Armazenar informações do usuário no localStorage ou sessionStorage
- /* storeUserInfo(user: any, rememberMe: boolean): void {
-    const userData = JSON.stringify(user); // Stringificar os dados do usuário
-    if (rememberMe) {
-      // Armazenar no localStorage para uma sessão persistente
-      localStorage.setItem('userInfo', userData);
-    } else {
-      // Armazenar no sessionStorage para uma sessão temporária
-      sessionStorage.setItem('userInfo', userData);
-    }
-  }*/
-
-
- /* getUserInfo(): any {
-    // Verificar o localStorage primeiro (caso o "Remember Me" tenha sido marcado)
-    const userInfo = localStorage.getItem('userInfo') || sessionStorage.getItem('userInfo');
-    return userInfo ? JSON.parse(userInfo) : null;
-  }*/
-
-  // Verificar se o usuário está logado
-  /*isLoggedIn(): boolean {
-    // Verifica se as informações do usuário estão armazenadas
-    return this.getUserInfo() !== null;
-  }*/
-
-  // Método de logout para remover as informações do usuário
-  /*logout(): void {
-    localStorage.removeItem('userInfo');
-    sessionStorage.removeItem('userInfo');
-  }*/
-
-  // Auth Service: Include the token in the headers
+  /**
+   * @method getAuthHeaders
+   * @description
+   * Returns HTTP headers that include the session token in the Authorization header.
+   *
+   * @returns An instance of HttpHeaders containing the Authorization header.
+   */
   getAuthHeaders(): HttpHeaders {
 
     return new HttpHeaders({
@@ -60,25 +57,47 @@ export class AuthService {
 
   }
 
-  // Set the session token after login
+  /**
+   * @method setSessionToken
+   * @description
+   * Stores the provided session token in localStorage and in memory.
+   *
+   * @param token - The session token to store.
+   */
   setSessionToken(token: string): void {
     localStorage.setItem(this.storageKey, token);
     this.sessionToken = token; // Save the token in memory
   }
 
-  // Get the session token
+  /**
+   * @method getSessionToken
+   * @description
+   * Retrieves the session token from localStorage.
+   *
+   * @returns The session token if it exists; otherwise, null.
+   */
   getSessionToken(): string | null {
     return localStorage.getItem(this.storageKey); // Return the token
   }
 
-  // Logout (clear the session token)
+  /**
+   * @method logout
+   * @description
+   * Clears the session token from both localStorage and memory, and navigates the user to the home page.
+   */
   logout(): void {
     localStorage.removeItem(this.storageKey);
     this.sessionToken = null; // Clear the token
     this.router.navigate(['/']);
   }
 
-  // Validate the token with the backend
+  /**
+    * @method validateSessionToken
+    * @description
+    * Validates the current session token with the backend by making an HTTP GET request with the token in the Authorization header.
+    *
+    * @returns An Observable that emits the validation response from the backend.
+    */
   validateSessionToken(): Observable<any> {
     const token = this.getSessionToken();
     const headers = new HttpHeaders({
@@ -88,7 +107,13 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/validate-session`, { headers });
   }
 
-  // Check if the user is authenticated
+  /**
+   * @method isAuthenticated
+   * @description
+   * Checks if a session token exists in localStorage.
+   *
+   * @returns True if a token exists (indicating the user is authenticated), otherwise false.
+   */
   isAuthenticated(): boolean {
     return !!this.getSessionToken(); // Check if a token exists in localStorage
   }
