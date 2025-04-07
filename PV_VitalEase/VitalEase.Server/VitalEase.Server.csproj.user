@@ -13,4 +13,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <NameOfLastUsedPublishProfile>C:\Users\zluci\OneDrive\Documentos\GitHub\VitalEase\PV_VitalEase\VitalEase.Server\Properties\PublishProfiles\VitalEaseServer20250401155631 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>

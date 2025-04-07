@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\patin\\source\\repos\\VitalEaseFINALFINAL\\PV_VitalEase\\",
+  "WorkspaceRootPath": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\patin\\source\\repos\\vitaleasefinalfinal\\pv_vitalease\\vitaleasetest\\registercontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitaleasetest\\registercontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\registercontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|c:\\users\\patin\\source\\repos\\vitaleasefinalfinal\\pv_vitalease\\vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A99FCE54-4C0E-47C6-83AF-D1076D212CAB}|VitalEaseTest\\VitalEaseTest.csproj|solutionrelative:vitaleasetest\\accountcontrollertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|c:\\users\\zluci\\onedrive\\documentos\\github\\vitalease\\pv_vitalease\\vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB134D7C-C808-4B07-9802-B2FED82A4CAE}|VitalEase.Server\\VitalEase.Server.csproj|solutionrelative:vitalease.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,34 +34,51 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEase.Server\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "VitalEase.Server\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T13:01:00.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "RegisterControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\patin\\source\\repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEaseTest\\RegisterControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\RegisterControllerTest.cs",
               "RelativeDocumentMoniker": "VitalEaseTest\\RegisterControllerTest.cs",
-              "ToolTip": "C:\\Users\\patin\\source\\repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEaseTest\\RegisterControllerTest.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\RegisterControllerTest.cs",
               "RelativeToolTip": "VitalEaseTest\\RegisterControllerTest.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAmwLgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAwK0AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T10:18:49.445Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AccountControllerTest.cs",
-              "DocumentMoniker": "C:\\Users\\patin\\source\\repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
+              "DocumentMoniker": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
               "RelativeDocumentMoniker": "VitalEaseTest\\AccountControllerTest.cs",
-              "ToolTip": "C:\\Users\\patin\\source\\repos\\VitalEaseFINALFINAL\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
+              "ToolTip": "C:\\Users\\zluci\\OneDrive\\Documentos\\GitHub\\VitalEase\\PV_VitalEase\\VitalEaseTest\\AccountControllerTest.cs",
               "RelativeToolTip": "VitalEaseTest\\AccountControllerTest.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAQwM4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T10:09:42.687Z",
               "EditorCaption": ""
