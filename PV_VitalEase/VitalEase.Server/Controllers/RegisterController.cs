@@ -67,9 +67,6 @@ namespace VitalEase.Server.Controllers
         /// This method performs the following operations:
         /// <list type="bullet">
         ///   <item>
-        ///     Validates the received model; if the model is invalid, it logs the registration attempt and returns a 400 error with the message "Invalid data."
-        ///   </item>
-        ///   <item>
         ///     Checks whether the user is at least 16 years old based on the provided birthdate; if not, it logs the attempt and returns an error.
         ///   </item>
         ///   <item>
@@ -103,13 +100,16 @@ namespace VitalEase.Server.Controllers
         [HttpPost("api/register")]
         public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
         {
-             // Verifica se os dados enviados são válidos
-            if (!ModelState.IsValid)
+            if (model.Weight < 30 || model.Weight > 400)
             {
-                // Registrar log de erro (dados inválidos)
-                await LogAction("Register Attempt", "Failed - Invalid Data", 0);
-
-                return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
+                await LogAction("Register Attempt", "Failed - Invalid Weigth", 0);
+                return BadRequest(new { message = "Invalid weight (valid values are between 30 - 400 kg)" });
+            }
+ 
+            if (model.Height < 90 || model.Height > 251)
+            {
+                await LogAction("Register Attempt", "Failed - Invalid Height", 0);
+                return BadRequest(new { message = "Invalid height (valid values are between 90 - 251 cm)" });
             }
 
             // Verifica se a idade é maior ou igual a 16 anos
