@@ -231,6 +231,16 @@ export class TrainingRoutinesService {
     }
   }
 
+  /**
+ * @method getRoutine
+ * @description
+ * Fetches the details of a specific training routine based on the provided routine ID.
+ * This method constructs an HTTP GET request to the backend API, passing the `routineId` as a query parameter.
+ * The response contains the routine's details, which are returned as an observable.
+ *
+ * @param routineId - The unique identifier of the routine to be retrieved.
+ * @returns An observable of the response containing the routine details.
+ */
   getRoutine(routineId: number): Observable<any> {
     let params = new HttpParams();
     params.set('routineId', routineId);

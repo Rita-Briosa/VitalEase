@@ -92,14 +92,15 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  padding-left: 25px;
 }
 
 .routine-container {
   display: flex;
   justify-content: space-between; /* Pushes buttons to the bottom */
   flex-direction: column; /* Makes children stack vertically */
-  width: 300px;
-  height: 200px;
+  width: 350px;
+  height: 390px;
   border: 3px solid aquamarine;
   background-color: #fff;
   border-radius: 10px;
@@ -124,13 +125,32 @@ a {
     padding-right: 10px;
   }
 
-.routine-container #description{
+  .routine-container #description {
     font-weight: bold;
-}
+  }
 
-.routine-container .routineDescription{
+  .routine-container #trueDescription {
+    display: inline-flex;
+    word-wrap: break-word; /* Break long words to the next line */
+    overflow-wrap: break-word; /* Ensures long words wrap in modern browsers */
+    white-space: normal; /* Allow text to wrap */
+    word-break: break-all; /* Forces word break at any character if necessary */
+    overflow: hidden; /* Hide any excess content that exceeds the container */
+    padding-bottom: 5px;
+  }
+
+  .routine-container .routineDescription {
     display: inline-flex;
     font-size: 14px;
+  }
+
+.routine-container .routineNeeds{
+    display: inline-flex;
+    font-size: 14px;
+}
+
+.routine-container #needs {
+    font-weight: bold;
 }
 
 .routine-container .buttons {

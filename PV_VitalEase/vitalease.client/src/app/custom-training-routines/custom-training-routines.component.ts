@@ -41,6 +41,13 @@ export class CustomTrainingRoutinesComponent {
   newDescription: string = '';
   newType: string = '';
   newRoutineLevel: string = '';
+  optionsNeeds =
+    ['Dumbbells', 'Barbell and weight plates', 'Adjustable workout bench',
+      'Resistance bands', 'Kettlebells', 'Pull-up bar', 'Jump rope',
+      'Treadmill or stationary bike', 'Swiss ball / stability ball'
+  ];
+  selectedNeeds: string[] = [];
+
   newNeeds: string = '';
 
   selectedRoutineId: number = 0;
@@ -118,6 +125,8 @@ export class CustomTrainingRoutinesComponent {
  */
   addCustomRoutine() {
     console.log(this.userInfo.id);
+    this.newNeeds = this.concatenatedString;
+    if (this.newNeeds === '') this.newNeeds = 'Nothing';
 
     this.routinesService.addCustomRoutine(this.userInfo.id, this.newName, this.newDescription, this.newType, this.newRoutineLevel, this.newNeeds).subscribe(
       (response: any) => {
@@ -218,6 +227,37 @@ export class CustomTrainingRoutinesComponent {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigate(['/']);
+  }
+
+  /**
+ * @getter concatenatedString
+ * @description
+ * Returns a single string composed of all selected equipment needs, joined by a comma and space.
+ * This getter is dynamically updated based on the current state of the `selectedNeeds` array and is useful for
+ * displaying or submitting the equipment list as a formatted string.
+ */
+  get concatenatedString(): string {
+      return this.selectedNeeds.join(', ');
+  }
+
+  /**
+ * @method onCheckboxChange
+ * @description
+ * Handles checkbox selection and updates the list of selected equipment needs (`selectedNeeds`) accordingly.
+ * When a checkbox is checked, the corresponding option is added to the array; when unchecked, it is removed.
+ * This method ensures that the `selectedNeeds` array always reflects the current state of the checkboxes.
+ *
+ * @param option - The equipment option associated with the checkbox that was interacted with.
+ * @param event - The DOM event triggered by the checkbox change, used to determine the checked state.
+ */
+  onCheckboxChange(option: string, event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.selectedNeeds.push(option);
+    } else {
+      this.selectedNeeds = this.selectedNeeds.filter(o => o !== option);
+    }
   }
 
 }
