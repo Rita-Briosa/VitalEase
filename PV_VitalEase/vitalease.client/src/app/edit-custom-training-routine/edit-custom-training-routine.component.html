@@ -187,11 +187,17 @@
         <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
           <p> Duration must be bigger than 0! </p>
         </div>
+        <div *ngIf="duration === null" class="inputError">
+          <p> Insert a number for duration! </p>
+        </div>
 
         <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" min="1" max="200" [(ngModel)]="reps" name="reps" (keydown)="limitNumberOfDigitsReps($event)" required>
         <span *ngIf="selectedOption === 'reps'" class="unit">Reps (1-200)</span>
         <div *ngIf="selectedOption === 'reps' && reps === 0" class="inputError">
           <p> Reps must be bigger than 0! </p>
+        </div>
+        <div *ngIf="reps === null" class="inputError">
+          <p> Insert a number for reps! </p>
         </div>
 
         <div>
@@ -200,6 +206,9 @@
           <div *ngIf="sets === 0" class="inputError">
             <p> Sets must be bigger than 0! </p>
           </div>
+          <div *ngIf="sets === null" class="inputError">
+            <p> Insert a number for sets! </p>
+          </div>
         </div>
       </div>
       <br />
@@ -207,7 +216,7 @@
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
-      <button class="modalButton" [disabled]="!selectedModalExercise || sets === 0 || reps === 0 || duration === 0" (click)="addExercise()">Add</button>
+      <button class="modalButton" [disabled]="!selectedModalExercise || sets === 0 || reps === 0 || duration === 0 || sets === null || reps === null || duration === null" (click)="addExercise()">Add</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
     </div>
   </div>
