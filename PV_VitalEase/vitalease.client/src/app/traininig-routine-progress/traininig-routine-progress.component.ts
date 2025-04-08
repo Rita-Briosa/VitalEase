@@ -131,7 +131,7 @@ export class TraininigRoutineProgressComponent {
 
     this.trainingRoutinesService.getExercises(this.routineId).subscribe(
       (response: any) => {
-        this.exercises = response;
+        this.exercises = response.exerciseDtos;
         console.log('Exercises loaded successfully:', this.exercises);
         this.getExerciseMedia();
         this.getExerciseRoutine(this.exerciseId);

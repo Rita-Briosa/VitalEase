@@ -107,7 +107,7 @@ export class TrainingRoutineDetailsComponent {
 
     this.trainingRoutinesService.getExercises(this.routineId).subscribe(
       (response: any) => {
-        this.exercises = response;
+        this.exercises = response.exerciseDtos;
         console.log('Exercises loaded successfully:', this.exercises);
       },
       (error: any) => {
