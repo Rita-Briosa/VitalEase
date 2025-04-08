@@ -153,7 +153,7 @@
         /// If the routine is found, it returns the routine details with a 200 OK response.
         /// If an exception occurs during the process, it catches the error and returns a 400 Bad Request response with a corresponding message.
         /// </remarks>
-        [HttpGet("getRoutine/{routineId}")]
+        [HttpGet("api/getRoutine/{routineId}")]
         public async Task<IActionResult> GetRoutineById(int routineId)
         {
             try
