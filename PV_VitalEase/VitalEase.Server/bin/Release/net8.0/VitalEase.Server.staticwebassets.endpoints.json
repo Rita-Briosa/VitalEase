@@ -3,7 +3,7 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
-      "Route": "vitalease.client/3rdpartylicenses.0ovjqutc8j.txt",
+      "Route": "vitalease.client/3rdpartylicenses.73nkoqwz6f.txt",
       "AssetFile": "vitalease.client/3rdpartylicenses.txt",
       "Selectors": [],
       "ResponseHeaders": [
@@ -17,7 +17,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21294"
+          "Value": "20919"
         },
         {
           "Name": "Content-Type",
@@ -25,21 +25,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=\""
+          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0ovjqutc8j"
+          "Value": "73nkoqwz6f"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek="
+          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
         },
         {
           "Name": "label",
@@ -62,7 +62,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21294"
+          "Value": "20919"
         },
         {
           "Name": "Content-Type",
@@ -70,17 +70,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=\""
+          "Value": "\"Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek="
+          "Value": "sha256-Hc4ed/boqb+2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="
         }
       ]
     },
@@ -111,7 +111,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -156,7 +156,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -193,7 +193,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -230,7 +230,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -275,7 +275,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -312,7 +312,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -357,7 +357,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -402,7 +402,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -439,7 +439,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -476,7 +476,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -521,7 +521,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -566,7 +566,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -603,7 +603,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -640,7 +640,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -685,7 +685,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -730,7 +730,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Thu, 23 Jan 2025 19:06:49 GMT"
         }
       ],
       "EndpointProperties": [
@@ -767,7 +767,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -812,7 +812,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -849,7 +849,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -894,7 +894,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 08:58:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -931,7 +931,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -976,7 +976,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -987,7 +987,7 @@
       ]
     },
     {
-      "Route": "vitalease.client/browser/main-LTSJLSFF.2hb9rw3r9u.js",
+      "Route": "vitalease.client/browser/main-LTSJLSFF.1hlq1hyqac.js",
       "AssetFile": "vitalease.client/browser/main-LTSJLSFF.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1001,7 +1001,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "685001"
+          "Value": "684989"
         },
         {
           "Name": "Content-Type",
@@ -1009,21 +1009,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=\""
+          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "2hb9rw3r9u"
+          "Value": "1hlq1hyqac"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk="
+          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
         },
         {
           "Name": "label",
@@ -1046,7 +1046,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "685001"
+          "Value": "684989"
         },
         {
           "Name": "Content-Type",
@@ -1054,17 +1054,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=\""
+          "Value": "\"y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Vg2+KhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk="
+          "Value": "sha256-y+thqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="
         }
       ]
     },
@@ -1095,7 +1095,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1140,7 +1140,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1177,7 +1177,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1214,7 +1214,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1259,7 +1259,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1296,7 +1296,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:07 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -1315,7 +1315,7 @@
       ]
     },
     {
-      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.gv9nnx918d.js",
+      "Route": "vitalease.client/browser/polyfills-FFHMD2TL.39tegmrjtp.js",
       "AssetFile": "vitalease.client/browser/polyfills-FFHMD2TL.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1329,7 +1329,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "34521"
+          "Value": "34519"
         },
         {
           "Name": "Content-Type",
@@ -1337,21 +1337,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=\""
+          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "gv9nnx918d"
+          "Value": "39tegmrjtp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA="
+          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
         },
         {
           "Name": "label",
@@ -1374,7 +1374,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "34521"
+          "Value": "34519"
         },
         {
           "Name": "Content-Type",
@@ -1382,17 +1382,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=\""
+          "Value": "\"adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-vPx+uL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA="
+          "Value": "sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="
         }
       ]
     },
@@ -1411,7 +1411,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11073"
+          "Value": "11072"
         },
         {
           "Name": "Content-Type",
@@ -1419,22 +1419,22 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc=\""
+          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc="
+          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
         }
       ]
     },
     {
-      "Route": "vitalease.client/browser/styles-OPSORIUJ.o4nxuez1vo.css",
+      "Route": "vitalease.client/browser/styles-OPSORIUJ.h1uvasrz41.css",
       "AssetFile": "vitalease.client/browser/styles-OPSORIUJ.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1448,7 +1448,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11073"
+          "Value": "11072"
         },
         {
           "Name": "Content-Type",
@@ -1456,70 +1456,25 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc=\""
+          "Value": "\"K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "o4nxuez1vo"
+          "Value": "h1uvasrz41"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-qMa1GqettC+p+TfzuFyRKJQX2pY9eK8hIQxMxdnniJc="
+          "Value": "sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="
         },
         {
           "Name": "label",
           "Value": "vitalease.client/browser/styles-OPSORIUJ.css"
-        }
-      ]
-    },
-    {
-      "Route": "vitalease.client/prerendered-routes.bdlfngeg9h.json",
-      "AssetFile": "vitalease.client/prerendered-routes.json",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "20"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/json"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "bdlfngeg9h"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ="
-        },
-        {
-          "Name": "label",
-          "Value": "vitalease.client/prerendered-routes.json"
         }
       ]
     },
@@ -1538,7 +1493,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20"
+          "Value": "18"
         },
         {
           "Name": "Content-Type",
@@ -1546,17 +1501,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ=\""
+          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 10:03:08 GMT"
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt+ua/wQ="
+          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
+        }
+      ]
+    },
+    {
+      "Route": "vitalease.client/prerendered-routes.tvy3j3n584.json",
+      "AssetFile": "vitalease.client/prerendered-routes.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 13:44:27 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tvy3j3n584"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="
+        },
+        {
+          "Name": "label",
+          "Value": "vitalease.client/prerendered-routes.json"
         }
       ]
     }

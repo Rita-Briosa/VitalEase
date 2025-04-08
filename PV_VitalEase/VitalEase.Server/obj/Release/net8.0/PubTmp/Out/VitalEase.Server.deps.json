@@ -10,7 +10,7 @@
         "dependencies": {
           "Azure.Identity": "1.13.0",
           "Microsoft.ApplicationInsights.AspNetCore": "2.22.0",
-          "Microsoft.AspNetCore.SpaProxy": "8.0.14",
+          "Microsoft.AspNetCore.SpaProxy": "8.0.15",
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
@@ -757,11 +757,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.SpaProxy/8.0.14": {
+      "Microsoft.AspNetCore.SpaProxy/8.0.15": {
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.SpaProxy.dll": {
-            "assemblyVersion": "8.0.14.0",
-            "fileVersion": "8.0.1425.11221"
+            "assemblyVersion": "8.0.15.0",
+            "fileVersion": "8.0.1525.16505"
           }
         }
       },
@@ -2778,12 +2778,12 @@
       "path": "microsoft.aspnetcore.razor.language/6.0.24",
       "hashPath": "microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.SpaProxy/8.0.14": {
+    "Microsoft.AspNetCore.SpaProxy/8.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pkiYeNCNjZjSU5PVD6zlYSuDMCKNRHvhVF3O8pw6rPNNG7khKq8fIRbz/ROCLaiLTHVeOiNfsn8TSVYP0NIboA==",
-      "path": "microsoft.aspnetcore.spaproxy/8.0.14",
-      "hashPath": "microsoft.aspnetcore.spaproxy.8.0.14.nupkg.sha512"
+      "sha512": "sha512-Qni1g9jjcyiwkwB/+A9tf4lTJLUTniy/ktxQn+/9fxIjt8/Aqor+Cc5GThOwnz9WlN9L9m43q5WQ7zSx8u+UEA==",
+      "path": "microsoft.aspnetcore.spaproxy/8.0.15",
+      "hashPath": "microsoft.aspnetcore.spaproxy.8.0.15.nupkg.sha512"
     },
     "Microsoft.AspNetCore.WebUtilities/2.1.1": {
       "type": "package",
