@@ -51,7 +51,7 @@
         </div>
 
         <div *ngIf="warmUpExercises.length === 0">
-          No Warp-up exercises in this routine.
+          No Warp-up exercises in {{ routine.name }}.
         </div>
       </div>
 
@@ -73,7 +73,7 @@
         </div>
 
         <div *ngIf="mainExercises.length === 0">
-          No Main exercises in this routine.
+          No Main exercises in {{ routine.name }}.
         </div>
       </div>
 
@@ -95,7 +95,7 @@
         </div>
 
         <div *ngIf="coolDownExercises.length === 0">
-          No Warp-up exercises in this routine.
+          No Warp-up exercises in {{ routine.name }}.
         </div>
       </div>
 
@@ -125,7 +125,7 @@
   </div>
 
   <div class="exercises" *ngIf="routineExercises.length === 0">
-    There are no exercises in this custom training routine! Start by adding some!
+    There are no exercises in {{ routine.name }}. Start by adding some!
   </div>
 
   <div class="add-exercise">
@@ -182,22 +182,32 @@
       </div>
 
       <div class="input-container-modal">
-        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" [(ngModel)]="duration" name="duration" required>
-        <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration" (keypress)="limitNumberOfDigitsDuration($event)" required>
+        <span *ngIf="selectedOption === 'duration'" class="unit">Secs (1-600)</span>
+        <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
+          <p> Duration must be bigger than 0! </p>
+        </div>
 
-        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
-        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" min="1" max="200" [(ngModel)]="reps" name="reps" (keydown)="limitNumberOfDigitsReps($event)" required>
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps (1-200)</span>
+        <div *ngIf="selectedOption === 'reps' && reps === 0" class="inputError">
+          <p> Reps must be bigger than 0! </p>
+        </div>
 
         <div>
-          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
-          <span class="setUnit">Sets</span>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" min="1" max="12" (keypress)="limitNumberOfDigitsSets($event)" required>
+          <span class="setUnit">Sets (1-12)</span>
+          <div *ngIf="sets === 0" class="inputError">
+            <p> Sets must be bigger than 0! </p>
+          </div>
         </div>
-      </div><br />
+      </div>
+      <br />
 
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
-      <button class="modalButton" [disabled]="!selectedModalExercise" (click)="addExercise()">Add</button>
+      <button class="modalButton" [disabled]="!selectedModalExercise || sets === 0 || reps === 0 || duration === 0" (click)="addExercise()">Add</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
     </div>
   </div>
@@ -216,15 +226,24 @@
       </div>
 
       <div class="input-container-modal">
-        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" [(ngModel)]="duration" name="duration" required>
-        <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration" (keypress)="limitNumberOfDigitsDuration($event)" required>
+        <span *ngIf="selectedOption === 'duration'" class="unit">Secs (1-600)</span>
+        <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
+          <p> Duration must be bigger than 0! </p>
+        </div>
 
-        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
-        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" min="1" max="200" [(ngModel)]="reps" name="reps" (keydown)="limitNumberOfDigitsReps($event)" required>
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps (1-200)</span>
+        <div *ngIf="selectedOption === 'reps' && reps === 0" class="inputError">
+          <p> Reps must be bigger than 0! </p>
+        </div>
 
         <div>
-          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
-          <span class="setUnit">Sets</span>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" min="1" max="12" (keypress)="limitNumberOfDigitsSets($event)" required>
+          <span class="setUnit">Sets (1-12)</span>
+          <div *ngIf="sets === 0" class="inputError">
+            <p> Sets must be bigger than 0! </p>
+          </div>
         </div>
       </div>
       <br />
@@ -232,7 +251,7 @@
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
-      <button class="modalButton" (click)="editExercise()">Edit</button>
+      <button class="modalButton" (click)="editExercise()" [disabled]="sets === 0 || reps === 0 || duration === 0">Edit</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
     </div>
   </div>

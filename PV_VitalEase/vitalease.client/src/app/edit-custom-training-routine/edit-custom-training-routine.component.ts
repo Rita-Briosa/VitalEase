@@ -55,11 +55,13 @@ export class EditCustomTrainingRoutineComponent {
   media: any[] = []; // Array para armazenar os media
 
   exercises: any[] = [];
-  sets: number = 0;
-  reps: number = 0;// Armazena a rotina selecionada
-  duration: number = 0;// Armazena a rotina selecionada
+  sets: number = 3;
+  reps: number = 12;// Armazena a rotina selecionada
+  duration: number = 60;// Armazena a rotina selecionada
   selectedModalExercise: any = null; // Armazena o exercício para a modal
   selectedOption: string = 'duration';
+
+  routine: any = null;
 
 
   constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private exercisesService: ExercisesService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer,) { }
@@ -96,6 +98,9 @@ export class EditCustomTrainingRoutineComponent {
       this.router.navigate(['/login']);
     }
 
+    this.getRoutine();
+    console.log(`Ola ${this.routine}`);
+
     this.getRoutineExercises();
     this.getExercises();
 
@@ -113,6 +118,24 @@ export class EditCustomTrainingRoutineComponent {
       },
       (error: any) => {
         console.error('Error loading Exercises', error);
+      }
+    );
+  }
+
+  /**
+* @method getRoutine
+* @description
+* Retrieves the information of the routine and stores it locally.
+*/
+  getRoutine(): void {
+    if (!this.routineId) return;
+
+    this.routinesService.getRoutine(parseInt(this.routineId)).subscribe(
+      (response: any) => {
+        this.routine = response;
+      },
+      (error: any) => {
+        console.error('Error loading Routine', error);
       }
     );
   }
@@ -357,7 +380,15 @@ export class EditCustomTrainingRoutineComponent {
 
     const modalExerciseId = this.selectedModalExercise.id;
 
-    console.log(`${this.routineId}/ ${modalExerciseId} / ${ this.reps } / ${ this.duration } / ${ this.sets }`)
+    console.log(`${this.routineId}/ ${modalExerciseId} / ${this.reps} / ${this.duration} / ${this.sets}`);
+
+    if (this.selectedOption === 'duration') {
+      this.reps = 0;
+    } else if (this.selectedOption === 'reps') {
+      this.duration = 0;
+    }
+
+    console.log(`${this.routineId}/ ${modalExerciseId} / ${this.reps} / ${this.duration} / ${this.sets}`);
 
 
     this.exercisesService.addRoutine(parseInt(this.routineId), modalExerciseId, this.reps, this.duration, this.sets).subscribe(
@@ -398,10 +429,17 @@ export class EditCustomTrainingRoutineComponent {
 
     const exerciseId = this.selectedExercise.id;
 
-    console.log(`${this.routineId}/ ${exerciseId} / ${this.reps} / ${this.duration} / ${this.sets}`)
+    console.log(`${this.routineId}/ ${exerciseId} / ${this.reps} / ${this.duration} / ${this.sets}`);
 
+    if (this.selectedOption === 'duration') {
+      this.reps = 0;
+    } else if (this.selectedOption === 'reps') {
+      this.duration = 0;
+    }
 
-    this.routinesService.editExerciseRoutine(parseInt(this.routineId), exerciseId, this.sets, this.duration, this.reps).subscribe(
+    console.log(`${this.routineId}/ ${exerciseId} / ${this.reps} / ${this.duration} / ${this.sets}`);
+
+    this.routinesService.editExerciseRoutine(parseInt(this.routineId), exerciseId, this.reps, this.duration, this.sets).subscribe(
       (response: any) => {
         this.closeModal();
         window.location.reload();
@@ -422,6 +460,7 @@ export class EditCustomTrainingRoutineComponent {
   openEditExerciseModal(exerciseId: number): void {
     this.unselectExercise();
     this.selectExercise(exerciseId);
+
     this.activeModal = 'edit';
   }
 
@@ -433,10 +472,142 @@ export class EditCustomTrainingRoutineComponent {
  */
   onOptionChange() {
     if (this.selectedOption === 'duration') {
-      this.reps = 0;
+      this.reps = 12;
     } else if (this.selectedOption === 'reps') {
-      this.duration = 0;
+      this.duration = 60;
     }
   }
+
+
+  /**
+ * @method limitNumberOfDigitsSets
+ * @description
+ * Input validator that restricts user input for the "sets" field to valid numeric values between 1 and 12.
+ * It allows navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
+ * prevents leading zeros, enforces a numeric range (1–12), and limits input to a maximum of two digits.
+ *
+ * @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
+ *
+ * @remarks
+ * - Prevents input if the key is not a digit or exceeds the 2-digit limit.
+ * - Ensures values like "00", "013", or "99" are blocked if they are outside the accepted range.
+ * - Only allows valid numbers to be formed with each keystroke.
+ */
+  limitNumberOfDigitsSets(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const key = event.key;
+    const value = input.value;
+
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "Delete" || key === "Backspace") {
+      return;
+    }
+
+    // Impede que o primeiro número seja "0"
+    if (value === "" && key === "0") {
+      event.preventDefault();
+    }
+
+    // Impede que o valor ultrapasse 200 para reps (3 dígitos)
+    if (value.length < 3 && /^[0-9]$/.test(key)) {
+      const newValue = value + key;
+      const numeric = parseInt(newValue, 10);
+      if (numeric > 12 || numeric <= 0) {
+        event.preventDefault();
+      }
+    }
+
+    // Limita o comprimento a 3 dígitos para reps
+    if (value.length >= 2 || !/^[0-9]$/.test(key)) {
+      event.preventDefault();
+    }
+  }
+
+  /**
+ * @method limitNumberOfDigitsDuration
+ * @description
+ * Input validator that restricts user input for the "duration" field to valid numeric values between 1 and 600 seconds.
+ * It allows navigation (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace), prevents leading zeros,
+ * enforces the numeric range (1–600), and limits input to a maximum of three digits.
+ *
+ * @param {KeyboardEvent} event - The keyboard event triggered when the user types in the input field.
+ *
+ * @remarks
+ * - Blocks input if the key is not a digit or would result in an invalid number.
+ * - Ensures values like "000", "601", or "999" are prevented.
+ * - Enforces value integrity on each keystroke to avoid invalid durations.
+ */
+  limitNumberOfDigitsDuration(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const key = event.key;
+    const value = input.value;
+
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "Delete" || key === "Backspace") {
+      return;
+    }
+
+    // Impede que o primeiro número seja "0"
+    if (value === "" && key === "0") {
+      event.preventDefault();
+    }
+
+    // Impede que o valor ultrapasse 600 para duration (3 dígitos)
+    if (value.length < 3 && /^[0-9]$/.test(key)) {
+      const newValue = value + key;
+      const numeric = parseInt(newValue, 10);
+      if (numeric > 600 || numeric <= 0) {
+        event.preventDefault();
+      }
+    }
+
+    // Limita o comprimento a 3 dígitos para reps
+    if (value.length >= 3 || !/^[0-9]$/.test(key)) {
+      event.preventDefault();
+    }
+  }
+
+  /**
+   * @method limitNumberOfDigitsReps
+   * @description
+   * Input validator that restricts user input for the "reps" field to valid numeric values between 1 and 200.
+   * It permits navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
+   * prevents leading zeros, enforces the numeric range (1–200), and restricts input to a maximum of three digits.
+   *
+   * @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
+   *
+   * @remarks
+   * - Prevents input if the character is not a digit or if the resulting value is outside the valid range.
+   * - Ensures that inputs like "000", "201", or "999" are blocked.
+   * - Maintains data integrity by validating on every keystroke.
+   */
+  limitNumberOfDigitsReps(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const key = event.key;
+    const value = input.value;
+
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "Delete" || key === "Backspace") {
+      return;
+    }
+
+    // Impede que o primeiro número seja "0"
+    if (value === "" && key === "0") {
+      event.preventDefault();
+    }
+
+    // Impede que o valor ultrapasse 200 para reps (3 dígitos)
+    if (value.length < 3 && /^[0-9]$/.test(key)) {
+      const newValue = value + key;
+      const numeric = parseInt(newValue, 10);
+      if (numeric > 200 || numeric <= 0) {
+        event.preventDefault();
+      }
+    }
+
+    // Limita o comprimento a 3 dígitos para reps
+    if (value.length >= 3 || !/^[0-9]$/.test(key)) {
+      event.preventDefault();
+    }
+
+  }
+
 
 }

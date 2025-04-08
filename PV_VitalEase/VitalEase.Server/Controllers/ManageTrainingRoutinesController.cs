@@ -132,6 +132,41 @@
             }
         }
 
+
+        /// <summary>
+        /// Retrieves the details of a routine by its identifier.
+        /// </summary>
+        /// <param name="id">The identifier of the routine to retrieve.</param>
+        /// <returns>
+        /// An <see cref="IActionResult"/> that indicates:
+        /// <list type="bullet">
+        ///   <item>
+        ///     a 200 OK response with the routine details if the routine is found,
+        ///   </item>
+        ///   <item>
+        ///     a 400 Bad Request response if an error occurs during the fetch operation.
+        ///   </item>
+        /// </list>
+        /// </returns>
+        /// <remarks>
+        /// The method attempts to locate the routine by its identifier from the <c>Routines</c> table. 
+        /// If the routine is found, it returns the routine details with a 200 OK response.
+        /// If an exception occurs during the process, it catches the error and returns a 400 Bad Request response with a corresponding message.
+        /// </remarks>
+        [HttpGet("getRoutine/{routineId}")]
+        public async Task<IActionResult> GetRoutineById(int routineId)
+        {
+            try
+            {
+                var routine = await _context.Routines.FirstOrDefaultAsync(r => r.Id == routineId);
+                return Ok(routine);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "Error fetching routine details", error = ex.Message });
+            }
+        }
+
         /// <summary>
         /// Deletes the association between a specified exercise and routine.
         /// </summary>

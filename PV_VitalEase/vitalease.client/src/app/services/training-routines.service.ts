@@ -220,13 +220,20 @@ export class TrainingRoutinesService {
    * @param sets - Number of sets.
    * @returns An Observable that emits the response from the backend.
    */
-  editExerciseRoutine(routineId: number, exerciseId: number, reps: number, duration: number, sets: number): Observable<any> {
+  editExerciseRoutine(routineId: number, exerciseId: number, reps?: number, duration?: number, sets?: number): Observable<any> {
     if (reps !== null && reps !== 0 && (duration === null || duration === 0) && (sets !== null && sets !== undefined && sets > 0)) {
       return this.http.put<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { reps, sets });
     } else if (duration !== null && duration !== 0 && (reps === null || reps === 0) && (sets !== null && sets !== undefined && sets > 0)) {
-      return this.http.post<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { duration, sets });
+      console.log(`${duration} / ${sets}`)
+      return this.http.put<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { duration, sets });
     } else {
-      return this.http.post<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { });
+      return this.http.put<any>(`${this.apiUrl}/editExerciseRoutine/${exerciseId}/${routineId}`, { });
     }
+  }
+
+  getRoutine(routineId: number): Observable<any> {
+    let params = new HttpParams();
+    params.set('routineId', routineId);
+    return this.http.get<any>(`${this.apiUrl}/getRoutine/${routineId}`, {params})
   }
 }

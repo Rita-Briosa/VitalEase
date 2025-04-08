@@ -36,7 +36,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { DeleteAccountConfirmationComponent } from './delete-account-confirmation/delete-account-confirmation.component';
 
-
+import { MatSliderModule } from '@angular/material/slider';
 
 
 @NgModule({
@@ -49,7 +49,7 @@ import { DeleteAccountConfirmationComponent } from './delete-account-confirmatio
   ],
   imports: [
     BrowserModule, HttpClientModule, CommonModule, RouterModule, CommonModule, MapComponent,
-    AppRoutingModule, FormsModule, ReactiveFormsModule,
+    AppRoutingModule, FormsModule, ReactiveFormsModule, MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -348,7 +348,6 @@ h3 a {
 }
 
 input[type="number"] {
-  padding-right: 40px;
   width: 150px; /* Ajuste conforme necessário */
   font-size: 16px;
   text-align: right;
@@ -357,24 +356,13 @@ input[type="number"] {
 }
 
 .unit {
-  position: absolute;
-  right: 7px;
-  top: 45%;
-  transform: translateY(-100%);
   font-size: 16px;
   font-weight: bold;
-  color: black;
-  pointer-events: none; /* Para evitar interação */
 }
 
 .setUnit {
-  position: absolute;
-  right: 7px;
-  top: 55%;
   font-size: 16px;
   font-weight: bold;
-  color: black;
-  pointer-events: none; /* Para evitar interação */
 }
 
 select {
@@ -405,6 +393,22 @@ footer {
   footer p {
     margin-left: 5%;
   }
+
+.inputError {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: #721c24; /* Texto vermelho escuro */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+}
+
+button:disabled {
+  background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+  color: #a0a0a0 !important; /* Cor do texto cinza claro */
+  cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
+}
 
 @media (max-width: 990px) {
 
@@ -496,6 +500,22 @@ footer {
     font-size: 0.6rem;
     color: #6C9C94;
     margin-left: 40%;
+  }
+
+  .inputError {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+  }
+
+  button:disabled {
+    background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+    color: #a0a0a0 !important; /* Cor do texto cinza claro */
+    cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
   }
 }
 
@@ -612,4 +632,21 @@ footer {
     color: #6C9C94;
     margin-left: 40%;
   }
+
+  .inputError {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+  }
+
+  button:disabled {
+    background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+    color: #a0a0a0 !important; /* Cor do texto cinza claro */
+    cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
+  }
+
 }
