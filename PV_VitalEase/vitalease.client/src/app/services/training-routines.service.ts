@@ -244,6 +244,6 @@ export class TrainingRoutinesService {
   getRoutine(routineId: number): Observable<any> {
     let params = new HttpParams();
     params.set('routineId', routineId);
-    return this.http.get<any>(`${this.apiUrl}/getRoutine/${routineId}`, {params})
+    return this.http.get<any>(`${this.apiUrl}/getRoutine/${routineId}`, { params })
   }
 }
