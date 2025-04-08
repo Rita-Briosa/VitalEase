@@ -85,6 +85,7 @@
       <li class="routine-item" *ngFor="let routine of routines">
         <a class="routine-name" (click)="navigateToRoutine(routine.id)">{{ routine.name }}</a>
         <button class="start" (click)="navigateToRoutineProgress(routine.id)">Start</button>
+        <button *ngIf="isAdmin" class="edit" (click)="navigateToEditRoutine(routine.id)">Edit</button>
       </li>
     </ul>
   </div>

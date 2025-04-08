@@ -236,6 +236,16 @@ export class ManageTrainingRoutinesComponent implements OnInit {
   }
 
   /**
+ * @method navigateToRoutineProgress
+ * @description Navigates to the routine edit page.
+ *
+ * @param routineId - The ID of the routine.
+ */
+  navigateToEditRoutine(routineId: number) {
+    this.router.navigate(['/edit-custom-training-routine', routineId]);
+  }
+
+  /**
    * @method openAddRoutineModal
    * @description Opens the modal dialog for adding a new routine and loads available exercises.
    */

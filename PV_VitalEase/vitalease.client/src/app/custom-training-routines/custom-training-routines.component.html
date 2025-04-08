@@ -31,7 +31,11 @@
       <h5> Type: {{routine.type}} </h5>
       <div class="routineDescription">
         <p id="description"> Description:</p>
-        <p> {{routine.description}} </p>
+        <p id="trueDescription"> {{routine.description}} </p>
+      </div>
+      <div class="routineNeeds">
+        <p id="needs"> Needs:</p>
+        <p> {{routine.needs}} </p>
       </div>
       <div class="buttons">
         <a id="edit" [routerLink]="'/edit-custom-training-routine/' + routine.id">
@@ -60,9 +64,18 @@
       <form #exerciseForm="ngForm">
         <div class="input-container">
           <div class="input-group">
-            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Routine Name" required>
-            <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" placeholder="Routine Description" required>
-            <input type="text" id="newNeeds" [(ngModel)]="newNeeds" name="newNeeds" placeholder="Routine Needs" required>
+            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Routine Name (Max. 20 characters)" maxlength="20" required>
+            <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" placeholder="Routine Description (Max. 100 characters)" maxlength="100" required>
+            <h3>Routine Needs</h3>
+            <div *ngFor="let option of optionsNeeds">
+              <label>
+                <input type="checkbox"
+                       [value]="option"
+                       (change)="onCheckboxChange(option, $event)"
+                       [checked]="selectedNeeds.includes(option)" />
+                {{ option }}
+              </label>
+            </div>
           </div>
 
           <div class="input-group">

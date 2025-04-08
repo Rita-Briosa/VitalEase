@@ -134,6 +134,19 @@ body {
     background: #476e66;
   }
 
+.edit {
+  background: #5c8a80;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+  .start:hover {
+    background: #476e66;
+  }
+
 .modal {
   display: none;
   align-items: center;

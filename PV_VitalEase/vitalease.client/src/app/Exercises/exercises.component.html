@@ -127,7 +127,7 @@
       <p class="chooseRoutine"> Choose a custom training routine</p>
 
       <select [(ngModel)]="selectedRoutine">
-        <option value="" selected>Select a routine</option>
+        <option [ngValue]="0" selected>Select a routine</option>
         <option *ngFor="let routine of routines" [value]="routine.id">{{ routine.name }}</option>
       </select>
 
@@ -141,22 +141,41 @@
       </div>
 
       <div class="input-container-modal">
-        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" [(ngModel)]="duration" name="duration" required>
-        <span *ngIf="selectedOption === 'duration'" class="unit">Secs</span>
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration" (keypress)="limitNumberOfDigitsDuration($event)" required>
+        <span *ngIf="selectedOption === 'duration'" class="unit">Secs (1-600)</span>
+        <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
+          <p> Duration must be bigger than 0! </p>
+        </div>
+        <div *ngIf="duration === null" class="inputError">
+          <p> Insert a number for duration! </p>
+        </div>
 
-        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" [(ngModel)]="reps" name="reps" required>
-        <span *ngIf="selectedOption === 'reps'" class="unit">Reps</span>
+        <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" min="1" max="200" [(ngModel)]="reps" name="reps" (keydown)="limitNumberOfDigitsReps($event)" required>
+        <span *ngIf="selectedOption === 'reps'" class="unit">Reps (1-200)</span>
+        <div *ngIf="selectedOption === 'reps' && reps === 0" class="inputError">
+          <p> Reps must be bigger than 0! </p>
+        </div>
+        <div *ngIf="reps === null" class="inputError">
+          <p> Insert a number for reps! </p>
+        </div>
 
         <div>
-          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" required>
-          <span class="setUnit">Sets</span>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" min="1" max="12" (keypress)="limitNumberOfDigitsSets($event)" required>
+          <span class="setUnit">Sets (1-12)</span>
+          <div *ngIf="sets === 0" class="inputError">
+            <p> Sets must be bigger than 0! </p>
+          </div>
+          <div *ngIf="sets === null" class="inputError">
+            <p> Insert a number for sets! </p>
+          </div>
         </div>
-      </div><br /> 
+      </div>
+      <br />
 
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
-      <button class="modalButton" [disabled]="!selectedRoutine" (click)="addRoutine()">Add</button>
+      <button class="modalButton" [disabled]="!selectedRoutine || sets === 0 || reps === 0 || duration === 0 || sets === null || reps === null || duration === null" (click)="addRoutine()">Add</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
     </div>
   </div>

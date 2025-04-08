@@ -62,6 +62,7 @@ export class EditCustomTrainingRoutineComponent {
   selectedOption: string = 'duration';
 
   routine: any = null;
+  routineName: string = '';
 
 
   constructor(private authService: AuthService, private routinesService: TrainingRoutinesService, private exercisesService: ExercisesService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer,) { }
@@ -87,6 +88,26 @@ export class EditCustomTrainingRoutineComponent {
           } else {
             this.isAdmin = false;
           }
+
+          if (!this.routineId) return;
+
+          this.routinesService.getRoutine(parseInt(this.routineId)).subscribe(
+            (response: any) => {
+              this.routine = response;
+              this.routineName = this.routine.name;
+              console.log(`${this.routine.userId} + ${this.userInfo.id}`);
+              console.log(`${this.routine.name} + ${this.userInfo.id}`);
+
+              if (this.routine.userId !== this.userInfo.id && this.isAdmin === false) {
+                this.router.navigate(['/']);
+              }
+
+            },
+            (error: any) => {
+              console.error('Error loading Routine', error);
+            }
+          );
+
         },
         (error) => {
           this.authService.logout();
@@ -97,9 +118,6 @@ export class EditCustomTrainingRoutineComponent {
       //No token found, redirect to login
       this.router.navigate(['/login']);
     }
-
-    this.getRoutine();
-    console.log(`Ola ${this.routine}`);
 
     this.getRoutineExercises();
     this.getExercises();
@@ -161,7 +179,9 @@ export class EditCustomTrainingRoutineComponent {
 
     this.routinesService.getExercises(this.routineId).subscribe(
       (response: any) => {
-        this.routineExercises = response;
+        this.routineExercises = response.exerciseDtos;
+
+        console.log(response);
 
         this.routineExercises.forEach(e => {
           if (e.type === "Warm-up") {

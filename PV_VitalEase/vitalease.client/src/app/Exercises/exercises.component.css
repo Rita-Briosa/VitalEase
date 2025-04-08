@@ -373,7 +373,6 @@ select {
 }
 
 input[type="number"] {
-  padding-right: 40px; 
   width: 150px; /* Ajuste conforme necessário */
   font-size: 16px;
   text-align: right;
@@ -382,24 +381,29 @@ input[type="number"] {
 }
 
 .unit {
-  position: absolute;
-  right: 7px;
-  top: 52%;
-  transform: translateY(-100%);
   font-size: 16px;
   font-weight: bold;
-  color: black;
-  pointer-events: none; /* Para evitar interação */
 }
 
 .setUnit {
-  position: absolute;
-  right: 7px;
-  top: 52%;
   font-size: 16px;
   font-weight: bold;
-  color: black;
-  pointer-events: none; /* Para evitar interação */
+}
+
+.inputError {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: #721c24; /* Texto vermelho escuro */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+}
+
+button:disabled {
+  background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+  color: #a0a0a0 !important; /* Cor do texto cinza claro */
+  cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
 }
 
 
@@ -470,6 +474,8 @@ footer {
     position: relative;
     margin-left: 30%;
   }
+
+
 
     .media-container img {
       width: 100%;

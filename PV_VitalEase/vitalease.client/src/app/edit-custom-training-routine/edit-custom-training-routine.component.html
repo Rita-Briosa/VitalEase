@@ -34,7 +34,12 @@
     <div class="exercises" *ngIf="routineExercises.length > 0">
 
       <div class="warm-up">
+
         <h3>Warm-up Exercises</h3>
+        <div *ngIf="warmUpExercises.length === 0">
+          No Warp-up exercises in {{ routineName }}.
+        </div>
+
         <div *ngIf="warmUpExercises.length > 0">
           <div class="exercise-card" *ngFor="let exercise of warmUpExercises">
             <div class="exercise-info">
@@ -49,13 +54,14 @@
             </div>
           </div>
         </div>
-
-        <div *ngIf="warmUpExercises.length === 0">
-          No Warp-up exercises in {{ routine.name }}.
-        </div>
       </div>
 
       <div class="main-exercises">
+
+        <div *ngIf="mainExercises.length === 0">
+          No Main exercises in {{ routineName }}.
+        </div>
+
         <h3>Main Exercises</h3>
         <div *ngIf="mainExercises.length > 0">
           <div class="exercise-card" *ngFor="let exercise of mainExercises">
@@ -71,14 +77,14 @@
             </div>
           </div>
         </div>
-
-        <div *ngIf="mainExercises.length === 0">
-          No Main exercises in {{ routine.name }}.
-        </div>
       </div>
 
       <div class="cool-down">
         <h3>Cool-down Exercises</h3>
+        <div *ngIf="coolDownExercises.length === 0">
+          No Warp-up exercises in {{ routineName }}.
+        </div>
+
         <div *ngIf="coolDownExercises.length > 0">
           <div class="exercise-card" *ngFor="let exercise of coolDownExercises">
             <div class="exercise-info">
@@ -92,10 +98,6 @@
               <button class="details" (click)="openDeleteExerciseModal(exercise.id)">🗑️</button>
             </div>
           </div>
-        </div>
-
-        <div *ngIf="coolDownExercises.length === 0">
-          No Warp-up exercises in {{ routine.name }}.
         </div>
       </div>
 
@@ -125,7 +127,7 @@
   </div>
 
   <div class="exercises" *ngIf="routineExercises.length === 0">
-    There are no exercises in {{ routine.name }}. Start by adding some!
+    There are no exercises in {{ routineName }}. Start by adding some!
   </div>
 
   <div class="add-exercise">
@@ -187,11 +189,17 @@
         <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
           <p> Duration must be bigger than 0! </p>
         </div>
+        <div *ngIf="duration === null" class="inputError">
+          <p> Insert a number for duration! </p>
+        </div>
 
         <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" min="1" max="200" [(ngModel)]="reps" name="reps" (keydown)="limitNumberOfDigitsReps($event)" required>
         <span *ngIf="selectedOption === 'reps'" class="unit">Reps (1-200)</span>
         <div *ngIf="selectedOption === 'reps' && reps === 0" class="inputError">
           <p> Reps must be bigger than 0! </p>
+        </div>
+        <div *ngIf="reps === null" class="inputError">
+          <p> Insert a number for reps! </p>
         </div>
 
         <div>
@@ -200,6 +208,9 @@
           <div *ngIf="sets === 0" class="inputError">
             <p> Sets must be bigger than 0! </p>
           </div>
+          <div *ngIf="sets === null" class="inputError">
+            <p> Insert a number for sets! </p>
+          </div>
         </div>
       </div>
       <br />
@@ -207,7 +218,7 @@
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
-      <button class="modalButton" [disabled]="!selectedModalExercise || sets === 0 || reps === 0 || duration === 0" (click)="addExercise()">Add</button>
+      <button class="modalButton" [disabled]="!selectedModalExercise || sets === 0 || reps === 0 || duration === 0 || sets === null || reps === null || duration === null" (click)="addExercise()">Add</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
     </div>
   </div>
@@ -231,11 +242,17 @@
         <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
           <p> Duration must be bigger than 0! </p>
         </div>
+        <div *ngIf="duration === null" class="inputError">
+          <p> Insert a number for duration! </p>
+        </div>
 
         <input *ngIf="selectedOption === 'reps'" type="number" id="repsInput" min="1" max="200" [(ngModel)]="reps" name="reps" (keydown)="limitNumberOfDigitsReps($event)" required>
         <span *ngIf="selectedOption === 'reps'" class="unit">Reps (1-200)</span>
         <div *ngIf="selectedOption === 'reps' && reps === 0" class="inputError">
           <p> Reps must be bigger than 0! </p>
+        </div>
+        <div *ngIf="reps === null" class="inputError">
+          <p> Insert a number for reps! </p>
         </div>
 
         <div>
@@ -243,6 +260,9 @@
           <span class="setUnit">Sets (1-12)</span>
           <div *ngIf="sets === 0" class="inputError">
             <p> Sets must be bigger than 0! </p>
+          </div>
+          <div *ngIf="sets === null" class="inputError">
+            <p> Insert a number for sets! </p>
           </div>
         </div>
       </div>
