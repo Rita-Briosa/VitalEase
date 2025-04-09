@@ -26,7 +26,7 @@ export class MyProfileService {
   // O endereço da sua API que retorna os logs
   private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api'; // Endereço do seu backend ASP.NET Core
 
-  private apiUrlChangeBirthDate = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeBirthDate';
+  private apiUrlChangeBirthDate = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net//api/changeBirthDate';
   private apiUrlChangeWeight = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeWeight';
   private apiUrlChangeHeight = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeHeight';
   private apiUrlChangeGender = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/changeGender';
