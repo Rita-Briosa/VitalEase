@@ -369,13 +369,33 @@
         {
             try
             {
-                if (!ModelState.IsValid)
+
+                if(model.reps == null && model.duration == 0 || model.duration == 0 && model.reps == 0)
                 {
-                    return BadRequest(new
-                    {
-                        message = "Invalid data",
-                        errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage))
-                    });
+                    return BadRequest(new { message = "Duration must be between 1 and 600 seconds." });
+
+                }
+
+
+                if (model.duration == null && model.reps == 0 || model.duration == 0 && model.reps == 0)
+                {
+                    return BadRequest(new { message = "Reps must be between 1 and 200." });
+
+                }
+
+                if (model.duration != null && (model.duration < 1 && model.duration > 600))
+                {
+                    return BadRequest(new { message = "Duration must be between 1 and 600 seconds." });
+                }
+
+                if (model.reps != null && (model.reps < 1 && model.reps > 200))
+                {
+                    return BadRequest(new { message = "Reps must be between 1 and 200." });
+                }
+
+                if (model.sets != null && (model.sets < 1 && model.sets > 12))
+                {
+                    return BadRequest(new { message = "Sets must be between 1 and 12." });
                 }
 
                 var exercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == model.ExerciseId);
@@ -386,6 +406,13 @@
 
                 if (routine == null)
                     return NotFound(new { message = "Routine not found" });
+
+                var exists = _context.ExerciseRoutines.Any(er => er.ExerciseId == model.ExerciseId && er.RoutineId == model.RoutineId);
+
+                if (exists)
+                {
+                    return BadRequest(new { message = "Este exercício já foi adicionado a esta rotina." });
+                }
 
                 // Criar relação entre o exercício e a rotina
                 var exerciseRoutine = new ExerciseRoutine
@@ -455,12 +482,36 @@
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (model.newName.Length > 20)
                 {
-                    return BadRequest(new
-                    {
-                        message = "Invalid data",
-                    });
+                    return BadRequest(new { message = "New Name mustn't be more then 20 characteres." });
+                }
+
+                if (model.newDescription.Length > 200)
+                {
+                    return BadRequest(new { message = "New Description mustn't be more then 200 characteres." });
+                }
+
+                if (model.newMuscleGroup.Length > 100)
+                {
+                    return BadRequest(new { message = "New Muscle Group mustn't be more then 100 characteres." });
+                }
+
+                if(model.newMediaName.Length > 30)
+                {
+                    return BadRequest(new { message = "New Media Name mustn't be more then 30 characteres." });
+                }
+
+
+                if (model.newMediaName1.Length > 30)
+                {
+                    return BadRequest(new { message = "New Media Name 1 mustn't be more then 30 characteres." });
+                }
+
+                
+                if (model.newMediaName2 != null && model.newMediaName2.Length > 30)
+                {
+                    return BadRequest(new { message = "New Media Name 2 mustn't be more then 30 characteres." });
                 }
 
                 if (!Enum.TryParse(model.newDifficultyLevel, out RoutineLevel difficultyLevel))

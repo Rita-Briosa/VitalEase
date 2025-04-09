@@ -202,14 +202,14 @@ export class ExercisesComponent implements OnInit {
     this.exercisesService.addRoutine(routineId, exerciseId, this.reps, this.duration, this.sets).subscribe(
       (response: any) => {
         this.successMessage = response.message;
-        this.addErrorMessage = '';
+        this.errorMessage = '';
 
         setTimeout(() => {
           this.closeModal();
         }, 2000);
       },
       (error: any) => {
-        this.addErrorMessage = error.error?.message || 'An error occurred';
+        this.errorMessage = error.error?.message || 'An error occurred';
         this.successMessage = '';
       }
     );

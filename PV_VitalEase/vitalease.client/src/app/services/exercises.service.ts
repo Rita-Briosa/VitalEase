@@ -26,7 +26,7 @@ export class ExercisesService {
   // O endereço da sua API que retorna os logs
   private apiUrl = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api'; // Endereço do seu backend ASP.NET Core
 
-  private apiUrlAddRoutine = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/addRoutine';
+  private apiUrlAddRoutine = 'https://localhost:7180/api/addRoutine';
 
   private apiUrlAddExercise = 'https://vitaleaseserver20250401155631-frabebccg8ckhmcj.spaincentral-01.azurewebsites.net/api/addExercise';
   constructor(private http: HttpClient) { }
