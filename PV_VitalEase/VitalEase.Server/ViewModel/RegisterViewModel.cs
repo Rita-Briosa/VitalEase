@@ -44,9 +44,9 @@ namespace VitalEase.Server.ViewModel
         /// Gets or sets the height of the new user in centimeters.
         /// </summary>
         /// <remarks>
-        /// This field is required and must be between 90 and 300 cm.
+        /// This field is required and must be between 90 and 251 cm.
         /// </remarks>
-        [Range(90, 300, ErrorMessage = "Height must be between 90 and 300 cm.")]
+        [Range(90, 251, ErrorMessage = "Height must be between 90 and 251 cm.")]
         [Required(ErrorMessage = "Height is required")]
         public  int Height{ get; set; }
 
