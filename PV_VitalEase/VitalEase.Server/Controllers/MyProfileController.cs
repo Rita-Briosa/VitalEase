@@ -576,13 +576,6 @@ namespace VitalEase.Server.Controllers
         {
             try {
 
-                if (!ModelState.IsValid)
-                {
-                    // Registrar log de erro (dados inválidos)
-                    await LogAction("Birth date change Attempt", "Failed - Invalid Data", 0);
-                    return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
-                }
-
                 var userProfile = await _context.Users
                 .Include(u => u.Profile) 
                    .FirstOrDefaultAsync(u => u.Email == model.Email);
@@ -602,7 +595,7 @@ namespace VitalEase.Server.Controllers
                 if (model.BirthDate > DateTime.Today.AddYears(-16))
                 {
                     await LogAction("Birth date change Attempt", "Failed - Age restriction", userProfile.Id);
-                    return BadRequest(new { message = "You must be at least 16 years old to register." });
+                    return BadRequest(new { message = "You must be at least 16 years old." });
                 }
 
                 userProfile.Profile.Birthdate = model.BirthDate;
@@ -664,13 +657,7 @@ namespace VitalEase.Server.Controllers
         {
             try
             {
-
-                if (!ModelState.IsValid)
-                {
-                    // Registrar log de erro (dados inválidos)
-                    await LogAction("Weight change Attempt", "Failed - Invalid Data", 0);
-                    return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
-                }
+                
 
                 var userProfile = await _context.Users
                 .Include(u => u.Profile)
@@ -686,6 +673,12 @@ namespace VitalEase.Server.Controllers
                 {
                     await LogAction("Weight change Attempt", "Failed - Profile not found", userProfile.Id);
                     return NotFound(new { message = "Profile not found" });
+                }
+
+                if (model.Weight > 450 || model.Weight < 30)
+                {
+                    await LogAction("Weight change Attempt", "Weight must be between 30 and 450 kg.", userProfile.Id);
+                    return Unauthorized(new { message = "Weight must be between 30 and 450 kg." });
                 }
 
                 userProfile.Profile.Weight = model.Weight;
@@ -749,12 +742,6 @@ namespace VitalEase.Server.Controllers
             try
             {
 
-                if (!ModelState.IsValid)
-                {
-                    // Registrar log de erro (dados inválidos)
-                    await LogAction("Height change Attempt", "Failed - Invalid Data", 0);
-                    return BadRequest(new { message = "Invalid data" }); // Retorna erro 400
-                }
 
                 var userProfile = await _context.Users
                 .Include(u => u.Profile)
@@ -770,6 +757,12 @@ namespace VitalEase.Server.Controllers
                 {
                     await LogAction("Height change Attempt", "Failed - Profile not found", userProfile.Id);
                     return NotFound(new { message = "Profile not found" });
+                }
+
+                if (model.Height > 250 || model.Height < 125 )
+                {
+                    await LogAction("Height change Attempt", "Failed - Height must be between 125 and 250 cm.", userProfile.Id);
+                    return Unauthorized(new { message = "Height must be between 125 and 250 cm." });
                 }
 
                 userProfile.Profile.Height = model.Height;
@@ -1111,8 +1104,8 @@ namespace VitalEase.Server.Controllers
 
                 if (user == null)
                 {
-                    await LogAction("Password change Attempt", "Failed - No user found", 0);
-                    return Unauthorized(new { message = "No user found" });
+                    await LogAction("Password change Attempt", "Failed - Old Password is incorrect.", 0);
+                    return Unauthorized(new { message = "Old Password is incorrect." });
                 }
 
                 if (!IsPasswordValid(model.NewPassword))

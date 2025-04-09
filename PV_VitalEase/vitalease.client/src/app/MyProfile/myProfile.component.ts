@@ -267,7 +267,7 @@ export class MyProfileComponent {
           this.closeModal(); // Redireciona após 2 segundos
         }, 2000);
       }, (error: any) => {
-        this.errorMessage = error.message;
+        this.errorMessage = error.error?.message;
         this.successMessage = '';
     });
   }

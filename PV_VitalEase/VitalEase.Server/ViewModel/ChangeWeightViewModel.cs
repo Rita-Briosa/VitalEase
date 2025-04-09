@@ -28,7 +28,7 @@ namespace VitalEase.Server.ViewModel
         /// This field is required and must be between 30 and 250 kg.
         /// </remarks>
         [Required(ErrorMessage = "Weight is required")]
-        [Range(30, 450, ErrorMessage = "Weight must be between 30 and 250 kg.")]
+        [Range(30, 450, ErrorMessage = "Weight must be between 30 and 450 kg.")]
         public int Weight { get; set; }
     }
 }
