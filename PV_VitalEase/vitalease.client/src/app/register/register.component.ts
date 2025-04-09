@@ -149,4 +149,125 @@ export class RegisterComponent {
     return 'Strong'
   }
 
+  /**
+ * @method limitNumberOfDigitsWeight
+ * @description
+ * Input validator that restricts user input for the "newWeight" field to valid numeric values between 30 and 400.
+ * It permits navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
+ * prevents leading zeros, enforces the numeric range (1–400), and restricts input to a maximum of three digits.
+ *
+ * @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
+ *
+ * @remarks
+ * - Prevents input if the character is not a digit or if the resulting value is outside the valid range.
+ * - Ensures that inputs like "000", "401", or "999" are blocked.
+ * - Maintains data integrity by validating on every keystroke.
+ */
+  limitNumberOfDigitsWeight(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const key = event.key;
+    const value = input.value;
+
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "Delete" || key === "Backspace") {
+      return;
+    }
+
+    // Impede que o primeiro número seja "0"
+    if (value === "" && (key === "0")) {
+      event.preventDefault();
+    }
+
+    // Impede que o valor ultrapasse 400 para weight (3 dígitos)
+    if (value.length < 3 && /^[0-9]$/.test(key)) {
+      const newValue = value + key;
+      const numeric = parseInt(newValue, 10);
+      if (numeric > 400 || numeric <= 0) {
+        event.preventDefault();
+      }
+    }
+
+    // Limita o comprimento a 3 dígitos para weight
+    if (value.length >= 3 || !/^[0-9]$/.test(key)) {
+      event.preventDefault();
+    }
+
+  }
+
+  /**
+* @method limitNumberOfDigitsHeight
+* @description
+* Input validator that restricts user input for the "newHeight" field to valid numeric values between 90 and 251.
+* It permits navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
+* prevents leading zeros, enforces the numeric range (1–400), and restricts input to a maximum of three digits.
+*
+* @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
+*
+* @remarks
+* - Prevents input if the character is not a digit or if the resulting value is outside the valid range.
+* - Ensures that inputs like "000", "401", or "999" are blocked.
+* - Maintains data integrity by validating on every keystroke.
+*/
+  limitNumberOfDigitsHeight(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const key = event.key;
+    const value = input.value;
+
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "Delete" || key === "Backspace") {
+      return;
+    }
+
+    // Impede que o primeiro número seja "0"
+    if (value === "" && (key === "0")) {
+      event.preventDefault();
+    }
+
+    // Impede que o valor ultrapasse 251 para weight (3 dígitos)
+    if (value.length < 3 && /^[0-9]$/.test(key)) {
+      const newValue = value + key;
+      const numeric = parseInt(newValue, 10);
+      if (numeric > 251 || numeric <= 0) {
+        event.preventDefault();
+      }
+    }
+
+    // Limita o comprimento a 3 dígitos para weight
+    if (value.length >= 3 || !/^[0-9]$/.test(key)) {
+      event.preventDefault();
+    }
+
+  }
+
+  /**
+* @method profileAge
+* @description
+* Calculates the user's age based on the date entered in the input field with ID "birthDateInput".
+* It compares the birth date to the current date, adjusting the result if the user hasn't had their birthday yet this year.
+*
+* @returns {number} The calculated age based on the input birth date. Returns 0 if the input is invalid or not provided.
+*
+* @remarks
+* - Relies on an HTML input element with the ID "birthDateInput".
+* - Validates that the input exists and contains a value before attempting to parse.
+* - Uses standard JavaScript `Date` operations to determine if the birthday has occurred this year.
+* - Returns 0 if the input is missing or malformed.
+*/
+  get profileAge(): number {
+    const birthDateInput = <HTMLInputElement>document.getElementById("birthDateInput");
+    if (!birthDateInput || !birthDateInput.value) return 0;
+
+    const birthDate = new Date(birthDateInput.value);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+
+    // Corrige se ainda não fez anos este ano
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+    }
+
+    return age;
+  }
+
 }

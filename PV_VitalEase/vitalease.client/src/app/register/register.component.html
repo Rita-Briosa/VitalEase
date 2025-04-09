@@ -7,11 +7,17 @@
         <div class="form-wrapper">
           <form (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
+              <input type="text" [(ngModel)]="username" name="username" placeholder="Username (Max. 20 Characters)" maxlength="20" required />
             </div>
             <div class="form-group">
               <label class="birthDate" for="birthDate">Birth Date:</label>
-              <input type="date" [(ngModel)]="birthDate" name="birthDate" placeholder="Birthdate" />
+              <input type="date" [(ngModel)]="birthDate" id="birthDateInput" name="birthDate" #birthDateInput="ngModel" placeholder="Birthdate" />
+              <div *ngIf="profileAge < 16 && (birthDateInput.touched || birthDateInput.dirty)" class="inputError">
+                <p> You must be at least 16 years old to use this app! </p>
+              </div>
+              <div *ngIf="profileAge > 125 && (birthDateInput.touched || birthDateInput.dirty)" class="inputError">
+                <p> Insert a realistic date of birth! </p>
+              </div>
             </div>
             <div class="form-group">
               <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
@@ -19,11 +25,35 @@
             <div class="form-row">
               <div class="form-group half-width">
                 <label class="height" for="height">Height (in cm):</label>
-                <input type="number" [(ngModel)]="height" name="height" min="90" max="251" placeholder="Height (in cm)" required />
+                <input type="number" [(ngModel)]="height" name="height" min="90" max="251" placeholder="Height (in cm)" (keydown)="limitNumberOfDigitsHeight($event)" required />
+                <div *ngIf="height > 251" class="inputError">
+                  <p> Height must be lesser or equal to 251! </p>
+                </div>
+                <div *ngIf="height < 90 && height > 0" class="inputError">
+                  <p> Height must be bigger or equal to 90! </p>
+                </div>
+                <div *ngIf="height === 0" class="inputError">
+                  <p> Height must be bigger or equal to 90! </p>
+                </div>
+                <div *ngIf="!height && height !== 0" class="inputError">
+                  <p> Insert a number for Height! </p>
+                </div>
               </div>
               <div class="form-group half-width">
                 <label class="weight" for="weight">Weight (in kg):</label>
-                <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight (in kg)" min="30" max="400" required />
+                <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight (in kg)" min="30" max="400" (keydown)="limitNumberOfDigitsWeight($event)" required />
+                <div *ngIf="weight > 400" class="inputError">
+                  <p> Weight must be lesser or equal to 400! </p>
+                </div>
+                <div *ngIf="weight < 30 && weight > 0" class="inputError">
+                  <p> Weight must be bigger or equal to 30! </p>
+                </div>
+                <div *ngIf="weight === 0" class="inputError">
+                  <p> Weight must be bigger or equal to 30! </p>
+                </div>
+                <div *ngIf="!weight && weight !== 0" class="inputError">
+                  <p> Insert a number for Weight! </p>
+                </div>
               </div>
             </div>
             <div class="form-group">

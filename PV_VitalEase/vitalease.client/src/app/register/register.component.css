@@ -208,6 +208,17 @@ select {
   font-weight: bold;
   text-align: center;
 }
+
+.inputError {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: #721c24; /* Texto vermelho escuro */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+}
+
 /* Responsividade para telas menores */
 @media (max-width: 990px) {
 
@@ -378,6 +389,16 @@ select {
     font-size: 12px;
     font-weight: bold;
     text-align: center;
+  }
+
+  .inputError {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
   }
 }
 
@@ -551,6 +572,16 @@ select {
     font-size: 10px;
     font-weight: bold;
     text-align: center;
+  }
+
+  .inputError {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
   }
 
 }

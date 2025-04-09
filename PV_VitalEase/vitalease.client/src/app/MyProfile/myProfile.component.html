@@ -97,7 +97,7 @@
       </button>
     </div>
 
-      <button class="modalButton" (click)="confirmDeleteAccount()" [disabled]="!isConfirmed">Confirm</button>
+      <button class="modalButton" (click)="confirmDeleteAccount()" [disabled]="!isConfirmed || !password">Confirm</button>
       <button class="modalButton" (click)="closeModal()">Cancel</button>
 
   </div>
@@ -294,7 +294,7 @@
 
       <div class="button-container1">
         <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
-        <button class="modalButton" (click)="changePassword(oldPassword,newPassword)">Confirm</button>
+        <button class="modalButton" (click)="changePassword(oldPassword,newPassword)" [disabled]="!oldPassword || !newPassword || !confirmPassword">Confirm</button>
       </div>
     </form>
   </div>
@@ -323,7 +323,7 @@
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
       <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" (click)="changeEmail(password,newEmail)">Confirm</button>
+      <button class="modalButton" (click)="changeEmail(password,newEmail)" [disabled]="!newEmail || !password">Confirm</button>
     </form>
   </div>
 </div>

@@ -630,6 +630,20 @@ export class MyProfileComponent {
 
   }
 
+  /**
+* @method profileAge
+* @description
+* Calculates the user's age based on the date entered in the input field with ID "birthDateInput".
+* It compares the birth date to the current date, adjusting the result if the user hasn't had their birthday yet this year.
+*
+* @returns {number} The calculated age based on the input birth date. Returns 0 if the input is invalid or not provided.
+*
+* @remarks
+* - Relies on an HTML input element with the ID "birthDateInput".
+* - Validates that the input exists and contains a value before attempting to parse.
+* - Uses standard JavaScript `Date` operations to determine if the birthday has occurred this year.
+* - Returns 0 if the input is missing or malformed.
+*/
   get profileAge(): number {
     const birthDateInput = <HTMLInputElement>document.getElementById("birthDateInput");
     if (!birthDateInput || !birthDateInput.value) return 0;
