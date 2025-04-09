@@ -684,7 +684,7 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Weight = model.Weight;
                 await _context.SaveChangesAsync();
 
-                await LogAction("Weight change Attempt", "Success - Weight changed successfully.", 0);
+                await LogAction("Weight change Attempt", "Success - Weight changed successfully.", userProfile.Id);
                 return Ok(new { message = "Weight changed successfully!!" });
             }
             catch (Exception ex)
@@ -768,7 +768,7 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Height = model.Height;
                 await _context.SaveChangesAsync();
 
-                await LogAction("Height change Attempt", "Success - Height changed successfully.", 0);
+                await LogAction("Height change Attempt", "Success - Height changed successfully.", userProfile.Id);
                 return Ok(new { message = "Height changed successfully!!" });
             }
             catch (Exception ex)
@@ -853,7 +853,7 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Gender = model.Gender;
                 await _context.SaveChangesAsync();
 
-                await LogAction("Gender change Attempt", "Success - Gender changed successfully.", 0);
+                await LogAction("Gender change Attempt", "Success - Gender changed successfully.", userProfile.Id);
                 return Ok(new { message = "Gender changed succesfully!!" });
             }
             catch (Exception ex)
@@ -937,7 +937,7 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.HasHeartProblems = model.HasHeartProblems;
                 await _context.SaveChangesAsync();
 
-                await LogAction("Has Heart Problems change Attempt", "Success - Has Heart Problems changed successfully.", 0);
+                await LogAction("Has Heart Problems change Attempt", "Success - Has Heart Problems changed successfully.", userProfile.Id);
                 return Ok(new { message = "Has heart problems changed successfully!!" });
             }
             catch (Exception ex)
@@ -1029,7 +1029,7 @@ namespace VitalEase.Server.Controllers
                 userProfile.Profile.Username = model.Username;
                 await _context.SaveChangesAsync();
 
-                await LogAction("Username change Attempt", "Success - Username changed successfully.", 0);
+                await LogAction("Username change Attempt", "Success - Username changed successfully.", userProfile.Id);
                 return Ok(new { message = "Username changed successfully!!" });
             }
             catch (Exception ex)
@@ -1131,7 +1131,7 @@ namespace VitalEase.Server.Controllers
 
                 if(hashedOldPassword == newHashedPassword)
                 {
-                    await LogAction("Password change Attempt", "Failed - Password can not be the same as old one.", 0);
+                    await LogAction("Password change Attempt", "Failed - Password can not be the same as old one.", user.Id);
                     return Unauthorized(new { message = "Password can not be the same as old one." });
                 }
 
@@ -1140,7 +1140,7 @@ namespace VitalEase.Server.Controllers
                 await _context.SaveChangesAsync();
 
                
-                await LogAction("Password change Attempt", "Success - Password changed successfully.", 0);
+                await LogAction("Password change Attempt", "Success - Password changed successfully.", user.Id);
                 return Ok(new { message = "Password changed successfully!!" });
             }
             catch (Exception ex)
