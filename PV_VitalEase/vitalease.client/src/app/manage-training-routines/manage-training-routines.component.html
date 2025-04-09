@@ -97,9 +97,9 @@
       <form #exerciseForm="ngForm">
         <div class="input-container">
           <div class="input-group">
-            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Routine Name" required>
-            <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" placeholder="Routine Description" required>
-            <input type="text" id="newNeeds" [(ngModel)]="newNeeds" name="newNeeds" placeholder="Routine Needs" required>
+            <input type="text" id="newName" [(ngModel)]="newName" name="newName" placeholder="Routine Name (Max. 20 Characters)" maxlength="20" required>
+            <input type="text" id="newDescription" [(ngModel)]="newDescription" name="newDescription" maxlength="100" placeholder="Routine Description (Max. 100 Characters)" required>
+            <input type="text" id="newNeeds" [(ngModel)]="newNeeds" name="newNeeds" placeholder="Routine Needs (Max. 100 Characters)" maxlength="100" required>
           </div>
 
           <div class="input-group">
@@ -137,7 +137,7 @@
         <div *ngIf="addRoutineErrorMessage" class="alert-danger">{{ addRoutineErrorMessage }}</div>
 
         <div class="modal-buttons">
-          <button type="button" class="modalButton" (click)="addRoutine()">Add</button>
+          <button type="button" class="modalButton" (click)="addRoutine()" [disabled]="!newName || !newDescription || !newType || !newNeeds || !newRoutineLevel || !newType">Add</button>
           <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
         </div>
       </form>
