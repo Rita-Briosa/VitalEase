@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { TrainingRoutinesService } from '../services/training-routines.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 /**
  * @component TrainingRoutineExerciseDetailsComponent
@@ -50,6 +51,7 @@ export class TrainingRoutineExerciseDetailsComponent {
     private route: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer,
+    private location: Location,
     private http: HttpClient) { }
 
   /**
@@ -244,5 +246,9 @@ export class TrainingRoutineExerciseDetailsComponent {
       this.errorMessage = 'exercise Id doesn t exists';
     }
    
+  }
+
+  goToPreviousPage(): void {
+    this.location.back();
   }
 }
