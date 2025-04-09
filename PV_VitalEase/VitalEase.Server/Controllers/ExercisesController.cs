@@ -393,7 +393,7 @@
                     return BadRequest(new { message = "Reps must be between 1 and 200." });
                 }
 
-                if (model.sets != null && (model.sets < 1 && model.sets > 12))
+                if (model.sets < 1 && model.sets > 12)
                 {
                     return BadRequest(new { message = "Sets must be between 1 and 12." });
                 }
@@ -482,36 +482,36 @@
         {
             try
             {
-                if (model.newName.Length > 20)
+                if (model.newName.Length > 20 || model.newName.Length < 1)
                 {
-                    return BadRequest(new { message = "New Name mustn't be more then 20 characteres." });
+                    return BadRequest(new { message = "New Name must be between 1 and 20 characteres." });
                 }
 
-                if (model.newDescription.Length > 200)
+                if (model.newDescription.Length > 200 || model.newDescription.Length < 1)
                 {
-                    return BadRequest(new { message = "New Description mustn't be more then 200 characteres." });
+                    return BadRequest(new { message = "New Description must be between 1 and 200 characteres." });
                 }
 
-                if (model.newMuscleGroup.Length > 100)
+                if (model.newMuscleGroup.Length > 100 || model.newMuscleGroup.Length < 1)
                 {
-                    return BadRequest(new { message = "New Muscle Group mustn't be more then 100 characteres." });
+                    return BadRequest(new { message = "New Muscle Group must be between 1 and 100 characteres." });
                 }
 
-                if(model.newMediaName.Length > 30)
+                if(model.newMediaName.Length > 30 || model.newMediaName.Length < 1)
                 {
-                    return BadRequest(new { message = "New Media Name mustn't be more then 30 characteres." });
+                    return BadRequest(new { message = "New Media Name must be between 1 and 30 characteres." });
                 }
 
 
-                if (model.newMediaName1.Length > 30)
+                if (model.newMediaName1.Length > 30 || model.newMediaName1.Length < 1)
                 {
-                    return BadRequest(new { message = "New Media Name 1 mustn't be more then 30 characteres." });
+                    return BadRequest(new { message = "New Media Name 1 must be between 1 and30 characteres." });
                 }
 
                 
-                if (model.newMediaName2 != null && model.newMediaName2.Length > 30)
+                if (model.newMediaName2 != null && (model.newMediaName2.Length > 30  || model.newMediaName2.Length < 1))
                 {
-                    return BadRequest(new { message = "New Media Name 2 mustn't be more then 30 characteres." });
+                    return BadRequest(new { message = "New Media Name 2 must be between 1 and 30 characteres." });
                 }
 
                 if (!Enum.TryParse(model.newDifficultyLevel, out RoutineLevel difficultyLevel))
