@@ -154,13 +154,13 @@ export class RegisterComponent {
  * @description
  * Input validator that restricts user input for the "newWeight" field to valid numeric values between 30 and 400.
  * It permits navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
- * prevents leading zeros, enforces the numeric range (1–400), and restricts input to a maximum of three digits.
+ * prevents leading zeros, and restricts input to a maximum of three digits.
  *
  * @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
  *
  * @remarks
  * - Prevents input if the character is not a digit or if the resulting value is outside the valid range.
- * - Ensures that inputs like "000", "401", or "999" are blocked.
+ * - Ensures that inputs like "000" are blocked.
  * - Maintains data integrity by validating on every keystroke.
  */
   limitNumberOfDigitsWeight(event: KeyboardEvent) {
@@ -177,11 +177,10 @@ export class RegisterComponent {
       event.preventDefault();
     }
 
-    // Impede que o valor ultrapasse 400 para weight (3 dígitos)
     if (value.length < 3 && /^[0-9]$/.test(key)) {
       const newValue = value + key;
       const numeric = parseInt(newValue, 10);
-      if (numeric > 400 || numeric <= 0) {
+      if (numeric <= 0) {
         event.preventDefault();
       }
     }
@@ -198,13 +197,13 @@ export class RegisterComponent {
 * @description
 * Input validator that restricts user input for the "newHeight" field to valid numeric values between 90 and 251.
 * It permits navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
-* prevents leading zeros, enforces the numeric range (1–400), and restricts input to a maximum of three digits.
+* prevents leading zeros, and restricts input to a maximum of three digits.
 *
 * @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
 *
 * @remarks
 * - Prevents input if the character is not a digit or if the resulting value is outside the valid range.
-* - Ensures that inputs like "000", "401", or "999" are blocked.
+* - Ensures that inputs like "000" are blocked.
 * - Maintains data integrity by validating on every keystroke.
 */
   limitNumberOfDigitsHeight(event: KeyboardEvent) {
@@ -221,11 +220,10 @@ export class RegisterComponent {
       event.preventDefault();
     }
 
-    // Impede que o valor ultrapasse 251 para weight (3 dígitos)
     if (value.length < 3 && /^[0-9]$/.test(key)) {
       const newValue = value + key;
       const numeric = parseInt(newValue, 10);
-      if (numeric > 251 || numeric <= 0) {
+      if (numeric <= 0) {
         event.preventDefault();
       }
     }
