@@ -100,7 +100,7 @@
         <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
         <div class="modal-buttons">
-          <button type="button" class="modalButton" (click)="addCustomRoutine()">Add</button>
+          <button type="button" class="modalButton" (click)="addCustomRoutine()" [disabled]="!newName || !newDescription || !newType || !newRoutineLevel">Add</button>
           <button type="button" class="modalButton close-btn" (click)="closeModal()">Close</button>
         </div>
       </form>
