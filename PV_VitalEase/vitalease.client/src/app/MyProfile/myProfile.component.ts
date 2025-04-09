@@ -541,4 +541,111 @@ export class MyProfileComponent {
     this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
+
+  /**
+ * @method limitNumberOfDigitsWeight
+ * @description
+ * Input validator that restricts user input for the "newWeight" field to valid numeric values between 30 and 400.
+ * It permits navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
+ * prevents leading zeros, enforces the numeric range (1–400), and restricts input to a maximum of three digits.
+ *
+ * @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
+ *
+ * @remarks
+ * - Prevents input if the character is not a digit or if the resulting value is outside the valid range.
+ * - Ensures that inputs like "000", "401", or "999" are blocked.
+ * - Maintains data integrity by validating on every keystroke.
+ */
+  limitNumberOfDigitsWeight(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const key = event.key;
+    const value = input.value;
+
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "Delete" || key === "Backspace") {
+      return;
+    }
+
+    // Impede que o primeiro número seja "0"
+    if (value === "" && (key === "0")) {
+      event.preventDefault();
+    }
+
+    // Impede que o valor ultrapasse 400 para weight (3 dígitos)
+    if (value.length < 3 && /^[0-9]$/.test(key)) {
+      const newValue = value + key;
+      const numeric = parseInt(newValue, 10);
+      if (numeric > 400 || numeric <= 0) {
+        event.preventDefault();
+      }
+    }
+
+    // Limita o comprimento a 3 dígitos para weight
+    if (value.length >= 3 || !/^[0-9]$/.test(key)) {
+      event.preventDefault();
+    }
+
+  }
+
+  /**
+* @method limitNumberOfDigitsHeight
+* @description
+* Input validator that restricts user input for the "newHeight" field to valid numeric values between 90 and 251.
+* It permits navigation keys (ArrowLeft, ArrowRight) and editing keys (Delete, Backspace),
+* prevents leading zeros, enforces the numeric range (1–400), and restricts input to a maximum of three digits.
+*
+* @param {KeyboardEvent} event - The keyboard event triggered on key press in the input field.
+*
+* @remarks
+* - Prevents input if the character is not a digit or if the resulting value is outside the valid range.
+* - Ensures that inputs like "000", "401", or "999" are blocked.
+* - Maintains data integrity by validating on every keystroke.
+*/
+  limitNumberOfDigitsHeight(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const key = event.key;
+    const value = input.value;
+
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "Delete" || key === "Backspace") {
+      return;
+    }
+
+    // Impede que o primeiro número seja "0"
+    if (value === "" && (key === "0")) {
+      event.preventDefault();
+    }
+
+    // Impede que o valor ultrapasse 251 para weight (3 dígitos)
+    if (value.length < 3 && /^[0-9]$/.test(key)) {
+      const newValue = value + key;
+      const numeric = parseInt(newValue, 10);
+      if (numeric > 251 || numeric <= 0) {
+        event.preventDefault();
+      }
+    }
+
+    // Limita o comprimento a 3 dígitos para weight
+    if (value.length >= 3 || !/^[0-9]$/.test(key)) {
+      event.preventDefault();
+    }
+
+  }
+
+  get profileAge(): number {
+    const birthDateInput = <HTMLInputElement>document.getElementById("birthDateInput");
+    if (!birthDateInput || !birthDateInput.value) return 0;
+
+    const birthDate = new Date(birthDateInput.value);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+
+    // Corrige se ainda não fez anos este ano
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+    }
+
+    return age;
+  }
 }
