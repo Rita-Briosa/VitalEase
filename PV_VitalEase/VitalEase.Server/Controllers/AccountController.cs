@@ -295,7 +295,7 @@ namespace VitalEase.Server.Controllers
         }),
                 Expires = rememberMe
                     ? DateTime.UtcNow.AddDays(30) // "Remember Me" session: 30 days
-                    : DateTime.UtcNow.AddMinutes(15), // Standard session: 15 minutes
+                    : DateTime.UtcNow.AddHours(2), // Standard session: 2 hours
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
