@@ -23,7 +23,9 @@
   </div>
 
   <div class="container">
-    <h1>Exercises</h1>
+    <h1>
+      <a class="arrow" routerLink="/manage-training-routines/">◄</a>
+    Exercises</h1>
     <div class="exercise-list" *ngIf="exercises.length > 0">
       <div class="exercise-card" *ngFor="let exercise of exercises">
         <div class="exercise-info">

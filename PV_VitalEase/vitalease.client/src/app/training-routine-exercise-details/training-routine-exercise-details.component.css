@@ -103,6 +103,12 @@ body {
   padding: 40px;
 }
 
+.arrow {
+  text-decoration: none;
+  color: black;
+  cursor:pointer;
+}
+
 h2 {
   font-size: 2.5rem;
   font-weight: bold;

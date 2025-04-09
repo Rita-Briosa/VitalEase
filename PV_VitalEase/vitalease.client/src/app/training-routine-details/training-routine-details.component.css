@@ -81,6 +81,10 @@ body {
     transition: background-color 0.3s;
   }
 
+.arrow {
+  text-decoration: none;
+  color: black;
+}
 
 .exercise-list {
   display: flex;
