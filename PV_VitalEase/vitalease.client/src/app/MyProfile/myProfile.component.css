@@ -177,7 +177,6 @@ input[type="date"] {
 }
 
 input[type="number"] {
-  padding-right: 35px; /* Espaço para o "kg" */
   width: 100px; /* Ajuste conforme necessário */
   font-size: 16px;
   text-align: right;
@@ -195,14 +194,10 @@ input[type="text"] {
 }
 
 .unit {
-  position: absolute;
-  right: 10px;
-  top: 48%;
-  transform: translateY(-53%);
   font-size: 16px;
   font-weight: bold;
   color: black;
-  pointer-events: none; /* Para evitar interação */
+  padding-left: 5px;
 }
 
 .modalButton {
@@ -357,6 +352,22 @@ footer {
     margin-left: 5%;
   }
 
+.inputError {
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: #721c24; /* Texto vermelho escuro */
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+}
+
+button:disabled {
+  background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+  color: #a0a0a0 !important; /* Cor do texto cinza claro */
+  cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
+}
+
 
   @media (max-width: 768px) {
     h2 {
@@ -367,6 +378,21 @@ footer {
       font-size: 1.5rem;
     }
 
+    .inputError {
+      background-color: #f8d7da; /* Fundo vermelho claro */
+      color: #721c24; /* Texto vermelho escuro */
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px;
+      font-size: 14px;
+      border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+    }
+
+    button:disabled {
+      background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+      color: #a0a0a0 !important; /* Cor do texto cinza claro */
+      cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
+    }
   }
 
 @media (max-width: 990px) {
@@ -411,6 +437,22 @@ footer {
     font-size: 0.6rem;
     color: #6C9C94;
     margin-left: 40%;
+  }
+
+  .inputError {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+  }
+
+  button:disabled {
+    background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+    color: #a0a0a0 !important; /* Cor do texto cinza claro */
+    cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
   }
 }
 
@@ -497,5 +539,21 @@ footer {
     font-size: 0.6rem;
     color: #6C9C94;
     margin-left: 40%;
+  }
+
+  .inputError {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb; /* Borda mais clara, combinando com o fundo */
+  }
+
+  button:disabled {
+    background-color: #d3d3d3 !important; /* Cor de fundo cinza claro */
+    color: #a0a0a0 !important; /* Cor do texto cinza claro */
+    cursor: not-allowed; /* Indicador de que o botão não pode ser clicado */
   }
 }

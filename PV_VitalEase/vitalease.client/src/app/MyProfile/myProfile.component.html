@@ -110,11 +110,17 @@
     <h2>Edit Date of Birth</h2>
     <form>
       <input type="date" id="birthDateInput" [(ngModel)]="newBirthDate" name="birthDate" required>
+      <div *ngIf="profileAge < 16" class="inputError">
+        <p> You must be at least 16 years old to use this app! </p>
+      </div>
+      <div *ngIf="profileAge > 125" class="inputError">
+        <p> Insert a realistic date of birth! </p>
+      </div>
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
       <button class="modalButton" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" (click)="changeBirthDate(newBirthDate)">Confirm</button>
+      <button class="modalButton" (click)="changeBirthDate(newBirthDate)" [disabled]="profileAge < 16 || profileAge > 125">Confirm</button>
     </form>
   </div>
 </div>
@@ -125,14 +131,26 @@
     <h2>Edit Weight</h2>
     <form>
       <div class="input-container">
-        <input type="number" id="weightInput" [(ngModel)]="newWeight" name="weigh" required>
+        <input type="number" id="weightInput" [(ngModel)]="newWeight" name="weigh" min="30" max="400" (keydown)="limitNumberOfDigitsWeight($event)" required>
         <span class="unit">kg</span>
+        <div *ngIf="newWeight > 400" class="inputError">
+          <p> Weight must be lesser or equal to 400! </p>
+        </div>
+        <div *ngIf="newWeight < 30 && newWeight > 0" class="inputError">
+          <p> Weight must be bigger or equal to 30! </p>
+        </div>
+        <div *ngIf="newWeight === 0" class="inputError">
+          <p> Weight must be bigger or equal to 30! </p>
+        </div>
+        <div *ngIf="!newWeight && newWeight !== 0" class="inputError">
+          <p> Insert a number for Weight! </p>
+        </div>
       </div>
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
       <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" (click)="changeWeight(newWeight)">Confirm</button>
+      <button class="modalButton" (click)="changeWeight(newWeight)" [disabled]="newWeight < 30 || newWeight > 400 || !newWeight">Confirm</button>
     </form>
   </div>
 </div>
@@ -143,14 +161,26 @@
     <h2>Edit Height</h2>
     <form>
       <div class="input-container">
-        <input type="number" id="heightInput" [(ngModel)]="newHeight" name="height" required>
+        <input type="number" id="heightInput" [(ngModel)]="newHeight" name="height" min="90" max="251" (keydown)="limitNumberOfDigitsHeight($event)" required>
         <span class="unit">cm</span>
+        <div *ngIf="newHeight > 251" class="inputError">
+          <p> Height must be lesser or equal to 251! </p>
+        </div>
+        <div *ngIf="newHeight < 90 && newHeight > 0" class="inputError">
+          <p> Height must be bigger or equal to 90! </p>
+        </div>
+        <div *ngIf="newHeight === 0" class="inputError">
+          <p> Height must be bigger or equal to 90! </p>
+        </div>
+        <div *ngIf="!newHeight && newHeight !== 0" class="inputError">
+          <p> Insert a number for Height! </p>
+        </div>
       </div>
       <br>
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
       <button class="modalButton" type="reset" (click)="closeModal()">Cancel</button>
-      <button class="modalButton" (click)="changeHeight(newHeight)">Confirm</button>
+      <button class="modalButton" (click)="changeHeight(newHeight)" [disabled]="newHeight < 90 || newHeight > 251 || !newHeight">Confirm</button>
     </form>
   </div>
 </div>

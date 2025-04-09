@@ -184,7 +184,7 @@
       </div>
 
       <div class="input-container-modal">
-        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration"   (keypress)="limitNumberOfDigitsDuration($event)" required>
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration" (keydown)="limitNumberOfDigitsDuration($event)" required>
         <span *ngIf="selectedOption === 'duration'" class="unit">Secs (1-600)</span>
         <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
           <p> Duration must be bigger than 0! </p>
@@ -203,7 +203,7 @@
         </div>
 
         <div>
-          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" min="1" max="12" (keypress)="limitNumberOfDigitsSets($event)" required>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" min="1" max="12" (keydown)="limitNumberOfDigitsSets($event)" required>
           <span class="setUnit">Sets (1-12)</span>
           <div *ngIf="sets === 0" class="inputError">
             <p> Sets must be bigger than 0! </p>
@@ -237,7 +237,7 @@
       </div>
 
       <div class="input-container-modal">
-        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration" (keypress)="limitNumberOfDigitsDuration($event)" required>
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration" (keydown)="limitNumberOfDigitsDuration($event)" required>
         <span *ngIf="selectedOption === 'duration'" class="unit">Secs (1-600)</span>
         <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
           <p> Duration must be bigger than 0! </p>
@@ -256,7 +256,7 @@
         </div>
 
         <div>
-          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" min="1" max="12" (keypress)="limitNumberOfDigitsSets($event)" required>
+          <input type="number" id="setsInput" [(ngModel)]="sets" name="sets" min="1" max="12" (keydown)="limitNumberOfDigitsSets($event)" required>
           <span class="setUnit">Sets (1-12)</span>
           <div *ngIf="sets === 0" class="inputError">
             <p> Sets must be bigger than 0! </p>
@@ -271,7 +271,7 @@
       <div *ngIf="successMessage" class="successMessage">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert-danger">{{ errorMessage }}</div>
 
-      <button class="modalButton" (click)="editExercise()" [disabled]="sets === 0 || reps === 0 || duration === 0">Edit</button>
+      <button class="modalButton" (click)="editExercise()" [disabled]="sets === 0 || reps === 0 || duration === 0 || sets === null || reps === null || duration === null">Edit</button>
       <button class="modalButton" type="reset" (click)="closeModal()">Close</button>
     </div>
   </div>
