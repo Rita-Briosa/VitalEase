@@ -759,10 +759,10 @@ namespace VitalEase.Server.Controllers
                     return NotFound(new { message = "Profile not found" });
                 }
 
-                if (model.Height > 300 || model.Height < 90 )
+                if (model.Height > 251 || model.Height < 90 )
                 {
-                    await LogAction("Height change Attempt", "Failed - Height must be between 90 and 300 cm.", userProfile.Id);
-                    return Unauthorized(new { message = "Height must be between 90 and 300 cm." });
+                    await LogAction("Height change Attempt", "Failed - Height must be between 90 and 251 cm.", userProfile.Id);
+                    return Unauthorized(new { message = "Height must be between 90 and 251 cm." });
                 }
 
                 userProfile.Profile.Height = model.Height;
