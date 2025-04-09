@@ -179,12 +179,12 @@
           <input type="radio" name="option" value="duration" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Duration
         </label>
         <label>
-          <input type="radio" name="option" value="reps" [(ngModel)]="selectedOption" (change)="onOptionChange()"> Reps
+          <input type="radio" name="option" value="reps" [(ngModel)]="selectedOption" (change)="onOptionChange()" > Reps
         </label>
       </div>
 
       <div class="input-container-modal">
-        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration" (keypress)="limitNumberOfDigitsDuration($event)" required>
+        <input *ngIf="selectedOption === 'duration'" type="number" id="durationInput" min="1" max="600" [(ngModel)]="duration" name="duration"   (keypress)="limitNumberOfDigitsDuration($event)" required>
         <span *ngIf="selectedOption === 'duration'" class="unit">Secs (1-600)</span>
         <div *ngIf="selectedOption === 'duration' && duration === 0" class="inputError">
           <p> Duration must be bigger than 0! </p>

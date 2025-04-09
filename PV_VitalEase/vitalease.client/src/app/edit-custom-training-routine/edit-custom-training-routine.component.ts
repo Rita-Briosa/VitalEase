@@ -224,6 +224,18 @@ export class EditCustomTrainingRoutineComponent {
     this.routinesService.getExerciseRoutine(parseInt(this.routineId), exerciseId).subscribe(
       (response: any) => {
         this.shownRelation = response;
+
+
+        if (this.shownRelation.duration === null || this.shownRelation.duration === 0) {
+          this.reps = this.shownRelation.reps;
+          this.selectedOption = 'reps';
+          this.duration = 60;
+        } else if (this.shownRelation.reps === null || this.shownRelation.reps === 0) {
+          this.duration = this.shownRelation.duration;
+          this.selectedOption = 'duration';
+          this.reps = 12;
+        }
+
         console.log(response);
       },
       (error: any) => {
@@ -481,7 +493,10 @@ export class EditCustomTrainingRoutineComponent {
     this.unselectExercise();
     this.selectExercise(exerciseId);
 
+    
     this.activeModal = 'edit';
+    
+   
   }
 
   /**
@@ -492,9 +507,16 @@ export class EditCustomTrainingRoutineComponent {
  */
   onOptionChange() {
     if (this.selectedOption === 'duration') {
-      this.reps = 12;
+      if (this.shownRelation.reps === 0 || this.shownRelation.reps === null) {
+        this.reps = 12;
+        this.duration = this.shownRelation.duration;
+      } 
+    
     } else if (this.selectedOption === 'reps') {
-      this.duration = 60;
+      if (this.shownRelation.duration === 0 || this.shownRelation.duration === null) {
+        this.duration = 60;
+        this.reps = this.shownRelation.reps;
+      } 
     }
   }
 

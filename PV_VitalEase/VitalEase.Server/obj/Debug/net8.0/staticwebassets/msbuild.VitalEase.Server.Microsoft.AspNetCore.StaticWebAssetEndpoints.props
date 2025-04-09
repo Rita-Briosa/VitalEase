@@ -1,232 +1,232 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/3rdpartylicenses.0ovjqutc8j.txt">
+    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/3rdpartylicenses.73nkoqwz6f.txt">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\3rdpartylicenses.txt'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"0ovjqutc8j"},{"Name":"integrity","Value":"sha256-EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/3rdpartylicenses.txt"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"21294"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"73nkoqwz6f"},{"Name":"integrity","Value":"sha256-Hc4ed/boqb\u002B2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/3rdpartylicenses.txt"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"20919"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022Hc4ed/boqb\u002B2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/3rdpartylicenses.txt">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\3rdpartylicenses.txt'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"21294"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022EImLhK7OowhvjL1ho/gAHjAE4kOez/IJJDPUWcytuek=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Hc4ed/boqb\u002B2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"20919"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022Hc4ed/boqb\u002B2wjHXKvE9oS7MG14pJ9sCpGtJ7RSw5kg=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/arrow_right.nydkq4sg7f.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\arrow_right.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"nydkq4sg7f"},{"Name":"integrity","Value":"sha256-UdIvVTgHXu\u002BzGi65yV0ISk9Lxhl\u002BSdOnY1Apnt1BrJs="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/arrow_right.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7596"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UdIvVTgHXu\u002BzGi65yV0ISk9Lxhl\u002BSdOnY1Apnt1BrJs=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7596"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UdIvVTgHXu\u002BzGi65yV0ISk9Lxhl\u002BSdOnY1Apnt1BrJs=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/arrow_right.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\arrow_right.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-UdIvVTgHXu\u002BzGi65yV0ISk9Lxhl\u002BSdOnY1Apnt1BrJs="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7596"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UdIvVTgHXu\u002BzGi65yV0ISk9Lxhl\u002BSdOnY1Apnt1BrJs=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7596"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UdIvVTgHXu\u002BzGi65yV0ISk9Lxhl\u002BSdOnY1Apnt1BrJs=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev1.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev1.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn\u002Bhtnw="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1766048"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn\u002Bhtnw=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1766048"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn\u002Bhtnw=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev1.usgvsvujzf.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev1.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"usgvsvujzf"},{"Name":"integrity","Value":"sha256-zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn\u002Bhtnw="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/dev1.jpeg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1766048"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn\u002Bhtnw=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1766048"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zn6/CZj2SeoFYZQ3Dj1XuSrC/g3rybNA0xoOFn\u002Bhtnw=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev2.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev2.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"290301"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"290301"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev2.yxd8d5a0ys.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev2.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"yxd8d5a0ys"},{"Name":"integrity","Value":"sha256-agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/dev2.jpeg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"290301"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"290301"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022agZ/n5AS0ELYDBygsmyrDQzeDrtgmF/sWtkVEhIAt1A=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev3.5ma6kiswi0.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev3.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5ma6kiswi0"},{"Name":"integrity","Value":"sha256-PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/dev3.jpeg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"252761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"252761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev3.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev3.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"252761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"252761"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022PVdk/GeHddAoR3tQMQDtrNHCuCtPYcy16IFx6w8C4KQ=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev4.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev4.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1843042"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1843042"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/dev4.kte9kpxwfu.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\dev4.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kte9kpxwfu"},{"Name":"integrity","Value":"sha256-SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/dev4.jpeg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1843042"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1843042"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022SFsRJzInREYAnmSKfrXUzMw6kKdL7SYiartPsl3pFFM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/fitness-illustration.1q355k7c7h.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\fitness-illustration.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"1q355k7c7h"},{"Name":"integrity","Value":"sha256-GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/fitness-illustration.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"271775"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"271775"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/fitness-illustration.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\fitness-illustration.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"271775"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"271775"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022GQdYWvpjDKFJ10aunUX09wYDA2SegYJjwAZtmbmNB98=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/garbage_can.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\garbage_can.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7156"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7156"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/garbage_can.qb0j2xyvmx.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\garbage_can.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qb0j2xyvmx"},{"Name":"integrity","Value":"sha256-Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/garbage_can.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7156"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7156"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Zs4j15VSSJoiSJO/vCbuy1VisyRc8KsLWT3jRWnKaC4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/logo.omupm3b1xx.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\logo.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"omupm3b1xx"},{"Name":"integrity","Value":"sha256-UBnvrM9\u002BN3pL4\u002BBooWqIADkkbaCmpYSkaf2X/88baio="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/logo.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100187"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UBnvrM9\u002BN3pL4\u002BBooWqIADkkbaCmpYSkaf2X/88baio=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100187"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UBnvrM9\u002BN3pL4\u002BBooWqIADkkbaCmpYSkaf2X/88baio=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/logo.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\logo.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-UBnvrM9\u002BN3pL4\u002BBooWqIADkkbaCmpYSkaf2X/88baio="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100187"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UBnvrM9\u002BN3pL4\u002BBooWqIADkkbaCmpYSkaf2X/88baio=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100187"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022UBnvrM9\u002BN3pL4\u002BBooWqIADkkbaCmpYSkaf2X/88baio=\u0022"},{"Name":"Last-Modified","Value":"Thu, 23 Jan 2025 19:06:49 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/pencil-43.54zdg5nori.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\pencil-43.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"54zdg5nori"},{"Name":"integrity","Value":"sha256-\u002B1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/pencil-43.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022\u002B1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022\u002B1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/pencil-43.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\pencil-43.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-\u002B1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022\u002B1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"7035"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022\u002B1hTnHNDE7/6GyTVy2f00ZIevgC1rS8tFj2bIxEEy8U=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/plusIcon.le7skris2l.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\plusIcon.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"le7skris2l"},{"Name":"integrity","Value":"sha256-fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/assets/img/plusIcon.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"9851"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"9851"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/assets/img/plusIcon.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\assets\img\plusIcon.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"9851"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"9851"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022fRSY93apwzIx2mMdK3MywZFxXTGQcTw0i8pZ8EnGil0=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 08:58:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/index.aytwbm6qv9.html">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\index.html'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"aytwbm6qv9"},{"Name":"integrity","Value":"sha256-Xr1EG6d/3RGJQ\u002BJa\u002Bs3FWm1jXVuIseFmSY9LkIXTpnk="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/index.html"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"618"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022Xr1EG6d/3RGJQ\u002BJa\u002Bs3FWm1jXVuIseFmSY9LkIXTpnk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"618"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022Xr1EG6d/3RGJQ\u002BJa\u002Bs3FWm1jXVuIseFmSY9LkIXTpnk=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/index.html">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\index.html'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Xr1EG6d/3RGJQ\u002BJa\u002Bs3FWm1jXVuIseFmSY9LkIXTpnk="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"618"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022Xr1EG6d/3RGJQ\u002BJa\u002Bs3FWm1jXVuIseFmSY9LkIXTpnk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"618"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022Xr1EG6d/3RGJQ\u002BJa\u002Bs3FWm1jXVuIseFmSY9LkIXTpnk=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/main-LTSJLSFF.2hb9rw3r9u.js">
+    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/main-LTSJLSFF.1hlq1hyqac.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\main-LTSJLSFF.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2hb9rw3r9u"},{"Name":"integrity","Value":"sha256-Vg2\u002BKhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/main-LTSJLSFF.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"685001"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022Vg2\u002BKhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"1hlq1hyqac"},{"Name":"integrity","Value":"sha256-y\u002BthqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/main-LTSJLSFF.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"684989"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022y\u002BthqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/main-LTSJLSFF.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\main-LTSJLSFF.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Vg2\u002BKhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"685001"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022Vg2\u002BKhfbHYp4etIR/rUREncEYKUsBFPVTIxvU6OV5Sk=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-y\u002BthqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"684989"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022y\u002BthqTL9m7z8EmBFnw/C62ucfoKFS9OvA4bIHGNB3VI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/media/layers-2x-TBM42ERR.ef5uc09gvw.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\media\layers-2x-TBM42ERR.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ef5uc09gvw"},{"Name":"integrity","Value":"sha256-Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/media/layers-2x-TBM42ERR.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1259"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1259"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/media/layers-2x-TBM42ERR.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\media\layers-2x-TBM42ERR.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1259"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1259"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Bm2sqFDY/77wB68AsG6sABVyje4nnFHzy2xxbffELt8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/media/layers-55W3Q4RM.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\media\layers-55W3Q4RM.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"696"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"696"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/media/layers-55W3Q4RM.ptvguihtoq.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\media\layers-55W3Q4RM.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ptvguihtoq"},{"Name":"integrity","Value":"sha256-Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/media/layers-55W3Q4RM.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"696"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"696"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022Hbvp0CjikvNvy6j4s6KNXokydU/CIVuaxp5M3s9RB8Y=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/media/marker-icon-2V3QKKVC.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\media\marker-icon-2V3QKKVC.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1466"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1466"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/media/marker-icon-2V3QKKVC.vq9wvlav5t.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\media\marker-icon-2V3QKKVC.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vq9wvlav5t"},{"Name":"integrity","Value":"sha256-V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/media/marker-icon-2V3QKKVC.png"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1466"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1466"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022V0w6XMqF9BFAhbaEFZbWLwDXyJLHsD8oy/owHesdxDc=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/polyfills-FFHMD2TL.gv9nnx918d.js">
+    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/polyfills-FFHMD2TL.39tegmrjtp.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\polyfills-FFHMD2TL.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"gv9nnx918d"},{"Name":"integrity","Value":"sha256-vPx\u002BuL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/polyfills-FFHMD2TL.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"34521"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022vPx\u002BuL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"39tegmrjtp"},{"Name":"integrity","Value":"sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/polyfills-FFHMD2TL.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"34519"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/polyfills-FFHMD2TL.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\polyfills-FFHMD2TL.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-vPx\u002BuL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"34521"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022vPx\u002BuL0mspJ05685sS/8avZF1v4RS4ClEj6mMd0DTxA=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"34519"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022adzqBFZD3Q3pmKPNDMu7RrRr/yZRqHpWxzwo6yCOj5g=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/styles-OPSORIUJ.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\styles-OPSORIUJ.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-qMa1GqettC\u002Bp\u002BTfzuFyRKJQX2pY9eK8hIQxMxdnniJc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11073"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022qMa1GqettC\u002Bp\u002BTfzuFyRKJQX2pY9eK8hIQxMxdnniJc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11072"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/styles-OPSORIUJ.o4nxuez1vo.css">
+    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/browser/styles-OPSORIUJ.h1uvasrz41.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\browser\styles-OPSORIUJ.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"o4nxuez1vo"},{"Name":"integrity","Value":"sha256-qMa1GqettC\u002Bp\u002BTfzuFyRKJQX2pY9eK8hIQxMxdnniJc="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/styles-OPSORIUJ.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11073"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022qMa1GqettC\u002Bp\u002BTfzuFyRKJQX2pY9eK8hIQxMxdnniJc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/prerendered-routes.bdlfngeg9h.json">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\prerendered-routes.json'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"bdlfngeg9h"},{"Name":"integrity","Value":"sha256-EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt\u002Bua/wQ="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/prerendered-routes.json"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"20"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt\u002Bua/wQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"h1uvasrz41"},{"Name":"integrity","Value":"sha256-K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/browser/styles-OPSORIUJ.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11072"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022K6xNgOvZ3ACPwoG1E7HOM9spkULnBLqbceunnRfpy2E=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/prerendered-routes.json">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\prerendered-routes.json'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt\u002Bua/wQ="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"20"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022EU9ZtuQhQrnLyvbSvsWZrvS9r3f6MA06EdbEt\u002Bua/wQ=\u0022"},{"Name":"Last-Modified","Value":"Fri, 04 Apr 2025 16:53:26 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"18"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/VitalEase.Server/vitalease.client/prerendered-routes.tvy3j3n584.json">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\vitalease.client\prerendered-routes.json'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"tvy3j3n584"},{"Name":"integrity","Value":"sha256-p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4="},{"Name":"label","Value":"_content/VitalEase.Server/vitalease.client/prerendered-routes.json"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"18"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022p53cyKEVGQ6cGUee02kUdBp9HbdPChFTUp78gHJVBf4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 01 Apr 2025 13:44:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>
