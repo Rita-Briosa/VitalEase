@@ -675,10 +675,10 @@ namespace VitalEase.Server.Controllers
                     return NotFound(new { message = "Profile not found" });
                 }
 
-                if (model.Weight > 450 || model.Weight < 30)
+                if (model.Weight > 400 || model.Weight < 30)
                 {
-                    await LogAction("Weight change Attempt", "Weight must be between 30 and 450 kg.", userProfile.Id);
-                    return Unauthorized(new { message = "Weight must be between 30 and 450 kg." });
+                    await LogAction("Weight change Attempt", "Weight must be between 30 and 400 kg.", userProfile.Id);
+                    return Unauthorized(new { message = "Weight must be between 30 and 400 kg." });
                 }
 
                 userProfile.Profile.Weight = model.Weight;
@@ -759,10 +759,10 @@ namespace VitalEase.Server.Controllers
                     return NotFound(new { message = "Profile not found" });
                 }
 
-                if (model.Height > 250 || model.Height < 125 )
+                if (model.Height > 300 || model.Height < 90 )
                 {
-                    await LogAction("Height change Attempt", "Failed - Height must be between 125 and 250 cm.", userProfile.Id);
-                    return Unauthorized(new { message = "Height must be between 125 and 250 cm." });
+                    await LogAction("Height change Attempt", "Failed - Height must be between 90 and 300 cm.", userProfile.Id);
+                    return Unauthorized(new { message = "Height must be between 90 and 300 cm." });
                 }
 
                 userProfile.Profile.Height = model.Height;
