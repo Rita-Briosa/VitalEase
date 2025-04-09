@@ -227,10 +227,12 @@ export class EditCustomTrainingRoutineComponent {
 
 
         if (this.shownRelation.duration === null || this.shownRelation.duration === 0) {
+          this.sets = this.shownRelation.sets;
           this.reps = this.shownRelation.reps;
           this.selectedOption = 'reps';
           this.duration = 60;
         } else if (this.shownRelation.reps === null || this.shownRelation.reps === 0) {
+          this.sets = this.shownRelation.sets;
           this.duration = this.shownRelation.duration;
           this.selectedOption = 'duration';
           this.reps = 12;
