@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore ../PV_Vital_Ease/PV_Vital_Ease.sln
+      run: dotnet restore PV_VitalEase/PV_VitalEase.sln
     - name: Build
-      run: dotnet build --no-restore ../PV_Vital_Ease/PV_Vital_Ease.sln
+      run: dotnet build --no-restore PV_VitalEase/PV_VitalEase.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal ../PV_Vital_Ease/PV_Vital_Ease.sln
+      run: dotnet test --no-build --verbosity normal PV_VitalEase/PV_VitalEase.sln
