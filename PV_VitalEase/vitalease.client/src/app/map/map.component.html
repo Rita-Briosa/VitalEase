@@ -1,26 +1,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<div class="container-header">
-  <div class="header">
-    <div class="row">
-      <img src="assets/img/logo.png" alt="Vital Ease Logo" routerLink="/">
-      <a class="action-button" routerLink="/exercises">Exercises</a>
-      <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
-      <a class="action-button" routerLink="/map">Map</a>
-      <a class="action-button" routerLink="/aboutUs">About Us</a>
-      <button class="Dashboard-button"
-              *ngIf="isAdmin"
-              (click)="goToDashboard()">
-        Dashboard
-      </button>
-      <div class="auth-buttons">
-        <!-- Mostrar botão de Login se o usuário não estiver logado -->
-        <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
-        <a href="/myProfile" *ngIf="isLoggedIn" class="profile-icon">👤</a>
-      </div>
-    </div>
+<header>
+
+  <a [routerLink]="['/']">
+    <img class="logo" src="assets/img/logo.png" alt="VitalEase Logo">
+  </a>
+
+  <a class="action-button" routerLink="/exercises">Exercises</a>
+  <a class="action-button" routerLink="/manage-training-routines">Training Routines</a>
+  <a class="action-button" routerLink="/map">Map</a>
+  <a class="action-button" routerLink="/aboutUs">About Us</a>
+
+  <div class="auth-buttons">
+    <button class="login-button" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+
+
+
   </div>
-</div>
+</header>
 
 
 
@@ -45,7 +42,7 @@
 <div #map style="width: 100%; height: 70vh;"></div>
 
 <div class="favorites-container">
-  <button class="favoritesButton" >
+  <button (click)="toggleFavoritesList()">
     {{ favoritesVisible ? 'Hide Favorite Locations' : 'Show Favorite Locations' }}
   </button>
   <div *ngIf="favoritesVisible">
